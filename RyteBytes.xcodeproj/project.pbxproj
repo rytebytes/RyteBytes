@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0176638316C05809003BBD47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638216C05809003BBD47 /* UIKit.framework */; };
+		0176638516C05809003BBD47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638416C05809003BBD47 /* Foundation.framework */; };
+		0176638716C05809003BBD47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638616C05809003BBD47 /* CoreGraphics.framework */; };
+		0176638D16C05809003BBD47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0176638B16C05809003BBD47 /* InfoPlist.strings */; };
+		0176638F16C05809003BBD47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0176638E16C05809003BBD47 /* main.m */; };
+		0176639316C05809003BBD47 /* RBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0176639216C05809003BBD47 /* RBAppDelegate.m */; };
+		0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0176639416C05809003BBD47 /* MainStoryboard.storyboard */; };
+		0176639916C05809003BBD47 /* RBFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0176639816C05809003BBD47 /* RBFirstViewController.m */; };
+		0176639B16C05809003BBD47 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 0176639A16C05809003BBD47 /* first.png */; };
+		0176639D16C05809003BBD47 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0176639C16C05809003BBD47 /* first@2x.png */; };
+		017663A016C05809003BBD47 /* RBSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0176639F16C05809003BBD47 /* RBSecondViewController.m */; };
+		017663A216C05809003BBD47 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 017663A116C05809003BBD47 /* second.png */; };
+		017663A416C05809003BBD47 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 017663A316C05809003BBD47 /* second@2x.png */; };
+		017663AC16C05809003BBD47 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 017663AB16C05809003BBD47 /* SenTestingKit.framework */; };
+		017663AD16C05809003BBD47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638216C05809003BBD47 /* UIKit.framework */; };
+		017663AE16C05809003BBD47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638416C05809003BBD47 /* Foundation.framework */; };
+		017663B616C05809003BBD47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 017663B416C05809003BBD47 /* InfoPlist.strings */; };
+		017663B916C05809003BBD47 /* RyteBytesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 017663B816C05809003BBD47 /* RyteBytesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		017663AF16C05809003BBD47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0176637516C05809003BBD47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0176637D16C05809003BBD47;
+			remoteInfo = RyteBytes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0176637E16C05809003BBD47 /* RyteBytes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RyteBytes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0176638216C05809003BBD47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0176638416C05809003BBD47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0176638616C05809003BBD47 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0176638A16C05809003BBD47 /* RyteBytes-Info.plist */ = {isa = PBXFileReference; path = "RyteBytes-Info.plist"; sourceTree = "<group>"; };
+		0176638C16C05809003BBD47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0176638E16C05809003BBD47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0176639016C05809003BBD47 /* RyteBytes-Prefix.pch */ = {isa = PBXFileReference; path = "RyteBytes-Prefix.pch"; sourceTree = "<group>"; };
+		0176639116C05809003BBD47 /* RBAppDelegate.h */ = {isa = PBXFileReference; path = RBAppDelegate.h; sourceTree = "<group>"; };
+		0176639216C05809003BBD47 /* RBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBAppDelegate.m; sourceTree = "<group>"; };
+		0176639516C05809003BBD47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		0176639716C05809003BBD47 /* RBFirstViewController.h */ = {isa = PBXFileReference; path = RBFirstViewController.h; sourceTree = "<group>"; };
+		0176639816C05809003BBD47 /* RBFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBFirstViewController.m; sourceTree = "<group>"; };
+		0176639A16C05809003BBD47 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		0176639C16C05809003BBD47 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		0176639E16C05809003BBD47 /* RBSecondViewController.h */ = {isa = PBXFileReference; path = RBSecondViewController.h; sourceTree = "<group>"; };
+		0176639F16C05809003BBD47 /* RBSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBSecondViewController.m; sourceTree = "<group>"; };
+		017663A116C05809003BBD47 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		017663A316C05809003BBD47 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		017663AA16C05809003BBD47 /* RyteBytesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RyteBytesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		017663AB16C05809003BBD47 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		017663B316C05809003BBD47 /* RyteBytesTests-Info.plist */ = {isa = PBXFileReference; path = "RyteBytesTests-Info.plist"; sourceTree = "<group>"; };
+		017663B516C05809003BBD47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		017663B716C05809003BBD47 /* RyteBytesTests.h */ = {isa = PBXFileReference; path = RyteBytesTests.h; sourceTree = "<group>"; };
+		017663B816C05809003BBD47 /* RyteBytesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RyteBytesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0176637B16C05809003BBD47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0176638316C05809003BBD47 /* UIKit.framework in Frameworks */,
+				0176638516C05809003BBD47 /* Foundation.framework in Frameworks */,
+				0176638716C05809003BBD47 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		017663A616C05809003BBD47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				017663AC16C05809003BBD47 /* SenTestingKit.framework in Frameworks */,
+				017663AD16C05809003BBD47 /* UIKit.framework in Frameworks */,
+				017663AE16C05809003BBD47 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0176637316C05809003BBD47 = {
+			isa = PBXGroup;
+			children = (
+				0176638816C05809003BBD47 /* RyteBytes */,
+				017663B116C05809003BBD47 /* RyteBytesTests */,
+				0176638116C05809003BBD47 /* Frameworks */,
+				0176637F16C05809003BBD47 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0176637F16C05809003BBD47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0176637E16C05809003BBD47 /* RyteBytes.app */,
+				017663AA16C05809003BBD47 /* RyteBytesTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0176638116C05809003BBD47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0176638216C05809003BBD47 /* UIKit.framework */,
+				0176638416C05809003BBD47 /* Foundation.framework */,
+				0176638616C05809003BBD47 /* CoreGraphics.framework */,
+				017663AB16C05809003BBD47 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0176638816C05809003BBD47 /* RyteBytes */ = {
+			isa = PBXGroup;
+			children = (
+				0176639116C05809003BBD47 /* RBAppDelegate.h */,
+				0176639216C05809003BBD47 /* RBAppDelegate.m */,
+				0176639416C05809003BBD47 /* MainStoryboard.storyboard */,
+				0176639716C05809003BBD47 /* RBFirstViewController.h */,
+				0176639816C05809003BBD47 /* RBFirstViewController.m */,
+				0176639A16C05809003BBD47 /* first.png */,
+				0176639C16C05809003BBD47 /* first@2x.png */,
+				0176639E16C05809003BBD47 /* RBSecondViewController.h */,
+				0176639F16C05809003BBD47 /* RBSecondViewController.m */,
+				017663A116C05809003BBD47 /* second.png */,
+				017663A316C05809003BBD47 /* second@2x.png */,
+				0176638916C05809003BBD47 /* Supporting Files */,
+			);
+			path = RyteBytes;
+			sourceTree = "<group>";
+		};
+		0176638916C05809003BBD47 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0176638A16C05809003BBD47 /* RyteBytes-Info.plist */,
+				0176638B16C05809003BBD47 /* InfoPlist.strings */,
+				0176638E16C05809003BBD47 /* main.m */,
+				0176639016C05809003BBD47 /* RyteBytes-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		017663B116C05809003BBD47 /* RyteBytesTests */ = {
+			isa = PBXGroup;
+			children = (
+				017663B716C05809003BBD47 /* RyteBytesTests.h */,
+				017663B816C05809003BBD47 /* RyteBytesTests.m */,
+				017663B216C05809003BBD47 /* Supporting Files */,
+			);
+			path = RyteBytesTests;
+			sourceTree = "<group>";
+		};
+		017663B216C05809003BBD47 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				017663B316C05809003BBD47 /* RyteBytesTests-Info.plist */,
+				017663B416C05809003BBD47 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0176637D16C05809003BBD47 /* RyteBytes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 017663BC16C05809003BBD47 /* Build configuration list for PBXNativeTarget "RyteBytes" */;
+			buildPhases = (
+				0176637A16C05809003BBD47 /* Sources */,
+				0176637B16C05809003BBD47 /* Frameworks */,
+				0176637C16C05809003BBD47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RyteBytes;
+			productName = RyteBytes;
+			productReference = 0176637E16C05809003BBD47 /* RyteBytes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		017663A916C05809003BBD47 /* RyteBytesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 017663BF16C05809003BBD47 /* Build configuration list for PBXNativeTarget "RyteBytesTests" */;
+			buildPhases = (
+				017663A516C05809003BBD47 /* Sources */,
+				017663A616C05809003BBD47 /* Frameworks */,
+				017663A716C05809003BBD47 /* Resources */,
+				017663A816C05809003BBD47 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				017663B016C05809003BBD47 /* PBXTargetDependency */,
+			);
+			name = RyteBytesTests;
+			productName = RyteBytesTests;
+			productReference = 017663AA16C05809003BBD47 /* RyteBytesTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0176637516C05809003BBD47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 0176637816C05809003BBD47 /* Build configuration list for PBXProject "RyteBytes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0176637316C05809003BBD47;
+			productRefGroup = 0176637F16C05809003BBD47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0176637D16C05809003BBD47 /* RyteBytes */,
+				017663A916C05809003BBD47 /* RyteBytesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0176637C16C05809003BBD47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0176638D16C05809003BBD47 /* InfoPlist.strings in Resources */,
+				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
+				0176639B16C05809003BBD47 /* first.png in Resources */,
+				0176639D16C05809003BBD47 /* first@2x.png in Resources */,
+				017663A216C05809003BBD47 /* second.png in Resources */,
+				017663A416C05809003BBD47 /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		017663A716C05809003BBD47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				017663B616C05809003BBD47 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		017663A816C05809003BBD47 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0176637A16C05809003BBD47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0176638F16C05809003BBD47 /* main.m in Sources */,
+				0176639316C05809003BBD47 /* RBAppDelegate.m in Sources */,
+				0176639916C05809003BBD47 /* RBFirstViewController.m in Sources */,
+				017663A016C05809003BBD47 /* RBSecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		017663A516C05809003BBD47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				017663B916C05809003BBD47 /* RyteBytesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		017663B016C05809003BBD47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0176637D16C05809003BBD47 /* RyteBytes */;
+			targetProxy = 017663AF16C05809003BBD47 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0176638B16C05809003BBD47 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0176638C16C05809003BBD47 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0176639416C05809003BBD47 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0176639516C05809003BBD47 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		017663B416C05809003BBD47 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				017663B516C05809003BBD47 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		017663BA16C05809003BBD47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		017663BB16C05809003BBD47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		017663BD16C05809003BBD47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
+				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		017663BE16C05809003BBD47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
+				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		017663C016C05809003BBD47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RyteBytes.app/RyteBytes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
+				INFOPLIST_FILE = "RyteBytesTests/RyteBytesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		017663C116C05809003BBD47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RyteBytes.app/RyteBytes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
+				INFOPLIST_FILE = "RyteBytesTests/RyteBytesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0176637816C05809003BBD47 /* Build configuration list for PBXProject "RyteBytes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				017663BA16C05809003BBD47 /* Debug */,
+				017663BB16C05809003BBD47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		017663BC16C05809003BBD47 /* Build configuration list for PBXNativeTarget "RyteBytes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				017663BD16C05809003BBD47 /* Debug */,
+				017663BE16C05809003BBD47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		017663BF16C05809003BBD47 /* Build configuration list for PBXNativeTarget "RyteBytesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				017663C016C05809003BBD47 /* Debug */,
+				017663C116C05809003BBD47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0176637516C05809003BBD47 /* Project object */;
+}
