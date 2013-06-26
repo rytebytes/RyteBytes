@@ -3,18 +3,39 @@
 //  RyteBytes
 //
 //  Created by Nicholas McMillan on 2/4/13.
-//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2013 RyteBytes Foods, Inc. All rights reserved.
 //
 
 #import "RBAppDelegate.h"
+#import "MenuController.h"
+#import "Meal.h"
+#import "Enums.h"
+#import "MainController.h"
+#import "EatRyteController.h"
+#import <Parse/Parse.h>
+
 
 @implementation RBAppDelegate
 
 @synthesize window = _window;
 
+NSMutableArray *components;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    //set default page for tabs to middle tab
+//    UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
+//    tabBar.selectedIndex = 2;
+    
+    [Parse setApplicationId:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"
+                  clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
+//
+//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    
+//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//    [testObject setObject:@"bar" forKey:@"foo"];
+//    [testObject save];
+    
     return YES;
 }
 							
