@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface EatRyteController : UINavigationController
+@interface EatRyteController : UIViewController
+
+@property (nonatomic,strong) IBOutlet UILabel *heading;
+@property (nonatomic,strong) IBOutlet UIButton *pickMealBtn;
+@property (nonatomic,strong) IBOutlet UIButton *buildMealBtn;
+@property (nonatomic,strong) IBOutlet UIBarButtonItem *checkOutBtn;
 
 @end

@@ -7,9 +7,14 @@
 //
 
 #import "EatRyteController.h"
-#import "MenuController.h"
+#import "PickMealController.h"
 
 @implementation EatRyteController
+
+@synthesize pickMealBtn;
+@synthesize buildMealBtn;
+@synthesize checkOutBtn;
+@synthesize heading;
 
 - (void)didReceiveMemoryWarning
 {
@@ -23,6 +28,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [heading setFont:[UIFont fontWithName:@"Helvetica" size:12]];
+    
 }
 
 - (void)viewDidUnload
@@ -56,6 +63,14 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"eatRyteCheckout"])
+    {
+        NSLog(@"Send order to checkout controller");
+    }
 }
 
 

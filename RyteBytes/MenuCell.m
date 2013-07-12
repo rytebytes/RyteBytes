@@ -11,7 +11,6 @@
 @implementation MenuCell
 
 @synthesize name;
-@synthesize description;
 @synthesize image;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

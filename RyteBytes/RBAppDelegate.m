@@ -7,11 +7,12 @@
 //
 
 #import "RBAppDelegate.h"
-#import "MenuController.h"
+#import "PickMealController.h"
 #import "Meal.h"
 #import "Enums.h"
-#import "MainController.h"
+#import "TabBarController.h"
 #import "EatRyteController.h"
+#import "LoginViewController.h"
 #import <Parse/Parse.h>
 
 
@@ -23,12 +24,10 @@ NSMutableArray *components;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //set default page for tabs to middle tab
-//    UITabBarController *tabBar = (UITabBarController *)self.window.rootViewController;
-//    tabBar.selectedIndex = 2;
-    
+    //set default page for tabs to middle tab    
     [Parse setApplicationId:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"
                   clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
+
 //
 //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 //    
