@@ -20,7 +20,7 @@
 		0109FC7B1776053E008E5A66 /* CreateOrLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0109FC7A1776053E008E5A66 /* CreateOrLoginController.m */; };
 		01191770172306490085CA7B /* mob.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0119176F172306490085CA7B /* mob.JPG */; };
 		01191773172310370085CA7B /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191772172310370085CA7B /* MenuCell.m */; };
-		01191776172326F80085CA7B /* MealQuantityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191775172326F80085CA7B /* MealQuantityController.m */; };
+		01191776172326F80085CA7B /* MealDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191775172326F80085CA7B /* MealDetailsController.m */; };
 		01193D481719E999007782B9 /* MealComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 01193D471719E999007782B9 /* MealComponent.m */; };
 		01193D4B1719EA5F007782B9 /* NutritionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 01193D4A1719EA5F007782B9 /* NutritionInfo.m */; };
 		011CEDEE170600F800AE586E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 011CEDED170600F800AE586E /* Default-568h@2x.png */; };
@@ -66,6 +66,8 @@
 		0177533D17826DDD00296315 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0177533C17826DDD00296315 /* OpenGLES.framework */; };
 		01837D4816FD319000096158 /* plate.png in Resources */ = {isa = PBXBuildFile; fileRef = 01837D4716FD319000096158 /* plate.png */; };
 		0192CC1A16C05FE50024815F /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192CC1916C05FE50024815F /* Customer.m */; };
+		01A35DED1791BACC00DEBC46 /* OrderNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */; };
+		01A35DF01791E11F00DEBC46 /* RyteBytes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01A35DEE1791E11F00DEBC46 /* RyteBytes.xcdatamodeld */; };
 		01CF7F9D172C777D0072D714 /* FoodImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF7F9C172C777D0072D714 /* FoodImage.m */; };
 		01DAC6CC177D024E00158C9B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DAC6CB177D024E00158C9B /* LoginViewController.m */; };
 /* End PBXBuildFile section */
@@ -96,8 +98,8 @@
 		0119176F172306490085CA7B /* mob.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mob.JPG; sourceTree = "<group>"; };
 		01191771172310370085CA7B /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		01191772172310370085CA7B /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
-		01191774172326F80085CA7B /* MealQuantityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealQuantityController.h; sourceTree = "<group>"; };
-		01191775172326F80085CA7B /* MealQuantityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealQuantityController.m; sourceTree = "<group>"; };
+		01191774172326F80085CA7B /* MealDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealDetailsController.h; sourceTree = "<group>"; };
+		01191775172326F80085CA7B /* MealDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealDetailsController.m; sourceTree = "<group>"; };
 		01193D461719E999007782B9 /* MealComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealComponent.h; sourceTree = "<group>"; };
 		01193D471719E999007782B9 /* MealComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealComponent.m; sourceTree = "<group>"; };
 		01193D491719EA5F007782B9 /* NutritionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionInfo.h; sourceTree = "<group>"; };
@@ -163,6 +165,9 @@
 		01837D4716FD319000096158 /* plate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plate.png; sourceTree = "<group>"; };
 		0192CC1816C05FE50024815F /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
 		0192CC1916C05FE50024815F /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		01A35DEB1791BACC00DEBC46 /* OrderNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNotifications.h; sourceTree = "<group>"; };
+		01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNotifications.m; sourceTree = "<group>"; };
+		01A35DEF1791E11F00DEBC46 /* RyteBytes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RyteBytes.xcdatamodel; sourceTree = "<group>"; };
 		01CF7F9B172C777D0072D714 /* FoodImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodImage.h; sourceTree = "<group>"; };
 		01CF7F9C172C777D0072D714 /* FoodImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodImage.m; sourceTree = "<group>"; };
 		01DAC6CA177D024E00158C9B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -218,8 +223,8 @@
 				0176639F16C05809003BBD47 /* TabBarController.m */,
 				011CEDF01706042300AE586E /* PickMealController.h */,
 				011CEDF11706042300AE586E /* PickMealController.m */,
-				01191774172326F80085CA7B /* MealQuantityController.h */,
-				01191775172326F80085CA7B /* MealQuantityController.m */,
+				01191774172326F80085CA7B /* MealDetailsController.h */,
+				01191775172326F80085CA7B /* MealDetailsController.m */,
 				015BD2FE173EDA70008AB447 /* OrderController.h */,
 				015BD2FF173EDA70008AB447 /* OrderController.m */,
 			);
@@ -275,6 +280,7 @@
 		0176638816C05809003BBD47 /* RyteBytes */ = {
 			isa = PBXGroup;
 			children = (
+				01A35DEA1791BAA500DEBC46 /* Notifications */,
 				01A3A9681762AD0B0010C6F1 /* ViewModels */,
 				011CEDEF170603BC00AE586E /* Controllers */,
 				01837D4A16FDF84B00096158 /* Resources */,
@@ -294,6 +300,7 @@
 				0176638B16C05809003BBD47 /* InfoPlist.strings */,
 				0176638E16C05809003BBD47 /* main.m */,
 				0176639016C05809003BBD47 /* RyteBytes-Prefix.pch */,
+				01A35DEE1791E11F00DEBC46 /* RyteBytes.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -385,6 +392,15 @@
 				011CEDF71706276F00AE586E /* Enums.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		01A35DEA1791BAA500DEBC46 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				01A35DEB1791BACC00DEBC46 /* OrderNotifications.h */,
+				01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		01A3A9681762AD0B0010C6F1 /* ViewModels */ = {
@@ -539,13 +555,15 @@
 				01193D481719E999007782B9 /* MealComponent.m in Sources */,
 				01193D4B1719EA5F007782B9 /* NutritionInfo.m in Sources */,
 				01191773172310370085CA7B /* MenuCell.m in Sources */,
-				01191776172326F80085CA7B /* MealQuantityController.m in Sources */,
+				01191776172326F80085CA7B /* MealDetailsController.m in Sources */,
 				01CF7F9D172C777D0072D714 /* FoodImage.m in Sources */,
 				015BD300173EDA70008AB447 /* OrderController.m in Sources */,
 				015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */,
 				0109FC7B1776053E008E5A66 /* CreateOrLoginController.m in Sources */,
 				01DAC6CC177D024E00158C9B /* LoginViewController.m in Sources */,
 				0177532C178241A200296315 /* CreateAccountViewController.m in Sources */,
+				01A35DED1791BACC00DEBC46 /* OrderNotifications.m in Sources */,
+				01A35DF01791E11F00DEBC46 /* RyteBytes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +775,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		01A35DEE1791E11F00DEBC46 /* RyteBytes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				01A35DEF1791E11F00DEBC46 /* RyteBytes.xcdatamodel */,
+			);
+			currentVersion = 01A35DEF1791E11F00DEBC46 /* RyteBytes.xcdatamodel */;
+			path = RyteBytes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0176637516C05809003BBD47 /* Project object */;
 }

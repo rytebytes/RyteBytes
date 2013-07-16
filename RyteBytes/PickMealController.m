@@ -10,7 +10,7 @@
 #import "MealComponent.h"
 #import "Meal.h"
 #import "MenuCell.h"
-#import "MealQuantityController.h"
+#import "MealDetailsController.h"
 #import "OrderController.h"
 
 @implementation PickMealController
@@ -62,8 +62,11 @@ NSMutableDictionary *order;
     MealComponent* v = [[MealComponent alloc] initWithName:@"Italian Gravy" withDescription:@"Our gravy - as the Italians call it - would make even the Godfather smile." withType:Vegetable withPrice:2.99 withNutritionInfo:NULL];
     
     Meal* mob = [[Meal alloc]initWithName:@"Mob Meal I" withDescription:@"A meal fit for a king...or Godfather." withProtein:p withStarch:s withVeg:v withImage:@"OrderScreenchick_taters_shrooms.png"];
-    
+
+    Meal* chicken = [[Meal alloc]initWithName:@"Mob Meal I" withDescription:@"A meal fit for a king...or Godfather." withProtein:p withStarch:s withVeg:v withImage:@"OrderScreenCreateAMeal.png"];
+
     menuItems[0] = mob;
+    menuItems[1] = chicken;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -103,18 +106,18 @@ NSMutableDictionary *order;
 	if ([segue.identifier isEqualToString:@"MealSelect"])
 	{
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-		MealQuantityController *confirmOrderController = segue.destinationViewController;
+		MealDetailsController *mealDetailsController = segue.destinationViewController;
         
         Meal *selectedMeal = [self.menuItems objectAtIndex:selectedRowIndex.row];
         
-        confirmOrderController.mealToOrder = selectedMeal;
-        confirmOrderController.delegate = self;
-        if (nil == [order objectForKey:selectedMeal.name]) {
-            confirmOrderController.currentAmountOrdered = @"0";
-        }
-        else{
-            confirmOrderController.currentAmountOrdered = [[order objectForKey:selectedMeal.name] stringValue];
-        } 
+        mealDetailsController.mealToOrder = selectedMeal;
+        [mealDetailsController setDelegate:self];
+//        if (nil == [order objectForKey:selectedMeal.name]) {
+//            confirmOrderController.currentAmountOrdered = @"0";
+//        }
+//        else{
+//            confirmOrderController.currentAmountOrdered = [[order objectForKey:selectedMeal.name] stringValue];
+//        } 
 	}
     else if ([segue.identifier isEqualToString:@"Checkout"])
     {

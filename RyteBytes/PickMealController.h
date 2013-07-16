@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Enums.h"
-#import "MealQuantityController.h"
+#import "MealDetailsController.h"
 
 @interface PickMealController : UITableViewController <MealAdded>
 

@@ -7,6 +7,7 @@
 //
 
 #import "OrderController.h"
+#import "OrderNotifications.h"
 
 @implementation OrderController
 
@@ -16,7 +17,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        NSLog(@"registering for order notifications");
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMenuItem:) name:OrderNotification object:nil];
     }
     return self;
 }
@@ -32,15 +34,22 @@
     while ((object = [keys nextObject])) {
         
     }
-    
-    
-    
+}
+
+- (void) addMenuItem
+{
+    NSLog(@"Menu item added, notification received in order controller.");
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -9,15 +9,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="Meal Component Selection" title="Meal Component Choice" modalTransitionStyle="flipHorizontal" id="YYe-Zp-TDs" customClass="PickMealController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="129" sectionHeaderHeight="22" sectionFooterHeight="22" id="8vS-id-owR">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="129" id="tMO-t3-tY4" customClass="MenuCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" rowHeight="129" id="tMO-t3-tY4" customClass="MenuCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="129"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="NKe-5T-FQu">
@@ -40,6 +40,7 @@
                                 <connections>
                                     <outlet property="image" destination="NKe-5T-FQu" id="fnP-vB-tUs"/>
                                     <outlet property="name" destination="U4C-A7-gYX" id="fWC-ZY-Nq0"/>
+                                    <segue destination="s3v-5M-xjQ" kind="push" identifier="MealSelect" id="eYS-Sb-2of"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -58,43 +59,36 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srh-zT-XBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="-1082"/>
+            <point key="canvasLocation" x="914" y="-1400"/>
         </scene>
-        <!--Meal Quantity Controller - Order-->
+        <!--Meal Details Controller - Order-->
         <scene sceneID="DcV-wd-BPd">
             <objects>
-                <viewController title="Order" modalTransitionStyle="flipHorizontal" id="s3v-5M-xjQ" customClass="MealQuantityController" sceneMemberID="viewController">
+                <viewController title="Order" modalTransitionStyle="flipHorizontal" id="s3v-5M-xjQ" customClass="MealDetailsController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xiz-il-RHR">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" id="yjB-t4-GVw">
-                                <rect key="frame" x="20" y="26" width="172" height="115"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" maximumValue="100" id="Mm2-sF-Ddu">
-                                <rect key="frame" x="206" y="138" width="94" height="27"/>
+                                <rect key="frame" x="217" y="185" width="94" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="valueChanged:" destination="s3v-5M-xjQ" eventType="valueChanged" id="m5a-09-3ao"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XXJ-uf-njW">
-                                <rect key="frame" x="211" y="79" width="94" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vpg-hG-pu0">
-                                <rect key="frame" x="211" y="43" width="94" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vpg-hG-pu0">
+                                <rect key="frame" x="113" y="18" width="94" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="piY-1U-abl">
-                                <rect key="frame" x="20" y="267" width="280" height="82"/>
+                                <rect key="frame" x="20" y="266" width="280" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -107,10 +101,29 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m1L-Mb-leN">
+                                <rect key="frame" x="48" y="49" width="225" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qdE-gI-hAy">
+                                <rect key="frame" x="20" y="184" width="79" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="rnV-yT-TsA">
+                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="kMF-zy-xkw">
+                            <connections>
+                                <segue destination="YYe-Zp-TDs" kind="push" id="4Ex-dF-zOZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Checkout" id="a59-Bk-GXQ">
                             <connections>
                                 <segue destination="bEg-Gz-zQg" kind="push" identifier="Checkout" id="x4Z-JS-ZPW"/>
@@ -118,23 +131,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="description" destination="piY-1U-abl" id="Aoj-vG-2kM"/>
+                        <outlet property="description" destination="m1L-Mb-leN" id="EWK-TK-0v5"/>
                         <outlet property="foodImage" destination="yjB-t4-GVw" id="LbR-IX-8nk"/>
-                        <outlet property="mealName" destination="uXM-tr-tfl" id="zyX-wN-Xoy"/>
-                        <outlet property="quantityOrdered" destination="XXJ-uf-njW" id="eYr-ka-1Sp"/>
+                        <outlet property="mealName" destination="vpg-hG-pu0" id="kAA-Sx-447"/>
+                        <outlet property="nutritionInfo" destination="qdE-gI-hAy" id="WQ4-va-1Ds"/>
                         <outlet property="quantityStepper" destination="Mm2-sF-Ddu" id="YaL-v5-RRp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXF-cc-3ED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1368" y="-1082"/>
+            <point key="canvasLocation" x="1434" y="-1978"/>
         </scene>
         <!--Order Controller - Order Summary-->
         <scene sceneID="3nF-DQ-GUa">
             <objects>
                 <viewController id="bEg-Gz-zQg" customClass="OrderController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="byV-hJ-pIO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Ff-Yk-Pt4">
@@ -185,7 +198,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="taf-iK-Q8b">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="384"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -200,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86K-0L-FVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1265" y="-338"/>
+            <point key="canvasLocation" x="2073" y="-598"/>
         </scene>
         <!--View Controller - Cooking-->
         <scene sceneID="k7F-er-7MI">
@@ -455,7 +468,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHI-cB-knK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-450" y="-642"/>
+            <point key="canvasLocation" x="-586" y="-642"/>
         </scene>
         <!--Navigation Controller - Do Ryte-->
         <scene sceneID="wwc-sU-AlU">
@@ -626,13 +639,14 @@
                 <relationship kind="outlet" name="loginView" candidateClass="UIView"/>
             </relationships>
         </class>
-        <class className="MealQuantityController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MealQuantityController.h"/>
+        <class className="MealDetailsController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MealDetailsController.h"/>
             <relationships>
                 <relationship kind="action" name="valueChanged:" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="description" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="mealName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nutritionInfo" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="quantityOrdered" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="quantityStepper" candidateClass="UIStepper"/>
             </relationships>
@@ -670,6 +684,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="FTe-mW-QD8"/>
-        <segue reference="zMP-DP-Ye7"/>
+        <segue reference="4Ex-dF-zOZ"/>
+        <segue reference="x4Z-JS-ZPW"/>
     </inferredMetricsTieBreakers>
 </document>

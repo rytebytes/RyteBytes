@@ -93,7 +93,7 @@
     [super viewDidAppear:animated];
     
     if ([PFUser currentUser]) { // No user logged in
-   
+        NSLog(@"currentUser");
     }
 }
 

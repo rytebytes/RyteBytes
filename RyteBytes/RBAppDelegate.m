@@ -19,6 +19,7 @@
 @implementation RBAppDelegate
 
 @synthesize window = _window;
+@synthesize objectContext;
 
 NSMutableArray *components;
 

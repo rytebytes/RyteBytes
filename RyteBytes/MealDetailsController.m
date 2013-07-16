@@ -6,15 +6,17 @@
 //
 //
 
-#import "MealQuantityController.h"
+#import "MealDetailsController.h"
 
-@implementation MealQuantityController
+@implementation MealDetailsController
 
 @synthesize mealToOrder;
 @synthesize foodImage;
+@synthesize nutritionInfo;
 @synthesize delegate;
 @synthesize currentAmountOrdered;
 @synthesize quantityStepper;
+@synthesize description;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +55,11 @@
     self.quantityOrdered.text = [NSString stringWithFormat:@"%d", value];
     
     [self.delegate addMealToOrder:mealToOrder.name withCount:(int)value];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
 }
 
 @end
