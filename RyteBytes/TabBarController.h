@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "Order.h"
 
 @interface TabBarController : UITabBarController <UITabBarControllerDelegate>
 
@@ -21,5 +22,6 @@ typedef enum tabs
 } ScreenTabs ;
 
 @property (nonatomic,strong) PFUser *User;
+@property (nonatomic,strong) Order *currentOrder;
 
 @end

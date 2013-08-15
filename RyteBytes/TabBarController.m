@@ -7,11 +7,12 @@
 //
 
 #import "TabBarController.h"
-#import "PickMealController.h"
-#import "MealComponent.h"
-#import "Meal.h"
+#import "PickMealViewController.h"
+#import "Dish.h"
 
 @implementation TabBarController
+
+@synthesize currentOrder;
 
 - (void)didReceiveMemoryWarning
 {
@@ -25,6 +26,8 @@
 {
     
     [super viewDidLoad];
+    
+    currentOrder = [Order current];
 
     NSLog(@"in view did load tab bar controller");
 	// Do any additional setup after loading the view, typically from a nib.

@@ -1,0 +1,13 @@
+PODS:
+  - AFNetworking (1.1.0)
+  - JSONModel (0.9.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 1.1.0)
+  - JSONModel
+
+SPEC CHECKSUMS:
+  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
+  JSONModel: 88213da5d222cdc108203015c636fe3383305507
+
+COCOAPODS: 0.23.0

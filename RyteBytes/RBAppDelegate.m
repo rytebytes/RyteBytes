@@ -7,11 +7,10 @@
 //
 
 #import "RBAppDelegate.h"
-#import "PickMealController.h"
-#import "Meal.h"
-#import "Enums.h"
+#import "PickMealViewController.h"
+#import "Dish.h"
 #import "TabBarController.h"
-#import "EatRyteController.h"
+#import "EatRyteViewController.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 
@@ -25,10 +24,12 @@ NSMutableArray *components;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //set default page for tabs to middle tab    
+    //set default page for tabs to middle tab
+    
     [Parse setApplicationId:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"
                   clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
 
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 //
 //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 //    
@@ -37,6 +38,12 @@ NSMutableArray *components;
 //    [testObject save];
     
     return YES;
+}
+
+void uncaughtExceptionHandler(NSException *exception) {
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
+    // Internal error reporting
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
