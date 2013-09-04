@@ -8,6 +8,7 @@
 
 #import <AFNetworking.h>
 #import "AFJSONRequestOperation.h"
+#import "StripeCustomer.h"
 
 @interface StripeClient : AFHTTPClient
 

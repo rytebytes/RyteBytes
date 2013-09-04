@@ -73,6 +73,8 @@
 		012291171705D58800666D85 /* green_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 012291141705D58800666D85 /* green_small.png */; };
 		012291181705D58800666D85 /* red_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 012291151705D58800666D85 /* red_small.png */; };
 		012291191705D58800666D85 /* yellow_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 012291161705D58800666D85 /* yellow_small.png */; };
+		013DE02F17CC1BC2004EFFF6 /* StripeCardToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE02E17CC1BC2004EFFF6 /* StripeCardToken.m */; };
+		013DE03317CC3CF7004EFFF6 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE03217CC3CF7004EFFF6 /* ParseClient.m */; };
 		015754B91785E5AE000C4ED0 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 015754B81785E5AE000C4ED0 /* Logo.png */; };
 		015BD300173EDA70008AB447 /* OrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */; };
 		015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD302173EDF8E008AB447 /* OrderSummaryCell.m */; };
@@ -219,6 +221,10 @@
 		012291141705D58800666D85 /* green_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_small.png; sourceTree = "<group>"; };
 		012291151705D58800666D85 /* red_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_small.png; sourceTree = "<group>"; };
 		012291161705D58800666D85 /* yellow_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow_small.png; sourceTree = "<group>"; };
+		013DE02D17CC1BC2004EFFF6 /* StripeCardToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCardToken.h; sourceTree = "<group>"; };
+		013DE02E17CC1BC2004EFFF6 /* StripeCardToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCardToken.m; sourceTree = "<group>"; };
+		013DE03117CC3CF7004EFFF6 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
+		013DE03217CC3CF7004EFFF6 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
 		015754B81785E5AE000C4ED0 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		015BD2FE173EDA70008AB447 /* OrderSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSummaryViewController.h; sourceTree = "<group>"; };
 		015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSummaryViewController.m; sourceTree = "<group>"; };
@@ -459,6 +465,26 @@
 			name = Ordering;
 			sourceTree = "<group>";
 		};
+		013DE02C17CC1B51004EFFF6 /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				01CD83C217B6AEBE001A19C5 /* StripeCustomer.h */,
+				01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */,
+				013DE02D17CC1BC2004EFFF6 /* StripeCardToken.h */,
+				013DE02E17CC1BC2004EFFF6 /* StripeCardToken.m */,
+			);
+			name = Stripe;
+			sourceTree = "<group>";
+		};
+		013DE03017CC3CE8004EFFF6 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				013DE03117CC3CF7004EFFF6 /* ParseClient.h */,
+				013DE03217CC3CF7004EFFF6 /* ParseClient.m */,
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
 		0165C5CB1795E52200DA9C15 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,8 +695,7 @@
 		01CD83C517B6B3AE001A19C5 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
-				01CD83C217B6AEBE001A19C5 /* StripeCustomer.h */,
-				01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */,
+				013DE02C17CC1B51004EFFF6 /* Stripe */,
 			);
 			name = "Third Party";
 			sourceTree = "<group>";
@@ -678,6 +703,7 @@
 		01CD83C717B6B3D8001A19C5 /* Web Services */ = {
 			isa = PBXGroup;
 			children = (
+				013DE03017CC3CE8004EFFF6 /* Parse */,
 				01CD83C817B6B425001A19C5 /* Stripe */,
 			);
 			name = "Web Services";
@@ -909,6 +935,8 @@
 				0102527217B46B6F00BF1F3C /* PKView.m in Sources */,
 				01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */,
 				01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */,
+				013DE02F17CC1BC2004EFFF6 /* StripeCardToken.m in Sources */,
+				013DE03317CC3CF7004EFFF6 /* ParseClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

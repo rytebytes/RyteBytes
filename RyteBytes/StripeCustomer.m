@@ -10,4 +10,7 @@
 
 @implementation StripeCustomer
 
+- (StripeCustomer*) initWithDictionary
+{}
+
 @end

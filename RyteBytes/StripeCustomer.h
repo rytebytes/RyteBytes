@@ -13,15 +13,17 @@
 
 @property (nonatomic,strong) NSString *id;
 @property (nonatomic,strong) NSString *object;
-@property (nonatomic) bool *livemode;
+@property (nonatomic) BOOL livemode;
 @property (nonatomic,strong) NSMutableArray *cards;
 @property (nonatomic,strong) NSDate *created;
 @property (nonatomic) int account_balance;
 @property (nonatomic,strong) NSString *default_card;
-@property (nonatomic) bool delinquent;
+@property (nonatomic) BOOL delinquent;
 @property (nonatomic,strong) NSString *description;
 @property (nonatomic,strong) NSString *email;
 @property (nonatomic,strong) NSDictionary *subscription;
 @property (nonatomic,strong) NSDictionary *discount;
+
+- (StripeCustomer*) initWithDictionary;
 
 @end

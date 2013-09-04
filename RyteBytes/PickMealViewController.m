@@ -59,9 +59,9 @@ NSMutableDictionary *order;
 - (void)generateMenuData {
     menuItems = [NSMutableArray arrayWithCapacity:3];
     
-//    MealComponent* p = [[MealComponent alloc] initWithName:@"Turkey Meatballs" withDescription:@"All the flavor with nearly none of the fat" withType:Protein withPrice:2.99 withNutritionInfo:NULL];
+    //MealComponent *p = [[MealComponent alloc] initWithName:@"Turkey Meatballs" withDescription:@"All the flavor with nearly none of the fat" withType:Protein withPrice:2.99 withNutritionInfo:NULL];
 //    MealComponent* s = [[MealComponent alloc] initWithName:@"Homemade Whole Wheat Linguine" withDescription:@"Our homemade, whole wheat flour and egg linguine." withType:Starch withPrice:2.99 withNutritionInfo:NULL];
-//    MealComponent* v = [[MealComponent alloc] initWithName:@"Italian Gravy" withDescription:@"Our gravy - as the Italians call it - would make even the Godfather smile." withType:Vegetable withPrice:2.99 withNutritionInfo:NULL];
+  //  MealComponent* v = [[MealComponent alloc] initWithName:@"Italian Gravy" withDescription:@"Our gravy - as the Italians call it - would make even the Godfather smile." withType:Vegetable withPrice:2.99 withNutritionInfo:NULL];
 //    
 //    Dish* mob = [[Dish alloc]initWithName:@"Mob Meal I" withDescription:@"A meal fit for a king...or Godfather." withProtein:p withStarch:s withVeg:v withImage:@"OrderScreenchick_taters_shrooms.png"];
 //

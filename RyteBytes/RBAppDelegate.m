@@ -13,6 +13,7 @@
 #import "EatRyteViewController.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "Stripe.h"
 
 
 @implementation RBAppDelegate
@@ -29,6 +30,8 @@ NSMutableArray *components;
     [Parse setApplicationId:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"
                   clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
 
+    [Stripe setDefaultPublishableKey:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr"];
+    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 //
 //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

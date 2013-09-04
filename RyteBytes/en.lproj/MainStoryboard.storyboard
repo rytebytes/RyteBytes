@@ -49,7 +49,7 @@
                             <outlet property="delegate" destination="YYe-Zp-TDs" id="Qul-Mw-4kD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="RB Menu" id="iBF-4O-2ss">
+                    <navigationItem key="navigationItem" title="Menu" id="iBF-4O-2ss">
                         <barButtonItem key="rightBarButtonItem" title="Checkout" id="MY8-uz-kbj">
                             <connections>
                                 <segue destination="bEg-Gz-zQg" kind="push" identifier="Checkout" id="zMP-DP-Ye7"/>
@@ -443,6 +443,10 @@
                                             <segue destination="t7u-3Z-34o" kind="modal" modalTransitionStyle="flipHorizontal" id="0gL-Cw-PVT"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="gray" id="550-EI-AT1">
+                                        <rect key="frame" x="150" y="281" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -460,6 +464,7 @@
                         <outlet property="createAccountView" destination="3D0-so-Tr2" id="hGw-I5-B7m"/>
                         <outlet property="email" destination="OHM-Uj-GaC" id="59V-UK-vft"/>
                         <outlet property="headerLogo" destination="mhN-63-TTo" id="bH0-Y0-FVh"/>
+                        <outlet property="networkActivityIndicator" destination="550-EI-AT1" id="glG-sk-HxE"/>
                         <outlet property="password" destination="eCV-aq-v9P" id="fQf-sN-Gm8"/>
                         <outlet property="tapGesture" destination="brJ-7M-9J1" id="B07-PC-k3e"/>
                         <segue destination="dUW-xK-SVc" kind="modal" identifier="CreateAccountSucceed" id="FTe-mW-QD8"/>
@@ -543,6 +548,72 @@
         <image name="Logo.png" width="2746" height="503"/>
         <image name="rb_logo.png" width="645" height="118"/>
     </resources>
+    <classes>
+        <class className="CreateAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateAccountViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addCreditCardButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="createAccountButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="createAccountView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="networkActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tapGesture" candidateClass="UITapGestureRecognizer"/>
+            </relationships>
+        </class>
+        <class className="CreateOrLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateOrLoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="PFLogInViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MealDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MealDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="valueChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="mealName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nutritionInfo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="quantityOrdered" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="quantityStepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+        <class className="MenuCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="OrderSummaryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OrderSummaryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="doRyteTotal" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="order" candidateClass="NSMutableDictionary"/>
+                <relationship kind="outlet" name="orderSummary" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="orderTotal" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PFLogInViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFLogInViewController.h"/>
+        </class>
+        <class className="PickMealViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PickMealViewController.h"/>
+        </class>
+        <class className="TabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabBarController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

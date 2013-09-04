@@ -19,5 +19,9 @@
 @property (nonatomic,strong) IBOutlet UIButton *addCreditCardButton;
 @property (nonatomic,strong) IBOutlet UIButton *createAccountButton;
 @property (nonatomic,strong) IBOutlet UITapGestureRecognizer *tapGesture;
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *networkActivityIndicator;
+
+-(void)registerStripeCustomer;
+-(void)createCustomer;
 
 @end
