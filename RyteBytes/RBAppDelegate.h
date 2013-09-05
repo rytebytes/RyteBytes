@@ -12,5 +12,6 @@
 
 @property (nonatomic,strong) UIWindow *window;
 @property (nonatomic, strong) NSManagedObjectContext *objectContext;
+void uncaughtExceptionHandler(NSException *exception);
 
 @end

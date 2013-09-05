@@ -12,7 +12,15 @@
 #import "MealDetailsViewController.h"
 #import "OrderSummaryViewController.h"
 #import "TabBarController.h"
+#import "ParseClient.h"
+#import "AFHTTPRequestOperation.h"
 
+/** This class present the user the current menu.  It will retrieve the current list of MenuItems (db objects & domain objects)
+ via a REST call.  We will persist all items we have offered via our menu, but we will not persist snapshots of our menu.
+ 
+ When this class loads, it will make a REST call to see when the current menu went live and compare it to the local copy that it
+ has.  If the cloud one is newer, it will retrieve the full list and update the menu.
+ */
 @implementation PickMealViewController
 
 @synthesize kiosk;
@@ -32,15 +40,25 @@ NSMutableDictionary *order;
 {
     [super viewDidLoad];
     
-    NSLog(@"%@",((TabBarController*)(self.tabBarController)).currentOrder);
+    ParseClient *parseClient = [ParseClient current];
+    
+    [parseClient postPath:RetrieveMenu parameters:[[NSDictionary alloc] init]
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                      NSLog(@"Successful response from retrievemenu : %@).", responseObject);
+                      menuItems = [MenuItem convertMenuJsonToMenuItemArray:responseObject];
+                      [self.tableView reloadData];
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
+                  }];
+    
+    NSLog(@"The current order is : %@",((TabBarController*)(self.tabBarController)).currentOrder);
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     order = [NSMutableDictionary dictionary];
-    [self generateMenuData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,7 +101,7 @@ NSMutableDictionary *order;
     Dish *meal = [self.menuItems objectAtIndex:indexPath.row];
     
     cell.name.text = meal.name;
-    cell.image.image = [UIImage imageNamed:meal.imageName];
+//    cell.image.image = [UIImage imageNamed:meal.imageName];
     
     return cell;
 }

@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>Pods-SBJson.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,6 +37,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6F79548C7043415BBEE147EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>74C69F7B64394CE4A2B0C38E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7B117477733749B496B0D00E</key>
 		<dict>
 			<key>primary</key>
@@ -43,6 +58,16 @@
 			<true/>
 		</dict>
 		<key>E255A4FB64CC4E2193B57C5E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6130AD348C447229735EFAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8C7EE2603CE4EEE97741B63</key>
 		<dict>
 			<key>primary</key>
 			<true/>

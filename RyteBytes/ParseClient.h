@@ -13,5 +13,6 @@
 +(ParseClient*) current;
 
 extern NSString * const CreateUser;
+extern NSString * const RetrieveMenu;
 
 @end

@@ -173,6 +173,7 @@ int tagTextFieldToResign;
             [parseClient postPath:CreateUser parameters:[stripeCustomer toDictionary]
                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
                     NSLog(@"Success in sending request to createuser (request url: %@).", [[[operation request] URL] absoluteString]);
+                    NSLog(@"Response object is : %@", responseObject);
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     NSLog(@"Error in sending request to createuser %@ (request url: %@)", [error localizedDescription],[[[operation request] URL] absoluteString]);
                 }

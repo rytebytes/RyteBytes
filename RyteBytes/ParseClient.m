@@ -15,6 +15,7 @@ static NSString * const ParseUrl = @"https://api.parse.com/%@/functions";
 static NSString * const ParseVer = @"1";
 
 NSString * const CreateUser = @"createuser";
+NSString * const RetrieveMenu = @"retrievemenu";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {

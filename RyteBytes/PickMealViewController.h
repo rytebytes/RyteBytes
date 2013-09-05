@@ -1,5 +1,5 @@
 //
-//  MealComponentController.h
+//  PickMealViewController.h
 //  RyteBytes
 //
 //  Created by Nicholas McMillan on 3/29/13.

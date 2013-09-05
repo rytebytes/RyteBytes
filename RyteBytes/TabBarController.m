@@ -29,7 +29,7 @@
     
     currentOrder = [Order current];
 
-    NSLog(@"in view did load tab bar controller");
+    NSLog(@"finished viewDidLoad in TabBarController");
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

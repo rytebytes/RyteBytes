@@ -12,11 +12,13 @@
 
 @interface MenuItem : NSObject
 
-@property MenuItemTypes type;
-@property NSString *name;
-@property NutritionInformation *nutritionInfo;
-@property double price;
+@property (nonatomic) MenuItemTypes type;
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NutritionInformation *nutritionInfo;
+@property (nonatomic,strong) NSString *pictureName;
+@property (nonatomic,strong) NSString *longDescription;
 
--(id)initWithName:(NSString*)n withPrice:(double)p withType:(MenuItemTypes)t withNutritionInfo:(NutritionInformation*)info;
++(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSString*)menuJson;
+-(id)initWithName:(NSString*)n withType:(MenuItemTypes)t withNutritionInfo:(NutritionInformation*)info withPicture:(NSString*)p withLongDesc:(NSString*)d;
 
 @end
