@@ -26,6 +26,8 @@
     name = n;
     type = (MenuItemTypes)t;
     nutritionInfo = info;
+    pictureName = p;
+    longDescription = d;
     
     return self;
 }
@@ -54,8 +56,6 @@
  */
 +(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSDictionary*)menuJson
 {
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
-//    NSDictionary *resultDict = [parser objectWithData:menuJson];
     NSArray *itemArray = [menuJson objectForKey:@"result"];
     
     NSMutableArray *menuItemArray = [[NSMutableArray alloc] initWithCapacity:[itemArray count]];
@@ -71,6 +71,16 @@
     }
 
     return menuItemArray;
+}
+
++(void) writeMenuToDisk:(NSDictionary*)menuJson
+{
+    
+}
+
++(NSMutableArray*) retrieveMenuFromDisk
+{
+    return NULL;
 }
 
 @end

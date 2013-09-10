@@ -21,7 +21,7 @@
 @property (nonatomic,strong) IBOutlet UITapGestureRecognizer *tapGesture;
 @property (nonatomic,strong) IBOutlet UIActivityIndicatorView *networkActivityIndicator;
 
--(void)registerStripeCustomer;
+//-(void)registerStripeCustomer;
 -(void)createCustomer;
 
 @end

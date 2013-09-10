@@ -7,25 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Dish.h"
+#import "Order.h"
 
-@protocol MealAdded <NSObject>
+@protocol MenuItemAdded <NSObject>
 
-- (void)addMealToOrder:(NSString *)meal withCount:(int)count;
+- (void)setBadgeValue:(int)count;
 
 @end
 
 @interface MealDetailsViewController : UIViewController
 
-@property (nonatomic,strong) Dish* mealToOrder;
+@property (nonatomic,strong) MenuItem* menuItemSelected;
 @property (nonatomic,strong) IBOutlet UIImageView *foodImage;
 @property (nonatomic,strong) IBOutlet UILabel *quantityOrdered;
 @property (nonatomic,strong) IBOutlet UILabel *description;
 @property (nonatomic,strong) IBOutlet UILabel *mealName;
-@property (nonatomic,strong) IBOutlet UILabel *nutritionInfo;
+@property (nonatomic,strong) IBOutlet UILabel *calories;
+@property (nonatomic,strong) IBOutlet UILabel *carbs;
+@property (nonatomic,strong) IBOutlet UILabel *sodium;
+@property (nonatomic,strong) IBOutlet UILabel *protein;
 @property (nonatomic,strong) IBOutlet UIStepper *quantityStepper;
-@property (nonatomic,weak) id <MealAdded> delegate;
+@property (nonatomic,weak) id <MenuItemAdded> delegate;
 @property (nonatomic,strong) NSString *currentAmountOrdered;
+@property (nonatomic,strong) Order* currentOrder;
 
 - (IBAction)valueChanged:(UIStepper *)sender;
 

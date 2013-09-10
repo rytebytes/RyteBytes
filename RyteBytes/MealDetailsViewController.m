@@ -10,13 +10,16 @@
 
 @implementation MealDetailsViewController
 
-@synthesize mealToOrder;
+@synthesize menuItemSelected;
 @synthesize foodImage;
-@synthesize nutritionInfo;
 @synthesize delegate;
 @synthesize currentAmountOrdered;
 @synthesize quantityStepper;
 @synthesize description;
+@synthesize protein;
+@synthesize calories;
+@synthesize carbs;
+@synthesize sodium;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +32,6 @@
 
 - (void)viewDidLoad
 {
-    foodImage.image = [UIImage imageNamed:mealToOrder.imageName];
     self.quantityOrdered.text = currentAmountOrdered;
     quantityStepper.value = 0;
     self.quantityStepper.minimumValue = 0;
@@ -38,8 +40,14 @@
         quantityStepper.value++;
     }
 
-    self.description.text = mealToOrder.description;
-    self.mealName.text = mealToOrder.name;
+    foodImage.image = [UIImage imageNamed:menuItemSelected.pictureName];
+    self.description.text = menuItemSelected.longDescription;
+    self.mealName.text = menuItemSelected.name;
+    self.calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.calories];
+    self.sodium.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.sodium];
+    self.protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.protein];
+    self.carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
+    
     [super viewDidLoad];
 }
 
@@ -54,7 +62,11 @@
     
     self.quantityOrdered.text = [NSString stringWithFormat:@"%d", value];
     
-    [self.delegate addMealToOrder:mealToOrder.name withCount:(int)value];
+    NSLog(@"Setting item : %@ to quantity of : %d", menuItemSelected.name, value);
+    
+    Order* currentOrder = [Order current];
+    [currentOrder setMenuItemQuantity:menuItemSelected withQuantity:value];
+    [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

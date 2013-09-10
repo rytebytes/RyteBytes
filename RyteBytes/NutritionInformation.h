@@ -14,6 +14,7 @@
 @property NSInteger protein;
 @property NSInteger saturatedFat;
 @property NSInteger sodium;
+@property NSInteger carbs;
 
 -(id)initWithDictionary:(NSDictionary*)information;
 -(double) calculateSodiumToCalorieRatio;

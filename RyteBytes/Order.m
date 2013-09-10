@@ -10,106 +10,101 @@
 
 @implementation Order
 
-NSMutableDictionary *separateItems;
-NSMutableDictionary *dishes;
-static Order *currentOrder;
-static int orderCount;
-static BOOL initialized = NO;
+NSMutableDictionary *menuItemsOrdered;
 
-+ (void)initialize
+
+-(id)initEmptyOrder
 {
-    NSLog(@"Initialize called in order.");
-    if(!initialized)
-    {
-        initialized = YES;
-        currentOrder = [[Order alloc] init];
-        separateItems = [[NSMutableDictionary alloc]initWithCapacity:100];
-        dishes = [[NSMutableDictionary alloc]initWithCapacity:100];
-        orderCount = 0;
-    }
+    if(!(self = [super init]))
+        return nil;
+    
+    NSLog(@"Current order being initialized.");
+    menuItemsOrdered = [[NSMutableDictionary alloc]initWithCapacity:100];
+    
+    return self;
 }
 
-+ (Order*)current
++(Order*)current
 {
+    static Order *currentOrder;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        currentOrder = [[self alloc] initEmptyOrder];
+    });
     return currentOrder;
 }
 
-- (int)getNumberUniqueDishes
+-(int)getNumberUniqueItems
 {
-    return dishes.count;
+    return menuItemsOrdered.count;
 }
 
-- (int)getTotalNumberDishes
+-(int)getTotalItemCount
 {
     int totalCount = 0;
     NSString *key;
-    NSEnumerator *allDishes = dishes.keyEnumerator;
-    while (key = [allDishes nextObject]) {
-        totalCount += [[dishes objectForKey:key] intValue];
+    NSEnumerator *allItems = menuItemsOrdered.keyEnumerator;
+    while (key = [allItems nextObject]) {
+        totalCount += [[menuItemsOrdered objectForKey:key] intValue];
     }
-    
     return totalCount;
 }
 
-- (int)getCurrentItemCount;
+-(int)getSpecificMenuItemCount:(NSString*)menuItemName
 {
-    return separateItems.count + [self getTotalNumberDishes];
+    return [[menuItemsOrdered valueForKey:menuItemName] integerValue];
 }
 
-- (BOOL)addDishToOrder:(Dish*)dish
+-(void)clearEntireOrder
 {
-    @synchronized(dishes)
+    [menuItemsOrdered removeAllObjects];
+}
+
+-(BOOL)setMenuItemQuantity:(MenuItem*)item withQuantity:(NSInteger)quantity
+{
+    @synchronized(menuItemsOrdered)
     {
-        if(dishes.count > 100)
+        if(menuItemsOrdered.count > 100 || (menuItemsOrdered.count + quantity) > 100)
         {
             NSLog(@"Order limit exceeded.");
             return NO;
         }
         else
         {
-            if(nil == [dishes objectForKey:dish.name]) //dish hasn't been added to order yet
+            if(0 == quantity)
             {
-                [dishes setObject:[NSNumber numberWithInt:1] forKey:dish.name];
+                [menuItemsOrdered removeObjectForKey:item.name];
             }
-            else //dish has been added, increment number
+            else
             {
-                NSNumber *nsCount = [dishes objectForKey:dish.name];
-                int count = [nsCount intValue] + 1;
-                [dishes setObject:[NSNumber numberWithInt:(count)] forKey:dish.name];
+                [menuItemsOrdered setValue:[NSString stringWithFormat:@"%d",quantity] forKey:item.name];
             }
-            orderCount++;
-            return YES;
-        }
-    }
-}
-
-
-- (BOOL)addMenuItemToOrder:(MenuItem*)item
-{
-    @synchronized(separateItems)
-    {
-        if(separateItems.count > 100)
-        {
-            NSLog(@"Order limit exceeded.");
-            return NO;
-        }
-        else
-        {
-            orderCount++;
-            return YES;
-        }
-    }
-}
-
-- (void)removeMenuItemFromOrder:(MenuItem*)item
-{
-    @synchronized(separateItems)
-    {
-        if(separateItems.count != 0)
-        {
             
+            NSLog(@"Added item : %@ to order, now has count of : %d.", item.name, [self getSpecificMenuItemCount:item.name]);
+            NSLog(@"Current order : %@", menuItemsOrdered);
+            
+            return YES;
         }
     }
 }
+
+//- (void)removeMenuItemFromOrder:(MenuItem*)item
+//{
+//    @synchronized(menuItemsOrdered)
+//    {
+//        if(menuItemsOrdered.count != 0)
+//        {
+//            if(nil != [menuItemsOrdered valueForKey:item.name])
+//            {
+//                NSInteger menuItemOrderCount = [[menuItemsOrdered valueForKey:item.name] integerValue];
+//                menuItemOrderCount--;
+//                if(menuItemOrderCount == 0)
+//                    [menuItemsOrdered removeObjectForKey:item.name];
+//                else
+//                    [menuItemsOrdered setValue:[NSString stringWithFormat:@"%d",menuItemOrderCount] forKey:item.name];
+//            }
+//        }
+//    }
+//}
 
 @end

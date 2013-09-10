@@ -168,7 +168,7 @@
     }
     else if ([segue.identifier isEqualToString:@"CreateAccountAction"])
     {
-        CreateAccountViewController *createAccountViewController = segue.destinationViewController;
+//        CreateAccountViewController *createAccountViewController = segue.destinationViewController;
         
 //        createAccountViewController.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsSignUpButton | PFSignUpFieldsDismissButton;
 //        [createAccountViewController setDelegate:createAccountViewController];

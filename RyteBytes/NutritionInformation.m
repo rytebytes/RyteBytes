@@ -22,6 +22,7 @@
     info.calories = [[information valueForKey:@"calories"] integerValue];
     info.protein = [[information valueForKey:@"protein"] integerValue];
     info.sodium = [[information valueForKey:@"sodium"] integerValue];
+    info.carbs = [[information valueForKey:@"carbs"] integerValue];
     
     return info;
 }

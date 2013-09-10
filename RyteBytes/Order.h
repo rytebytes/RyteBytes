@@ -12,16 +12,14 @@
 
 @interface Order : NSObject
 
-extern NSMutableDictionary *separateItems;
-extern NSMutableDictionary *dishes;
-
 + (Order*)current;
 
-- (int)getNumberUniqueDishes;
-- (int)getCurrentItemCount;
-- (BOOL)addDishToOrder:(Dish*)dish;
-- (BOOL)addMenuItemToOrder:(MenuItem*)item;
-- (void)removeMenuItemFromOrder:(MenuItem*)item;
+-(int)getTotalItemCount;
+-(int)getSpecificMenuItemCount:(NSString*)menuItemName;
+-(int)getNumberUniqueItems;
+
+-(void)clearEntireOrder;
+-(BOOL)setMenuItemQuantity:(MenuItem*)item withQuantity:(NSInteger)quantity;
 
 @end
 

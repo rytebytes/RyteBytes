@@ -11,6 +11,8 @@
 @implementation StripeCustomer
 
 - (StripeCustomer*) initWithDictionary
-{}
+{
+    return NULL;
+}
 
 @end

@@ -40,16 +40,18 @@ NSMutableDictionary *order;
 {
     [super viewDidLoad];
     
-    ParseClient *parseClient = [ParseClient current];
-    
-    [parseClient postPath:RetrieveMenu parameters:[[NSDictionary alloc] init]
-                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                      NSLog(@"Successful response from retrievemenu : %@).", responseObject);
-                      menuItems = [MenuItem convertMenuJsonToMenuItemArray:responseObject];
-                      [self.tableView reloadData];
-                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
-                  }];
+    if(menuItems == NULL)
+    {
+        ParseClient *parseClient = [ParseClient current];
+        [parseClient postPath:RetrieveMenu parameters:[[NSDictionary alloc] init]
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          NSLog(@"Successful response from retrievemenu : %@).", responseObject);
+                          menuItems = [MenuItem convertMenuJsonToMenuItemArray:responseObject];
+                          [self.tableView reloadData];
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
+                      }];
+    }
     
     NSLog(@"The current order is : %@",((TabBarController*)(self.tabBarController)).currentOrder);
 
@@ -74,21 +76,6 @@ NSMutableDictionary *order;
     return 1;
 }
 
-- (void)generateMenuData {
-    menuItems = [NSMutableArray arrayWithCapacity:3];
-    
-    //MealComponent *p = [[MealComponent alloc] initWithName:@"Turkey Meatballs" withDescription:@"All the flavor with nearly none of the fat" withType:Protein withPrice:2.99 withNutritionInfo:NULL];
-//    MealComponent* s = [[MealComponent alloc] initWithName:@"Homemade Whole Wheat Linguine" withDescription:@"Our homemade, whole wheat flour and egg linguine." withType:Starch withPrice:2.99 withNutritionInfo:NULL];
-  //  MealComponent* v = [[MealComponent alloc] initWithName:@"Italian Gravy" withDescription:@"Our gravy - as the Italians call it - would make even the Godfather smile." withType:Vegetable withPrice:2.99 withNutritionInfo:NULL];
-//    
-//    Dish* mob = [[Dish alloc]initWithName:@"Mob Meal I" withDescription:@"A meal fit for a king...or Godfather." withProtein:p withStarch:s withVeg:v withImage:@"OrderScreenchick_taters_shrooms.png"];
-//
-//    Dish* chicken = [[Dish alloc]initWithName:@"Mob Meal I" withDescription:@"A meal fit for a king...or Godfather." withProtein:p withStarch:s withVeg:v withImage:@"OrderScreenCreateAMeal.png"];
-//
-//    menuItems[0] = mob;
-//    menuItems[1] = chicken;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.menuItems count];
@@ -98,27 +85,20 @@ NSMutableDictionary *order;
 {
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     
-    Dish *meal = [self.menuItems objectAtIndex:indexPath.row];
-    
+    MenuItem *meal = [self.menuItems objectAtIndex:indexPath.row];
     cell.name.text = meal.name;
-//    cell.image.image = [UIImage imageNamed:meal.imageName];
+    cell.image.image = [UIImage imageNamed:meal.pictureName];
     
     return cell;
 }
 
 
--(void) addMealToOrder:(NSString *)meal withCount:(int)count
+- (void)setBadgeValue:(int)count;
 {
     if(count == 0)
-    {
-        [order removeObjectForKey:meal];
         self.parentViewController.tabBarItem.badgeValue = nil;
-    }
     else
-    {
-        [order setObject:[NSNumber numberWithInt:count] forKey:meal];
-        self.parentViewController.tabBarItem.badgeValue = [[order objectForKey:meal] stringValue];
-    }
+        self.parentViewController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", count];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -128,9 +108,9 @@ NSMutableDictionary *order;
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
 		MealDetailsViewController *mealDetailsController = segue.destinationViewController;
         
-        Dish *selectedMeal = [self.menuItems objectAtIndex:selectedRowIndex.row];
+        MenuItem *selectedMeal = [self.menuItems objectAtIndex:selectedRowIndex.row];
         
-        mealDetailsController.mealToOrder = selectedMeal;
+        mealDetailsController.menuItemSelected = selectedMeal;
         [mealDetailsController setDelegate:self];
 //        if (nil == [order objectForKey:selectedMeal.name]) {
 //            confirmOrderController.currentAmountOrdered = @"0";

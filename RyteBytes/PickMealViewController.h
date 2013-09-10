@@ -9,14 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MealDetailsViewController.h"
 
-@interface PickMealViewController : UITableViewController <MealAdded>
+@interface PickMealViewController : UITableViewController <MenuItemAdded>
 
 //nonatomic - faster than atomic, no valid value guarantee
 //copy - "pass by value" vs retain - "pass by reference"
 @property (nonatomic,copy) NSString *kiosk;
 //strong - keep on heap until nothing points to it
 @property (nonatomic,strong) NSMutableArray *menuItems;
-
--(void)generateMenuData;
 
 @end
