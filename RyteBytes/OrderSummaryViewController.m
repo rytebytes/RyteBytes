@@ -8,17 +8,22 @@
 
 #import "OrderSummaryViewController.h"
 #import "OrderNotifications.h"
+#import "OrderSummaryCell.h"
+#import "MenuItem.h"
+#import "OrderItem.h"
+#import "Order.h"
 
 @implementation OrderSummaryViewController
 
-@synthesize order;
+@synthesize orderSummary;
+
+Order *currentOrder;
+NSMutableArray *orderArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        NSLog(@"registering for order notifications");
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addMenuItem:) name:OrderNotification object:nil];
     }
     return self;
 }
@@ -27,18 +32,30 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    NSEnumerator *keys = order.keyEnumerator;
-    id object;
-    
-    while ((object = [keys nextObject])) {
-        
-    }
+    currentOrder = [Order current];
+    orderArray = [currentOrder convertToOrderItemArray];
+    [orderSummary reloadData];
 }
 
-- (void) addMenuItem
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"Menu item added, notification received in order controller.");
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [currentOrder getNumberUniqueItems];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OrderSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderSummaryCell" forIndexPath:indexPath];
+    
+    OrderItem *item = [orderArray objectAtIndex:indexPath.row];
+    cell.itemName.text = item.menuItem.name;
+    cell.quantity.text = [NSString stringWithFormat:@"%d", item.orderCount];
+    
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,6 +7,7 @@
 //
 
 #import "Order.h"
+#import "OrderItem.h"
 
 @implementation Order
 
@@ -33,6 +34,25 @@ NSMutableDictionary *menuItemsOrdered;
     });
     return currentOrder;
 }
+
+-(NSMutableArray*)convertToOrderItemArray
+{
+    NSMutableArray *orderItemArray = [[NSMutableArray alloc] initWithCapacity:[self getNumberUniqueItems]];
+    int count = 0;
+    
+    for (id key in menuItemsOrdered) {
+        MenuItem *menuItem = [[MenuItem alloc] init];
+        menuItem.name = key;
+        NSInteger itemOrderedCount = [[menuItemsOrdered valueForKey:key] integerValue];
+        
+        OrderItem *orderItem = [[OrderItem alloc] initWithMenuItem:menuItem withQuantity:itemOrderedCount];
+        orderItemArray[count] = orderItem;
+        count++;
+    }
+    
+    return orderItemArray;
+}
+
 
 -(int)getNumberUniqueItems
 {

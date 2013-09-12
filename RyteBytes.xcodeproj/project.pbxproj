@@ -83,6 +83,7 @@
 		016B0CA2178F749800F80748 /* OrderScreenCreateAMeal.png in Resources */ = {isa = PBXBuildFile; fileRef = 016B0CA0178F749800F80748 /* OrderScreenCreateAMeal.png */; };
 		016B0CA4178F77D700F80748 /* ProteinIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 016B0CA3178F77D700F80748 /* ProteinIcon.png */; };
 		016B0CA6178F7CA100F80748 /* Do Ryte GoldiApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */; };
+		0173747317DFEAE90090849A /* OrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0173747217DFEAE90090849A /* OrderItem.m */; };
 		0176638316C05809003BBD47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638216C05809003BBD47 /* UIKit.framework */; };
 		0176638516C05809003BBD47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638416C05809003BBD47 /* Foundation.framework */; };
 		0176638716C05809003BBD47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638616C05809003BBD47 /* CoreGraphics.framework */; };
@@ -236,6 +237,8 @@
 		016B0CA0178F749800F80748 /* OrderScreenCreateAMeal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrderScreenCreateAMeal.png; sourceTree = "<group>"; };
 		016B0CA3178F77D700F80748 /* ProteinIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProteinIcon.png; sourceTree = "<group>"; };
 		016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Do Ryte GoldiApp.png"; sourceTree = "<group>"; };
+		0173747117DFEAE90090849A /* OrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItem.h; sourceTree = "<group>"; };
+		0173747217DFEAE90090849A /* OrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItem.m; sourceTree = "<group>"; };
 		0176637E16C05809003BBD47 /* RyteBytes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RyteBytes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0176638216C05809003BBD47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0176638416C05809003BBD47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -670,6 +673,8 @@
 				0122254D179AEE2B0026922A /* MenuItem.m */,
 				01222554179AFD650026922A /* Order.h */,
 				01222555179AFD650026922A /* Order.m */,
+				0173747117DFEAE90090849A /* OrderItem.h */,
+				0173747217DFEAE90090849A /* OrderItem.m */,
 				01CD83C517B6B3AE001A19C5 /* Third Party */,
 			);
 			name = Models;
@@ -942,6 +947,7 @@
 				01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */,
 				013DE02F17CC1BC2004EFFF6 /* StripeCardToken.m in Sources */,
 				013DE03317CC3CF7004EFFF6 /* ParseClient.m in Sources */,
+				0173747317DFEAE90090849A /* OrderItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -261,7 +261,6 @@ int tagTextFieldToResign;
     {
         TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
         tabBar.selectedIndex = ORDER_TAB;
-        tabBar.User = [PFUser currentUser];
     }
 }
 

@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OrderSummaryViewController : UIViewController
+@interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) IBOutlet UITableView *orderSummary;
 @property (nonatomic,strong) IBOutlet UILabel *orderTotal;
 @property (nonatomic,strong) IBOutlet UILabel *doRyteTotal;
-@property (nonatomic,strong) IBOutlet NSMutableDictionary *order;
 
 @end

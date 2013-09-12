@@ -11,6 +11,7 @@
 #import "MenuItem.h"
 #import "Constants.h"
 #import "NutritionInformation.h"
+#import "OrderItem.h"
 
 @implementation OrderTests
 
@@ -43,6 +44,29 @@ int protein = 50;
 {
     [testingOrder clearEntireOrder];
     [super tearDown];
+}
+
+-(void)testConvertToOrderItemArrayCopiesOrderCorrectly
+{
+    @autoreleasepool {
+        [testingOrder setMenuItemQuantity:itemOne withQuantity:2];
+        [testingOrder setMenuItemQuantity:itemTwo withQuantity:3];
+        [testingOrder setMenuItemQuantity:itemThree withQuantity:4];
+        
+        NSMutableArray *orderArray = [testingOrder convertToOrderItemArray];
+        
+        NSInteger actualUnique = [orderArray count];
+        
+        STAssertEquals(3, actualUnique, @"Total order count should be the same");
+        
+        NSInteger totalCount = 0;
+        totalCount += ((OrderItem*)orderArray[0]).orderCount;
+        totalCount += ((OrderItem*)orderArray[1]).orderCount;
+        totalCount += ((OrderItem*)orderArray[2]).orderCount;
+        
+        
+        STAssertEquals(9, totalCount, @"Total order count should be the same");
+    }
 }
 
 -(void)testAddingRemovingItemsReturnsCorrectCount

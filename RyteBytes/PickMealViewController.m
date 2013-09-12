@@ -92,7 +92,6 @@ NSMutableDictionary *order;
     return cell;
 }
 
-
 - (void)setBadgeValue:(int)count;
 {
     if(count == 0)
@@ -121,8 +120,8 @@ NSMutableDictionary *order;
 	}
     else if ([segue.identifier isEqualToString:@"Checkout"])
     {
-        OrderSummaryViewController *orderController = segue.destinationViewController;
-        orderController.order = order;
+//        OrderSummaryViewController *orderController = segue.destinationViewController;
+
     }
 }
 

@@ -10,7 +10,9 @@
 
 @interface OrderSummaryCell : UITableViewCell
 
-@property (nonatomic,strong) IBOutlet UILabel *mealName;
+@property (nonatomic,strong) IBOutlet UILabel *itemName;
 @property (nonatomic,strong) IBOutlet UILabel *quantity;
+@property (nonatomic,strong) IBOutlet UILabel *totalCost;
+@property (nonatomic,strong) IBOutlet UILabel *unitCost;
 
 @end

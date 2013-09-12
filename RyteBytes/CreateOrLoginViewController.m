@@ -8,6 +8,7 @@
 
 #import "CreateOrLoginViewController.h"
 #import "CreateAccountViewController.h"
+#import "TabBarController.h"
 
 @implementation CreateOrLoginViewController
 
@@ -92,10 +93,11 @@
 {
     [super viewDidAppear:animated];
     
-//    PFUser *user = [[PFUser alloc] init];
-//    
-    if ([PFUser currentUser]) { // No user logged in
-        NSLog(@"currentUser");
+    PFUser *currentUser = [PFUser currentUser];
+    
+    if (currentUser) { //if there is a valid current user, send them to the order screen
+        NSLog(@"currentUser email : %@",currentUser.email);
+        [self performSegueWithIdentifier:@"ValidUser" sender:self];
     }
 }
 
@@ -139,23 +141,6 @@
     [self loadVisiblePages];
 }
 
-// Sent to the delegate to determine whether the log in request should be submitted to the server.
-- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password
-{
-    // Check if both fields are completed
-    if (username && password && username.length != 0 && password.length != 0)
-    {
-        return YES; // Begin login process
-    }
-    
-    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                message:@"Make sure you fill out all of the information!"
-                               delegate:nil
-                      cancelButtonTitle:@"ok"
-                      otherButtonTitles:nil] show];
-    return NO; // Interrupt login process
-}
-
 // Create the log in view controller
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -166,12 +151,10 @@
         loginViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsDismissButton;
         [loginViewController setDelegate:loginViewController]; // Set ourselves as the delegate
     }
-    else if ([segue.identifier isEqualToString:@"CreateAccountAction"])
+    else if ([segue.identifier isEqualToString:@"ValidUser"])
     {
-//        CreateAccountViewController *createAccountViewController = segue.destinationViewController;
-        
-//        createAccountViewController.fields = PFSignUpFieldsUsernameAndPassword | PFSignUpFieldsSignUpButton | PFSignUpFieldsDismissButton;
-//        [createAccountViewController setDelegate:createAccountViewController];
+        TabBarController *tabBarController = segue.destinationViewController;
+        tabBarController.selectedIndex = ORDER_TAB;
     }
 }
 

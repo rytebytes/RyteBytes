@@ -17,6 +17,7 @@
 -(int)getTotalItemCount;
 -(int)getSpecificMenuItemCount:(NSString*)menuItemName;
 -(int)getNumberUniqueItems;
+-(NSMutableArray*)convertToOrderItemArray;
 
 -(void)clearEntireOrder;
 -(BOOL)setMenuItemQuantity:(MenuItem*)item withQuantity:(NSInteger)quantity;
