@@ -17,6 +17,7 @@
 @property (nonatomic,strong) NutritionInformation *nutritionInfo;
 @property (nonatomic,strong) NSString *pictureName;
 @property (nonatomic,strong) NSString *longDescription;
+@property (nonatomic) long uid;
 
 +(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSDictionary*)menuJson;
 +(void) writeMenuToDisk:(NSDictionary*)menuJson;

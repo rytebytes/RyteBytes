@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
+#import "STPCard.h"
+#import "StripeCard.h"
+#import "StripeCardsResponse.h"
 
 @interface StripeCustomer : JSONModel
 
 @property (nonatomic,strong) NSString *id;
 @property (nonatomic,strong) NSString *object;
 @property (nonatomic) BOOL livemode;
-@property (nonatomic,strong) NSMutableArray *cards;
-@property (nonatomic,strong) NSDate *created;
+@property (nonatomic,strong) StripeCardsResponse *cards;
+@property (nonatomic) long created;
 @property (nonatomic) int account_balance;
 @property (nonatomic,strong) NSString *default_card;
 @property (nonatomic) BOOL delinquent;
@@ -24,6 +27,6 @@
 @property (nonatomic,strong) NSDictionary *subscription;
 @property (nonatomic,strong) NSDictionary *discount;
 
-- (StripeCustomer*) initWithDictionary;
+-(StripeCustomer*) initWithCard:(STPCard*)creditCard;
 
 @end

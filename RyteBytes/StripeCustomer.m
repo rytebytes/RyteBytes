@@ -8,11 +8,23 @@
 
 #import "StripeCustomer.h"
 
+
 @implementation StripeCustomer
 
-- (StripeCustomer*) initWithDictionary
+@synthesize email;
+
+- (StripeCustomer*) initWithCard:(STPCard*)creditCard
 {
-    return NULL;
+    if(!(self = [super init]))
+        return nil;
+    
+    NSMutableDictionary *card = [[NSMutableDictionary alloc] init];
+    [card setValue:creditCard.number forKey:@"number"];
+    [card setValue:[NSString stringWithFormat:@"%d", creditCard.expMonth] forKey:@"exp_month"];
+    [card setValue:[NSString stringWithFormat:@"%d", creditCard.expYear] forKey:@"exp_year"];
+    [card setValue:creditCard.cvc forKey:@"cvc"];
+    
+    return self;
 }
 
 @end

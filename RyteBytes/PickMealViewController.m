@@ -45,7 +45,7 @@ NSMutableDictionary *order;
         ParseClient *parseClient = [ParseClient current];
         [parseClient postPath:RetrieveMenu parameters:[[NSDictionary alloc] init]
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                          NSLog(@"Successful response from retrievemenu : %@).", responseObject);
+//                          NSLog(@"Successful response from retrievemenu : %@).", responseObject);
                           menuItems = [MenuItem convertMenuJsonToMenuItemArray:responseObject];
                           [self.tableView reloadData];
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

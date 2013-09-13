@@ -58,6 +58,12 @@ NSMutableArray *orderArray;
     return cell;
 }
 
+- (IBAction)placeOrder:(id)sender {
+    NSLog(@"send order for : %d", [currentOrder getSpecificMenuItemCount:@"Mob Meal I"]);
+}
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

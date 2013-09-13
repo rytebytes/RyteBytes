@@ -15,7 +15,7 @@
 static NSString * const StripeUrl = @"https://api.stripe.com/%@/";
 static NSString * const StripeVer = @"v1";
 
-NSString * const CreateCustomerUrl = @"customers";
+NSString * const CreateCustomer = @"customers";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {
@@ -30,10 +30,10 @@ NSString * const CreateCustomerUrl = @"customers";
         return nil;
     }
     
-    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+//    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [self setDefaultHeader:@"Accept" value:@"application/json"];
-    [self setAuthorizationHeaderWithUsername:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr" password:@""];
-    [self setParameterEncoding:AFJSONParameterEncoding];
+    [self setAuthorizationHeaderWithUsername:@"sk_test_0eORjVUmVNJxwTHqMLLCogZr" password:@""];
+    [self setParameterEncoding:AFFormURLParameterEncoding];
     
     return self;
 }

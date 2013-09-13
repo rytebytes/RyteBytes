@@ -12,7 +12,7 @@
 
 @interface StripeClient : AFHTTPClient
 
-extern NSString * const CreateCustomerUrl;
+extern NSString * const CreateCustomer;
 
 + (StripeClient*)current;
 

@@ -16,7 +16,7 @@
 #import "StripeClient.h"
 #import "ParseClient.h"
 #import "StripeCustomer.h"
-#import "StripeCardToken.h"
+#import "StripeCard.h"
 
 @implementation CreateAccountViewController
 
@@ -102,60 +102,73 @@ int tagTextFieldToResign;
         networkActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         networkActivityIndicator.center=self.view.center;
         [networkActivityIndicator startAnimating];
-//        [self.view addSubview:activityView];
+//      [self.view addSubview:activityView];
         
-        STPCompletionBlock completionHandler = ^(STPToken *token, NSError *error)
-        {
-            if (error) {
-                NSLog(@"Error trying to create token %@", [error localizedDescription]);
-                //TODO: what should happen here? Error displayed to user.
-                cardToken = NULL;
-            } else {
-                NSLog(@"Successfully created token with ID: %@", token.tokenId);
-                cardToken = token;
-                [networkActivityIndicator stopAnimating];
-                [self createCustomer];
-            }
-        };
+//        StripeCustomer *stripeCustomer = [[StripeCustomer alloc] initWithCard:creditCard];
+//        stripeCustomer.email = email.text;
+//        NSLog(@"Stripe customer to dict : %@", [stripeCustomer toDictionary]);
         
-        [Stripe createTokenWithCard:creditCard completion:completionHandler];
+        NSMutableDictionary *card = [[NSMutableDictionary alloc] init];
+        [card setValue:creditCard.number forKey:@"number"];
+        [card setValue:[NSString stringWithFormat:@"%d", creditCard.expMonth] forKey:@"exp_month"];
+        [card setValue:[NSString stringWithFormat:@"%d", creditCard.expYear] forKey:@"exp_year"];
+        [card setValue:creditCard.cvc forKey:@"cvc"];
+        
+        NSMutableDictionary *stripeCustomer = [[NSMutableDictionary alloc] init];
+        [stripeCustomer setValue:email.text forKey:@"email"];
+        [stripeCustomer setObject:card forKey:@"card"];
+       
+        [[StripeClient current] postPath:CreateCustomer
+                                parameters:stripeCustomer
+                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                    NSError *error = nil;
+                                    NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                    StripeCustomer *customer = [[StripeCustomer alloc] initWithString:responseStr error:&error];
+
+                                    NSLog(@"Successfully created stripe customer object with email %@",customer.email);
+                                    [self createCustomer:customer];
+                                }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    NSLog(@"Error returned from stripe customer creation. %@", error);
+                                }];
     }
     else {
         NSLog(@"Account creation validation failed with message : %@", [NSString stringWithString:message]);
     }
 }
 
-
-//Make call to Stripe
-//        [[StripeClient current] postPath:CreateCustomerUrl parameters:stripeCustomer
-//                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                                     NSError *error = nil;
-//                                     StripeCustomer *customer = [[StripeCustomer alloc] initWithString:responseObject error:&error];
-//                                     [user setObject:customer.id forKey:STRIPE_ID];
-//                                 }
-//                                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                                     NSLog(@"Error returned from stripe customer creation. %@", error);
-//                                 }];
+//STPCompletionBlock completionHandler = ^(STPToken *token, NSError *error)
+//{
+//    if (error) {
+//        NSLog(@"Error trying to create token %@", [error localizedDescription]);
+//        //TODO: what should happen here? Error displayed to user.
+//        cardToken = NULL;
+//    } else {
+//        NSLog(@"Successfully created token with ID: %@", token.tokenId);
+//        cardToken = token;
+//        [networkActivityIndicator stopAnimating];
+//        [self createCustomer];
+//    }
+//};
+//[Stripe createTokenWithCard:creditCard completion:completionHandler];
 
 /*
  This method is called in the success block of the create token call to Stripe.  Once we have successfully created a token from
  the user's credit card, we can proceed with the rest of the account creation.
  
  This method does the following:
+ - add the stripe user id to the PFUser object for storage
  - uses Parse SDK to sign user up
  - checks for response from sign up call
  - if successful:
-    - create a stripe customer object that includes email & credit card token
-    - send stripe customer object to our custom web service that will in turn make a call to stripe to create a customer object in stripe
-    - add the stripe customer id to the parse user table
-        - TODO: if this fails, need to alert app - maybe a notification?
     - segue to starting screen
  */
-- (void)createCustomer
+- (void)createCustomer:(StripeCustomer*)stripeCustomerObject
 {
     user.email = email.text;
     user.username = email.text;
     user.password = confirmPassword.text;
+    [user setValue:stripeCustomerObject.id forKey:STRIPE_ID];
 
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
@@ -163,21 +176,15 @@ int tagTextFieldToResign;
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
             
-            ParseClient *parseClient = [ParseClient current];
-            StripeCustomer *stripeCustomer = [[StripeCustomer alloc] init];
-            
-            stripeCustomer.email = user.email;
-            stripeCustomer.default_card = cardToken.tokenId;
-            stripeCustomer.id = user.objectId;
-            
-            [parseClient postPath:CreateUser parameters:[stripeCustomer toDictionary]
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    NSLog(@"Success in sending request to createuser (request url: %@).", [[[operation request] URL] absoluteString]);
-                    NSLog(@"Response object is : %@", responseObject);
-                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    NSLog(@"Error in sending request to createuser %@ (request url: %@)", [error localizedDescription],[[[operation request] URL] absoluteString]);
-                }
-            ];
+//            ParseClient *parseClient = [ParseClient current];
+//            [parseClient postPath:CreateUser parameters:[stripeCustomer toDictionary]
+//                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                    NSLog(@"Success in sending request to createuser (request url: %@).", [[[operation request] URL] absoluteString]);
+//                    NSLog(@"Response object is : %@", responseObject);
+//                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                    NSLog(@"Error in sending request to createuser %@ (request url: %@)", [error localizedDescription],[[[operation request] URL] absoluteString]);
+//                }
+//            ];
             
             [self performSegueWithIdentifier:createAccountSucceedSegue sender:self];
         }

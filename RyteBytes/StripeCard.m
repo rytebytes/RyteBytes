@@ -6,9 +6,9 @@
 //
 //
 
-#import "StripeCardToken.h"
+#import "StripeCard.h"
 
-@implementation StripeCardToken
+@implementation StripeCard
 
 
 @end
