@@ -17,11 +17,12 @@
 @property (nonatomic,strong) NutritionInformation *nutritionInfo;
 @property (nonatomic,strong) NSString *pictureName;
 @property (nonatomic,strong) NSString *longDescription;
-@property (nonatomic) long uid;
+@property (nonatomic) NSString *uniqueId;
 
 +(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSDictionary*)menuJson;
 +(void) writeMenuToDisk:(NSDictionary*)menuJson;
 +(NSMutableArray*) retrieveMenuFromDisk;
--(id)initWithName:(NSString*)n withType:(MenuItemTypes)t withNutritionInfo:(NutritionInformation*)info withPicture:(NSString*)p withLongDesc:(NSString*)d;
+-(id)initWithName:(NSString*)n withType:(MenuItemTypes)t withNutritionInfo:(NutritionInformation*)info withPicture:(NSString*)p withLongDesc:(NSString*)d
+withUid:(NSString*)uid;
 
 @end

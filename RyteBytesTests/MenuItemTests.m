@@ -25,6 +25,7 @@ NSString *ff_name = @"The Founders Favorite";
 NSString *ff_type = @"3";
 NSString *ff_desc = @"Our favorite meal to make when pressed for time - a delcious bone-in pork chop, roasted summer-fresh broccoli, and the broiled red potatoes tossed with fresh herbs and olive oil.";
 NSString *ff_picture = @"blah.png";
+NSString *ff_id = @"1";
 
 NSString *rbr_cals = @"500";
 NSString *rbr_carbs = @"40";
@@ -33,6 +34,7 @@ NSString *rbr_name = @"The Founders Favorite";
 NSString *rbr_type = @"3";
 NSString *rbr_desc = @"A meal that will remind your of mom's spaghetti & meatballs.  Whole-wheat linguine is tossed in our home-made 'gravy' (what the old time Italians call tomato sauce) that's based on a recipe from one of our italian grandmothers.  A trio of delicious italian sausage meatballs round out the meal!";
 NSString *rbr_picture = @"foo.png";
+NSString *rbr_id = @"2";
 
 NSDictionary *result;
 
@@ -51,6 +53,7 @@ NSDictionary *result;
     [ff setValue:ff_desc forKey:@"long_description"];
     [ff setValue:ff_picture forKey:@"picture"];
     [ff setValue:ff_ni forKey:@"nutrition_info"];
+    [ff setValue:ff_id forKey:@"uid"];
     
     NSMutableDictionary *rbr_ni = [[NSMutableDictionary alloc] init];
     [rbr_ni setValue:rbr_cals forKey:@"calories"];
@@ -63,6 +66,7 @@ NSDictionary *result;
     [rbr setValue:rbr_desc forKey:@"long_description"];
     [rbr setValue:rbr_picture forKey:@"picture"];
     [rbr setValue:rbr_ni forKey:@"nutrition_info"];
+    [rbr setValue:rbr_id forKey:@"uid"];
     
     items[0] = ff;
     items[1] = rbr;
@@ -87,8 +91,11 @@ NSDictionary *result;
         STAssertEquals(expectedCount, [itemArray count],@"Should be 4 items in array");
         STAssertEqualObjects(ff_name, ((MenuItem*)itemArray[0]).name, @"Name of first MenuItem is 'The Founders Favorite'.");
         STAssertEquals(Whole, ((MenuItem*)itemArray[0]).type, @"Item types are correct");
+        STAssertEquals(ff_id, ((MenuItem*)itemArray[0]).uniqueId, @"ids should match");
+        
         
         STAssertEqualObjects(rbr_name, ((MenuItem*)itemArray[1]).name, @"Name of second MenuItem is 'Mob Meal I'.");
+        STAssertEquals(rbr_id, ((MenuItem*)itemArray[1]).uniqueId, @"Name of second MenuItem is 'Mob Meal I'.");
     }
 }
 

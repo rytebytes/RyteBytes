@@ -97,7 +97,7 @@
     
     if (currentUser) { //if there is a valid current user, send them to the order screen
         NSLog(@"currentUser email : %@",currentUser.email);
-//        [self performSegueWithIdentifier:@"ValidUser" sender:self];
+        [self performSegueWithIdentifier:@"ValidUser" sender:self];
     }
 }
 

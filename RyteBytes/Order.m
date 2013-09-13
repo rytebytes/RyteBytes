@@ -9,10 +9,15 @@
 #import "Order.h"
 #import "OrderItem.h"
 
+/** This class manages the current order for the user.  When a user selects a menu item and increases or decreases the quantity desired,
+    this class will handle reflecting that on the order summary screen.  This class keeps a dictionary of OrderItem objects that reflects the
+    current state of the order.  The key in the dictionary is the unique id of the item and the value is the OrderItem object 
+    (which contains the MenuItem and the current quantity).  When a quantity reaches 0, it is removed from the dictionary.
+ */
 @implementation Order
 
-NSMutableDictionary *menuItemsOrdered;
-
+//a dictionary of OrderItems
+NSMutableDictionary *orderItems;
 
 -(id)initEmptyOrder
 {
@@ -20,7 +25,7 @@ NSMutableDictionary *menuItemsOrdered;
         return nil;
     
     NSLog(@"Current order being initialized.");
-    menuItemsOrdered = [[NSMutableDictionary alloc]initWithCapacity:100];
+    orderItems = [[NSMutableDictionary alloc]initWithCapacity:100];
     
     return self;
 }
@@ -40,51 +45,56 @@ NSMutableDictionary *menuItemsOrdered;
     NSMutableArray *orderItemArray = [[NSMutableArray alloc] initWithCapacity:[self getNumberUniqueItems]];
     int count = 0;
     
-    for (id key in menuItemsOrdered) {
-        MenuItem *menuItem = [[MenuItem alloc] init];
-        menuItem.name = key;
-        NSInteger itemOrderedCount = [[menuItemsOrdered valueForKey:key] integerValue];
-        
-        OrderItem *orderItem = [[OrderItem alloc] initWithMenuItem:menuItem withQuantity:itemOrderedCount];
-        orderItemArray[count] = orderItem;
+    for (id key in orderItems) {
+        orderItemArray[count] = [orderItems objectForKey:key];
         count++;
     }
     
     return orderItemArray;
 }
 
+-(OrderItem*)getOrderItem:(NSString*)itemId
+{
+    return [orderItems objectForKey:itemId];
+}
 
 -(int)getNumberUniqueItems
 {
-    return menuItemsOrdered.count;
+    return orderItems.count;
 }
 
 -(int)getTotalItemCount
 {
     int totalCount = 0;
     NSString *key;
-    NSEnumerator *allItems = menuItemsOrdered.keyEnumerator;
+    NSEnumerator *allItems = orderItems.keyEnumerator;
     while (key = [allItems nextObject]) {
-        totalCount += [[menuItemsOrdered objectForKey:key] intValue];
+        totalCount += ((OrderItem*)[orderItems objectForKey:key]).orderCount;
     }
     return totalCount;
 }
 
--(int)getSpecificMenuItemCount:(NSString*)menuItemName
+/** Method to retrieve the quantity in the current order for a specific item.
+    Returns -1 if the item hasn't been added to the order yet.
+ */
+-(int)getSpecificItemCount:(NSString*)itemId
 {
-    return [[menuItemsOrdered valueForKey:menuItemName] integerValue];
+    if(nil == [orderItems valueForKey:itemId])
+        return -1;
+    
+    return ((OrderItem*)[orderItems valueForKey:itemId]).orderCount;
 }
 
 -(void)clearEntireOrder
 {
-    [menuItemsOrdered removeAllObjects];
+    [orderItems removeAllObjects];
 }
 
--(BOOL)setMenuItemQuantity:(MenuItem*)item withQuantity:(NSInteger)quantity
+-(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity
 {
-    @synchronized(menuItemsOrdered)
+    @synchronized(orderItems)
     {
-        if(menuItemsOrdered.count > 100 || (menuItemsOrdered.count + quantity) > 100)
+        if(orderItems.count > 100 || (orderItems.count + item.orderCount) > 100)
         {
             NSLog(@"Order limit exceeded.");
             return NO;
@@ -93,15 +103,16 @@ NSMutableDictionary *menuItemsOrdered;
         {
             if(0 == quantity)
             {
-                [menuItemsOrdered removeObjectForKey:item.name];
+                [orderItems removeObjectForKey:item.menuItem.uniqueId];
             }
             else
             {
-                [menuItemsOrdered setValue:[NSString stringWithFormat:@"%d",quantity] forKey:item.name];
+                item.orderCount = quantity;
+                [orderItems setValue:item forKey:item.menuItem.uniqueId];
             }
             
-            NSLog(@"Added item : %@ to order, now has count of : %d.", item.name, [self getSpecificMenuItemCount:item.name]);
-            NSLog(@"Current order : %@", menuItemsOrdered);
+            NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.uniqueId]);
+            NSLog(@"Current order : %@", orderItems);
             
             return YES;
         }

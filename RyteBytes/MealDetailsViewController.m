@@ -7,19 +7,22 @@
 //
 
 #import "MealDetailsViewController.h"
+#import "OrderItem.h"
 
 @implementation MealDetailsViewController
 
 @synthesize menuItemSelected;
 @synthesize foodImage;
 @synthesize delegate;
-@synthesize currentAmountOrdered;
 @synthesize quantityStepper;
 @synthesize description;
 @synthesize protein;
 @synthesize calories;
 @synthesize carbs;
 @synthesize sodium;
+
+OrderItem *orderItem;
+Order *currentOrder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,14 +35,25 @@
 
 - (void)viewDidLoad
 {
-    self.quantityOrdered.text = currentAmountOrdered;
-    quantityStepper.value = 0;
-    self.quantityStepper.minimumValue = 0;
+    //Check to see if the user has already added this item to their order
+    currentOrder = [Order current];
+    int currentAmountForSelectedItem = [currentOrder getSpecificItemCount:menuItemSelected.uniqueId];
     
-    for (int val = 0; val < currentAmountOrdered.doubleValue; val++) {
-        quantityStepper.value++;
+    if(-1 != currentAmountForSelectedItem) {
+        self.quantityOrdered.text = [NSString stringWithFormat:@"%d", currentAmountForSelectedItem];
+        quantityStepper.value = currentAmountForSelectedItem;
+        orderItem = [currentOrder getOrderItem:menuItemSelected.uniqueId];
+    } else {
+        self.quantityOrdered.text = @"0";
+        quantityStepper.value = 0;
+        orderItem = [[OrderItem alloc] initWithMenuItem:menuItemSelected withQuantity:0];
     }
+    
+//    for (int val = 0; val < currentAmountOrdered.doubleValue; val++) {
+//        quantityStepper.value++;
+//    }
 
+    self.quantityStepper.minimumValue = 0;
     foodImage.image = [UIImage imageNamed:menuItemSelected.pictureName];
     self.description.text = menuItemSelected.longDescription;
     self.mealName.text = menuItemSelected.name;
@@ -64,8 +78,8 @@
     
     NSLog(@"Setting item : %@ to quantity of : %d", menuItemSelected.name, value);
     
-    Order* currentOrder = [Order current];
-    [currentOrder setMenuItemQuantity:menuItemSelected withQuantity:value];
+    [currentOrder setOrderItemQuantity:orderItem withQuantity:value];
+//    [currentOrder setMenuItemQuantity:menuItemSelected withQuantity:value];
     [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
 }
 

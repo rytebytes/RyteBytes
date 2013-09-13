@@ -9,18 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "Dish.h"
 #import "MenuItem.h"
+#import "OrderItem.h"
 
 @interface Order : NSObject
 
 + (Order*)current;
 
 -(int)getTotalItemCount;
--(int)getSpecificMenuItemCount:(NSString*)menuItemName;
+-(int)getSpecificItemCount:(NSString*)itemId;
 -(int)getNumberUniqueItems;
 -(NSMutableArray*)convertToOrderItemArray;
+-(OrderItem*)getOrderItem:(NSString*)itemId;
 
 -(void)clearEntireOrder;
--(BOOL)setMenuItemQuantity:(MenuItem*)item withQuantity:(NSInteger)quantity;
+-(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity;
 
 @end
 

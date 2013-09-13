@@ -17,10 +17,10 @@
 @synthesize name;
 @synthesize type;
 @synthesize longDescription;
-@synthesize uid;
+@synthesize uniqueId;
 
 -(id)initWithName:(NSString*)n withType:(MenuItemTypes)t withNutritionInfo:(NutritionInformation*)info withPicture:(NSString*)p withLongDesc:(NSString*)d
-withUid:(long)uniqueId
+withUid:(NSString*)uid
 {
     if(!(self = [super init]))
         return nil;
@@ -30,7 +30,7 @@ withUid:(long)uniqueId
     nutritionInfo = info;
     pictureName = p;
     longDescription = d;
-    uid = uniqueId;
+    uniqueId = uid;
     
     return self;
 }
@@ -71,7 +71,7 @@ withUid:(long)uniqueId
                                 withNutritionInfo:[[NutritionInformation alloc] initWithDictionary:[item valueForKey:@"nutrition_info"]]
                                 withPicture:[item valueForKey:@"picture"]
                                 withLongDesc:[item valueForKey:@"long_description"]
-                                withUid:[[item valueForKey:@"uid"] longValue]];
+                                withUid:[item valueForKey:@"uid"]];
     }
 
     return menuItemArray;

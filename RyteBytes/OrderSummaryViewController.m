@@ -59,7 +59,7 @@ NSMutableArray *orderArray;
 }
 
 - (IBAction)placeOrder:(id)sender {
-    NSLog(@"send order for : %d", [currentOrder getSpecificMenuItemCount:@"Mob Meal I"]);
+    NSLog(@"send order for item (%@) with id : %@", ((OrderItem*)orderArray[0]).menuItem.name, ((OrderItem*)orderArray[0]).menuItem.uniqueId);
 }
 
 

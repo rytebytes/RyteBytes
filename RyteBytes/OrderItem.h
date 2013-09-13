@@ -14,6 +14,7 @@
 @property (nonatomic,strong) MenuItem* menuItem;
 @property (nonatomic) NSInteger orderCount;
 
+-(id)initWithMenuItem:(MenuItem*)item;
 -(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)quantity;
 
 @end
