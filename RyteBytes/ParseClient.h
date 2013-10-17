@@ -14,5 +14,6 @@
 
 extern NSString * const CreateUser;
 extern NSString * const RetrieveMenu;
+extern NSString * const PlaceOrder;
 
 @end

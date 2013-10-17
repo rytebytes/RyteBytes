@@ -13,6 +13,11 @@
 
 @interface Order : NSObject
 
+@property (strong,nonatomic) NSString *userId;
+@property (strong,nonatomic) NSString *pickupId;
+@property (strong,nonatomic) NSString *couponId;
+@property (strong,nonatomic) NSMutableDictionary *orderItems;
+
 + (Order*)current;
 
 -(int)getTotalItemCount;

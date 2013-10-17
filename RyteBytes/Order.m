@@ -16,8 +16,10 @@
  */
 @implementation Order
 
-//a dictionary of OrderItems
-NSMutableDictionary *orderItems;
+@synthesize userId;
+@synthesize pickupId;
+@synthesize orderItems;
+@synthesize couponId;
 
 -(id)initEmptyOrder
 {
