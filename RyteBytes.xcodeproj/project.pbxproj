@@ -781,6 +781,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					0176637D16C05809003BBD47 = {
+						DevelopmentTeam = 3626SQ7M5J;
+					};
+				};
 			};
 			buildConfigurationList = 0176637816C05809003BBD47 /* Build configuration list for PBXProject "RyteBytes" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1082,6 +1087,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36C0299A64AA4BF98B6CD198 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1090,7 +1097,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
 				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
@@ -1100,6 +1107,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "63E30696-34A7-4E90-82DE-9E29B14EE9B5";
 				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1109,6 +1117,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36C0299A64AA4BF98B6CD198 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1117,13 +1127,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
 				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "63E30696-34A7-4E90-82DE-9E29B14EE9B5";
 				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = app;
 			};

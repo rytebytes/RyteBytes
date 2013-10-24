@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>762870C2-9E3A-452E-8181-562E308F1C34</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RyteBytes</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D0744023-762B-4F72-B4D2-73600D5535A5</key>
+		<string>https://github.com/rytebytes/RyteBytes.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RyteBytes.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D0744023-762B-4F72-B4D2-73600D5535A5</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rytebytes/RyteBytes.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D0744023-762B-4F72-B4D2-73600D5535A5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D0744023-762B-4F72-B4D2-73600D5535A5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RyteBytes</string>
+		</dict>
+	</array>
+</dict>
+</plist>
