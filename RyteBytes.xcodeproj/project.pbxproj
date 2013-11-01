@@ -76,7 +76,6 @@
 		012291191705D58800666D85 /* yellow_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 012291161705D58800666D85 /* yellow_small.png */; };
 		013DE02F17CC1BC2004EFFF6 /* StripeCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE02E17CC1BC2004EFFF6 /* StripeCard.m */; };
 		013DE03317CC3CF7004EFFF6 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE03217CC3CF7004EFFF6 /* ParseClient.m */; };
-		015754B91785E5AE000C4ED0 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 015754B81785E5AE000C4ED0 /* Logo.png */; };
 		015BD300173EDA70008AB447 /* OrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */; };
 		015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD302173EDF8E008AB447 /* OrderSummaryCell.m */; };
 		0165C5C91795D3AE00DA9C15 /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */; };
@@ -113,10 +112,15 @@
 		0192CC1A16C05FE50024815F /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192CC1916C05FE50024815F /* Customer.m */; };
 		019C511D17D7842400CBD44E /* MenuItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 019C511C17D7842400CBD44E /* MenuItemTests.m */; };
 		01A35DED1791BACC00DEBC46 /* OrderNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */; };
+		01AFAFCD1819C39900B2151A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFCB1819C39900B2151A /* Logo.png */; };
+		01AFAFCE1819C39900B2151A /* vert_food.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFCC1819C39900B2151A /* vert_food.jpg */; };
+		01AFAFD1181B1D8800B2151A /* ThreeRowOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */; };
+		01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */; };
+		01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */; };
+		01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */; };
 		01B3F183179F7294004875BE /* welcome_chicken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01B3F180179F7294004875BE /* welcome_chicken.jpg */; };
 		01B3F184179F7294004875BE /* welcome_packaged.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01B3F181179F7294004875BE /* welcome_packaged.jpg */; };
 		01B3F185179F7294004875BE /* welcome_pasta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01B3F182179F7294004875BE /* welcome_pasta.jpg */; };
-		01B3F187179F7332004875BE /* rb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B3F186179F7332004875BE /* rb_logo.png */; };
 		01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */; };
 		01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83CA17B6B443001A19C5 /* StripeClient.m */; };
 		01CD83CC17B6B443001A19C5 /* StripeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83CA17B6B443001A19C5 /* StripeClient.m */; };
@@ -230,7 +234,6 @@
 		013DE02E17CC1BC2004EFFF6 /* StripeCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCard.m; sourceTree = "<group>"; };
 		013DE03117CC3CF7004EFFF6 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
 		013DE03217CC3CF7004EFFF6 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
-		015754B81785E5AE000C4ED0 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		015BD2FE173EDA70008AB447 /* OrderSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSummaryViewController.h; sourceTree = "<group>"; };
 		015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSummaryViewController.m; sourceTree = "<group>"; };
 		015BD301173EDF8E008AB447 /* OrderSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSummaryCell.h; sourceTree = "<group>"; };
@@ -284,10 +287,16 @@
 		019C511C17D7842400CBD44E /* MenuItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemTests.m; sourceTree = "<group>"; };
 		01A35DEB1791BACC00DEBC46 /* OrderNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNotifications.h; sourceTree = "<group>"; };
 		01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNotifications.m; sourceTree = "<group>"; };
+		01AFAFCB1819C39900B2151A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		01AFAFCC1819C39900B2151A /* vert_food.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vert_food.jpg; sourceTree = "<group>"; };
+		01AFAFCF181B1D8800B2151A /* ThreeRowOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeRowOrderingViewController.h; sourceTree = "<group>"; };
+		01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeRowOrderingViewController.m; sourceTree = "<group>"; };
+		01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57 pixel App Icon.png"; sourceTree = "<group>"; };
+		01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "114 pixels App Icon.png"; sourceTree = "<group>"; };
+		01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = high_res_app_icon.jpeg; sourceTree = "<group>"; };
 		01B3F180179F7294004875BE /* welcome_chicken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_chicken.jpg; sourceTree = "<group>"; };
 		01B3F181179F7294004875BE /* welcome_packaged.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_packaged.jpg; sourceTree = "<group>"; };
 		01B3F182179F7294004875BE /* welcome_pasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_pasta.jpg; sourceTree = "<group>"; };
-		01B3F186179F7332004875BE /* rb_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_logo.png; sourceTree = "<group>"; };
 		01CD83C217B6AEBE001A19C5 /* StripeCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCustomer.h; sourceTree = "<group>"; };
 		01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCustomer.m; sourceTree = "<group>"; };
 		01CD83C917B6B443001A19C5 /* StripeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeClient.h; sourceTree = "<group>"; };
@@ -470,6 +479,8 @@
 				01191775172326F80085CA7B /* MealDetailsViewController.m */,
 				015BD2FE173EDA70008AB447 /* OrderSummaryViewController.h */,
 				015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */,
+				01AFAFCF181B1D8800B2151A /* ThreeRowOrderingViewController.h */,
+				01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */,
 			);
 			name = Ordering;
 			sourceTree = "<group>";
@@ -631,7 +642,11 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				01B3F186179F7332004875BE /* rb_logo.png */,
+				01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */,
+				01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */,
+				01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */,
+				01AFAFCB1819C39900B2151A /* Logo.png */,
+				01AFAFCC1819C39900B2151A /* vert_food.jpg */,
 				01B3F180179F7294004875BE /* welcome_chicken.jpg */,
 				01B3F181179F7294004875BE /* welcome_packaged.jpg */,
 				01B3F182179F7294004875BE /* welcome_pasta.jpg */,
@@ -639,7 +654,6 @@
 				016B0CA3178F77D700F80748 /* ProteinIcon.png */,
 				016B0C9F178F749800F80748 /* OrderScreenchick_taters_shrooms.png */,
 				016B0CA0178F749800F80748 /* OrderScreenCreateAMeal.png */,
-				015754B81785E5AE000C4ED0 /* Logo.png */,
 				0119176F172306490085CA7B /* mob.JPG */,
 				012291141705D58800666D85 /* green_small.png */,
 				012291151705D58800666D85 /* red_small.png */,
@@ -822,15 +836,14 @@
 				012291191705D58800666D85 /* yellow_small.png in Resources */,
 				011CEDEE170600F800AE586E /* Default-568h@2x.png in Resources */,
 				01191770172306490085CA7B /* mob.JPG in Resources */,
-				015754B91785E5AE000C4ED0 /* Logo.png in Resources */,
 				016B0CA1178F749800F80748 /* OrderScreenchick_taters_shrooms.png in Resources */,
 				016B0CA2178F749800F80748 /* OrderScreenCreateAMeal.png in Resources */,
 				016B0CA4178F77D700F80748 /* ProteinIcon.png in Resources */,
+				01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */,
 				016B0CA6178F7CA100F80748 /* Do Ryte GoldiApp.png in Resources */,
 				01B3F183179F7294004875BE /* welcome_chicken.jpg in Resources */,
 				01B3F184179F7294004875BE /* welcome_packaged.jpg in Resources */,
 				01B3F185179F7294004875BE /* welcome_pasta.jpg in Resources */,
-				01B3F187179F7332004875BE /* rb_logo.png in Resources */,
 				0102526917B46B6F00BF1F3C /* .gitignore in Resources */,
 				0102526A17B46B6F00BF1F3C /* LICENSE in Resources */,
 				0102527317B46B6F00BF1F3C /* amex.png in Resources */,
@@ -839,10 +852,12 @@
 				0102527617B46B6F00BF1F3C /* cvc-amex@2x.png in Resources */,
 				0102527717B46B6F00BF1F3C /* cvc.png in Resources */,
 				0102527817B46B6F00BF1F3C /* cvc@2x.png in Resources */,
+				01AFAFCD1819C39900B2151A /* Logo.png in Resources */,
 				0102527917B46B6F00BF1F3C /* diners.png in Resources */,
 				0102527A17B46B6F00BF1F3C /* diners@2x.png in Resources */,
 				0102527B17B46B6F00BF1F3C /* discover.png in Resources */,
 				0102527C17B46B6F00BF1F3C /* discover@2x.png in Resources */,
+				01AFAFCE1819C39900B2151A /* vert_food.jpg in Resources */,
 				0102527D17B46B6F00BF1F3C /* jcb.png in Resources */,
 				0102527E17B46B6F00BF1F3C /* jcb@2x.png in Resources */,
 				0102527F17B46B6F00BF1F3C /* mastercard.png in Resources */,
@@ -850,7 +865,9 @@
 				0102528117B46B6F00BF1F3C /* placeholder.png in Resources */,
 				0102528217B46B6F00BF1F3C /* placeholder@2x.png in Resources */,
 				0102528317B46B6F00BF1F3C /* visa.png in Resources */,
+				01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */,
 				0102528417B46B6F00BF1F3C /* visa@2x.png in Resources */,
+				01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */,
 				0102528517B46B6F00BF1F3C /* gradient@2x.png in Resources */,
 				0102528617B46B6F00BF1F3C /* textfield.png in Resources */,
 				0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */,
@@ -920,6 +937,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01AFAFD1181B1D8800B2151A /* ThreeRowOrderingViewController.m in Sources */,
 				0176638F16C05809003BBD47 /* main.m in Sources */,
 				0176639316C05809003BBD47 /* RBAppDelegate.m in Sources */,
 				0176639916C05809003BBD47 /* EatRyteViewController.m in Sources */,
@@ -1087,6 +1105,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36C0299A64AA4BF98B6CD198 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1102,6 +1121,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-v",
 					"-lc++",
@@ -1117,6 +1137,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36C0299A64AA4BF98B6CD198 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1132,6 +1153,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "63E30696-34A7-4E90-82DE-9E29B14EE9B5";

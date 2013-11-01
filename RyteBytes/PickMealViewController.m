@@ -43,12 +43,12 @@ NSMutableDictionary *order;
     if(menuItems == NULL)
     {
         ParseClient *parseClient = [ParseClient current];
-        [parseClient postPath:RetrieveMenu parameters:[[NSDictionary alloc] init]
-                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] init]
+                      success:^(NSURLSessionDataTask *task , id responseObject) {
 //                          NSLog(@"Successful response from retrievemenu : %@).", responseObject);
                           menuItems = [MenuItem convertMenuJsonToMenuItemArray:responseObject];
                           [self.tableView reloadData];
-                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                           NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
                       }];
     }

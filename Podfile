@@ -1,5 +1,5 @@
-platform :ios, '6.0'
+platform :ios, '7.0'
 
-pod 'AFNetworking', '~> 1.1.0'
+pod 'AFNetworking', '~> 2.0'
 pod 'JSONModel'
 pod 'SBJson'

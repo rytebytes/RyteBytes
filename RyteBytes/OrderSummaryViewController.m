@@ -96,10 +96,10 @@ int orderTotalCost = 0;
     
     NSLog(@"send order for item (%@) with id : %@", ((OrderItem*)orderArray[0]).menuItem.name, ((OrderItem*)orderArray[0]).menuItem.uniqueId);
     
-    [[ParseClient current] postPath:PlaceOrder parameters:order
-            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[ParseClient current] POST:@"" parameters:order
+            success:^(NSURLSessionDataTask *operation, id responseObject) {
                 NSLog(@"placed order succesfully, message : %@", responseObject);
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                 NSLog(@"placed order failing, message : %@", [error localizedDescription]);
             }
      ];

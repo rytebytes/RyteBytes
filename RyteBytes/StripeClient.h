@@ -7,10 +7,10 @@
 //
 
 #import <AFNetworking.h>
-#import "AFJSONRequestOperation.h"
 #import "StripeCustomer.h"
+#import "AFHTTPSessionManager.h"
 
-@interface StripeClient : AFHTTPClient
+@interface StripeClient : AFHTTPSessionManager
 
 extern NSString * const CreateCustomer;
 

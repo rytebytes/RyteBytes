@@ -31,11 +31,14 @@ NSString * const PlaceOrder = @"order";
         return nil;
     }
     
-    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [self setDefaultHeader:@"Accept" value:@"application/json"];
-    [self setDefaultHeader:@"X-Parse-Application-Id" value:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"];
-    [self setDefaultHeader:@"X-Parse-REST-API-Key" value:@"ZjCVp64qsDxYWw6PktZgc5PFZLdLmRuHe9oOF3q9"];
-    [self setParameterEncoding:AFJSONParameterEncoding];
+    AFJSONRequestSerializer *jsonRequest = [[AFJSONRequestSerializer alloc] init];
+    AFJSONResponseSerializer *jsonResponse = [[AFJSONResponseSerializer alloc]init];
+    
+    self.requestSerializer = jsonRequest;
+    self.responseSerializer = jsonResponse;
+    
+    [self.requestSerializer setValue:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M" forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [self.requestSerializer setValue:@"ZjCVp64qsDxYWw6PktZgc5PFZLdLmRuHe9oOF3q9" forHTTPHeaderField:@"X-Parse-REST-API-Key"];
     
     return self;
 }

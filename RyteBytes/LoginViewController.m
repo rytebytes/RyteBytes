@@ -14,8 +14,6 @@
 
 NSString *loginSuccessSegue = @"LoginSuccess";
 
-@synthesize loginView;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,16 +26,10 @@ NSString *loginSuccessSegue = @"LoginSuccess";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-      
-    self.fields = PFLogInFieldsLogInButton;
-//    | PFLogInFieldsDismissButton | PFLogInFieldsPasswordForgotten |
-//    PFLogInFieldsUsernameAndPassword;
-    self.delegate = self;
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-//    self.logInView.frame = CGRectMake(0, 300, 300, 300);
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,36 +42,43 @@ NSString *loginSuccessSegue = @"LoginSuccess";
 {
     if([segue.identifier isEqualToString:loginSuccessSegue])
     {
+        NSLog(@"Currently logged in user email : %@", [PFUser currentUser].email);
         TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
         tabBar.selectedIndex = ORDER_TAB;
     }
 }
 
-// Sent to the delegate to determine whether the log in request should be submitted to the server.
-- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password
-{
-    // Check if both fields are completed
+- (IBAction)attemptLogin:(id)sender {
+    
+    NSString *username = self.email.text;
+    NSString *password = self.password.text;
+    
     if (username && password && username.length != 0 && password.length != 0)
     {
-        return YES; // Begin login process
+        //call to Parse to login
+        //if successful,
+        
+        [PFUser logInWithUsernameInBackground:username password:password
+            block:^(PFUser *user, NSError *error) {
+                if(user){
+                    [self performSegueWithIdentifier:loginSuccessSegue sender:nil];
+                } else {
+                    [[[UIAlertView alloc] initWithTitle:@"Login failed."
+                                                message:@"Login information incorrect, please try again."
+                                               delegate:nil
+                                      cancelButtonTitle:@"ok"
+                                      otherButtonTitles:nil] show];
+                }
+                                            
+        }];
+    } else {
+        [[[UIAlertView alloc]
+          initWithTitle:@"Missing Information"
+          message:@"Make sure you fill out all of the information!"
+          delegate:nil
+          cancelButtonTitle:@"Try again."
+          otherButtonTitles:nil] show];
     }
-    
-    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                message:@"Make sure you fill out all of the information!"
-                               delegate:nil
-                      cancelButtonTitle:@"ok"
-                      otherButtonTitles:nil] show];
-    return NO; // Interrupt login process
-}
-
-- (void)logInViewController:(PFLogInViewController *)controller didLogInUser:(PFUser *)user
-{
-    [self performSegueWithIdentifier:loginSuccessSegue sender:nil];
-}
-
-- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController
-{
-    NSLog(@"user canceled login.");
 }
 
 @end

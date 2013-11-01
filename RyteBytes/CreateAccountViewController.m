@@ -118,9 +118,9 @@ int tagTextFieldToResign;
         [stripeCustomer setValue:email.text forKey:@"email"];
         [stripeCustomer setObject:card forKey:@"card"];
        
-        [[StripeClient current] postPath:CreateCustomer
+        [[StripeClient current] POST:CreateCustomer
                                 parameters:stripeCustomer
-                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                success:^(NSURLSessionDataTask *operation, id responseObject) {
                                     NSError *error = nil;
                                     NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
                                     StripeCustomer *customer = [[StripeCustomer alloc] initWithString:responseStr error:&error];
@@ -128,7 +128,7 @@ int tagTextFieldToResign;
                                     NSLog(@"Successfully created stripe customer object with email %@",customer.email);
                                     [self createCustomer:customer];
                                 }
-                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                failure:^(NSURLSessionDataTask *operation, NSError *error) {
                                     NSLog(@"Error returned from stripe customer creation. %@", error);
                                 }];
     }

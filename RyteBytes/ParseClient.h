@@ -6,9 +6,9 @@
 //
 //
 
-#import "AFHTTPClient.h"
+#import "AFHTTPSessionManager.h"
 
-@interface ParseClient : AFHTTPClient
+@interface ParseClient : AFHTTPSessionManager
 
 +(ParseClient*) current;
 

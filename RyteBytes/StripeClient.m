@@ -7,8 +7,6 @@
 //
 
 #import "StripeClient.h"
-#import "AFHTTPClient.h"
-#import "AFJSONRequestOperation.h"
 
 @implementation StripeClient
 
@@ -29,11 +27,14 @@ NSString * const CreateCustomer = @"customers";
     if(!self){
         return nil;
     }
+    AFJSONRequestSerializer *jsonRequest = [[AFJSONRequestSerializer alloc] init];
+    AFJSONResponseSerializer *jsonResponse = [[AFJSONResponseSerializer alloc]init];
     
-//    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [self setDefaultHeader:@"Accept" value:@"application/json"];
-    [self setAuthorizationHeaderWithUsername:@"sk_test_0eORjVUmVNJxwTHqMLLCogZr" password:@""];
-    [self setParameterEncoding:AFFormURLParameterEncoding];
+    self.requestSerializer = jsonRequest;
+    self.responseSerializer = jsonResponse;
+    
+    [self.requestSerializer setValue:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M" forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [self.requestSerializer setAuthorizationHeaderFieldWithUsername:@"sk_test_0eORjVUmVNJxwTHqMLLCogZr" password:@""];
     
     return self;
 }

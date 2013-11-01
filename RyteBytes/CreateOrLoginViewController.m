@@ -146,10 +146,10 @@
 {
     if ([segue.identifier isEqualToString:@"LoginAction"])
 	{
-        LoginViewController *loginViewController = segue.destinationViewController;
-
-        loginViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsDismissButton;
-        [loginViewController setDelegate:loginViewController]; // Set ourselves as the delegate
+//        LoginViewController *loginViewController = segue.destinationViewController;
+//
+//        loginViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsDismissButton;
+//        [loginViewController setDelegate:loginViewController]; // Set ourselves as the delegate
     }
     else if ([segue.identifier isEqualToString:@"ValidUser"])
     {

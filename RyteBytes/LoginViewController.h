@@ -8,8 +8,12 @@
 
 #import <Parse/Parse.h>
 
-@interface LoginViewController : PFLogInViewController <PFLogInViewControllerDelegate>
+@interface LoginViewController : UIViewController
 
 @property (nonatomic,strong) IBOutlet UIView *loginView;
+@property (nonatomic,strong) IBOutlet UITextField *email;
+@property (nonatomic,strong) IBOutlet UITextField *password;
+@property (nonatomic,strong) IBOutlet UIImageView *headerLogo;
+@property (nonatomic,strong) IBOutlet UIButton *loginButton;
 
 @end
