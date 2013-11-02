@@ -14,6 +14,8 @@
 
 NSString *loginSuccessSegue = @"LoginSuccess";
 
+int tagTextFieldToResign;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,6 +32,34 @@ NSString *loginSuccessSegue = @"LoginSuccess";
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+}
+
+-(void)dismissKeyboard
+{
+    [[self.view viewWithTag:tagTextFieldToResign] resignFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    tagTextFieldToResign = textField.tag;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    BOOL didResign = [textField resignFirstResponder];
+    if(!didResign)
+        return NO;
+    
+    if(textField.tag == TAG_UI_LOGIN_EMAIL)
+    {
+        [[self.view viewWithTag:TAG_UI_LOGIN_PASSWORD] becomeFirstResponder];
+    }
+    if(textField.tag == TAG_UI_LOGIN_PASSWORD)
+    {
+        [self attemptLogin:NULL];
+    }
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +96,7 @@ NSString *loginSuccessSegue = @"LoginSuccess";
                     [[[UIAlertView alloc] initWithTitle:@"Login failed."
                                                 message:@"Login information incorrect, please try again."
                                                delegate:nil
-                                      cancelButtonTitle:@"ok"
+                                      cancelButtonTitle:@"Okay"
                                       otherButtonTitles:nil] show];
                 }
                                             

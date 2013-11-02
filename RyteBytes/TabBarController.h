@@ -14,11 +14,10 @@
 
 typedef enum tabs
 {
-    GYM_TAB = 0,
-    COOKING_TAB = 1,
-    ORDER_TAB = 2,
-    DO_RYTE_TAB = 3,
-    ACCOUNT_TAB = 4
+    COOKING_TAB = 0,
+    ORDER_TAB = 1,
+    DO_RYTE_TAB = 2,
+    ACCOUNT_TAB = 3
 } ScreenTabs ;
 
 @property (nonatomic,strong) PFUser *User;

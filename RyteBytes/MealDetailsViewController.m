@@ -14,6 +14,7 @@
 @synthesize menuItemSelected;
 @synthesize foodImage;
 @synthesize delegate;
+@synthesize detailsDelegate;
 @synthesize quantityStepper;
 @synthesize description;
 @synthesize protein;
@@ -35,6 +36,7 @@ Order *currentOrder;
 
 - (void)viewDidLoad
 {
+    self.navigationItem.hidesBackButton = NO;
     //Check to see if the user has already added this item to their order
     currentOrder = [Order current];
     int currentAmountForSelectedItem = [currentOrder getSpecificItemCount:menuItemSelected.uniqueId];
@@ -63,6 +65,11 @@ Order *currentOrder;
     self.carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
     
     [super viewDidLoad];
+}
+
+- (IBAction)back:(id)sender
+{
+//	[self.detailsDelegate menu:self];
 }
 
 - (void)didReceiveMemoryWarning

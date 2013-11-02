@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Order.h"
 
+@class MealDetailsViewController;
+
 @protocol MenuItemAdded <NSObject>
-
 - (void)setBadgeValue:(int)count;
+@end
 
+@protocol MenuDetailsCancel <NSObject>
+- (void)mealDetailsViewControllerDidCancel:(MealDetailsViewController *)controller;
 @end
 
 @interface MealDetailsViewController : UIViewController
@@ -28,9 +32,11 @@
 @property (nonatomic,strong) IBOutlet UILabel *protein;
 @property (nonatomic,strong) IBOutlet UIStepper *quantityStepper;
 @property (nonatomic,weak) id <MenuItemAdded> delegate;
+@property (nonatomic,weak) id <MenuDetailsCancel> detailsDelegate;
 @property (nonatomic,strong) NSString *currentAmountOrdered;
 @property (nonatomic,strong) Order* currentOrder;
 
 - (IBAction)valueChanged:(UIStepper *)sender;
+- (IBAction)back:(id)sender;
 
 @end

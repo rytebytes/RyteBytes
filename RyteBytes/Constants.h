@@ -14,6 +14,10 @@ extern const int TAG_UI_CREATEACCOUNT_EMAIL;
 extern const int TAG_UI_CREATEACCOUNT_PASSWORD;
 extern const int TAG_UI_CREATEACCOUNT_CONFIRM_PASSWORD;
 
+extern const int TAG_UI_LOGIN_EMAIL;
+extern const int TAG_UI_LOGIN_PASSWORD;
+
+
 typedef enum itemtypes
 {
     Protein = 0,

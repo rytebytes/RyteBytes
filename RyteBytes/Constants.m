@@ -10,9 +10,13 @@
 
 @implementation Constants
 
+/* UI Tags */
 const int TAG_UI_CREATEACCOUNT_EMAIL = 1001;
 const int TAG_UI_CREATEACCOUNT_PASSWORD = 1002;
 const int TAG_UI_CREATEACCOUNT_CONFIRM_PASSWORD = 1003;
+const int TAG_UI_LOGIN_EMAIL = 1004;
+const int TAG_UI_LOGIN_PASSWORD = 1005;
+
 
 NSString * const STRIPE_ID = @"stripe_id";
 NSString * const ORDER_USER_ID = @"userId";

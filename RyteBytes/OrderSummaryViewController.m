@@ -41,9 +41,6 @@ int orderTotalCost = 0;
     currentOrder = [Order current];
     orderArray = [currentOrder convertToOrderItemArray];
     [orderSummary reloadData];
-    
-    orderTotal.text = [NSString stringWithFormat:@"$%d", orderTotalCost];
-    doRyteTotal.text = [NSString stringWithFormat:@"$%fd", orderTotalCost * .1];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -77,7 +74,14 @@ int orderTotalCost = 0;
             break;
     }
     
+    [self updateOrderCost];
+    
     return cell;
+}
+
+- (void)updateOrderCost {
+    orderTotal.text = [NSString stringWithFormat:@"$%d", orderTotalCost];
+    doRyteTotal.text = [NSString stringWithFormat:@"$%.02f", orderTotalCost * .1];
 }
 
 - (IBAction)placeOrder:(id)sender {
@@ -96,7 +100,7 @@ int orderTotalCost = 0;
     
     NSLog(@"send order for item (%@) with id : %@", ((OrderItem*)orderArray[0]).menuItem.name, ((OrderItem*)orderArray[0]).menuItem.uniqueId);
     
-    [[ParseClient current] POST:@"" parameters:order
+    [[ParseClient current] POST:PlaceOrder parameters:order
             success:^(NSURLSessionDataTask *operation, id responseObject) {
                 NSLog(@"placed order succesfully, message : %@", responseObject);
             } failure:^(NSURLSessionDataTask *operation, NSError *error) {

@@ -8,7 +8,7 @@
 
 #import <Parse/Parse.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic,strong) IBOutlet UIView *loginView;
 @property (nonatomic,strong) IBOutlet UITextField *email;
