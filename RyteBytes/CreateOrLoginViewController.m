@@ -153,8 +153,8 @@
     }
     else if ([segue.identifier isEqualToString:@"ValidUser"])
     {
-        TabBarController *tabBarController = segue.destinationViewController;
-        tabBarController.selectedIndex = ORDER_TAB;
+//        TabBarController *tabBarController = segue.destinationViewController;
+//        tabBarController.selectedIndex = ORDER_TAB;
     }
 }
 

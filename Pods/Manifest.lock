@@ -20,16 +20,19 @@ PODS:
   - AFNetworking/UIKit (2.0.1):
     - AFNetworking/NSURLConnection
   - JSONModel (0.9.1)
+  - PKRevealController (2.0.5)
   - SBJson (3.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - JSONModel
+  - PKRevealController
   - SBJson
 
 SPEC CHECKSUMS:
   AFNetworking: a6f11ac4ac087303e6ff87adc1ba57b0dac20ef8
   JSONModel: 88213da5d222cdc108203015c636fe3383305507
+  PKRevealController: 50a737bde432e51b68596d46b33617ec8bcb3a6a
   SBJson: e60b4dc22448c2ae1e754b523a4ab53408e85c8d
 
 COCOAPODS: 0.27.1

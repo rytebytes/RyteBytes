@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "Order.h"
+#import "PKRevealController.h"
 
-@interface TabBarController : UITabBarController <UITabBarControllerDelegate>
+@interface TabBarController : UIViewController //<UITabBarControllerDelegate>
 
 typedef enum tabs
 {

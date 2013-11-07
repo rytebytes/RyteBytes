@@ -9,6 +9,8 @@
 #import "TabBarController.h"
 #import "PickMealViewController.h"
 #import "Dish.h"
+#import "PKRevealController.h"
+#import "EatRyteViewController.h"
 
 @implementation TabBarController
 
@@ -30,6 +32,13 @@
     currentOrder = [Order current];
 
     NSLog(@"finished viewDidLoad in TabBarController");
+//    UIViewController *eatRyte = [[EatRyteViewController alloc] init];
+//    UIViewController *frontViewController = [[UIViewController alloc] init];
+//    frontViewController.view.backgroundColor = [UIColor orangeColor];
+//    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:frontViewController leftViewController:eatRyte];
+//    revealController.delegate = self;
+////    [self.revealController setLeftViewController:eatRyte];
+//    self.view.window.rootViewController = revealController;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
