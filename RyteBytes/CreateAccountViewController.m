@@ -266,7 +266,7 @@ int tagTextFieldToResign;
 {
     if([segue.identifier isEqualToString:createAccountSucceedSegue])
     {
-        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
+//        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
 //        tabBar.selectedIndex = ORDER_TAB;
     }
 }

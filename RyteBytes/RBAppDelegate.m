@@ -33,7 +33,6 @@ NSMutableArray *components;
     [Stripe setDefaultPublishableKey:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr"];
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-    [PKRevealController class];
 //
 //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     

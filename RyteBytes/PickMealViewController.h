@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MealDetailsViewController.h"
-#import <PKRevealController/PKRevealController.h>
 
 @interface PickMealViewController : UITableViewController <MenuItemAdded>
 

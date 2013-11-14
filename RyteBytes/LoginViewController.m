@@ -9,7 +9,6 @@
 #import "Parse/Parse.h"
 #import "LoginViewController.h"
 #import "TabBarController.h"
-#import <PKRevealController/PKRevealController.h>
 
 @implementation LoginViewController
 
@@ -71,11 +70,8 @@ int tagTextFieldToResign;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"Test"])
+    if([segue.identifier isEqualToString:@"LoginSuccess"])
     {
-        PKRevealController *prc = (PKRevealController *)segue.destinationViewController;
-        prc.frontViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PickMeal"];
-        prc.leftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Cooking"];
         NSLog(@"Currently logged in user email : %@", [PFUser currentUser].email);
 //        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
 //        tabBar.selectedIndex = ORDER_TAB;
@@ -97,7 +93,7 @@ int tagTextFieldToResign;
         [PFUser logInWithUsernameInBackground:username password:password
             block:^(PFUser *user, NSError *error) {
                 if(user){
-                    [self performSegueWithIdentifier:@"Test" sender:nil];
+                    [self performSegueWithIdentifier:@"LoginSuccess" sender:nil];
                 } else {
                     [[[UIAlertView alloc] initWithTitle:@"Login failed."
                                                 message:@"Login information incorrect, please try again."

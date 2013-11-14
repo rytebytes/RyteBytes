@@ -9,7 +9,6 @@
 #import "TabBarController.h"
 #import "PickMealViewController.h"
 #import "Dish.h"
-#import "PKRevealController.h"
 #import "EatRyteViewController.h"
 
 @implementation TabBarController
