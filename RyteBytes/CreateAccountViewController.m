@@ -17,6 +17,7 @@
 #import "ParseClient.h"
 #import "StripeCustomer.h"
 #import "StripeCard.h"
+#import "LocationResult.h"
 
 @implementation CreateAccountViewController
 
@@ -29,14 +30,43 @@
 @synthesize createAccountButton;
 @synthesize tapGesture;
 @synthesize networkActivityIndicator;
+@synthesize locationPicker;
 
 NSString *createAccountSucceedSegue = @"CreateAccountSucceed";
 PFUser *user;
 NSMutableDictionary *newCard;
 STPCard *creditCard;
 STPToken *cardToken;
+LocationResult *pickupLocations;
+int selectedLocationId;
 
 int tagTextFieldToResign;
+
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (nil != pickupLocations) {
+        return [pickupLocations result].count;
+    }
+    return 0;
+}
+
+- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if(nil != pickupLocations){
+        return [pickupLocations.result[row] Name];
+    }
+    return @"";
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    selectedLocationId = [pickupLocations.result[row] LocationId];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,7 +86,17 @@ int tagTextFieldToResign;
     [self.view addGestureRecognizer:tapGesture];
     user = [PFUser object];
     
-    // Do any additional setup after loading the view.
+    ParseClient *parseClient = [ParseClient current];
+    [parseClient POST:Locations parameters:[[NSDictionary alloc] init]
+        success:^(NSURLSessionDataTask *operation, id responseObject) {
+            NSLog(@"Response object is : %@", responseObject);
+            NSError *error = nil;
+            pickupLocations = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
+            [locationPicker reloadAllComponents];
+        } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+            NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
+        }
+    ];
 }
 
 -(void)dismissKeyboard
@@ -122,8 +162,7 @@ int tagTextFieldToResign;
                                 parameters:stripeCustomer
                                 success:^(NSURLSessionDataTask *operation, id responseObject) {
                                     NSError *error = nil;
-                                    NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                                    StripeCustomer *customer = [[StripeCustomer alloc] initWithString:responseStr error:&error];
+                                    StripeCustomer *customer = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
 
                                     NSLog(@"Successfully created stripe customer object with email %@",customer.email);
                                     [self createCustomer:customer];
@@ -169,23 +208,13 @@ int tagTextFieldToResign;
     user.username = email.text;
     user.password = confirmPassword.text;
     [user setValue:stripeCustomerObject.id forKey:STRIPE_ID];
+    [user setValue:[NSNumber numberWithInteger:selectedLocationId] forKey:USER_LOCATION_ID];
 
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
         if(succeeded)
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
-            
-//            ParseClient *parseClient = [ParseClient current];
-//            [parseClient postPath:CreateUser parameters:[stripeCustomer toDictionary]
-//                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                    NSLog(@"Success in sending request to createuser (request url: %@).", [[[operation request] URL] absoluteString]);
-//                    NSLog(@"Response object is : %@", responseObject);
-//                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                    NSLog(@"Error in sending request to createuser %@ (request url: %@)", [error localizedDescription],[[[operation request] URL] absoluteString]);
-//                }
-//            ];
-            
             [self performSegueWithIdentifier:createAccountSucceedSegue sender:self];
         }
         else
@@ -218,7 +247,6 @@ int tagTextFieldToResign;
         *message = cardValidationError.description;
         return false;
     }
-            
     return true;
 }
 
@@ -259,15 +287,14 @@ int tagTextFieldToResign;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:createAccountSucceedSegue])
     {
-//        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
-//        tabBar.selectedIndex = ORDER_TAB;
+        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
+        tabBar.selectedIndex = ORDER_TAB;
     }
 }
 

@@ -21,7 +21,7 @@
 @synthesize orderItems;
 @synthesize couponId;
 
--(id)initEmptyOrder
+-(id)init
 {
     if(!(self = [super init]))
         return nil;
@@ -37,9 +37,16 @@
     static Order *currentOrder;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        currentOrder = [[self alloc] initEmptyOrder];
+        currentOrder = [[self alloc] init];
     });
     return currentOrder;
+}
+
+-(void)setupOrderWithMenu:(NSArray*)menu
+{
+    for (MenuItem* item in menu) {
+        [self setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:item] withQuantity:0];
+    }
 }
 
 -(NSMutableArray*)convertToOrderItemArray
@@ -48,8 +55,12 @@
     int count = 0;
     
     for (id key in orderItems) {
-        orderItemArray[count] = [orderItems objectForKey:key];
-        count++;
+        OrderItem* item = [orderItems objectForKey:key];
+        if(item.quantity > 0)
+        {
+            orderItemArray[count] = item;
+            count++;
+        }
     }
     
     return orderItemArray;
@@ -62,7 +73,15 @@
 
 -(int)getNumberUniqueItems
 {
-    return orderItems.count;
+    int uniqueCount = 0;
+    for (id key in orderItems) {
+        OrderItem* item = [orderItems objectForKey:key];
+        if(item.quantity > 0)
+        {
+            uniqueCount++;
+        }
+    }
+    return uniqueCount;
 }
 
 -(int)getTotalItemCount
@@ -71,7 +90,7 @@
     NSString *key;
     NSEnumerator *allItems = orderItems.keyEnumerator;
     while (key = [allItems nextObject]) {
-        totalCount += ((OrderItem*)[orderItems objectForKey:key]).orderCount;
+        totalCount += ((OrderItem*)[orderItems objectForKey:key]).quantity;
     }
     return totalCount;
 }
@@ -84,7 +103,7 @@
     if(nil == [orderItems valueForKey:itemId])
         return -1;
     
-    return ((OrderItem*)[orderItems valueForKey:itemId]).orderCount;
+    return ((OrderItem*)[orderItems valueForKey:itemId]).quantity;
 }
 
 -(void)clearEntireOrder
@@ -96,24 +115,17 @@
 {
     @synchronized(orderItems)
     {
-        if(orderItems.count > 100 || (orderItems.count + item.orderCount) > 100)
+        if(orderItems.count > 100 || (orderItems.count + item.quantity) > 100)
         {
             NSLog(@"Order limit exceeded.");
             return NO;
         }
         else
         {
-            if(0 == quantity)
-            {
-                [orderItems removeObjectForKey:item.menuItem.uniqueId];
-            }
-            else
-            {
-                item.orderCount = quantity;
-                [orderItems setValue:item forKey:item.menuItem.uniqueId];
-            }
+            item.quantity = quantity;
+            [orderItems setValue:item forKey:item.menuItem.uid];
             
-            NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.uniqueId]);
+            NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.uid]);
             NSLog(@"Current order : %@", orderItems);
             
             return YES;
@@ -121,23 +133,19 @@
     }
 }
 
-//- (void)removeMenuItemFromOrder:(MenuItem*)item
-//{
-//    @synchronized(menuItemsOrdered)
-//    {
-//        if(menuItemsOrdered.count != 0)
-//        {
-//            if(nil != [menuItemsOrdered valueForKey:item.name])
-//            {
-//                NSInteger menuItemOrderCount = [[menuItemsOrdered valueForKey:item.name] integerValue];
-//                menuItemOrderCount--;
-//                if(menuItemOrderCount == 0)
-//                    [menuItemsOrdered removeObjectForKey:item.name];
-//                else
-//                    [menuItemsOrdered setValue:[NSString stringWithFormat:@"%d",menuItemOrderCount] forKey:item.name];
-//            }
-//        }
-//    }
-//}
+-(double)calculateTotalOrderCost
+{
+    int totalCost = 0;
+    for (id key in orderItems) {
+        OrderItem* item = [orderItems objectForKey:key];
+        totalCost += [item calculateCost];
+    }
+    return totalCost;
+}
+
+-(double)calculateDoRyteDonation
+{
+    return [self calculateTotalOrderCost] * .05;
+}
 
 @end

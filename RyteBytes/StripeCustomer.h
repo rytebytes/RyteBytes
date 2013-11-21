@@ -22,10 +22,10 @@
 @property (nonatomic) int account_balance;
 @property (nonatomic,strong) NSString *default_card;
 @property (nonatomic) BOOL delinquent;
-@property (nonatomic,strong) NSString *description;
+@property (nonatomic,strong) NSString<Optional> *description;
 @property (nonatomic,strong) NSString *email;
-@property (nonatomic,strong) NSDictionary *subscription;
-@property (nonatomic,strong) NSDictionary *discount;
+@property (nonatomic,strong) NSDictionary<Optional> *subscription;
+@property (nonatomic,strong) NSDictionary<Optional> *discount;
 
 -(StripeCustomer*) initWithCard:(STPCard*)creditCard;
 

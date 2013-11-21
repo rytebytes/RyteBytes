@@ -41,6 +41,7 @@ int orderTotalCost = 0;
     currentOrder = [Order current];
     orderArray = [currentOrder convertToOrderItemArray];
     [orderSummary reloadData];
+    [self updateOrderCost];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -59,36 +60,40 @@ int orderTotalCost = 0;
     
     OrderItem *item = [orderArray objectAtIndex:indexPath.row];
     cell.itemName.text = item.menuItem.name;
-    cell.quantity.text = [NSString stringWithFormat:@"%d", item.orderCount];
-    
-    switch (item.menuItem.type) {
-        case Whole:
-            cell.unitCost.text = @"$10";
-            cell.totalCost.text = [NSString stringWithFormat:@"$%d",(item.orderCount * 10)];
-            orderTotalCost += (item.orderCount * 10);
-            break;
-        case Protein: case Starch: case Vegetable:
-            cell.unitCost.text = @"$2";
-            cell.totalCost.text = [NSString stringWithFormat:@"$%d",(item.orderCount * 2)];
-            orderTotalCost += (item.orderCount * 2);
-            break;
-    }
-    
-    [self updateOrderCost];
-    
+    cell.quantity.text = [NSString stringWithFormat:@"%d", item.quantity];
+    cell.stepper.value = item.quantity;
+    cell.uniqueId = item.menuItem.uid;
+    cell.unitCost.text = [NSString stringWithFormat:@"$%d", item.menuItem.cost];
+    cell.totalCost.text = [NSString stringWithFormat:@"$%.02f", [item calculateCost]];
+
     return cell;
 }
 
+//TODO : Have this code reviewed
+- (IBAction)valueChanged:(UIStepper *)sender {
+    int value = [sender value];
+    
+    OrderSummaryCell *cell = (OrderSummaryCell*)[[[sender superview] superview] superview];
+    OrderItem *selectedItem = [currentOrder getOrderItem:cell.uniqueId];
+    
+    cell.quantity.text = [NSString stringWithFormat:@"%d", value];
+    selectedItem.quantity = value;
+    [currentOrder setOrderItemQuantity:selectedItem withQuantity:value];
+    [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
+    orderArray = [currentOrder convertToOrderItemArray];
+    [self updateOrderCost];
+}
+
 - (void)updateOrderCost {
-    orderTotal.text = [NSString stringWithFormat:@"$%d", orderTotalCost];
-    doRyteTotal.text = [NSString stringWithFormat:@"$%.02f", orderTotalCost * .1];
+    orderTotal.text = [NSString stringWithFormat:@"$%.02f", [currentOrder calculateTotalOrderCost]];
+    doRyteTotal.text = [NSString stringWithFormat:@"$%.02f", [currentOrder calculateDoRyteDonation]];
 }
 
 - (IBAction)placeOrder:(id)sender {
     
     NSMutableDictionary *items = [[NSMutableDictionary alloc] init];
     for(int count = 0; count < orderArray.count; count++){
-        [items setValue:[NSString stringWithFormat:@"%d", ((OrderItem*)orderArray[count]).orderCount] forKey:((OrderItem*)orderArray[count]).menuItem.uniqueId];
+        [items setValue:[NSString stringWithFormat:@"%d", ((OrderItem*)orderArray[count]).quantity] forKey:((OrderItem*)orderArray[count]).menuItem.uid];
     }
     
     NSMutableDictionary *order = [[NSMutableDictionary alloc] init];
@@ -98,12 +103,13 @@ int orderTotalCost = 0;
     [order setValue:@"2" forKey:ORDER_COUPON_ID];
     [order setObject:items forKey:ORDER_ITEMS];
     
-    NSLog(@"send order for item (%@) with id : %@", ((OrderItem*)orderArray[0]).menuItem.name, ((OrderItem*)orderArray[0]).menuItem.uniqueId);
+    NSLog(@"send order for item (%@) with id : %@", ((OrderItem*)orderArray[0]).menuItem.name, ((OrderItem*)orderArray[0]).menuItem.uid);
     
     [[ParseClient current] POST:PlaceOrder parameters:order
             success:^(NSURLSessionDataTask *operation, id responseObject) {
                 NSLog(@"placed order succesfully, message : %@", responseObject);
-            } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+            }
+            failure:^(NSURLSessionDataTask *operation, NSError *error) {
                 NSLog(@"placed order failing, message : %@", [error localizedDescription]);
             }
      ];

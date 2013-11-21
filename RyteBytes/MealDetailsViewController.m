@@ -8,6 +8,7 @@
 
 #import "MealDetailsViewController.h"
 #import "OrderItem.h"
+#import "OrderSummaryViewController.h"
 
 @implementation MealDetailsViewController
 
@@ -21,10 +22,9 @@
 @synthesize calories;
 @synthesize carbs;
 @synthesize sodium;
+@synthesize mealName;
 
 OrderItem *orderItem;
-Order *currentOrder;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,31 +38,24 @@ Order *currentOrder;
 {
     self.navigationItem.hidesBackButton = NO;
     //Check to see if the user has already added this item to their order
-    currentOrder = [Order current];
-    int currentAmountForSelectedItem = [currentOrder getSpecificItemCount:menuItemSelected.uniqueId];
+    int currentAmountForSelectedItem = [[Order current] getSpecificItemCount:menuItemSelected.uid];
     
-    if(-1 != currentAmountForSelectedItem) {
-        self.quantityOrdered.text = [NSString stringWithFormat:@"%d", currentAmountForSelectedItem];
-        quantityStepper.value = currentAmountForSelectedItem;
-        orderItem = [currentOrder getOrderItem:menuItemSelected.uniqueId];
-    } else {
-        self.quantityOrdered.text = @"0";
-        quantityStepper.value = 0;
-        orderItem = [[OrderItem alloc] initWithMenuItem:menuItemSelected withQuantity:0];
-    }
-    
-//    for (int val = 0; val < currentAmountOrdered.doubleValue; val++) {
-//        quantityStepper.value++;
-//    }
+    self.quantityOrdered.text = [NSString stringWithFormat:@"%d", currentAmountForSelectedItem];
+    quantityStepper.value = currentAmountForSelectedItem;
+    orderItem = [[Order current] getOrderItem:menuItemSelected.uid];
 
-    self.quantityStepper.minimumValue = 0;
-    foodImage.image = [UIImage imageNamed:menuItemSelected.pictureName];
-    self.description.text = menuItemSelected.longDescription;
-    self.mealName.text = menuItemSelected.name;
-    self.calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.calories];
-    self.sodium.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.sodium];
-    self.protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.protein];
-    self.carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
+    quantityStepper.minimumValue = 0;
+    foodImage.image = [UIImage imageNamed:menuItemSelected.picture];
+    description.text = menuItemSelected.longDescription;
+    mealName.text = menuItemSelected.name;
+    [mealName setFont:[UIFont fontWithName:@"Times New Roman" size:24.0f]];
+    mealName.textAlignment = NSTextAlignmentCenter;
+    mealName.textColor = [UIColor blackColor];
+    
+    calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.calories];
+    sodium.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.sodium];
+    protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.protein];
+    carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
     
     [super viewDidLoad];
 }
@@ -78,6 +71,15 @@ Order *currentOrder;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Checkout"])
+    {
+        OrderSummaryViewController *orderController = segue.destinationViewController;
+        [orderController setDelegate:self.delegate];
+    }
+}
+
 - (IBAction)valueChanged:(UIStepper *)sender {
     int value = [sender value];
     
@@ -85,14 +87,9 @@ Order *currentOrder;
     
     NSLog(@"Setting item : %@ to quantity of : %d", menuItemSelected.name, value);
     
-    [currentOrder setOrderItemQuantity:orderItem withQuantity:value];
+    [[Order current] setOrderItemQuantity:orderItem withQuantity:value];
 //    [currentOrder setMenuItemQuantity:menuItemSelected withQuantity:value];
-    [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
+    [self.delegate setBadgeValue:[[Order current] getTotalItemCount]];
 }
 
 @end

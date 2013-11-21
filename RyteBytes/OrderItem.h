@@ -12,9 +12,11 @@
 @interface OrderItem : NSObject
 
 @property (nonatomic,strong) MenuItem* menuItem;
-@property (nonatomic) NSInteger orderCount;
+@property (nonatomic) NSInteger quantity;
 
 -(id)initWithMenuItem:(MenuItem*)item;
--(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)quantity;
+-(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)q;
+
+-(double)calculateCost;
 
 @end

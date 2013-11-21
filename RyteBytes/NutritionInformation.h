@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONModel.h"
 
-@interface NutritionInformation : NSObject
+@interface NutritionInformation : JSONModel
 
 @property NSInteger calories;
 @property NSInteger protein;
-@property NSInteger saturatedFat;
-@property NSInteger sodium;
+@property (nonatomic,strong) NSNumber<Optional> *saturatedFat;
+@property (nonatomic,strong) NSNumber<Optional> *sodium;
 @property NSInteger carbs;
 
 -(id)initWithDictionary:(NSDictionary*)information;

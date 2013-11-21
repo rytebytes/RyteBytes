@@ -12,15 +12,16 @@
 
 @implementation MenuItem
 
-@synthesize nutritionInfo;
+/**@synthesize nutritionInfo;
 @synthesize pictureName;
 @synthesize name;
 @synthesize type;
 @synthesize longDescription;
 @synthesize uniqueId;
+@synthesize cost;
 
 -(id)initWithName:(NSString*)n withType:(MenuItemTypes)t withNutritionInfo:(NutritionInformation*)info withPicture:(NSString*)p withLongDesc:(NSString*)d
-withUid:(NSString*)uid
+          withUid:(NSString*)uid withCost:(int)c
 {
     if(!(self = [super init]))
         return nil;
@@ -31,11 +32,12 @@ withUid:(NSString*)uid
     pictureName = p;
     longDescription = d;
     uniqueId = uid;
+    cost = c;
     
     return self;
 }
 
-/** Converts JSON returned from web service into an array of menu items for use within the application.
+ Converts JSON returned from web service into an array of menu items for use within the application.
  Expects the following json format:
  {
     "result" = [
@@ -56,7 +58,7 @@ withUid:(NSString*)uid
  
  @param menuJson the json returned from the server
  @returns Returns the array of menu items
- */
+
 +(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSDictionary*)menuJson
 {
     NSArray *itemArray = [menuJson objectForKey:@"result"];
@@ -71,7 +73,8 @@ withUid:(NSString*)uid
                                 withNutritionInfo:[[NutritionInformation alloc] initWithDictionary:[item valueForKey:@"nutrition_info"]]
                                 withPicture:[item valueForKey:@"picture"]
                                 withLongDesc:[item valueForKey:@"long_description"]
-                                withUid:[item valueForKey:@"uid"]];
+                                withUid:[item valueForKey:@"uid"]
+                                withCost:[item valueForKey:@"cost"]];
     }
 
     return menuItemArray;
@@ -85,6 +88,6 @@ withUid:(NSString*)uid
 +(NSMutableArray*) retrieveMenuFromDisk
 {
     return NULL;
-}
+} */
 
 @end

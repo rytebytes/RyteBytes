@@ -17,6 +17,7 @@ static NSString * const ParseVer = @"1";
 NSString * const CreateUser = @"createuser";
 NSString * const RetrieveMenu = @"retrievemenu";
 NSString * const PlaceOrder = @"order";
+NSString * const Locations = @"location";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {

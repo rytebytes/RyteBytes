@@ -24,10 +24,15 @@
 -(int)getSpecificItemCount:(NSString*)itemId;
 -(int)getNumberUniqueItems;
 -(NSMutableArray*)convertToOrderItemArray;
--(OrderItem*)getOrderItem:(NSString*)itemId;
 
--(void)clearEntireOrder;
+-(OrderItem*)getOrderItem:(NSString*)itemId;
 -(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity;
+
+-(void)setupOrderWithMenu:(NSArray*)menu;
+-(void)clearEntireOrder;
+
+-(double)calculateTotalOrderCost;
+-(double)calculateDoRyteDonation;
 
 @end
 

@@ -73,8 +73,8 @@ int tagTextFieldToResign;
     if([segue.identifier isEqualToString:@"LoginSuccess"])
     {
         NSLog(@"Currently logged in user email : %@", [PFUser currentUser].email);
-//        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
-//        tabBar.selectedIndex = ORDER_TAB;
+        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
+        tabBar.selectedIndex = ORDER_TAB;
     }
 }
 

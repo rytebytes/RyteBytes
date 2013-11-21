@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MealDetailsViewController.h"
 
-@interface PickMealViewController : UITableViewController <MenuItemAdded>
+@protocol MenuItemAdded <NSObject>
+- (void)setBadgeValue:(int)count;
+@end
+
+@interface MenuViewController : UITableViewController <MenuItemAdded>
 
 //nonatomic - faster than atomic, no valid value guarantee
 //copy - "pass by value" vs retain - "pass by reference"
 @property (nonatomic,copy) NSString *kiosk;
 //strong - keep on heap until nothing points to it
-@property (nonatomic,strong) NSMutableArray *menuItems;
+@property (nonatomic,strong) NSArray *menuItems;
 
 @end

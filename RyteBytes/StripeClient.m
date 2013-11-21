@@ -27,13 +27,13 @@ NSString * const CreateCustomer = @"customers";
     if(!self){
         return nil;
     }
-    AFJSONRequestSerializer *jsonRequest = [[AFJSONRequestSerializer alloc] init];
+        AFHTTPRequestSerializer *requestSerializer = [[AFHTTPRequestSerializer alloc] init];
+//    AFJSONRequestSerializer *jsonRequest = [[AFJSONRequestSerializer alloc] init];
     AFJSONResponseSerializer *jsonResponse = [[AFJSONResponseSerializer alloc]init];
-    
-    self.requestSerializer = jsonRequest;
+
+    self.requestSerializer = requestSerializer;
     self.responseSerializer = jsonResponse;
     
-    [self.requestSerializer setValue:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M" forHTTPHeaderField:@"X-Parse-Application-Id"];
     [self.requestSerializer setAuthorizationHeaderFieldWithUsername:@"sk_test_0eORjVUmVNJxwTHqMLLCogZr" password:@""];
     
     return self;

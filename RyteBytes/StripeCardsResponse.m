@@ -9,5 +9,8 @@
 #import "StripeCardsResponse.h"
 
 @implementation StripeCardsResponse
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end

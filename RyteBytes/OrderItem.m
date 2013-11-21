@@ -11,7 +11,7 @@
 
 @implementation OrderItem
 @synthesize menuItem;
-@synthesize orderCount;
+@synthesize quantity;
 
 -(id)initWithMenuItem:(MenuItem *)item
 {
@@ -19,20 +19,25 @@
         return nil;
     
     self.menuItem = item;
-    self.orderCount = 0;
+    self.quantity = 0;
     
     return self;
 }
 
--(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)quantity
+-(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)q
 {
     if(!(self = [super init]))
         return nil;
     
     self.menuItem = item;
-    self.orderCount = quantity;
+    self.quantity = q;
     
     return self;
+}
+
+-(double)calculateCost
+{
+    return menuItem.cost * quantity;
 }
 
 @end

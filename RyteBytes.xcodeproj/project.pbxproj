@@ -61,7 +61,7 @@
 		01191776172326F80085CA7B /* MealDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191775172326F80085CA7B /* MealDetailsViewController.m */; };
 		01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01193D4A1719EA5F007782B9 /* NutritionInformation.m */; };
 		011CEDEE170600F800AE586E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 011CEDED170600F800AE586E /* Default-568h@2x.png */; };
-		011CEDF21706042300AE586E /* PickMealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF11706042300AE586E /* PickMealViewController.m */; };
+		011CEDF21706042300AE586E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF11706042300AE586E /* MenuViewController.m */; };
 		011CEDF51706260800AE586E /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF41706260800AE586E /* Dish.m */; };
 		0122254E179AEE2B0026922A /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122254D179AEE2B0026922A /* MenuItem.m */; };
 		0122254F179AEE2B0026922A /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122254D179AEE2B0026922A /* MenuItem.m */; };
@@ -70,6 +70,12 @@
 		01222556179AFD650026922A /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 01222555179AFD650026922A /* Order.m */; };
 		01222557179AFD650026922A /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 01222555179AFD650026922A /* Order.m */; };
 		0122255B179B16240026922A /* OrderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122255A179B16240026922A /* OrderTests.m */; };
+		0131E5E41837C32C00556178 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5E31837C32C00556178 /* Images.xcassets */; };
+		0131E5EC1837C91400556178 /* 120x120 white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5EB1837C91400556178 /* 120x120 white.png */; };
+		0131E5F01837CBD100556178 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5EF1837CBD100556178 /* LaunchImage.png */; };
+		0131E5F3183815F400556178 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131E5F2183815F400556178 /* Location.m */; };
+		0131E5F718381CF900556178 /* LocationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131E5F618381CF900556178 /* LocationResult.m */; };
+		0131E5FA183D87BA00556178 /* MenuResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131E5F9183D87BA00556178 /* MenuResult.m */; };
 		01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3518243CCF00670D23 /* Default-568h@2x.png */; };
 		01350D3A18243E3600670D23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3918243E3600670D23 /* Default@2x.png */; };
 		01350D3C182443A600670D23 /* beets_carrots.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3B182443A600670D23 /* beets_carrots.png */; };
@@ -88,7 +94,7 @@
 		016B0CA6178F7CA100F80748 /* Do Ryte GoldiApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */; };
 		0173747317DFEAE90090849A /* OrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0173747217DFEAE90090849A /* OrderItem.m */; };
 		0176638316C05809003BBD47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638216C05809003BBD47 /* UIKit.framework */; };
-		0176638516C05809003BBD47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638416C05809003BBD47 /* Foundation.framework */; };
+		0176638516C05809003BBD47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638416C05809003BBD47 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0176638716C05809003BBD47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638616C05809003BBD47 /* CoreGraphics.framework */; };
 		0176638D16C05809003BBD47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0176638B16C05809003BBD47 /* InfoPlist.strings */; };
 		0176638F16C05809003BBD47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0176638E16C05809003BBD47 /* main.m */; };
@@ -208,8 +214,8 @@
 		01193D491719EA5F007782B9 /* NutritionInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionInformation.h; sourceTree = "<group>"; };
 		01193D4A1719EA5F007782B9 /* NutritionInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionInformation.m; sourceTree = "<group>"; };
 		011CEDED170600F800AE586E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		011CEDF01706042300AE586E /* PickMealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickMealViewController.h; sourceTree = "<group>"; };
-		011CEDF11706042300AE586E /* PickMealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickMealViewController.m; sourceTree = "<group>"; };
+		011CEDF01706042300AE586E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		011CEDF11706042300AE586E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		011CEDF31706260800AE586E /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
 		011CEDF41706260800AE586E /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
 		0122254C179AEE2B0026922A /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
@@ -220,6 +226,15 @@
 		01222555179AFD650026922A /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		01222559179B16240026922A /* OrderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTests.h; sourceTree = "<group>"; };
 		0122255A179B16240026922A /* OrderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTests.m; sourceTree = "<group>"; };
+		0131E5E31837C32C00556178 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0131E5EB1837C91400556178 /* 120x120 white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120x120 white.png"; sourceTree = "<group>"; };
+		0131E5EF1837CBD100556178 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		0131E5F1183815F400556178 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		0131E5F2183815F400556178 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		0131E5F518381CF900556178 /* LocationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationResult.h; sourceTree = "<group>"; };
+		0131E5F618381CF900556178 /* LocationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationResult.m; sourceTree = "<group>"; };
+		0131E5F8183D87BA00556178 /* MenuResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuResult.h; sourceTree = "<group>"; };
+		0131E5F9183D87BA00556178 /* MenuResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuResult.m; sourceTree = "<group>"; };
 		01350D3518243CCF00670D23 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		01350D3918243E3600670D23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		01350D3B182443A600670D23 /* beets_carrots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beets_carrots.png; sourceTree = "<group>"; };
@@ -461,8 +476,8 @@
 				0176639816C05809003BBD47 /* EatRyteViewController.m */,
 				0176639E16C05809003BBD47 /* TabBarController.h */,
 				0176639F16C05809003BBD47 /* TabBarController.m */,
-				011CEDF01706042300AE586E /* PickMealViewController.h */,
-				011CEDF11706042300AE586E /* PickMealViewController.m */,
+				011CEDF01706042300AE586E /* MenuViewController.h */,
+				011CEDF11706042300AE586E /* MenuViewController.m */,
 				01191774172326F80085CA7B /* MealDetailsViewController.h */,
 				01191775172326F80085CA7B /* MealDetailsViewController.m */,
 				015BD2FE173EDA70008AB447 /* OrderSummaryViewController.h */,
@@ -471,6 +486,17 @@
 				01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */,
 			);
 			name = Ordering;
+			sourceTree = "<group>";
+		};
+		0131E5F418381CEC00556178 /* ResultObjects */ = {
+			isa = PBXGroup;
+			children = (
+				0131E5F518381CF900556178 /* LocationResult.h */,
+				0131E5F618381CF900556178 /* LocationResult.m */,
+				0131E5F8183D87BA00556178 /* MenuResult.h */,
+				0131E5F9183D87BA00556178 /* MenuResult.m */,
+			);
+			name = ResultObjects;
 			sourceTree = "<group>";
 		};
 		013DE02C17CC1B51004EFFF6 /* Stripe */ = {
@@ -569,6 +595,7 @@
 				0176638916C05809003BBD47 /* Supporting Files */,
 				01222550179AFA830026922A /* Constants.h */,
 				01222551179AFA840026922A /* Constants.m */,
+				0131E5E31837C32C00556178 /* Images.xcassets */,
 			);
 			path = RyteBytes;
 			sourceTree = "<group>";
@@ -630,6 +657,8 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0131E5EF1837CBD100556178 /* LaunchImage.png */,
+				0131E5EB1837C91400556178 /* 120x120 white.png */,
 				01350D3F1824559100670D23 /* carrots_turnips.png */,
 				01350D401824559100670D23 /* cauliflower.png */,
 				01350D411824559100670D23 /* pasta.png */,
@@ -665,6 +694,7 @@
 		0192CC1616C05F4C0024815F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0131E5F418381CEC00556178 /* ResultObjects */,
 				01193D491719EA5F007782B9 /* NutritionInformation.h */,
 				01193D4A1719EA5F007782B9 /* NutritionInformation.m */,
 				0192CC1916C05FE50024815F /* Customer.m */,
@@ -676,6 +706,8 @@
 				01222555179AFD650026922A /* Order.m */,
 				0173747117DFEAE90090849A /* OrderItem.h */,
 				0173747217DFEAE90090849A /* OrderItem.m */,
+				0131E5F1183815F400556178 /* Location.h */,
+				0131E5F2183815F400556178 /* Location.m */,
 				01CD83C517B6B3AE001A19C5 /* Third Party */,
 			);
 			name = Models;
@@ -810,6 +842,7 @@
 				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
 				011CEDEE170600F800AE586E /* Default-568h@2x.png in Resources */,
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
+				0131E5F01837CBD100556178 /* LaunchImage.png in Resources */,
 				01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */,
 				01350D471824559100670D23 /* pasta.png in Resources */,
 				01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */,
@@ -826,6 +859,7 @@
 				0102527617B46B6F00BF1F3C /* cvc-amex@2x.png in Resources */,
 				01350D4A1824559100670D23 /* rice.png in Resources */,
 				01350D461824559100670D23 /* cauliflower.png in Resources */,
+				0131E5EC1837C91400556178 /* 120x120 white.png in Resources */,
 				0102527717B46B6F00BF1F3C /* cvc.png in Resources */,
 				0102527817B46B6F00BF1F3C /* cvc@2x.png in Resources */,
 				01AFAFCD1819C39900B2151A /* Logo.png in Resources */,
@@ -841,6 +875,7 @@
 				0102528217B46B6F00BF1F3C /* placeholder@2x.png in Resources */,
 				01350D491824559100670D23 /* potatoes.png in Resources */,
 				0102528317B46B6F00BF1F3C /* visa.png in Resources */,
+				0131E5E41837C32C00556178 /* Images.xcassets in Resources */,
 				01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */,
 				0102528417B46B6F00BF1F3C /* visa@2x.png in Resources */,
 				01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */,
@@ -919,7 +954,7 @@
 				0176639916C05809003BBD47 /* EatRyteViewController.m in Sources */,
 				017663A016C05809003BBD47 /* TabBarController.m in Sources */,
 				0192CC1A16C05FE50024815F /* Customer.m in Sources */,
-				011CEDF21706042300AE586E /* PickMealViewController.m in Sources */,
+				011CEDF21706042300AE586E /* MenuViewController.m in Sources */,
 				011CEDF51706260800AE586E /* Dish.m in Sources */,
 				01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */,
 				01191773172310370085CA7B /* MenuCell.m in Sources */,
@@ -932,6 +967,7 @@
 				0177532C178241A200296315 /* CreateAccountViewController.m in Sources */,
 				01A35DED1791BACC00DEBC46 /* OrderNotifications.m in Sources */,
 				0122254E179AEE2B0026922A /* MenuItem.m in Sources */,
+				0131E5F718381CF900556178 /* LocationResult.m in Sources */,
 				01222552179AFA840026922A /* Constants.m in Sources */,
 				01222556179AFD650026922A /* Order.m in Sources */,
 				0102526417B46B6F00BF1F3C /* STPCard.m in Sources */,
@@ -944,11 +980,13 @@
 				0102526D17B46B6F00BF1F3C /* PKCardCVC.m in Sources */,
 				0102526E17B46B6F00BF1F3C /* PKCardExpiry.m in Sources */,
 				0102526F17B46B6F00BF1F3C /* PKCardNumber.m in Sources */,
+				0131E5F3183815F400556178 /* Location.m in Sources */,
 				0102527017B46B6F00BF1F3C /* PKTextField.m in Sources */,
 				0102527117B46B6F00BF1F3C /* PKUSAddressZip.m in Sources */,
 				0102527217B46B6F00BF1F3C /* PKView.m in Sources */,
 				01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */,
 				01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */,
+				0131E5FA183D87BA00556178 /* MenuResult.m in Sources */,
 				013DE02F17CC1BC2004EFFF6 /* StripeCard.m in Sources */,
 				013DE03317CC3CF7004EFFF6 /* ParseClient.m in Sources */,
 				0173747317DFEAE90090849A /* OrderItem.m in Sources */,
@@ -1092,7 +1130,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
 				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
@@ -1103,8 +1141,9 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "63E30696-34A7-4E90-82DE-9E29B14EE9B5";
+				PROVISIONING_PROFILE = "";
 				TEST_AFTER_BUILD = NO;
+				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s armv6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1124,7 +1163,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
 				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
@@ -1132,8 +1171,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "63E30696-34A7-4E90-82DE-9E29B14EE9B5";
+				PROVISIONING_PROFILE = "";
 				TEST_AFTER_BUILD = NO;
+				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s armv6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

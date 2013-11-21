@@ -7,7 +7,7 @@
 //
 
 #import "EatRyteViewController.h"
-#import "PickMealViewController.h"
+#import "MenuViewController.h"
 
 @implementation EatRyteViewController
 

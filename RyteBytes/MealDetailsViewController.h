@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Order.h"
+#import "MenuViewController.h"
 
 @class MealDetailsViewController;
-
-@protocol MenuItemAdded <NSObject>
-- (void)setBadgeValue:(int)count;
-@end
 
 @protocol MenuDetailsCancel <NSObject>
 - (void)mealDetailsViewControllerDidCancel:(MealDetailsViewController *)controller;

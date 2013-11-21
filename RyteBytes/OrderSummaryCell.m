@@ -14,6 +14,8 @@
 @synthesize totalCost;
 @synthesize unitCost;
 @synthesize quantity;
+@synthesize stepper;
+@synthesize uniqueId;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
