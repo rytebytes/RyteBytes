@@ -78,9 +78,36 @@ int tagTextFieldToResign;
     }
 }
 
+-(IBAction)resetPassword:(id)sender
+{
+    NSString *username = self.email.text;
+    if(username && username.length != 0){
+        PFQuery *emailExists = [PFUser query];
+        [emailExists whereKey:@"username" equalTo:username];
+        
+        NSArray *user = [emailExists findObjects];
+        
+        if (user.count == 0) {
+            [[[UIAlertView alloc] initWithTitle:@"Email invalid."
+                                        message:@"Please enter a valid email."
+                                       delegate:nil
+                              cancelButtonTitle:@"Okay"
+                              otherButtonTitles:nil] show];
+        }
+        
+        [PFUser requestPasswordResetForEmail:username];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Email missing."
+                                    message:@"Please enter your email in the box before requesting to reset your password."
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay"
+                          otherButtonTitles:nil] show];
+    }
+
+}
 
 
-- (IBAction)attemptLogin:(id)sender {
+-(IBAction)attemptLogin:(id)sender {
     
     NSString *username = self.email.text;
     NSString *password = self.password.text;

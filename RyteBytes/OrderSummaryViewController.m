@@ -99,7 +99,7 @@ int orderTotalCost = 0;
     NSMutableDictionary *order = [[NSMutableDictionary alloc] init];
     
     [order setValue:[PFUser currentUser].objectId forKey:ORDER_USER_ID];
-    [order setValue:@"1" forKey:ORDER_PICKUP_ID];
+    [order setValue:@"1" forKey:ORDER_LOCATION_ID];
     [order setValue:@"2" forKey:ORDER_COUPON_ID];
     [order setObject:items forKey:ORDER_ITEMS];
     

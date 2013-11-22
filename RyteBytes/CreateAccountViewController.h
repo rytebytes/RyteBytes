@@ -9,8 +9,14 @@
 #import <Parse/Parse.h>
 #import "CardIO.h"
 #import "StripeCustomer.h"
+#import "JSONResponseSerializerWithData.h"
 
-@interface CreateAccountViewController : UIViewController <CardIOPaymentViewControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface CreateAccountViewController : UIViewController <
+    CardIOPaymentViewControllerDelegate,
+    UITextFieldDelegate,
+    UIPickerViewDelegate,
+    UIPickerViewDataSource,
+    UIAlertViewDelegate>
 
 @property (nonatomic,strong) IBOutlet UIView *createAccountView;
 @property (nonatomic,strong) IBOutlet UITextField *email;

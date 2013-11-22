@@ -18,6 +18,9 @@
 #import "StripeCustomer.h"
 #import "StripeCard.h"
 #import "LocationResult.h"
+#import "StripeError.h"
+#import "StripeErrorResponse.h"
+#import "SVProgressHUD.h"
 
 @implementation CreateAccountViewController
 
@@ -86,11 +89,17 @@ int tagTextFieldToResign;
     [self.view addGestureRecognizer:tapGesture];
     user = [PFUser object];
     
+    networkActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [networkActivityIndicator startAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     ParseClient *parseClient = [ParseClient current];
     [parseClient POST:Locations parameters:[[NSDictionary alloc] init]
         success:^(NSURLSessionDataTask *operation, id responseObject) {
             NSLog(@"Response object is : %@", responseObject);
             NSError *error = nil;
+            [networkActivityIndicator stopAnimating];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             pickupLocations = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
             [locationPicker reloadAllComponents];
         } failure:^(NSURLSessionDataTask *operation, NSError *error) {
@@ -142,11 +151,6 @@ int tagTextFieldToResign;
         networkActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         networkActivityIndicator.center=self.view.center;
         [networkActivityIndicator startAnimating];
-//      [self.view addSubview:activityView];
-        
-//        StripeCustomer *stripeCustomer = [[StripeCustomer alloc] initWithCard:creditCard];
-//        stripeCustomer.email = email.text;
-//        NSLog(@"Stripe customer to dict : %@", [stripeCustomer toDictionary]);
         
         NSMutableDictionary *card = [[NSMutableDictionary alloc] init];
         [card setValue:creditCard.number forKey:@"number"];
@@ -157,6 +161,8 @@ int tagTextFieldToResign;
         NSMutableDictionary *stripeCustomer = [[NSMutableDictionary alloc] init];
         [stripeCustomer setValue:email.text forKey:@"email"];
         [stripeCustomer setObject:card forKey:@"card"];
+        
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
        
         [[StripeClient current] POST:CreateCustomer
                                 parameters:stripeCustomer
@@ -168,11 +174,18 @@ int tagTextFieldToResign;
                                     [self createCustomer:customer];
                                 }
                                 failure:^(NSURLSessionDataTask *operation, NSError *error) {
-                                    NSLog(@"Error returned from stripe customer creation. %@", error);
+                                    NSError *modelConversionError;
+                                    StripeError *stripeError = [[StripeErrorResponse alloc] initWithString:error.userInfo[JSONResponseSerializerWithDataKey] error:&modelConversionError].error;
+                                    NSLog(@"Error returned from stripe customer creation. Code:%@ . Message : %@", stripeError.code, stripeError.message);
+                                    UIAlertView *cardFailed = [[UIAlertView alloc] initWithTitle:@"Invalid credit card info." message:stripeError.message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                    [SVProgressHUD dismiss];
+                                    [cardFailed show];
                                 }];
     }
     else {
         NSLog(@"Account creation validation failed with message : %@", [NSString stringWithString:message]);
+        UIAlertView *validationFailed = [[UIAlertView alloc] initWithTitle:@"Invalid information." message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [validationFailed show];
     }
 }
 
@@ -212,6 +225,7 @@ int tagTextFieldToResign;
 
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
+        [SVProgressHUD dismiss];
         if(succeeded)
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
@@ -245,8 +259,23 @@ int tagTextFieldToResign;
     if(![creditCard validateCardReturningError:&cardValidationError])
     {
         *message = cardValidationError.description;
+        if (0 == [*message length]) {
+            *message = @"Invalid credit card information entered, please enter valid information.";
+        }
         return false;
     }
+    
+    //4. Verify the email hasn't been taken already in Parse
+    PFQuery *emailExists = [PFUser query];
+    [emailExists whereKey:@"username" equalTo:email.text];
+    
+    NSArray *user = [emailExists findObjects];
+    
+    if (user.count == 0) {
+        *message = @"An account has already been created with that email.  If you've forgotten your password, click on the forgot password button on the 'Sign In' screen.";
+        return false;
+    }
+
     return true;
 }
 

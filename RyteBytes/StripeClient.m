@@ -7,6 +7,7 @@
 //
 
 #import "StripeClient.h"
+#import "JSONResponseSerializerWithData.h"
 
 @implementation StripeClient
 
@@ -27,9 +28,8 @@ NSString * const CreateCustomer = @"customers";
     if(!self){
         return nil;
     }
-        AFHTTPRequestSerializer *requestSerializer = [[AFHTTPRequestSerializer alloc] init];
-//    AFJSONRequestSerializer *jsonRequest = [[AFJSONRequestSerializer alloc] init];
-    AFJSONResponseSerializer *jsonResponse = [[AFJSONResponseSerializer alloc]init];
+    AFHTTPRequestSerializer *requestSerializer = [[AFHTTPRequestSerializer alloc] init];
+    JSONResponseSerializerWithData *jsonResponse = [[JSONResponseSerializerWithData alloc]init];
 
     self.requestSerializer = requestSerializer;
     self.responseSerializer = jsonResponse;

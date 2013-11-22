@@ -42,47 +42,64 @@ NSMutableDictionary *order;
     
     if(menuItems == NULL)
     {
-        ParseClient *parseClient = [ParseClient current];
-        [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] init]
-                      success:^(NSURLSessionDataTask *task , id responseObject) {
-                          NSError *error = nil;
-                          menuItems = [[MenuResult alloc] initWithDictionary:responseObject error:&error].result;
-                          [[Order current] setupOrderWithMenu:menuItems];
-                          [self.tableView reloadData];
-                      } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-                          NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
-                      }];
+        [self refreshMenu];
     }
     
     NSLog(@"The current order is : %@",((TabBarController*)(self.tabBarController)).currentOrder);
     
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
+    [refresh addTarget:self action:@selector(refreshMenu) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     order = [NSMutableDictionary dictionary];
 }
 
-- (void)didReceiveMemoryWarning
+-(void)refreshMenu
+{
+    ParseClient *parseClient = [ParseClient current];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] init]
+          success:^(NSURLSessionDataTask *task , id responseObject) {
+              NSError *error = nil;
+              menuItems = [[MenuResult alloc] initWithDictionary:responseObject error:&error].result;
+              [[Order current] setupOrderWithMenu:menuItems];
+              [self.tableView reloadData];
+              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+              [self stopRefresh];
+          } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+              NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
+          }
+     ];
+}
+
+-(void)stopRefresh
+{
+    [self.refreshControl endRefreshing];
+}
+
+-(void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.menuItems count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     

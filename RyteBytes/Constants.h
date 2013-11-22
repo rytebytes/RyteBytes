@@ -33,7 +33,7 @@ extern NSString * const USER_LOCATION_ID;
 
 //Keys for order JSON
 extern NSString * const ORDER_USER_ID;
-extern NSString * const ORDER_PICKUP_ID;
+extern NSString * const ORDER_LOCATION_ID;
 extern NSString * const ORDER_ITEMS;
 extern NSString * const ORDER_COUPON_ID;
 

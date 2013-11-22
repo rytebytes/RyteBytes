@@ -33,6 +33,7 @@ NSMutableArray *components;
     [Stripe setDefaultPublishableKey:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr"];
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    [[UIActivityIndicatorView appearance] setTintColor:[UIColor yellowColor]];
 //
 //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     

@@ -124,6 +124,9 @@
 		01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */; };
 		01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83CA17B6B443001A19C5 /* StripeClient.m */; };
 		01CD83CC17B6B443001A19C5 /* StripeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83CA17B6B443001A19C5 /* StripeClient.m */; };
+		01CE5DBF1840019F006EB46D /* JSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5DBE1840019F006EB46D /* JSONResponseSerializerWithData.m */; };
+		01CE5DC2184003ED006EB46D /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5DC1184003ED006EB46D /* StripeError.m */; };
+		01CE5DC5184005E2006EB46D /* StripeErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5DC4184005E2006EB46D /* StripeErrorResponse.m */; };
 		01CF7F9D172C777D0072D714 /* FoodImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CF7F9C172C777D0072D714 /* FoodImage.m */; };
 		01DAC6CC177D024E00158C9B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DAC6CB177D024E00158C9B /* LoginViewController.m */; };
 		1AA06C3B66104C16A72EEF95 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BBADCDE86D49C2B2B65325 /* libPods.a */; };
@@ -304,6 +307,12 @@
 		01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCustomer.m; sourceTree = "<group>"; };
 		01CD83C917B6B443001A19C5 /* StripeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeClient.h; sourceTree = "<group>"; };
 		01CD83CA17B6B443001A19C5 /* StripeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeClient.m; sourceTree = "<group>"; };
+		01CE5DBD1840019F006EB46D /* JSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONResponseSerializerWithData.h; sourceTree = "<group>"; };
+		01CE5DBE1840019F006EB46D /* JSONResponseSerializerWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONResponseSerializerWithData.m; sourceTree = "<group>"; };
+		01CE5DC0184003ED006EB46D /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
+		01CE5DC1184003ED006EB46D /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
+		01CE5DC3184005E2006EB46D /* StripeErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeErrorResponse.h; sourceTree = "<group>"; };
+		01CE5DC4184005E2006EB46D /* StripeErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeErrorResponse.m; sourceTree = "<group>"; };
 		01CF7F9B172C777D0072D714 /* FoodImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodImage.h; sourceTree = "<group>"; };
 		01CF7F9C172C777D0072D714 /* FoodImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodImage.m; sourceTree = "<group>"; };
 		01DAC6CA177D024E00158C9B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -495,6 +504,8 @@
 				0131E5F618381CF900556178 /* LocationResult.m */,
 				0131E5F8183D87BA00556178 /* MenuResult.h */,
 				0131E5F9183D87BA00556178 /* MenuResult.m */,
+				01CE5DC3184005E2006EB46D /* StripeErrorResponse.h */,
+				01CE5DC4184005E2006EB46D /* StripeErrorResponse.m */,
 			);
 			name = ResultObjects;
 			sourceTree = "<group>";
@@ -748,6 +759,8 @@
 			children = (
 				013DE03017CC3CE8004EFFF6 /* Parse */,
 				01CD83C817B6B425001A19C5 /* Stripe */,
+				01CE5DBD1840019F006EB46D /* JSONResponseSerializerWithData.h */,
+				01CE5DBE1840019F006EB46D /* JSONResponseSerializerWithData.m */,
 			);
 			name = "Web Services";
 			sourceTree = "<group>";
@@ -757,6 +770,8 @@
 			children = (
 				01CD83C917B6B443001A19C5 /* StripeClient.h */,
 				01CD83CA17B6B443001A19C5 /* StripeClient.m */,
+				01CE5DC0184003ED006EB46D /* StripeError.h */,
+				01CE5DC1184003ED006EB46D /* StripeError.m */,
 			);
 			name = Stripe;
 			sourceTree = "<group>";
@@ -955,8 +970,10 @@
 				017663A016C05809003BBD47 /* TabBarController.m in Sources */,
 				0192CC1A16C05FE50024815F /* Customer.m in Sources */,
 				011CEDF21706042300AE586E /* MenuViewController.m in Sources */,
+				01CE5DC2184003ED006EB46D /* StripeError.m in Sources */,
 				011CEDF51706260800AE586E /* Dish.m in Sources */,
 				01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */,
+				01CE5DC5184005E2006EB46D /* StripeErrorResponse.m in Sources */,
 				01191773172310370085CA7B /* MenuCell.m in Sources */,
 				01191776172326F80085CA7B /* MealDetailsViewController.m in Sources */,
 				01CF7F9D172C777D0072D714 /* FoodImage.m in Sources */,
@@ -976,6 +993,7 @@
 				0102526717B46B6F00BF1F3C /* Stripe.m in Sources */,
 				0102526817B46B6F00BF1F3C /* StripeError.m in Sources */,
 				0102526B17B46B6F00BF1F3C /* PKAddressZip.m in Sources */,
+				01CE5DBF1840019F006EB46D /* JSONResponseSerializerWithData.m in Sources */,
 				0102526C17B46B6F00BF1F3C /* PKCard.m in Sources */,
 				0102526D17B46B6F00BF1F3C /* PKCardCVC.m in Sources */,
 				0102526E17B46B6F00BF1F3C /* PKCardExpiry.m in Sources */,
