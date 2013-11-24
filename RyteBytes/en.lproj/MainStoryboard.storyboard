@@ -25,13 +25,18 @@
                                             <rect key="frame" x="-6" y="-6" width="332" height="139"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U4C-A7-gYX">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U4C-A7-gYX">
                                             <rect key="frame" x="19" y="8" width="255" height="22"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="1" alpha="0.75" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
+                                        <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="rBp-nu-M4Y">
+                                            <rect key="frame" x="7" y="91" width="94" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </stepper>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration">
@@ -259,27 +264,27 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZV8-2G-SG6">
-                                                    <rect key="frame" x="230" y="33" width="83" height="34"/>
+                                                    <rect key="frame" x="229" y="33" width="83" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="unit cost" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CtB-d5-bjk">
-                                                    <rect key="frame" x="291" y="0.0" width="30" height="34"/>
+                                                    <rect key="frame" x="290" y="0.0" width="30" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="odu-pd-rRK">
-                                                    <rect key="frame" x="260" y="0.0" width="23" height="34"/>
+                                                    <rect key="frame" x="259" y="0.0" width="23" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="Wg8-i6-dtf">
-                                                    <rect key="frame" x="113" y="20" width="94" height="29"/>
+                                                    <rect key="frame" x="111" y="20" width="94" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <action selector="valueChanged:" destination="bEg-Gz-zQg" eventType="valueChanged" id="Ew2-ff-GHP"/>
@@ -317,7 +322,7 @@
             </objects>
             <point key="canvasLocation" x="1609" y="-460"/>
         </scene>
-        <!--View Controller - Cooking-->
+        <!--View Controller - Heating-->
         <scene sceneID="k7F-er-7MI">
             <objects>
                 <viewController storyboardIdentifier="Cooking" id="g9o-LP-wGj" sceneMemberID="viewController">
@@ -325,17 +330,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cooking" lineBreakMode="tailTruncation" minimumFontSize="10" id="Has-Bm-tun">
-                                <rect key="frame" x="156" y="92" width="63" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heating Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hpq-DN-KRA">
+                                <rect key="frame" x="51" y="20" width="218" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="22" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mjn-UB-mlO">
+                                <rect key="frame" x="8" y="70" width="307" height="428"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">1.) PUT THE BAGS IN A POT (NO MORE THAN 2 PASTA MEALS OR 6 INDIVIDUAL COMPONENTS)
+
+2.) FILL WITH HOT WATER UNTIL BAGS ARE COVERED
+
+3.) PUT THE POT ON YOUR BIGGEST BURNER, TURN ON HIGH AND COVER WITH THE LID.
+
+4.) HEAT FOR THE FOLLOWING TIME, BASED ON THE NUMBER OF BAGS:
+
+1 - 3 BAGS : 20 MINUTES
+
+4 - 6 BAGS : 25 MINUTES
+
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cooking" id="qZc-9z-WBV"/>
+                    <tabBarItem key="tabBarItem" title="Heating" id="qZc-9z-WBV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzc-eL-YWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -482,7 +506,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="center" minimumFontSize="17" id="1Iw-4P-vLM">
-                                        <rect key="frame" x="20" y="169" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="141" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
@@ -491,7 +515,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1005" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="center" minimumFontSize="17" id="Phh-b1-tZg">
-                                        <rect key="frame" x="20" y="225" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="185" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
@@ -500,7 +524,7 @@
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Logo.png" id="NpD-za-Q5q">
-                                        <rect key="frame" x="10" y="42" width="300" height="119"/>
+                                        <rect key="frame" x="10" y="29" width="300" height="119"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <view alpha="0.74999999999999978" contentMode="scaleToFill" id="tWk-Bv-VJK">
@@ -524,7 +548,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bJo-5e-J5e">
-                                        <rect key="frame" x="67" y="279" width="186" height="71"/>
+                                        <rect key="frame" x="20" y="230" width="145" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
@@ -537,7 +561,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WZ9-A8-Z5o">
-                                        <rect key="frame" x="92" y="375" width="136" height="30"/>
+                                        <rect key="frame" x="174" y="237" width="136" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Forget password?">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -608,7 +632,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HNh-NU-wMM">
-                                        <rect key="frame" x="83" y="443" width="149" height="44"/>
+                                        <rect key="frame" x="83" y="445" width="149" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
@@ -621,7 +645,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Al7-bS-lHf">
-                                        <rect key="frame" x="44" y="509" width="232" height="44"/>
+                                        <rect key="frame" x="70" y="509" width="175" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
@@ -744,7 +768,7 @@
         <scene sceneID="O4e-60-5uT">
             <objects>
                 <navigationController id="qzs-qr-hkk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Eat Ryte" id="eZL-2o-HTy"/>
+                    <tabBarItem key="tabBarItem" title="Eat Ryte" image="EatRyte 50x50.png" id="eZL-2o-HTy"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7ab-uQ-V4H"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jm1-Uf-Rz0">
@@ -762,6 +786,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="EatRyte 50x50.png" width="50" height="50"/>
         <image name="LaunchImage.png" width="640" height="1136"/>
         <image name="Logo.png" width="3056" height="530"/>
     </resources>
@@ -772,8 +797,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PC0-vq-0fP"/>
         <segue reference="7DZ-Bq-pog"/>
+        <segue reference="PC0-vq-0fP"/>
         <segue reference="zMP-DP-Ye7"/>
     </inferredMetricsTieBreakers>
 </document>

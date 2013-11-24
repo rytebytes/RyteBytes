@@ -271,7 +271,7 @@ int tagTextFieldToResign;
     
     NSArray *user = [emailExists findObjects];
     
-    if (user.count == 0) {
+    if (user.count > 0) {
         *message = @"An account has already been created with that email.  If you've forgotten your password, click on the forgot password button on the 'Sign In' screen.";
         return false;
     }

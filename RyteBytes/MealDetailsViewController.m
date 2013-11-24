@@ -53,7 +53,7 @@ OrderItem *orderItem;
     mealName.textColor = [UIColor blackColor];
     
     calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.calories];
-    sodium.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.sodium];
+    sodium.text = [NSString stringWithFormat:@"%@", menuItemSelected.nutritionInfo.sodium];
     protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.protein];
     carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
     

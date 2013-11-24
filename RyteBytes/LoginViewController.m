@@ -58,7 +58,6 @@ int tagTextFieldToResign;
     {
         [self attemptLogin:NULL];
     }
-    
     return YES;
 }
 
@@ -94,8 +93,10 @@ int tagTextFieldToResign;
                               cancelButtonTitle:@"Okay"
                               otherButtonTitles:nil] show];
         }
+        else{
+            [PFUser requestPasswordResetForEmail:username];
+        }
         
-        [PFUser requestPasswordResetForEmail:username];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"Email missing."
                                     message:@"Please enter your email in the box before requesting to reset your password."
@@ -103,9 +104,7 @@ int tagTextFieldToResign;
                           cancelButtonTitle:@"Okay"
                           otherButtonTitles:nil] show];
     }
-
 }
-
 
 -(IBAction)attemptLogin:(id)sender {
     

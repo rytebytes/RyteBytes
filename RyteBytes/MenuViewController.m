@@ -104,7 +104,7 @@ NSMutableDictionary *order;
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     
     MenuItem *meal = [self.menuItems objectAtIndex:indexPath.row];
-    cell.name.text = meal.name;
+//    cell.name.text = meal.name;
     cell.image.image = [UIImage imageNamed:meal.picture];
     
     return cell;
