@@ -742,7 +742,7 @@
         <scene sceneID="wwc-sU-AlU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="gAU-CL-mcL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Do Ryte" id="jsc-0q-tsG"/>
+                    <tabBarItem key="tabBarItem" title="Do Ryte" image="10.jpg" id="jsc-0q-tsG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="52G-P2-gNf">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -786,6 +786,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="10.jpg" width="25" height="25"/>
         <image name="EatRyte 50x50.png" width="50" height="50"/>
         <image name="LaunchImage.png" width="640" height="1136"/>
         <image name="Logo.png" width="3056" height="530"/>
