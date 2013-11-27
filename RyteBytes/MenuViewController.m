@@ -14,6 +14,7 @@
 #import "ParseClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "MenuResult.h"
+#import "CreateOrLoginViewController.h"
 
 /** This class presents the user the current menu.  It will retrieve the current list of MenuItems (db objects & domain objects)
  via a REST call.  We will persist all items we have offered via our menu, but we will not persist snapshots of our menu.
@@ -126,8 +127,18 @@ NSMutableDictionary *order;
 	}
     else if ([segue.identifier isEqualToString:@"CheckoutFromMenu"])
     {
-        OrderSummaryViewController *orderController = segue.destinationViewController;
-        [orderController setDelegate:self];
+        //check if the user is logged in, if not, ask them to login or create an account
+        PFUser *currentUser = [PFUser currentUser];
+        if (currentUser)
+        {
+            OrderSummaryViewController *orderController = segue.destinationViewController;
+            [orderController setDelegate:self];
+        }
+        else{
+            CreateOrLoginViewController *cl = [[CreateOrLoginViewController alloc] init];
+            cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            [self presentViewController:cl animated:true completion:Nil];
+        }
     }
 }
 

@@ -29,6 +29,8 @@
     [super viewDidLoad];
     
     currentOrder = [Order current];
+    
+    self.selectedIndex = ORDER_TAB;
 
     NSLog(@"finished viewDidLoad in TabBarController");
 //    UIViewController *eatRyte = [[EatRyteViewController alloc] init];

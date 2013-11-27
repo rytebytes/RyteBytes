@@ -164,7 +164,7 @@ int tagTextFieldToResign;
         
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
        
-        [[StripeClient current] POST:CreateCustomer
+        [[StripeClient current] POST:Customers
                                 parameters:stripeCustomer
                                 success:^(NSURLSessionDataTask *operation, id responseObject) {
                                     NSError *error = nil;
@@ -282,7 +282,7 @@ int tagTextFieldToResign;
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)scanViewController {
     NSLog(@"User canceled payment info");
     // Handle user cancellation here...
-    [scanViewController dismissModalViewControllerAnimated:YES];
+    [scanViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)scanViewController {
@@ -303,14 +303,15 @@ int tagTextFieldToResign;
     [newCard setObject:[NSNumber numberWithInt:creditCard.expYear] forKey:@"exp_year"];
     [newCard setObject:creditCard.cvc forKey:@"cvc"];
   
-    [scanViewController dismissModalViewControllerAnimated:YES];
+    [scanViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)scanCard:(id)sender
 {
     CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
     scanViewController.appToken = @"19f7f219ce8843979fa8c5f99e86d484";
-    [self presentModalViewController:scanViewController animated:YES];
+    [self presentViewController:scanViewController animated:YES completion:nil];
+//    [self presentModalViewController:scanViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -70,6 +70,7 @@
 		01222556179AFD650026922A /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 01222555179AFD650026922A /* Order.m */; };
 		01222557179AFD650026922A /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 01222555179AFD650026922A /* Order.m */; };
 		0122255B179B16240026922A /* OrderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122255A179B16240026922A /* OrderTests.m */; };
+		01307ADD18445BDD006F72FD /* DoRyteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01307ADC18445BDD006F72FD /* DoRyteViewController.m */; };
 		0131E5E41837C32C00556178 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5E31837C32C00556178 /* Images.xcassets */; };
 		0131E5EC1837C91400556178 /* 120x120 white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5EB1837C91400556178 /* 120x120 white.png */; };
 		0131E5F01837CBD100556178 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5EF1837CBD100556178 /* LaunchImage.png */; };
@@ -121,6 +122,9 @@
 		0192CC1A16C05FE50024815F /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192CC1916C05FE50024815F /* Customer.m */; };
 		019C511D17D7842400CBD44E /* MenuItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 019C511C17D7842400CBD44E /* MenuItemTests.m */; };
 		01A35DED1791BACC00DEBC46 /* OrderNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */; };
+		01AAA78C18456FC8002D7719 /* AccountSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA78B18456FC8002D7719 /* AccountSettingsViewController.m */; };
+		01AAA79118457257002D7719 /* ChangeCreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA79018457257002D7719 /* ChangeCreditCardViewController.m */; };
+		01AAA79418457264002D7719 /* ChangePickupLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA79318457264002D7719 /* ChangePickupLocationViewController.m */; };
 		01AFAFCD1819C39900B2151A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFCB1819C39900B2151A /* Logo.png */; };
 		01AFAFD1181B1D8800B2151A /* ThreeRowOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */; };
 		01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */; };
@@ -234,6 +238,8 @@
 		01222555179AFD650026922A /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		01222559179B16240026922A /* OrderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTests.h; sourceTree = "<group>"; };
 		0122255A179B16240026922A /* OrderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTests.m; sourceTree = "<group>"; };
+		01307ADB18445BDD006F72FD /* DoRyteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoRyteViewController.h; sourceTree = "<group>"; };
+		01307ADC18445BDD006F72FD /* DoRyteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoRyteViewController.m; sourceTree = "<group>"; };
 		0131E5E31837C32C00556178 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0131E5EB1837C91400556178 /* 120x120 white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120x120 white.png"; sourceTree = "<group>"; };
 		0131E5EF1837CBD100556178 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
@@ -307,6 +313,12 @@
 		019C511C17D7842400CBD44E /* MenuItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemTests.m; sourceTree = "<group>"; };
 		01A35DEB1791BACC00DEBC46 /* OrderNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNotifications.h; sourceTree = "<group>"; };
 		01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNotifications.m; sourceTree = "<group>"; };
+		01AAA78A18456FC8002D7719 /* AccountSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingsViewController.h; sourceTree = "<group>"; };
+		01AAA78B18456FC8002D7719 /* AccountSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSettingsViewController.m; sourceTree = "<group>"; };
+		01AAA78F18457257002D7719 /* ChangeCreditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeCreditCardViewController.h; sourceTree = "<group>"; };
+		01AAA79018457257002D7719 /* ChangeCreditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeCreditCardViewController.m; sourceTree = "<group>"; };
+		01AAA79218457264002D7719 /* ChangePickupLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePickupLocationViewController.h; sourceTree = "<group>"; };
+		01AAA79318457264002D7719 /* ChangePickupLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePickupLocationViewController.m; sourceTree = "<group>"; };
 		01AFAFCB1819C39900B2151A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		01AFAFCF181B1D8800B2151A /* ThreeRowOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeRowOrderingViewController.h; sourceTree = "<group>"; };
 		01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeRowOrderingViewController.m; sourceTree = "<group>"; };
@@ -482,6 +494,8 @@
 		011CEDEF170603BC00AE586E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				01AAA78E1845722E002D7719 /* AccountSettings */,
+				01AAA78D18457221002D7719 /* DoRyte */,
 				01222558179B0BA70026922A /* Ordering */,
 				01876FB9177609E100D0464B /* Login */,
 			);
@@ -761,6 +775,28 @@
 			name = ViewModels;
 			sourceTree = "<group>";
 		};
+		01AAA78D18457221002D7719 /* DoRyte */ = {
+			isa = PBXGroup;
+			children = (
+				01307ADB18445BDD006F72FD /* DoRyteViewController.h */,
+				01307ADC18445BDD006F72FD /* DoRyteViewController.m */,
+			);
+			name = DoRyte;
+			sourceTree = "<group>";
+		};
+		01AAA78E1845722E002D7719 /* AccountSettings */ = {
+			isa = PBXGroup;
+			children = (
+				01AAA78A18456FC8002D7719 /* AccountSettingsViewController.h */,
+				01AAA78B18456FC8002D7719 /* AccountSettingsViewController.m */,
+				01AAA78F18457257002D7719 /* ChangeCreditCardViewController.h */,
+				01AAA79018457257002D7719 /* ChangeCreditCardViewController.m */,
+				01AAA79218457264002D7719 /* ChangePickupLocationViewController.h */,
+				01AAA79318457264002D7719 /* ChangePickupLocationViewController.m */,
+			);
+			name = AccountSettings;
+			sourceTree = "<group>";
+		};
 		01CD83C517B6B3AE001A19C5 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,11 +1021,13 @@
 			files = (
 				01AFAFD1181B1D8800B2151A /* ThreeRowOrderingViewController.m in Sources */,
 				0176638F16C05809003BBD47 /* main.m in Sources */,
+				01AAA78C18456FC8002D7719 /* AccountSettingsViewController.m in Sources */,
 				0176639316C05809003BBD47 /* RBAppDelegate.m in Sources */,
 				0176639916C05809003BBD47 /* EatRyteViewController.m in Sources */,
 				017663A016C05809003BBD47 /* TabBarController.m in Sources */,
 				0192CC1A16C05FE50024815F /* Customer.m in Sources */,
 				011CEDF21706042300AE586E /* MenuViewController.m in Sources */,
+				01307ADD18445BDD006F72FD /* DoRyteViewController.m in Sources */,
 				01CE5DC2184003ED006EB46D /* StripeError.m in Sources */,
 				011CEDF51706260800AE586E /* Dish.m in Sources */,
 				01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */,
@@ -999,6 +1037,7 @@
 				01CF7F9D172C777D0072D714 /* FoodImage.m in Sources */,
 				015BD300173EDA70008AB447 /* OrderSummaryViewController.m in Sources */,
 				015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */,
+				01AAA79418457264002D7719 /* ChangePickupLocationViewController.m in Sources */,
 				0109FC7B1776053E008E5A66 /* CreateOrLoginViewController.m in Sources */,
 				01DAC6CC177D024E00158C9B /* LoginViewController.m in Sources */,
 				0177532C178241A200296315 /* CreateAccountViewController.m in Sources */,
@@ -1022,6 +1061,7 @@
 				0102527017B46B6F00BF1F3C /* PKTextField.m in Sources */,
 				0102527117B46B6F00BF1F3C /* PKUSAddressZip.m in Sources */,
 				0102527217B46B6F00BF1F3C /* PKView.m in Sources */,
+				01AAA79118457257002D7719 /* ChangeCreditCardViewController.m in Sources */,
 				01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */,
 				01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */,
 				0131E5FA183D87BA00556178 /* MenuResult.m in Sources */,
