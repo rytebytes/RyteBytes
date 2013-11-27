@@ -13,7 +13,7 @@
 @interface StripeClient : AFHTTPSessionManager
 
 extern NSString * const Customers;
-extern NSString * const GetCustomerFormat;
+extern NSString * const ExistingCustomerFormat;
 
 + (StripeClient*)current;
 

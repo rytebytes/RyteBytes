@@ -29,7 +29,7 @@ typedef enum itemtypes
 
 //Custom Fields For Parse Objects
 extern NSString * const STRIPE_ID;
-extern NSString * const USER_LOCATION_ID;
+extern NSString * const USER_LOCATION;
 
 //Keys for order JSON
 extern NSString * const ORDER_USER_ID;

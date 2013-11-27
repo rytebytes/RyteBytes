@@ -11,19 +11,20 @@
 #import "MenuItem.h"
 #import "OrderItem.h"
 
-@interface Order : NSObject
+@interface Order : JSONModel
 
 @property (strong,nonatomic) NSString *userId;
-@property (strong,nonatomic) NSString *pickupId;
-@property (strong,nonatomic) NSString *couponId;
-@property (strong,nonatomic) NSMutableDictionary *orderItems;
+@property (strong,nonatomic) NSString *locationId;
+@property (strong,nonatomic) NSMutableArray<OrderItem> *orderItems;
+@property (strong,nonatomic) NSMutableDictionary *items;
+@property (strong,nonatomic) NSNumber *totalInCents;
 
 + (Order*)current;
 
 -(int)getTotalItemCount;
 -(int)getSpecificItemCount:(NSString*)itemId;
 -(int)getNumberUniqueItems;
--(NSMutableArray*)convertToOrderItemArray;
+-(NSMutableArray<OrderItem>*)convertToOrderItemArray;
 
 -(OrderItem*)getOrderItem:(NSString*)itemId;
 -(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity;

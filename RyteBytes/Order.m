@@ -17,9 +17,9 @@
 @implementation Order
 
 @synthesize userId;
-@synthesize pickupId;
+@synthesize locationId;
+@synthesize items;
 @synthesize orderItems;
-@synthesize couponId;
 
 -(id)init
 {
@@ -27,7 +27,7 @@
         return nil;
     
     NSLog(@"Current order being initialized.");
-    orderItems = [[NSMutableDictionary alloc]initWithCapacity:100];
+    items = [[NSMutableDictionary alloc]initWithCapacity:100];
     
     return self;
 }
@@ -49,33 +49,33 @@
     }
 }
 
--(NSMutableArray*)convertToOrderItemArray
+-(NSMutableArray<OrderItem>*)convertToOrderItemArray
 {
-    NSMutableArray *orderItemArray = [[NSMutableArray alloc] initWithCapacity:[self getNumberUniqueItems]];
+    orderItems = (NSMutableArray<OrderItem>*)[[NSMutableArray alloc] initWithCapacity:[self getNumberUniqueItems]];
     int count = 0;
     
-    for (id key in orderItems) {
-        OrderItem* item = [orderItems objectForKey:key];
+    for (id key in items) {
+        OrderItem* item = [items objectForKey:key];
         if(item.quantity > 0)
         {
-            orderItemArray[count] = item;
+            orderItems[count] = item;
             count++;
         }
     }
     
-    return orderItemArray;
+    return orderItems;
 }
 
 -(OrderItem*)getOrderItem:(NSString*)itemId
 {
-    return [orderItems objectForKey:itemId];
+    return [items objectForKey:itemId];
 }
 
 -(int)getNumberUniqueItems
 {
     int uniqueCount = 0;
-    for (id key in orderItems) {
-        OrderItem* item = [orderItems objectForKey:key];
+    for (id key in items) {
+        OrderItem* item = [items objectForKey:key];
         if(item.quantity > 0)
         {
             uniqueCount++;
@@ -88,9 +88,9 @@
 {
     int totalCount = 0;
     NSString *key;
-    NSEnumerator *allItems = orderItems.keyEnumerator;
+    NSEnumerator *allItems = items.keyEnumerator;
     while (key = [allItems nextObject]) {
-        totalCount += ((OrderItem*)[orderItems objectForKey:key]).quantity;
+        totalCount += ((OrderItem*)[items objectForKey:key]).quantity;
     }
     return totalCount;
 }
@@ -100,22 +100,22 @@
  */
 -(int)getSpecificItemCount:(NSString*)itemId
 {
-    if(nil == [orderItems valueForKey:itemId])
+    if(nil == [items valueForKey:itemId])
         return -1;
     
-    return ((OrderItem*)[orderItems valueForKey:itemId]).quantity;
+    return ((OrderItem*)[items valueForKey:itemId]).quantity;
 }
 
 -(void)clearEntireOrder
 {
-    [orderItems removeAllObjects];
+    [items removeAllObjects];
 }
 
 -(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity
 {
     @synchronized(orderItems)
     {
-        if(orderItems.count > 100 || (orderItems.count + item.quantity) > 100)
+        if(items.count > 100 || (items.count + item.quantity) > 100)
         {
             NSLog(@"Order limit exceeded.");
             return NO;
@@ -123,10 +123,10 @@
         else
         {
             item.quantity = quantity;
-            [orderItems setValue:item forKey:item.menuItem.uid];
+            [items setValue:item forKey:item.menuItem.uid];
             
             NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.uid]);
-            NSLog(@"Current order : %@", orderItems);
+            NSLog(@"Current order : %@", items);
             
             return YES;
         }
@@ -136,8 +136,8 @@
 -(double)calculateTotalOrderCost
 {
     int totalCost = 0;
-    for (id key in orderItems) {
-        OrderItem* item = [orderItems objectForKey:key];
+    for (id key in items) {
+        OrderItem* item = [items objectForKey:key];
         totalCost += [item calculateCost];
     }
     return totalCost;

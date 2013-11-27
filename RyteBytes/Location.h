@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
+#import "Pointer.h"
 
 @protocol Location
 @end
@@ -15,8 +16,8 @@
 @interface Location : JSONModel
 
 @property (nonatomic,strong) NSString* Name;
-@property (nonatomic) int LocationId;
-@property (nonatomic) int CharityId;
+@property (nonatomic,strong) NSString* objectId;
+@property (nonatomic,strong) Pointer *charityId;
 @property (nonatomic,strong) NSString* StreetAddress;
 @property (nonatomic,strong) NSString* City;
 @property (nonatomic,strong) NSString* State;

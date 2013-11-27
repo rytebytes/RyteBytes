@@ -42,7 +42,7 @@ StripeCustomer *stripeCustomerInfo = nil;
     AccountEditCell *pickup = (AccountEditCell*)[self.accountSettings cellForRowAtIndexPath:[[NSIndexPath alloc] initWithIndex:1]];
     pickup.label = @"Change Pickup Location";
     
-    NSString *url = [[NSString alloc] initWithFormat:GetCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
+    NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
     
     //make call to stripe to get the user's current CC info
     [[StripeClient current] GET:url
@@ -58,6 +58,12 @@ StripeCustomer *stripeCustomerInfo = nil;
                          }];
     
     
+}
+
+//update credit card info in this method
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"view did appear");
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -15,7 +15,7 @@ static NSString * const StripeUrl = @"https://api.stripe.com/%@/";
 static NSString * const StripeVer = @"v1";
 
 NSString * const Customers = @"customers";
-NSString * const GetCustomerFormat = @"customers/%@";
+NSString * const ExistingCustomerFormat = @"customers/%@";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {

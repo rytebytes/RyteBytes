@@ -32,16 +32,15 @@
 @synthesize addCreditCardButton;
 @synthesize createAccountButton;
 @synthesize tapGesture;
-@synthesize networkActivityIndicator;
 @synthesize locationPicker;
 
 NSString *createAccountSucceedSegue = @"CreateAccountSucceed";
 PFUser *user;
-NSMutableDictionary *newCard;
+//NSMutableDictionary *newCard;
 STPCard *creditCard;
 STPToken *cardToken;
 LocationResult *pickupLocations;
-int selectedLocationId;
+Location *selectedLocation;
 
 int tagTextFieldToResign;
 
@@ -68,7 +67,7 @@ int tagTextFieldToResign;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    selectedLocationId = [pickupLocations.result[row] LocationId];
+    selectedLocation = pickupLocations.result[row];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -89,8 +88,6 @@ int tagTextFieldToResign;
     [self.view addGestureRecognizer:tapGesture];
     user = [PFUser object];
     
-    networkActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [networkActivityIndicator startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     ParseClient *parseClient = [ParseClient current];
@@ -98,7 +95,6 @@ int tagTextFieldToResign;
         success:^(NSURLSessionDataTask *operation, id responseObject) {
             NSLog(@"Response object is : %@", responseObject);
             NSError *error = nil;
-            [networkActivityIndicator stopAnimating];
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             pickupLocations = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
             [locationPicker reloadAllComponents];
@@ -148,10 +144,6 @@ int tagTextFieldToResign;
     
     if([self validateInputs:&message])
     {
-        networkActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        networkActivityIndicator.center=self.view.center;
-        [networkActivityIndicator startAnimating];
-        
         NSMutableDictionary *card = [[NSMutableDictionary alloc] init];
         [card setValue:creditCard.number forKey:@"number"];
         [card setValue:[NSString stringWithFormat:@"%d", creditCard.expMonth] forKey:@"exp_month"];
@@ -163,6 +155,7 @@ int tagTextFieldToResign;
         [stripeCustomer setObject:card forKey:@"card"];
         
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
        
         [[StripeClient current] POST:Customers
                                 parameters:stripeCustomer
@@ -179,6 +172,7 @@ int tagTextFieldToResign;
                                     NSLog(@"Error returned from stripe customer creation. Code:%@ . Message : %@", stripeError.code, stripeError.message);
                                     UIAlertView *cardFailed = [[UIAlertView alloc] initWithTitle:@"Invalid credit card info." message:stripeError.message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                     [SVProgressHUD dismiss];
+                                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                     [cardFailed show];
                                 }];
     }
@@ -221,11 +215,18 @@ int tagTextFieldToResign;
     user.username = email.text;
     user.password = confirmPassword.text;
     [user setValue:stripeCustomerObject.id forKey:STRIPE_ID];
-    [user setValue:[NSNumber numberWithInteger:selectedLocationId] forKey:USER_LOCATION_ID];
+    //case where user didn't touch location picker
+    if(nil == selectedLocation)
+    {
+         selectedLocation = pickupLocations.result[0];
+    }
+
+    user[USER_LOCATION] = [PFObject objectWithoutDataWithClassName:@"Location" objectId:selectedLocation.objectId];
 
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
         [SVProgressHUD dismiss];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if(succeeded)
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
@@ -297,11 +298,11 @@ int tagTextFieldToResign;
     creditCard.cvc = info.cvv;
     
     //validate number
-    newCard = [[NSMutableDictionary alloc] init];
-    [newCard setObject:creditCard.number forKey:@"number"];
-    [newCard setObject:[NSNumber numberWithInt:creditCard.expMonth] forKey:@"exp_month"];
-    [newCard setObject:[NSNumber numberWithInt:creditCard.expYear] forKey:@"exp_year"];
-    [newCard setObject:creditCard.cvc forKey:@"cvc"];
+//    newCard = [[NSMutableDictionary alloc] init];
+//    [newCard setObject:creditCard.number forKey:@"number"];
+//    [newCard setObject:[NSNumber numberWithInt:creditCard.expMonth] forKey:@"exp_month"];
+//    [newCard setObject:[NSNumber numberWithInt:creditCard.expYear] forKey:@"exp_year"];
+//    [newCard setObject:creditCard.cvc forKey:@"cvc"];
   
     [scanViewController dismissViewControllerAnimated:YES completion:nil];
 }

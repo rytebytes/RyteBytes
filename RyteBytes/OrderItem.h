@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "MenuItem.h"
 
-@interface OrderItem : NSObject
+@protocol OrderItem
+@end
+
+@interface OrderItem : JSONModel
 
 @property (nonatomic,strong) MenuItem* menuItem;
 @property (nonatomic) NSInteger quantity;

@@ -125,6 +125,7 @@
 		01AAA78C18456FC8002D7719 /* AccountSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA78B18456FC8002D7719 /* AccountSettingsViewController.m */; };
 		01AAA79118457257002D7719 /* ChangeCreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA79018457257002D7719 /* ChangeCreditCardViewController.m */; };
 		01AAA79418457264002D7719 /* ChangePickupLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA79318457264002D7719 /* ChangePickupLocationViewController.m */; };
+		01AAA7981845AF71002D7719 /* Pointer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA7971845AF71002D7719 /* Pointer.m */; };
 		01AFAFCD1819C39900B2151A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFCB1819C39900B2151A /* Logo.png */; };
 		01AFAFD1181B1D8800B2151A /* ThreeRowOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */; };
 		01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */; };
@@ -319,6 +320,8 @@
 		01AAA79018457257002D7719 /* ChangeCreditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeCreditCardViewController.m; sourceTree = "<group>"; };
 		01AAA79218457264002D7719 /* ChangePickupLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePickupLocationViewController.h; sourceTree = "<group>"; };
 		01AAA79318457264002D7719 /* ChangePickupLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePickupLocationViewController.m; sourceTree = "<group>"; };
+		01AAA7961845AF71002D7719 /* Pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pointer.h; sourceTree = "<group>"; };
+		01AAA7971845AF71002D7719 /* Pointer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pointer.m; sourceTree = "<group>"; };
 		01AFAFCB1819C39900B2151A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		01AFAFCF181B1D8800B2151A /* ThreeRowOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeRowOrderingViewController.h; sourceTree = "<group>"; };
 		01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeRowOrderingViewController.m; sourceTree = "<group>"; };
@@ -797,9 +800,19 @@
 			name = AccountSettings;
 			sourceTree = "<group>";
 		};
+		01AAA7951845AF64002D7719 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				01AAA7961845AF71002D7719 /* Pointer.h */,
+				01AAA7971845AF71002D7719 /* Pointer.m */,
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
 		01CD83C517B6B3AE001A19C5 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				01AAA7951845AF64002D7719 /* Parse */,
 				013DE02C17CC1B51004EFFF6 /* Stripe */,
 			);
 			name = "Third Party";
@@ -1049,6 +1062,7 @@
 				0102526417B46B6F00BF1F3C /* STPCard.m in Sources */,
 				0102526517B46B6F00BF1F3C /* STPToken.m in Sources */,
 				0102526617B46B6F00BF1F3C /* STPView.m in Sources */,
+				01AAA7981845AF71002D7719 /* Pointer.m in Sources */,
 				0102526717B46B6F00BF1F3C /* Stripe.m in Sources */,
 				0102526817B46B6F00BF1F3C /* StripeError.m in Sources */,
 				0102526B17B46B6F00BF1F3C /* PKAddressZip.m in Sources */,
