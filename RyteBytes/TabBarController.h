@@ -19,6 +19,8 @@ typedef enum tabs
     ACCOUNT_TAB = 3
 } ScreenTabs ;
 
+- (void)showLogin;
+
 @property (nonatomic,strong) PFUser *User;
 @property (nonatomic,strong) Order *currentOrder;
 

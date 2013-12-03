@@ -45,6 +45,17 @@
 		0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0102523E17B46B6F00BF1F3C /* textfield@2x.png */; };
 		0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 0102526217B46B6F00BF1F3C /* PaymentKit.podspec */; };
 		0102529A17B46B6F00BF1F3C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0102526317B46B6F00BF1F3C /* README.md */; };
+		0105BC39184D66A1003483EB /* pasta_turkey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC2E184D66A1003483EB /* pasta_turkey.png */; };
+		0105BC3A184D66A1003483EB /* pasta_italian.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC2F184D66A1003483EB /* pasta_italian.png */; };
+		0105BC3B184D66A1003483EB /* pasta_it.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC30184D66A1003483EB /* pasta_it.png */; };
+		0105BC3C184D66A1003483EB /* pasta_tu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC31184D66A1003483EB /* pasta_tu.png */; };
+		0105BC3D184D66A1003483EB /* carrots_turnips.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC32184D66A1003483EB /* carrots_turnips.png */; };
+		0105BC3E184D66A1003483EB /* rice.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC33184D66A1003483EB /* rice.png */; };
+		0105BC3F184D66A1003483EB /* carrots_beets.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC34184D66A1003483EB /* carrots_beets.png */; };
+		0105BC40184D66A1003483EB /* chicken.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC35184D66A1003483EB /* chicken.png */; };
+		0105BC41184D66A1003483EB /* cauliflower.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC36184D66A1003483EB /* cauliflower.png */; };
+		0105BC42184D66A1003483EB /* potatoes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC37184D66A1003483EB /* potatoes.png */; };
+		0105BC43184D66A1003483EB /* pork.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC38184D66A1003483EB /* pork.png */; };
 		0109FC66177600C1008E5A66 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC65177600C1008E5A66 /* Parse.framework */; };
 		0109FC6817760102008E5A66 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC6717760102008E5A66 /* AudioToolbox.framework */; };
 		0109FC6A17760109008E5A66 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC6917760109008E5A66 /* CFNetwork.framework */; };
@@ -58,7 +69,7 @@
 		0109FC7B1776053E008E5A66 /* CreateOrLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0109FC7A1776053E008E5A66 /* CreateOrLoginViewController.m */; };
 		0115FD3517E3745300F75708 /* StripeCardsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115FD3417E3745300F75708 /* StripeCardsResponse.m */; };
 		01191773172310370085CA7B /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191772172310370085CA7B /* MenuCell.m */; };
-		01191776172326F80085CA7B /* MealDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191775172326F80085CA7B /* MealDetailsViewController.m */; };
+		01191776172326F80085CA7B /* MenuItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191775172326F80085CA7B /* MenuItemDetailsViewController.m */; };
 		01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01193D4A1719EA5F007782B9 /* NutritionInformation.m */; };
 		011CEDEE170600F800AE586E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 011CEDED170600F800AE586E /* Default-568h@2x.png */; };
 		011CEDF21706042300AE586E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF11706042300AE586E /* MenuViewController.m */; };
@@ -79,24 +90,13 @@
 		0131E5FA183D87BA00556178 /* MenuResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131E5F9183D87BA00556178 /* MenuResult.m */; };
 		01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3518243CCF00670D23 /* Default-568h@2x.png */; };
 		01350D3A18243E3600670D23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3918243E3600670D23 /* Default@2x.png */; };
-		01350D3C182443A600670D23 /* beets_carrots.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3B182443A600670D23 /* beets_carrots.png */; };
-		01350D3E1824545A00670D23 /* chicken.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3D1824545A00670D23 /* chicken.png */; };
-		01350D451824559100670D23 /* carrots_turnips.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3F1824559100670D23 /* carrots_turnips.png */; };
-		01350D461824559100670D23 /* cauliflower.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D401824559100670D23 /* cauliflower.png */; };
-		01350D481824559100670D23 /* pork.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D421824559100670D23 /* pork.png */; };
-		01350D491824559100670D23 /* potatoes.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D431824559100670D23 /* potatoes.png */; };
-		01350D4A1824559100670D23 /* rice.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D441824559100670D23 /* rice.png */; };
 		013DE02F17CC1BC2004EFFF6 /* StripeCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE02E17CC1BC2004EFFF6 /* StripeCard.m */; };
 		013DE03317CC3CF7004EFFF6 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE03217CC3CF7004EFFF6 /* ParseClient.m */; };
 		015BD300173EDA70008AB447 /* OrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */; };
 		015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD302173EDF8E008AB447 /* OrderSummaryCell.m */; };
 		0165C5C91795D3AE00DA9C15 /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */; };
 		016B0CA6178F7CA100F80748 /* Do Ryte GoldiApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */; };
-		0172D11718410BFA009B1806 /* pasta_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D11618410BFA009B1806 /* pasta_new.png */; };
-		0172D11918410CB2009B1806 /* pasta.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D11818410CB2009B1806 /* pasta.png */; };
 		0172D11F18411CF9009B1806 /* EatRyte 50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D11E18411CF9009B1806 /* EatRyte 50x50.png */; };
-		0172D1231841232D009B1806 /* PastaWItalianHerb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D1221841232D009B1806 /* PastaWItalianHerb.png */; };
-		0172D12518413FAC009B1806 /* CaliflowerWExport24.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D12418413FAC009B1806 /* CaliflowerWExport24.png */; };
 		0172D12718425D61009B1806 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0172D12618425D61009B1806 /* 10.jpg */; };
 		0173747317DFEAE90090849A /* OrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0173747217DFEAE90090849A /* OrderItem.m */; };
 		0176638316C05809003BBD47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638216C05809003BBD47 /* UIKit.framework */; };
@@ -206,6 +206,17 @@
 		0102523E17B46B6F00BF1F3C /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		0102526217B46B6F00BF1F3C /* PaymentKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PaymentKit.podspec; sourceTree = "<group>"; };
 		0102526317B46B6F00BF1F3C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		0105BC2E184D66A1003483EB /* pasta_turkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasta_turkey.png; sourceTree = "<group>"; };
+		0105BC2F184D66A1003483EB /* pasta_italian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasta_italian.png; sourceTree = "<group>"; };
+		0105BC30184D66A1003483EB /* pasta_it.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasta_it.png; sourceTree = "<group>"; };
+		0105BC31184D66A1003483EB /* pasta_tu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasta_tu.png; sourceTree = "<group>"; };
+		0105BC32184D66A1003483EB /* carrots_turnips.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrots_turnips.png; sourceTree = "<group>"; };
+		0105BC33184D66A1003483EB /* rice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice.png; sourceTree = "<group>"; };
+		0105BC34184D66A1003483EB /* carrots_beets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrots_beets.png; sourceTree = "<group>"; };
+		0105BC35184D66A1003483EB /* chicken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chicken.png; sourceTree = "<group>"; };
+		0105BC36184D66A1003483EB /* cauliflower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cauliflower.png; sourceTree = "<group>"; };
+		0105BC37184D66A1003483EB /* potatoes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = potatoes.png; sourceTree = "<group>"; };
+		0105BC38184D66A1003483EB /* pork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pork.png; sourceTree = "<group>"; };
 		0109FC65177600C1008E5A66 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0109FC6717760102008E5A66 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0109FC6917760109008E5A66 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -222,8 +233,8 @@
 		0115FD3417E3745300F75708 /* StripeCardsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCardsResponse.m; sourceTree = "<group>"; };
 		01191771172310370085CA7B /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		01191772172310370085CA7B /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
-		01191774172326F80085CA7B /* MealDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealDetailsViewController.h; sourceTree = "<group>"; };
-		01191775172326F80085CA7B /* MealDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealDetailsViewController.m; sourceTree = "<group>"; };
+		01191774172326F80085CA7B /* MenuItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemDetailsViewController.h; sourceTree = "<group>"; };
+		01191775172326F80085CA7B /* MenuItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemDetailsViewController.m; sourceTree = "<group>"; };
 		01193D491719EA5F007782B9 /* NutritionInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionInformation.h; sourceTree = "<group>"; };
 		01193D4A1719EA5F007782B9 /* NutritionInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionInformation.m; sourceTree = "<group>"; };
 		011CEDED170600F800AE586E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -252,13 +263,6 @@
 		0131E5F9183D87BA00556178 /* MenuResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuResult.m; sourceTree = "<group>"; };
 		01350D3518243CCF00670D23 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		01350D3918243E3600670D23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		01350D3B182443A600670D23 /* beets_carrots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beets_carrots.png; sourceTree = "<group>"; };
-		01350D3D1824545A00670D23 /* chicken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chicken.png; sourceTree = "<group>"; };
-		01350D3F1824559100670D23 /* carrots_turnips.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrots_turnips.png; sourceTree = "<group>"; };
-		01350D401824559100670D23 /* cauliflower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cauliflower.png; sourceTree = "<group>"; };
-		01350D421824559100670D23 /* pork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pork.png; sourceTree = "<group>"; };
-		01350D431824559100670D23 /* potatoes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = potatoes.png; sourceTree = "<group>"; };
-		01350D441824559100670D23 /* rice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice.png; sourceTree = "<group>"; };
 		013DE02D17CC1BC2004EFFF6 /* StripeCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCard.h; sourceTree = "<group>"; };
 		013DE02E17CC1BC2004EFFF6 /* StripeCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCard.m; sourceTree = "<group>"; };
 		013DE03117CC3CF7004EFFF6 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
@@ -269,11 +273,7 @@
 		015BD302173EDF8E008AB447 /* OrderSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSummaryCell.m; sourceTree = "<group>"; };
 		0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenmoTouch.framework; sourceTree = "<group>"; };
 		016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Do Ryte GoldiApp.png"; sourceTree = "<group>"; };
-		0172D11618410BFA009B1806 /* pasta_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasta_new.png; sourceTree = "<group>"; };
-		0172D11818410CB2009B1806 /* pasta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasta.png; sourceTree = "<group>"; };
 		0172D11E18411CF9009B1806 /* EatRyte 50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EatRyte 50x50.png"; sourceTree = "<group>"; };
-		0172D1221841232D009B1806 /* PastaWItalianHerb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PastaWItalianHerb.png; sourceTree = "<group>"; };
-		0172D12418413FAC009B1806 /* CaliflowerWExport24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaliflowerWExport24.png; sourceTree = "<group>"; };
 		0172D12618425D61009B1806 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		0173747117DFEAE90090849A /* OrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItem.h; sourceTree = "<group>"; };
 		0173747217DFEAE90090849A /* OrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItem.m; sourceTree = "<group>"; };
@@ -514,8 +514,8 @@
 				0176639F16C05809003BBD47 /* TabBarController.m */,
 				011CEDF01706042300AE586E /* MenuViewController.h */,
 				011CEDF11706042300AE586E /* MenuViewController.m */,
-				01191774172326F80085CA7B /* MealDetailsViewController.h */,
-				01191775172326F80085CA7B /* MealDetailsViewController.m */,
+				01191774172326F80085CA7B /* MenuItemDetailsViewController.h */,
+				01191775172326F80085CA7B /* MenuItemDetailsViewController.m */,
 				015BD2FE173EDA70008AB447 /* OrderSummaryViewController.h */,
 				015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */,
 				01AFAFCF181B1D8800B2151A /* ThreeRowOrderingViewController.h */,
@@ -695,21 +695,21 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0105BC2E184D66A1003483EB /* pasta_turkey.png */,
+				0105BC2F184D66A1003483EB /* pasta_italian.png */,
+				0105BC30184D66A1003483EB /* pasta_it.png */,
+				0105BC31184D66A1003483EB /* pasta_tu.png */,
+				0105BC32184D66A1003483EB /* carrots_turnips.png */,
+				0105BC33184D66A1003483EB /* rice.png */,
+				0105BC34184D66A1003483EB /* carrots_beets.png */,
+				0105BC35184D66A1003483EB /* chicken.png */,
+				0105BC36184D66A1003483EB /* cauliflower.png */,
+				0105BC37184D66A1003483EB /* potatoes.png */,
+				0105BC38184D66A1003483EB /* pork.png */,
 				0172D12618425D61009B1806 /* 10.jpg */,
-				0172D12418413FAC009B1806 /* CaliflowerWExport24.png */,
-				0172D1221841232D009B1806 /* PastaWItalianHerb.png */,
 				0172D11E18411CF9009B1806 /* EatRyte 50x50.png */,
-				0172D11818410CB2009B1806 /* pasta.png */,
-				0172D11618410BFA009B1806 /* pasta_new.png */,
 				0131E5EF1837CBD100556178 /* LaunchImage.png */,
 				0131E5EB1837C91400556178 /* 120x120 white.png */,
-				01350D3F1824559100670D23 /* carrots_turnips.png */,
-				01350D401824559100670D23 /* cauliflower.png */,
-				01350D421824559100670D23 /* pork.png */,
-				01350D431824559100670D23 /* potatoes.png */,
-				01350D441824559100670D23 /* rice.png */,
-				01350D3D1824545A00670D23 /* chicken.png */,
-				01350D3B182443A600670D23 /* beets_carrots.png */,
 				01350D3918243E3600670D23 /* Default@2x.png */,
 				01350D3518243CCF00670D23 /* Default-568h@2x.png */,
 				01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */,
@@ -921,30 +921,31 @@
 				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
 				0172D11F18411CF9009B1806 /* EatRyte 50x50.png in Resources */,
 				011CEDEE170600F800AE586E /* Default-568h@2x.png in Resources */,
+				0105BC3C184D66A1003483EB /* pasta_tu.png in Resources */,
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
 				0131E5F01837CBD100556178 /* LaunchImage.png in Resources */,
+				0105BC39184D66A1003483EB /* pasta_turkey.png in Resources */,
 				01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */,
 				01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */,
+				0105BC42184D66A1003483EB /* potatoes.png in Resources */,
 				016B0CA6178F7CA100F80748 /* Do Ryte GoldiApp.png in Resources */,
-				01350D3E1824545A00670D23 /* chicken.png in Resources */,
 				0102526917B46B6F00BF1F3C /* .gitignore in Resources */,
 				0102526A17B46B6F00BF1F3C /* LICENSE in Resources */,
 				0102527317B46B6F00BF1F3C /* amex.png in Resources */,
 				0172D12718425D61009B1806 /* 10.jpg in Resources */,
 				0102527417B46B6F00BF1F3C /* amex@2x.png in Resources */,
-				01350D451824559100670D23 /* carrots_turnips.png in Resources */,
-				0172D12518413FAC009B1806 /* CaliflowerWExport24.png in Resources */,
-				0172D1231841232D009B1806 /* PastaWItalianHerb.png in Resources */,
-				01350D481824559100670D23 /* pork.png in Resources */,
 				0102527517B46B6F00BF1F3C /* cvc-amex.png in Resources */,
-				01350D3C182443A600670D23 /* beets_carrots.png in Resources */,
+				0105BC3D184D66A1003483EB /* carrots_turnips.png in Resources */,
+				0105BC3A184D66A1003483EB /* pasta_italian.png in Resources */,
+				0105BC40184D66A1003483EB /* chicken.png in Resources */,
 				0102527617B46B6F00BF1F3C /* cvc-amex@2x.png in Resources */,
-				01350D4A1824559100670D23 /* rice.png in Resources */,
-				01350D461824559100670D23 /* cauliflower.png in Resources */,
 				0131E5EC1837C91400556178 /* 120x120 white.png in Resources */,
 				0102527717B46B6F00BF1F3C /* cvc.png in Resources */,
+				0105BC3E184D66A1003483EB /* rice.png in Resources */,
 				0102527817B46B6F00BF1F3C /* cvc@2x.png in Resources */,
+				0105BC43184D66A1003483EB /* pork.png in Resources */,
 				01AFAFCD1819C39900B2151A /* Logo.png in Resources */,
+				0105BC41184D66A1003483EB /* cauliflower.png in Resources */,
 				0102527917B46B6F00BF1F3C /* diners.png in Resources */,
 				0102527A17B46B6F00BF1F3C /* diners@2x.png in Resources */,
 				0102527B17B46B6F00BF1F3C /* discover.png in Resources */,
@@ -952,11 +953,10 @@
 				0102527D17B46B6F00BF1F3C /* jcb.png in Resources */,
 				0102527E17B46B6F00BF1F3C /* jcb@2x.png in Resources */,
 				0102527F17B46B6F00BF1F3C /* mastercard.png in Resources */,
+				0105BC3B184D66A1003483EB /* pasta_it.png in Resources */,
 				0102528017B46B6F00BF1F3C /* mastercard@2x.png in Resources */,
 				0102528117B46B6F00BF1F3C /* placeholder.png in Resources */,
-				0172D11718410BFA009B1806 /* pasta_new.png in Resources */,
 				0102528217B46B6F00BF1F3C /* placeholder@2x.png in Resources */,
-				01350D491824559100670D23 /* potatoes.png in Resources */,
 				0102528317B46B6F00BF1F3C /* visa.png in Resources */,
 				0131E5E41837C32C00556178 /* Images.xcassets in Resources */,
 				01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */,
@@ -964,8 +964,8 @@
 				01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */,
 				0102528517B46B6F00BF1F3C /* gradient@2x.png in Resources */,
 				0102528617B46B6F00BF1F3C /* textfield.png in Resources */,
-				0172D11918410CB2009B1806 /* pasta.png in Resources */,
 				0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */,
+				0105BC3F184D66A1003483EB /* carrots_beets.png in Resources */,
 				0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */,
 				0102529A17B46B6F00BF1F3C /* README.md in Resources */,
 			);
@@ -1046,7 +1046,7 @@
 				01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */,
 				01CE5DC5184005E2006EB46D /* StripeErrorResponse.m in Sources */,
 				01191773172310370085CA7B /* MenuCell.m in Sources */,
-				01191776172326F80085CA7B /* MealDetailsViewController.m in Sources */,
+				01191776172326F80085CA7B /* MenuItemDetailsViewController.m in Sources */,
 				01CF7F9D172C777D0072D714 /* FoodImage.m in Sources */,
 				015BD300173EDA70008AB447 /* OrderSummaryViewController.m in Sources */,
 				015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */,

@@ -10,6 +10,7 @@
 #import "MenuViewController.h"
 #import "Dish.h"
 #import "EatRyteViewController.h"
+#import "CreateOrLoginViewController.h"
 
 @implementation TabBarController
 
@@ -41,6 +42,14 @@
 ////    [self.revealController setLeftViewController:eatRyte];
 //    self.view.window.rootViewController = revealController;
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)showLogin
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    CreateOrLoginViewController *cl = (CreateOrLoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
+    cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:cl animated:true completion:Nil];
 }
 
 - (void)viewDidUnload

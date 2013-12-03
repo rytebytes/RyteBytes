@@ -27,6 +27,7 @@
 @property (nonatomic,strong) IBOutlet UIButton *createAccountButton;
 @property (nonatomic,strong) IBOutlet UITapGestureRecognizer *tapGesture;
 @property (nonatomic,strong) IBOutlet UIPickerView *locationPicker;
+@property (nonatomic,strong) IBOutlet UIButton *back;
 
 //-(void)registerStripeCustomer;
 -(void)createCustomer:(StripeCustomer*)stripeCustomerObject;

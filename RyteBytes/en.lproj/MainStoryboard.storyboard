@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="AdC-RW-uBV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="dUW-xK-SVc">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -72,106 +72,108 @@
             </objects>
             <point key="canvasLocation" x="448" y="-642"/>
         </scene>
-        <!--Meal Details View Controller - Order-->
+        <!--Menu Item Details View Controller - Order-->
         <scene sceneID="DcV-wd-BPd">
             <objects>
-                <viewController title="Order" modalTransitionStyle="flipHorizontal" id="s3v-5M-xjQ" customClass="MealDetailsViewController" sceneMemberID="viewController">
+                <viewController title="Order" modalTransitionStyle="flipHorizontal" id="s3v-5M-xjQ" customClass="MenuItemDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xiz-il-RHR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" id="yjB-t4-GVw">
-                                <rect key="frame" x="0.0" y="64" width="320" height="139"/>
+                                <rect key="frame" x="-1" y="157" width="320" height="139"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" continuous="NO" autorepeat="NO" maximumValue="100" id="Mm2-sF-Ddu">
-                                <rect key="frame" x="225" y="338" width="94" height="23"/>
+                                <rect key="frame" x="113" y="126" width="94" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="valueChanged:" destination="s3v-5M-xjQ" eventType="valueChanged" id="m5a-09-3ao"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vpg-hG-pu0">
-                                <rect key="frame" x="46" y="228" width="229" height="34"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How many would you like?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="vpg-hG-pu0">
+                                <rect key="frame" x="65" y="53" width="189" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m1L-Mb-leN">
-                                <rect key="frame" x="46" y="409" width="229" height="53"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m1L-Mb-leN">
+                                <rect key="frame" x="11" y="290" width="303" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <string key="text">thequickdfdfdfffjkdfjdlhjkadhfgjkfhagjthequickdfdfdfffjkdfjdlhjkadhfgjkfhagjthequickdfdfdfffjkdfjdlhjkadhfgjkfhagjthequickdfdfdfffjkdfjdlhjkadhfgjkfhagjthequickdfdfdfffjkdfjdlhjkadhfgjkfhagj</string>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Calories :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qdE-gI-hAy">
-                                <rect key="frame" x="13" y="295" width="81" height="21"/>
+                                <rect key="frame" x="38" y="408" width="81" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Carbs (g) :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bpL-Fz-e2K">
-                                <rect key="frame" x="13" y="317" width="81" height="21"/>
+                                <rect key="frame" x="175" y="408" width="81" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sodium (mg) :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n54-Oe-IBD">
-                                <rect key="frame" x="13" y="360" width="107" height="21"/>
+                                <rect key="frame" x="175" y="455" width="107" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Protein (g) :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Go7-JV-Ywn">
-                                <rect key="frame" x="13" y="339" width="89" height="21"/>
+                                <rect key="frame" x="38" y="455" width="89" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d5Z-fG-NQL">
-                                <rect key="frame" x="135" y="295" width="50" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="cals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d5Z-fG-NQL">
+                                <rect key="frame" x="53" y="432" width="50" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5pP-ex-5Cn">
-                                <rect key="frame" x="135" y="360" width="50" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="sodium" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5pP-ex-5Cn">
+                                <rect key="frame" x="190" y="478" width="50" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T3u-DG-DNx">
-                                <rect key="frame" x="135" y="343" width="50" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="protein" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T3u-DG-DNx">
+                                <rect key="frame" x="53" y="478" width="54" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ax-nP-mJa">
-                                <rect key="frame" x="135" y="321" width="50" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="carbs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ax-nP-mJa">
+                                <rect key="frame" x="190" y="432" width="50" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GKj-uI-evd">
-                                <rect key="frame" x="252" y="295" width="40" height="28"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="num" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GKj-uI-evd">
+                                <rect key="frame" x="142" y="96" width="40" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rnV-yT-TsA">
+                    <navigationItem key="navigationItem" title="Item Details" id="rnV-yT-TsA">
                         <barButtonItem key="rightBarButtonItem" title="Checkout" id="a59-Bk-GXQ">
                             <connections>
                                 <segue destination="bEg-Gz-zQg" kind="push" identifier="Checkout" id="x4Z-JS-ZPW"/>
@@ -194,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXF-cc-3ED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="-1304"/>
+            <point key="canvasLocation" x="1045" y="-1291"/>
         </scene>
         <!--Order Summary View Controller - Order Summary-->
         <scene sceneID="3nF-DQ-GUa">
@@ -456,10 +458,10 @@
             </objects>
             <point key="canvasLocation" x="36" y="718"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Or Login View Controller-->
         <scene sceneID="QeS-hF-3zL">
             <objects>
-                <viewController id="AdC-RW-uBV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignIn" id="AdC-RW-uBV" customClass="CreateOrLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzM-lz-6qc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -505,14 +507,30 @@
                                     <segue destination="hYZ-qe-9OO" kind="modal" identifier="CreateAccountAction" id="ddt-NY-kPW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rwz-Ug-T0n">
+                                <rect key="frame" x="10" y="23" width="55" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="0.93584250280000003" blue="0.13832438059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelSignUpLogin:" destination="AdC-RW-uBV" eventType="touchUpInside" id="CHJ-GI-F1h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="YRT-cJ-MN5"/>
+                    <connections>
+                        <outlet property="cancel" destination="Rwz-Ug-T0n" id="pq9-i2-PMD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOd-8Q-xl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1889" y="-642"/>
+            <point key="canvasLocation" x="-1814" y="-642"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2aG-bV-4VK">
@@ -602,7 +620,6 @@
                         <outlet property="headerLogo" destination="NpD-za-Q5q" id="bbC-lf-PMN"/>
                         <outlet property="loginButton" destination="bJo-5e-J5e" id="hzE-vq-2BT"/>
                         <outlet property="password" destination="Phh-b1-tZg" id="pvq-dj-fpP"/>
-                        <segue destination="dUW-xK-SVc" kind="modal" identifier="LoginSuccess" id="PC0-vq-0fP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00p-tV-NqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -687,7 +704,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="AdC-RW-uBV" kind="modal" modalTransitionStyle="crossDissolve" id="Zuc-I9-i2g"/>
+                                            <segue destination="AdC-RW-uBV" kind="modal" modalTransitionStyle="crossDissolve" id="gAx-dg-b4M"/>
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="550-EI-AT1">
@@ -720,17 +737,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="addCreditCardButton" destination="HNh-NU-wMM" id="8Sw-IN-KkI"/>
-                        <outlet property="confirmPassword" destination="ylS-or-9Un" id="LoB-Ca-u7Q"/>
-                        <outlet property="createAccountButton" destination="Al7-bS-lHf" id="v9A-gP-Wh4"/>
-                        <outlet property="createAccountView" destination="3D0-so-Tr2" id="hGw-I5-B7m"/>
-                        <outlet property="email" destination="OHM-Uj-GaC" id="59V-UK-vft"/>
-                        <outlet property="headerLogo" destination="mhN-63-TTo" id="bH0-Y0-FVh"/>
-                        <outlet property="locationPicker" destination="Ebk-CG-KwW" id="gNq-9i-4hj"/>
-                        <outlet property="networkActivityIndicator" destination="550-EI-AT1" id="glG-sk-HxE"/>
-                        <outlet property="password" destination="eCV-aq-v9P" id="fQf-sN-Gm8"/>
-                        <outlet property="tapGesture" destination="brJ-7M-9J1" id="B07-PC-k3e"/>
-                        <segue destination="dUW-xK-SVc" kind="modal" identifier="CreateAccountSucceed" id="FTe-mW-QD8"/>
+                        <outlet property="addCreditCardButton" destination="HNh-NU-wMM" id="t2Y-wN-5DM"/>
+                        <outlet property="back" destination="dvz-Fu-M7U" id="fr2-tB-coM"/>
+                        <outlet property="confirmPassword" destination="ylS-or-9Un" id="aYe-Jr-wiX"/>
+                        <outlet property="createAccountButton" destination="Al7-bS-lHf" id="746-bM-EHf"/>
+                        <outlet property="createAccountView" destination="3D0-so-Tr2" id="PPN-Qf-tex"/>
+                        <outlet property="email" destination="OHM-Uj-GaC" id="6tw-fx-dbM"/>
+                        <outlet property="headerLogo" destination="mhN-63-TTo" id="dE4-hE-WHj"/>
+                        <outlet property="locationPicker" destination="Ebk-CG-KwW" id="G7h-kf-rdt"/>
+                        <outlet property="password" destination="eCV-aq-v9P" id="auG-HA-ibX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8G-pT-V9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1047,8 +1062,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FTe-mW-QD8"/>
-        <segue reference="Zuc-I9-i2g"/>
+        <segue reference="gAx-dg-b4M"/>
         <segue reference="x4Z-JS-ZPW"/>
     </inferredMetricsTieBreakers>
 </document>

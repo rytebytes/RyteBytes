@@ -6,11 +6,11 @@
 //
 //
 
-#import "MealDetailsViewController.h"
+#import "MenuItemDetailsViewController.h"
 #import "OrderItem.h"
 #import "OrderSummaryViewController.h"
 
-@implementation MealDetailsViewController
+@implementation MenuItemDetailsViewController
 
 @synthesize menuItemSelected;
 @synthesize foodImage;
@@ -47,8 +47,8 @@ OrderItem *orderItem;
     quantityStepper.minimumValue = 0;
     foodImage.image = [UIImage imageNamed:menuItemSelected.picture];
     description.text = menuItemSelected.longDescription;
-    mealName.text = menuItemSelected.name;
-    [mealName setFont:[UIFont fontWithName:@"Times New Roman" size:24.0f]];
+//    mealName.text = menuItemSelected.name;
+//    [mealName setFont:[UIFont fontWithName:@"Times New Roman" size:24.0f]];
     mealName.textAlignment = NSTextAlignmentCenter;
     mealName.textColor = [UIColor blackColor];
     

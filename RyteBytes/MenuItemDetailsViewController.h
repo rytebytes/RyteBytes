@@ -10,13 +10,13 @@
 #import "Order.h"
 #import "MenuViewController.h"
 
-@class MealDetailsViewController;
+@class MenuItemDetailsViewController;
 
 @protocol MenuDetailsCancel <NSObject>
-- (void)mealDetailsViewControllerDidCancel:(MealDetailsViewController *)controller;
+- (void)mealDetailsViewControllerDidCancel:(MenuItemDetailsViewController *)controller;
 @end
 
-@interface MealDetailsViewController : UIViewController
+@interface MenuItemDetailsViewController : UIViewController
 
 @property (nonatomic,strong) MenuItem* menuItemSelected;
 @property (nonatomic,strong) IBOutlet UIImageView *foodImage;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MealDetailsViewController.h"
+#import "MenuItemDetailsViewController.h"
 #import "MenuViewController.h"
 
 @interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>

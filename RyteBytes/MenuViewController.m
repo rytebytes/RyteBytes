@@ -111,14 +111,34 @@ NSMutableDictionary *order;
     return cell;
 }
 
-
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"CheckoutFromMenu"])
+    {
+        PFUser *currentUser = [PFUser currentUser];
+        if (currentUser)
+        {
+            return YES;
+        }
+        else{
+            //            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+            //            CreateOrLoginViewController *cl = (CreateOrLoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
+            //            cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            //            [self presentViewController:cl animated:true completion:Nil];
+            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+            [tab showLogin];
+            return NO;
+        }
+    }
+    return YES;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"MealSelect"])
 	{
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-		MealDetailsViewController *mealDetailsController = segue.destinationViewController;
+		MenuItemDetailsViewController *mealDetailsController = segue.destinationViewController;
         
         MenuItem *selectedMeal = [self.menuItems objectAtIndex:selectedRowIndex.row];
         
@@ -135,9 +155,12 @@ NSMutableDictionary *order;
             [orderController setDelegate:self];
         }
         else{
-            CreateOrLoginViewController *cl = [[CreateOrLoginViewController alloc] init];
-            cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-            [self presentViewController:cl animated:true completion:Nil];
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+//            CreateOrLoginViewController *cl = (CreateOrLoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
+//            cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//            [self presentViewController:cl animated:true completion:Nil];
+            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+            [tab showLogin];
         }
     }
 }
