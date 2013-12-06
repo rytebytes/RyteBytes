@@ -79,6 +79,11 @@ int tagTextFieldToResign;
     return self;
 }
 
+- (IBAction)cancelCreateAccount:(id)sender
+{
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

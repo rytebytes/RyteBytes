@@ -18,10 +18,10 @@
 
 //@property (nonatomic) MenuItemTypes type;
 @property (nonatomic,strong) NSString *name;
-@property (nonatomic,strong) NutritionInformation *nutritionInfo;
+@property (nonatomic,strong) NutritionInformation *nutritionInfoId;
 @property (nonatomic,strong) NSString *picture;
 @property (nonatomic,strong) NSString *longDescription;
-@property (nonatomic,strong) NSString *uid;
+@property (nonatomic,strong) NSString *objectId;
 @property (nonatomic) int cost;
 
 //+(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSDictionary*)menuJson;

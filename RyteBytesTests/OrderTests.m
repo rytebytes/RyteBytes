@@ -82,19 +82,19 @@ int protein = 50;
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemOne] withQuantity:1];
         
         STAssertEquals(1, [testingOrder getTotalItemCount], @"Adding a menu item for first time should return total count of 1.");
-        STAssertEquals(1, [testingOrder getSpecificItemCount:itemOne.uid], @"Menu item count should be 1." );
+        STAssertEquals(1, [testingOrder getSpecificItemCount:itemOne.objectId], @"Menu item count should be 1." );
         
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemTwo] withQuantity:1];
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemTwo] withQuantity:0];
         
-        STAssertEquals(0, [testingOrder getSpecificItemCount:itemTwo.uid], @"Menu item count should be 0 after removing last item in order." );
+        STAssertEquals(0, [testingOrder getSpecificItemCount:itemTwo.objectId], @"Menu item count should be 0 after removing last item in order." );
         STAssertEquals(1, [testingOrder getNumberUniqueItems], @"Unique items only 1 after removing second unique item.");
  
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemTwo] withQuantity:1];
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemTwo] withQuantity:2];
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemTwo] withQuantity:3];
         
-        STAssertEquals(3, [testingOrder getSpecificItemCount:itemTwo.uid], @"Menu item count should be 3." );
+        STAssertEquals(3, [testingOrder getSpecificItemCount:itemTwo.objectId], @"Menu item count should be 3." );
         STAssertEquals(2, [testingOrder getNumberUniqueItems], @"Unique items should be 2.");
     }
 }
@@ -111,7 +111,7 @@ int protein = 50;
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemOne] withQuantity:3];
         STAssertEquals(3, [testingOrder getTotalItemCount], @"Adding same menu item for third time should return total count of 3.");
         
-        STAssertEquals(3, [testingOrder getSpecificItemCount:itemOne.uid], @"Menu item count should be 3." );
+        STAssertEquals(3, [testingOrder getSpecificItemCount:itemOne.objectId], @"Menu item count should be 3." );
         STAssertEquals(1, [testingOrder getNumberUniqueItems], @"Adding one menu item multiple times should return total unique count of 1.");
         
     }
@@ -129,7 +129,7 @@ int protein = 50;
         [testingOrder setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:itemTwo] withQuantity:2];
         STAssertEquals(3, [testingOrder getTotalItemCount], @"Adding three menu items should return total count of 3.");
         STAssertEquals(2, [testingOrder getNumberUniqueItems], @"Adding two menu items should return total unique count of 2.");
-        STAssertEquals(2, [testingOrder getSpecificItemCount:itemTwo.uid], @"Adding item twice should return specifc cound of 2.");
+        STAssertEquals(2, [testingOrder getSpecificItemCount:itemTwo.objectId], @"Adding item twice should return specifc cound of 2.");
     }
 }
 

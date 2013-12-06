@@ -38,11 +38,11 @@ OrderItem *orderItem;
 {
     self.navigationItem.hidesBackButton = NO;
     //Check to see if the user has already added this item to their order
-    int currentAmountForSelectedItem = [[Order current] getSpecificItemCount:menuItemSelected.uid];
+    int currentAmountForSelectedItem = [[Order current] getSpecificItemCount:menuItemSelected.objectId];
     
     self.quantityOrdered.text = [NSString stringWithFormat:@"%d", currentAmountForSelectedItem];
     quantityStepper.value = currentAmountForSelectedItem;
-    orderItem = [[Order current] getOrderItem:menuItemSelected.uid];
+    orderItem = [[Order current] getOrderItem:menuItemSelected.objectId];
 
     quantityStepper.minimumValue = 0;
     foodImage.image = [UIImage imageNamed:menuItemSelected.picture];
@@ -52,10 +52,10 @@ OrderItem *orderItem;
     mealName.textAlignment = NSTextAlignmentCenter;
     mealName.textColor = [UIColor blackColor];
     
-    calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.calories];
-    sodium.text = [NSString stringWithFormat:@"%@", menuItemSelected.nutritionInfo.sodium];
-    protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.protein];
-    carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
+//    calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.calories];
+//    sodium.text = [NSString stringWithFormat:@"%@", menuItemSelected.nutritionInfo.sodium];
+//    protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.protein];
+//    carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
     
     [super viewDidLoad];
 }

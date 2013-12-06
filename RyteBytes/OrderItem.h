@@ -15,7 +15,7 @@
 @interface OrderItem : JSONModel
 
 @property (nonatomic,strong) MenuItem* menuItem;
-@property (nonatomic) NSInteger quantity;
+@property int quantity;
 
 -(id)initWithMenuItem:(MenuItem*)item;
 -(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)q;

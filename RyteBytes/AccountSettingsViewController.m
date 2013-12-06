@@ -14,6 +14,8 @@
 #import "JSONResponseSerializerWithData.h"
 #import "Parse/Parse.h"
 #import "ChangeCreditCardViewController.h"
+#import "Order.h"
+#import "TabBarController.h"
 
 @implementation AccountSettingsViewController
 
@@ -58,6 +60,13 @@ StripeCustomer *stripeCustomerInfo = nil;
                          }];
     
     
+}
+- (IBAction)logout:(id)sender
+{
+    [PFUser logOut];
+    [[Order current] clearEntireOrder];
+    TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+    tab.tabBarItem.badgeValue = nil;
 }
 
 //update credit card info in this method

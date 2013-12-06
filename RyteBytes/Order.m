@@ -108,7 +108,7 @@
 
 -(void)clearEntireOrder
 {
-    [items removeAllObjects];
+    [orderItems removeAllObjects];
 }
 
 -(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity
@@ -123,9 +123,9 @@
         else
         {
             item.quantity = quantity;
-            [items setValue:item forKey:item.menuItem.uid];
+            [items setValue:item forKey:item.menuItem.objectId];
             
-            NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.uid]);
+            NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.objectId]);
             NSLog(@"Current order : %@", items);
             
             return YES;

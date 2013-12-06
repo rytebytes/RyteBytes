@@ -163,6 +163,11 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void)successFromViewController:(UIViewController*)controller
+{
+    [controller dismissViewControllerAnimated:false completion:nil];
+    [self dismissViewControllerAnimated:false completion:nil];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

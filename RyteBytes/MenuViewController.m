@@ -74,6 +74,14 @@ NSMutableDictionary *order;
               [self stopRefresh];
           } failure:^(NSURLSessionDataTask *operation, NSError *error) {
               NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
+              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+              [self stopRefresh];
+              [[[UIAlertView alloc] initWithTitle:@"Error connecting."
+                                          message:@"There was an error connecting to our servers - please try again."
+                                         delegate:nil
+                                cancelButtonTitle:@"Okay"
+                                otherButtonTitles:nil] show];
+              
           }
      ];
 }

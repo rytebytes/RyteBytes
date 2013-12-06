@@ -13,9 +13,11 @@
 
 @property NSInteger calories;
 @property NSInteger protein;
-@property (nonatomic,strong) NSNumber<Optional> *saturatedFat;
-@property (nonatomic,strong) NSNumber<Optional> *sodium;
+@property NSInteger sodium;
 @property NSInteger carbs;
+
+@property (nonatomic,strong) NSNumber<Optional> *saturatedFat;
+
 
 -(id)initWithDictionary:(NSDictionary*)information;
 -(double) calculateSodiumToCalorieRatio;

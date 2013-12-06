@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 #import "LoginViewController.h"
 #import "TabBarController.h"
+#import "CreateOrLoginViewController.h"
 
 @implementation LoginViewController
 
@@ -59,6 +60,10 @@ int tagTextFieldToResign;
         [self attemptLogin:NULL];
     }
     return YES;
+}
+- (IBAction)cancelLogin:(id)sender
+{
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,7 +124,12 @@ int tagTextFieldToResign;
         [PFUser logInWithUsernameInBackground:username password:password
             block:^(PFUser *user, NSError *error) {
                 if(user){
-                    [self performSegueWithIdentifier:@"LoginSuccess" sender:nil];
+//                    [self performSegueWithIdentifier:@"LoginSuccess" sender:nil];
+                    CreateOrLoginViewController *parent = (CreateOrLoginViewController*)self.parentViewController;
+                    [parent successFromViewController:self];
+                    
+//                    [self dismissViewControllerAnimated:true completion:nil];
+//                    [self.parentViewController dismissViewControllerAnimated:false completion:nil];
                 } else {
                     [[[UIAlertView alloc] initWithTitle:@"Login failed."
                                                 message:@"Login information incorrect, please try again."

@@ -16,7 +16,7 @@
 @property (strong,nonatomic) NSString *userId;
 @property (strong,nonatomic) NSString *locationId;
 @property (strong,nonatomic) NSMutableArray<OrderItem> *orderItems;
-@property (strong,nonatomic) NSMutableDictionary *items;
+@property (strong,nonatomic) NSMutableDictionary<Ignore> *items;
 @property (strong,nonatomic) NSNumber *totalInCents;
 
 + (Order*)current;

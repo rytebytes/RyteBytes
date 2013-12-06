@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSArray *pageImages;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 
+- (void)successFromViewController:(UIViewController*)controller;
+
 //- (void)loadVisiblePages;
 //- (void)loadPage:(NSInteger)page;
 //- (void)purgePage:(NSInteger)page;
