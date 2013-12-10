@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "Order.h"
+@protocol DismissLogin <NSObject>
+- (void)dismiss;
+@end
+
 @interface TabBarController : UITabBarController <UITabBarControllerDelegate>
 
 typedef enum tabs
@@ -23,5 +27,7 @@ typedef enum tabs
 
 @property (nonatomic,strong) PFUser *User;
 @property (nonatomic,strong) Order *currentOrder;
+
+- (void)dismissLogin;
 
 @end

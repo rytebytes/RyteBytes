@@ -8,20 +8,10 @@
 
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
+#import "TabBarController.h"
 
-@interface CreateOrLoginViewController : UIViewController <UIScrollViewDelegate>
+@interface CreateOrLoginViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
-@property (nonatomic, strong) IBOutlet UIButton *cancel;
-
-@property (nonatomic, strong) NSArray *pageImages;
-@property (nonatomic, strong) NSMutableArray *pageViews;
-
-- (void)successFromViewController:(UIViewController*)controller;
-
-//- (void)loadVisiblePages;
-//- (void)loadPage:(NSInteger)page;
-//- (void)purgePage:(NSInteger)page;
+@property (nonatomic,weak) id <DismissLogin> delegate;
 
 @end

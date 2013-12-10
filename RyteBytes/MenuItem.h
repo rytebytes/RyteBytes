@@ -22,7 +22,7 @@
 @property (nonatomic,strong) NSString *picture;
 @property (nonatomic,strong) NSString *longDescription;
 @property (nonatomic,strong) NSString *objectId;
-@property (nonatomic) int cost;
+@property (nonatomic) int costInCents;
 
 //+(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSDictionary*)menuJson;
 //+(void) writeMenuToDisk:(NSDictionary*)menuJson;

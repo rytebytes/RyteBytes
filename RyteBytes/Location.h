@@ -15,12 +15,12 @@
 
 @interface Location : JSONModel
 
-@property (nonatomic,strong) NSString* Name;
+@property (nonatomic,strong) NSString* name;
 @property (nonatomic,strong) NSString* objectId;
 @property (nonatomic,strong) Pointer *charityId;
-@property (nonatomic,strong) NSString* StreetAddress;
-@property (nonatomic,strong) NSString* City;
-@property (nonatomic,strong) NSString* State;
-@property (nonatomic) int Zipcode;
+@property (nonatomic,strong) NSString* streetAddress;
+@property (nonatomic,strong) NSString* city;
+@property (nonatomic,strong) NSString* state;
+@property (nonatomic) int zipcode;
 
 @end

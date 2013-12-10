@@ -66,7 +66,9 @@ StripeCustomer *stripeCustomerInfo = nil;
     [PFUser logOut];
     [[Order current] clearEntireOrder];
     TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-    tab.tabBarItem.badgeValue = nil;
+    
+    UINavigationController *menu = [tab viewControllers][1];
+    menu.tabBarItem.badgeValue = nil;
 }
 
 //update credit card info in this method

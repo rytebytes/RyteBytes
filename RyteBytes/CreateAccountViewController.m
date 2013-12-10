@@ -60,7 +60,7 @@ int tagTextFieldToResign;
 - (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if(nil != pickupLocations){
-        return [pickupLocations.result[row] Name];
+        return [pickupLocations.result[row] name];
     }
     return @"";
 }
@@ -87,7 +87,7 @@ int tagTextFieldToResign;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.navigationItem.hidesBackButton = NO;
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tapGesture];

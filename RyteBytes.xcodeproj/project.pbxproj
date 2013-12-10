@@ -130,6 +130,7 @@
 		01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */; };
 		01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */; };
 		01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */; };
+		01C33BA91852ADA000263122 /* BeginLoginNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C33BA81852ADA000263122 /* BeginLoginNavViewController.m */; };
 		01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */; };
 		01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83CA17B6B443001A19C5 /* StripeClient.m */; };
 		01CD83CC17B6B443001A19C5 /* StripeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83CA17B6B443001A19C5 /* StripeClient.m */; };
@@ -326,6 +327,8 @@
 		01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57 pixel App Icon.png"; sourceTree = "<group>"; };
 		01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "114 pixels App Icon.png"; sourceTree = "<group>"; };
 		01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = high_res_app_icon.jpeg; sourceTree = "<group>"; };
+		01C33BA71852ADA000263122 /* BeginLoginNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeginLoginNavViewController.h; sourceTree = "<group>"; };
+		01C33BA81852ADA000263122 /* BeginLoginNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginLoginNavViewController.m; sourceTree = "<group>"; };
 		01CD83C217B6AEBE001A19C5 /* StripeCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCustomer.h; sourceTree = "<group>"; };
 		01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCustomer.m; sourceTree = "<group>"; };
 		01CD83C917B6B443001A19C5 /* StripeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeClient.h; sourceTree = "<group>"; };
@@ -727,6 +730,8 @@
 				01DAC6CB177D024E00158C9B /* LoginViewController.m */,
 				0177532A178241A200296315 /* CreateAccountViewController.h */,
 				0177532B178241A200296315 /* CreateAccountViewController.m */,
+				01C33BA71852ADA000263122 /* BeginLoginNavViewController.h */,
+				01C33BA81852ADA000263122 /* BeginLoginNavViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1038,6 +1043,7 @@
 				011CEDF21706042300AE586E /* MenuViewController.m in Sources */,
 				01307ADD18445BDD006F72FD /* DoRyteViewController.m in Sources */,
 				01CE5DC2184003ED006EB46D /* StripeError.m in Sources */,
+				01C33BA91852ADA000263122 /* BeginLoginNavViewController.m in Sources */,
 				011CEDF51706260800AE586E /* Dish.m in Sources */,
 				01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */,
 				01CE5DC5184005E2006EB46D /* StripeErrorResponse.m in Sources */,

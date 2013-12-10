@@ -10,11 +10,13 @@
 #import "MenuViewController.h"
 #import "Dish.h"
 #import "EatRyteViewController.h"
-#import "CreateOrLoginViewController.h"
+#import "BeginLoginNavViewController.h"
 
 @implementation TabBarController
 
 @synthesize currentOrder;
+
+BeginLoginNavViewController *loginNav;
 
 - (void)didReceiveMemoryWarning
 {
@@ -34,22 +36,19 @@
     self.selectedIndex = ORDER_TAB;
 
     NSLog(@"finished viewDidLoad in TabBarController");
-//    UIViewController *eatRyte = [[EatRyteViewController alloc] init];
-//    UIViewController *frontViewController = [[UIViewController alloc] init];
-//    frontViewController.view.backgroundColor = [UIColor orangeColor];
-//    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:frontViewController leftViewController:eatRyte];
-//    revealController.delegate = self;
-////    [self.revealController setLeftViewController:eatRyte];
-//    self.view.window.rootViewController = revealController;
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)showLogin
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    CreateOrLoginViewController *cl = (CreateOrLoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
-    cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:cl animated:true completion:Nil];
+    loginNav = (BeginLoginNavViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
+    loginNav.delegate = self;
+    [self presentViewController:loginNav animated:true completion:Nil];
+}
+
+- (void)dismiss
+{
+    [loginNav dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (void)viewDidUnload

@@ -37,7 +37,7 @@
 
 -(double)calculateCost
 {
-    return menuItem.cost * quantity;
+    return (menuItem.costInCents / 100) * quantity;
 }
 
 @end

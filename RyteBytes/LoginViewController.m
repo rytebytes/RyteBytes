@@ -28,6 +28,7 @@ int tagTextFieldToResign;
 
 - (void)viewDidLoad
 {
+    self.navigationItem.hidesBackButton = NO;
     [super viewDidLoad];
 }
 
@@ -126,7 +127,8 @@ int tagTextFieldToResign;
                 if(user){
 //                    [self performSegueWithIdentifier:@"LoginSuccess" sender:nil];
                     CreateOrLoginViewController *parent = (CreateOrLoginViewController*)self.parentViewController;
-                    [parent successFromViewController:self];
+//                    [parent successFromViewController:self];
+                    [self.navigationController popToRootViewControllerAnimated:NO];
                     
 //                    [self dismissViewControllerAnimated:true completion:nil];
 //                    [self.parentViewController dismissViewControllerAnimated:false completion:nil];

@@ -61,12 +61,15 @@ int orderTotalCost = 0;
     OrderSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderSummaryCell" forIndexPath:indexPath];
     
     OrderItem *item = [orderArray objectAtIndex:indexPath.row];
-    cell.itemName.text = item.menuItem.name;
-    cell.quantity.text = [NSString stringWithFormat:@"%d", item.quantity];
+    cell.itemName.text = [item.menuItem.name uppercaseString];
+//    cell.quantity.text = [NSString stringWithFormat:@"%d", item.quantity];
     cell.stepper.value = item.quantity;
     cell.uniqueId = item.menuItem.objectId;
-    cell.unitCost.text = [NSString stringWithFormat:@"$%d", item.menuItem.cost];
-    cell.totalCost.text = [NSString stringWithFormat:@"$%.02f", [item calculateCost]];
+//    cell.unitCost.text = [NSString stringWithFormat:@"$%d", item.menuItem.cost];
+//    cell.totalCost.text = [NSString stringWithFormat:@"= $%.02f", [item calculateCost]];
+//    
+    cell.itemQuantityAndCost.text = [NSString stringWithFormat:@"%d x $%d = $%.02f", item.quantity, item.menuItem.costInCents / 100, [item calculateCost]];
+    cell.image.image = [UIImage imageNamed:item.menuItem.picture];
 
     return cell;
 }
@@ -78,7 +81,7 @@ int orderTotalCost = 0;
     OrderSummaryCell *cell = (OrderSummaryCell*)[[[sender superview] superview] superview];
     OrderItem *selectedItem = [currentOrder getOrderItem:cell.uniqueId];
     
-    cell.quantity.text = [NSString stringWithFormat:@"%d", value];
+//    cell.quantity.text = [NSString stringWithFormat:@"%d", value];
     selectedItem.quantity = value;
     [currentOrder setOrderItemQuantity:selectedItem withQuantity:value];
     [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
@@ -89,15 +92,6 @@ int orderTotalCost = 0;
 - (void)updateOrderCost {
     orderTotal.text = [NSString stringWithFormat:@"$%.02f", [currentOrder calculateTotalOrderCost]];
     doRyteTotal.text = [NSString stringWithFormat:@"$%.02f", [currentOrder calculateDoRyteDonation]];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"OrderComplete"])
-    {
-        TabBarController *tabBar = (TabBarController *)segue.destinationViewController;
-        tabBar.selectedIndex = ORDER_TAB;
-    }
 }
 
 - (IBAction)placeOrder:(id)sender
