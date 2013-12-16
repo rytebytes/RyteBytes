@@ -18,8 +18,8 @@
 
 @synthesize userId;
 @synthesize locationId;
-@synthesize items;
-@synthesize orderItems;
+@synthesize orderItemDictionary;
+@synthesize menu;
 
 -(id)init
 {
@@ -27,7 +27,7 @@
         return nil;
     
     NSLog(@"Current order being initialized.");
-    items = [[NSMutableDictionary alloc]initWithCapacity:100];
+    orderItemDictionary = (NSMutableDictionary<OrderItem,Optional>*)[[NSMutableDictionary alloc]initWithCapacity:100];
     
     return self;
 }
@@ -42,40 +42,33 @@
     return currentOrder;
 }
 
--(void)setupOrderWithMenu:(NSArray*)menu
-{
-    for (MenuItem* item in menu) {
-        [self setOrderItemQuantity:[[OrderItem alloc] initWithMenuItem:item] withQuantity:0];
-    }
-}
-
 -(NSMutableArray<OrderItem>*)convertToOrderItemArray
 {
-    orderItems = (NSMutableArray<OrderItem>*)[[NSMutableArray alloc] initWithCapacity:[self getNumberUniqueItems]];
+    NSMutableArray<OrderItem> *orderItemArray = (NSMutableArray<OrderItem,Optional>*)[[NSMutableArray alloc] initWithCapacity:[self getNumberUniqueItems]];
     int count = 0;
     
-    for (id key in items) {
-        OrderItem* item = [items objectForKey:key];
+    for (id key in orderItemDictionary) {
+        OrderItem* item = [orderItemDictionary objectForKey:key];
         if(item.quantity > 0)
         {
-            orderItems[count] = item;
+            orderItemArray[count] = item;
             count++;
         }
     }
     
-    return orderItems;
+    return orderItemArray;
 }
 
 -(OrderItem*)getOrderItem:(NSString*)itemId
 {
-    return [items objectForKey:itemId];
+    return [orderItemDictionary objectForKey:itemId];
 }
 
 -(int)getNumberUniqueItems
 {
     int uniqueCount = 0;
-    for (id key in items) {
-        OrderItem* item = [items objectForKey:key];
+    for (id key in orderItemDictionary) {
+        OrderItem* item = [orderItemDictionary objectForKey:key];
         if(item.quantity > 0)
         {
             uniqueCount++;
@@ -88,9 +81,9 @@
 {
     int totalCount = 0;
     NSString *key;
-    NSEnumerator *allItems = items.keyEnumerator;
+    NSEnumerator *allItems = orderItemDictionary.keyEnumerator;
     while (key = [allItems nextObject]) {
-        totalCount += ((OrderItem*)[items objectForKey:key]).quantity;
+        totalCount += ((OrderItem*)[orderItemDictionary objectForKey:key]).quantity;
     }
     return totalCount;
 }
@@ -100,22 +93,22 @@
  */
 -(int)getSpecificItemCount:(NSString*)itemId
 {
-    if(nil == [items valueForKey:itemId])
+    if(nil == [orderItemDictionary valueForKey:itemId])
         return -1;
     
-    return ((OrderItem*)[items valueForKey:itemId]).quantity;
+    return ((OrderItem*)[orderItemDictionary valueForKey:itemId]).quantity;
 }
 
 -(void)clearEntireOrder
 {
-    [orderItems removeAllObjects];
+    [orderItemDictionary removeAllObjects];
 }
 
 -(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity
 {
-    @synchronized(orderItems)
+    @synchronized(orderItemDictionary)
     {
-        if(items.count > 100 || (items.count + item.quantity) > 100)
+        if(orderItemDictionary.count > 100 || (orderItemDictionary.count + item.quantity) > 100)
         {
             NSLog(@"Order limit exceeded.");
             return NO;
@@ -123,10 +116,10 @@
         else
         {
             item.quantity = quantity;
-            [items setValue:item forKey:item.menuItem.objectId];
+            [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
             
             NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.objectId]);
-            NSLog(@"Current order : %@", items);
+            NSLog(@"Current order : %@", menu);
             
             return YES;
         }
@@ -136,8 +129,8 @@
 -(double)calculateTotalOrderCost
 {
     int totalCost = 0;
-    for (id key in items) {
-        OrderItem* item = [items objectForKey:key];
+    for (id key in orderItemDictionary) {
+        OrderItem* item = [orderItemDictionary objectForKey:key];
         totalCost += [item calculateCost];
     }
     return totalCost;
@@ -146,6 +139,12 @@
 -(double)calculateDoRyteDonation
 {
     return [self calculateTotalOrderCost] * .05;
+}
+
+-(NSString*)serializeToString
+{
+    [self.orderItemDictionary removeAllObjects];
+    return [self toJSONString];
 }
 
 @end

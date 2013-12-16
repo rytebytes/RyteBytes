@@ -25,7 +25,7 @@
 @implementation MenuViewController
 
 @synthesize kiosk;
-@synthesize menuItems;
+@synthesize menu;
 
 NSMutableDictionary *order;
 
@@ -40,10 +40,12 @@ NSMutableDictionary *order;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    menu = [[Menu alloc] init];
+    menu.delegate = self;
     
-    if(menuItems == NULL)
+    if([menu.menu count] == 0)
     {
-        [self refreshMenu];
+        [menu refreshFromServer];
     }
     
     NSLog(@"The current order is : %@",((TabBarController*)(self.tabBarController)).currentOrder);
@@ -62,28 +64,7 @@ NSMutableDictionary *order;
 
 -(void)refreshMenu
 {
-    ParseClient *parseClient = [ParseClient current];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] init]
-          success:^(NSURLSessionDataTask *task , id responseObject) {
-              NSError *error = nil;
-              menuItems = [[MenuResult alloc] initWithDictionary:responseObject error:&error].result;
-              [[Order current] setupOrderWithMenu:menuItems];
-              [self.tableView reloadData];
-              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-              [self stopRefresh];
-          } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-              NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
-              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-              [self stopRefresh];
-              [[[UIAlertView alloc] initWithTitle:@"Error connecting."
-                                          message:@"There was an error connecting to our servers - please try again."
-                                         delegate:nil
-                                cancelButtonTitle:@"Okay"
-                                otherButtonTitles:nil] show];
-              
-          }
-     ];
+    [menu refreshFromServer];
 }
 
 -(void)stopRefresh
@@ -105,15 +86,14 @@ NSMutableDictionary *order;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.menuItems count];
+    return [menu.menu count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     
-    MenuItem *meal = [self.menuItems objectAtIndex:indexPath.row];
-//    cell.name.text = meal.name;
+    MenuItem *meal = [menu.menu objectAtIndex:indexPath.row];
     cell.image.image = [UIImage imageNamed:meal.picture];
     
     return cell;
@@ -129,10 +109,6 @@ NSMutableDictionary *order;
             return YES;
         }
         else{
-            //            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-            //            CreateOrLoginViewController *cl = (CreateOrLoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
-            //            cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-            //            [self presentViewController:cl animated:true completion:Nil];
             TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
             [tab showLogin];
             return NO;
@@ -148,7 +124,7 @@ NSMutableDictionary *order;
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
 		MenuItemDetailsViewController *mealDetailsController = segue.destinationViewController;
         
-        MenuItem *selectedMeal = [self.menuItems objectAtIndex:selectedRowIndex.row];
+        MenuItem *selectedMeal = [menu.menu objectAtIndex:selectedRowIndex.row];
         
         mealDetailsController.menuItemSelected = selectedMeal;
         [mealDetailsController setDelegate:self];
@@ -163,10 +139,6 @@ NSMutableDictionary *order;
             [orderController setDelegate:self];
         }
         else{
-//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-//            CreateOrLoginViewController *cl = (CreateOrLoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
-//            cl.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//            [self presentViewController:cl animated:true completion:Nil];
             TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
             [tab showLogin];
         }
@@ -182,45 +154,13 @@ NSMutableDictionary *order;
         self.parentViewController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", count];
 }
 
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+- (void)refreshFromServerCompleteWithSuccess:(BOOL)success
+{
+    if(success)
+        [self.tableView reloadData];
+    
+    [self stopRefresh];
+}
 
 #pragma mark - Table view delegate
 

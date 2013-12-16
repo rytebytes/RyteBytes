@@ -29,10 +29,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"in view will appear for create or login vc.");
     if([PFUser currentUser])
     {
-        [self.delegate dismiss];
+        [self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
     }
 }
 

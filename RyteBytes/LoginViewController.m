@@ -120,18 +120,11 @@ int tagTextFieldToResign;
     if (username && password && username.length != 0 && password.length != 0)
     {
         //call to Parse to login
-        //if successful,
-        
+        //if successful,  
         [PFUser logInWithUsernameInBackground:username password:password
             block:^(PFUser *user, NSError *error) {
                 if(user){
-//                    [self performSegueWithIdentifier:@"LoginSuccess" sender:nil];
-                    CreateOrLoginViewController *parent = (CreateOrLoginViewController*)self.parentViewController;
-//                    [parent successFromViewController:self];
                     [self.navigationController popToRootViewControllerAnimated:NO];
-                    
-//                    [self dismissViewControllerAnimated:true completion:nil];
-//                    [self.parentViewController dismissViewControllerAnimated:false completion:nil];
                 } else {
                     [[[UIAlertView alloc] initWithTitle:@"Login failed."
                                                 message:@"Login information incorrect, please try again."

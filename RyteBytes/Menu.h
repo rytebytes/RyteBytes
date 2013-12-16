@@ -7,7 +7,18 @@
 //
 
 #import "JSONModel.h"
+#import "MenuItem.h"
+@protocol MenuRefresh <NSObject>
+- (void)refreshFromServerCompleteWithSuccess:(BOOL)success;
+@end
 
 @interface Menu : JSONModel
+
+@property (strong,nonatomic) NSMutableArray<MenuItem> *menu;
+@property (nonatomic,weak) id <MenuRefresh> delegate;
+
+-(void)refreshFromServer;
+-(void)writeToFile;
+-(void)loadFromFile;
 
 @end

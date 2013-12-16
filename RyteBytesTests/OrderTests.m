@@ -35,9 +35,20 @@ int protein = 50;
     info.sodium = sodium;
     info.protein = protein;
     
-    itemOne = [[MenuItem alloc] initWithName:@"Potatoes" withType:Starch withNutritionInfo:info withPicture:@"" withLongDesc:@"" withUid:@"0"];
-    itemTwo = [[MenuItem alloc] initWithName:@"Beets & Carrots" withType:Starch withNutritionInfo:info withPicture:@"" withLongDesc:@"" withUid:@"1"];
-    itemThree = [[MenuItem alloc] initWithName:@"BBQ Chicken" withType:Starch withNutritionInfo:info withPicture:@"" withLongDesc:@"" withUid:@"2"];
+    itemOne = [[MenuItem alloc] init];
+    itemOne.name = @"Potatoes";
+    itemOne.nutritionInfoId = info;
+    itemOne.objectId = @"a";
+
+    itemTwo = [[MenuItem alloc] init];
+    itemTwo.name = @"Beets & Carrots";
+    itemTwo.nutritionInfoId = info;
+    itemTwo.objectId = @"b";
+    
+    itemThree = [[MenuItem alloc] init];
+    itemThree.name = @"BBQ Chicken";
+    itemThree.nutritionInfoId = info;
+    itemThree.objectId = @"c";
 }
 
 - (void)tearDown

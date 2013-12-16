@@ -9,6 +9,7 @@
 #import "MenuItemDetailsViewController.h"
 #import "OrderItem.h"
 #import "OrderSummaryViewController.h"
+#import "TabBarController.h"
 
 @implementation MenuItemDetailsViewController
 
@@ -75,8 +76,16 @@ OrderItem *orderItem;
 {
     if ([segue.identifier isEqualToString:@"Checkout"])
     {
-        OrderSummaryViewController *orderController = segue.destinationViewController;
-        [orderController setDelegate:self.delegate];
+        PFUser *currentUser = [PFUser currentUser];
+        if (currentUser)
+        {
+            OrderSummaryViewController *orderController = segue.destinationViewController;
+            [orderController setDelegate:self.delegate];
+        }
+        else{
+            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController.parentViewController;
+            [tab showLogin];
+        }
     }
 }
 

@@ -12,6 +12,4 @@
 
 @interface CreateOrLoginViewController : UIViewController
 
-@property (nonatomic,weak) id <DismissLogin> delegate;
-
 @end

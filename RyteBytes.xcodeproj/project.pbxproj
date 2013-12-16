@@ -118,8 +118,9 @@
 		0177533917826DC200296315 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0177533817826DC200296315 /* CoreMedia.framework */; };
 		0177533B17826DCD00296315 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0177533A17826DCD00296315 /* CoreVideo.framework */; };
 		0177533D17826DDD00296315 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0177533C17826DDD00296315 /* OpenGLES.framework */; };
+		017BD2221858CEA3000634F4 /* menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 017BD2211858CEA3000634F4 /* menu.plist */; };
+		017BD2251859156D000634F4 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 017BD2241859156D000634F4 /* Menu.m */; };
 		0192CC1A16C05FE50024815F /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192CC1916C05FE50024815F /* Customer.m */; };
-		019C511D17D7842400CBD44E /* MenuItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 019C511C17D7842400CBD44E /* MenuItemTests.m */; };
 		01A35DED1791BACC00DEBC46 /* OrderNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */; };
 		01AAA78C18456FC8002D7719 /* AccountSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA78B18456FC8002D7719 /* AccountSettingsViewController.m */; };
 		01AAA79118457257002D7719 /* ChangeCreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA79018457257002D7719 /* ChangeCreditCardViewController.m */; };
@@ -308,9 +309,10 @@
 		0177533817826DC200296315 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0177533A17826DCD00296315 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		0177533C17826DDD00296315 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		017BD2211858CEA3000634F4 /* menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menu.plist; sourceTree = "<group>"; };
+		017BD2231859156D000634F4 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		017BD2241859156D000634F4 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		0192CC1916C05FE50024815F /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
-		019C511B17D7842400CBD44E /* MenuItemTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemTests.h; sourceTree = "<group>"; };
-		019C511C17D7842400CBD44E /* MenuItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemTests.m; sourceTree = "<group>"; };
 		01A35DEB1791BACC00DEBC46 /* OrderNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNotifications.h; sourceTree = "<group>"; };
 		01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNotifications.m; sourceTree = "<group>"; };
 		01AAA78A18456FC8002D7719 /* AccountSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingsViewController.h; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 				0176638B16C05809003BBD47 /* InfoPlist.strings */,
 				0176638E16C05809003BBD47 /* main.m */,
 				0176639016C05809003BBD47 /* RyteBytes-Prefix.pch */,
+				017BD2211858CEA3000634F4 /* menu.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -656,8 +659,6 @@
 				017663B816C05809003BBD47 /* RyteBytesTests.m */,
 				01222559179B16240026922A /* OrderTests.h */,
 				0122255A179B16240026922A /* OrderTests.m */,
-				019C511B17D7842400CBD44E /* MenuItemTests.h */,
-				019C511C17D7842400CBD44E /* MenuItemTests.m */,
 				017663B216C05809003BBD47 /* Supporting Files */,
 			);
 			path = RyteBytesTests;
@@ -753,6 +754,8 @@
 				0173747217DFEAE90090849A /* OrderItem.m */,
 				0131E5F1183815F400556178 /* Location.h */,
 				0131E5F2183815F400556178 /* Location.m */,
+				017BD2231859156D000634F4 /* Menu.h */,
+				017BD2241859156D000634F4 /* Menu.m */,
 				01CD83C517B6B3AE001A19C5 /* Third Party */,
 			);
 			name = Models;
@@ -923,6 +926,7 @@
 				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
 				0172D11F18411CF9009B1806 /* EatRyte 50x50.png in Resources */,
 				0105BC3C184D66A1003483EB /* pasta_tu.png in Resources */,
+				017BD2221858CEA3000634F4 /* menu.plist in Resources */,
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
 				0131E5F01837CBD100556178 /* LaunchImage.png in Resources */,
 				0105BC39184D66A1003483EB /* pasta_turkey.png in Resources */,
@@ -1061,6 +1065,7 @@
 				0131E5F718381CF900556178 /* LocationResult.m in Sources */,
 				01222552179AFA840026922A /* Constants.m in Sources */,
 				01222556179AFD650026922A /* Order.m in Sources */,
+				017BD2251859156D000634F4 /* Menu.m in Sources */,
 				0102526417B46B6F00BF1F3C /* STPCard.m in Sources */,
 				0102526517B46B6F00BF1F3C /* STPToken.m in Sources */,
 				0102526617B46B6F00BF1F3C /* STPView.m in Sources */,
@@ -1098,7 +1103,6 @@
 				01222557179AFD650026922A /* Order.m in Sources */,
 				0122255B179B16240026922A /* OrderTests.m in Sources */,
 				01CD83CC17B6B443001A19C5 /* StripeClient.m in Sources */,
-				019C511D17D7842400CBD44E /* MenuItemTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

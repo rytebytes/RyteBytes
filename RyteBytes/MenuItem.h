@@ -24,10 +24,4 @@
 @property (nonatomic,strong) NSString *objectId;
 @property (nonatomic) int costInCents;
 
-//+(NSMutableArray*) convertMenuJsonToMenuItemArray:(NSDictionary*)menuJson;
-//+(void) writeMenuToDisk:(NSDictionary*)menuJson;
-//+(NSMutableArray*) retrieveMenuFromDisk;
-//-(id)initWithName:(NSString*)n withType:(MenuItemTypes)t withNutritionInfo:(NutritionInformation*)info withPicture:(NSString*)p withLongDesc:(NSString*)d
-//          withUid:(NSString*)uid withCost:(int)c;
-
 @end

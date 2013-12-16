@@ -7,6 +7,7 @@
 //
 
 #import "BeginLoginNavViewController.h"
+#import <Parse/Parse.h>
 
 @interface BeginLoginNavViewController ()
 

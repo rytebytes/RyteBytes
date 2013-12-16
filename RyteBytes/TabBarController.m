@@ -16,7 +16,7 @@
 
 @synthesize currentOrder;
 
-BeginLoginNavViewController *loginNav;
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -41,14 +41,8 @@ BeginLoginNavViewController *loginNav;
 - (void)showLogin
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    loginNav = (BeginLoginNavViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
-    loginNav.delegate = self;
+    BeginLoginNavViewController *loginNav = (BeginLoginNavViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
     [self presentViewController:loginNav animated:true completion:Nil];
-}
-
-- (void)dismiss
-{
-    [loginNav dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (void)viewDidUnload

@@ -10,14 +10,16 @@
 #import "Dish.h"
 #import "MenuItem.h"
 #import "OrderItem.h"
+#import "Menu.h"
+
 
 @interface Order : JSONModel
 
 @property (strong,nonatomic) NSString *userId;
 @property (strong,nonatomic) NSString *locationId;
-@property (strong,nonatomic) NSMutableArray<OrderItem> *orderItems;
-@property (strong,nonatomic) NSMutableDictionary<Ignore> *items;
+@property (strong,nonatomic) NSMutableDictionary<OrderItem,Optional> *orderItemDictionary;
 @property (strong,nonatomic) NSNumber *totalInCents;
+@property (strong,nonatomic) Menu<Ignore> *menu;
 
 + (Order*)current;
 
@@ -29,11 +31,12 @@
 -(OrderItem*)getOrderItem:(NSString*)itemId;
 -(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity;
 
--(void)setupOrderWithMenu:(NSArray*)menu;
 -(void)clearEntireOrder;
 
 -(double)calculateTotalOrderCost;
 -(double)calculateDoRyteDonation;
+
+-(NSString*)serializeToString;
 
 @end
 

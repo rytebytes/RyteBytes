@@ -66,15 +66,16 @@ StripeCustomer *stripeCustomerInfo = nil;
     [PFUser logOut];
     [[Order current] clearEntireOrder];
     TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-    
     UINavigationController *menu = [tab viewControllers][1];
     menu.tabBarItem.badgeValue = nil;
+    
+    UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success." message:@"You are now logged out." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [success show];
 }
 
 //update credit card info in this method
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"view did appear");
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
