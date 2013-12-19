@@ -62,12 +62,9 @@ int orderTotalCost = 0;
     
     OrderItem *item = [orderArray objectAtIndex:indexPath.row];
     cell.itemName.text = [item.menuItem.name uppercaseString];
-//    cell.quantity.text = [NSString stringWithFormat:@"%d", item.quantity];
     cell.stepper.value = item.quantity;
     cell.uniqueId = item.menuItem.objectId;
-//    cell.unitCost.text = [NSString stringWithFormat:@"$%d", item.menuItem.cost];
-//    cell.totalCost.text = [NSString stringWithFormat:@"= $%.02f", [item calculateCost]];
-//    
+   
     cell.itemQuantityAndCost.text = [NSString stringWithFormat:@"%d x $%d = $%.02f", item.quantity, item.menuItem.costInCents / 100, [item calculateCost]];
     cell.image.image = [UIImage imageNamed:item.menuItem.picture];
 
@@ -80,10 +77,10 @@ int orderTotalCost = 0;
     
     OrderSummaryCell *cell = (OrderSummaryCell*)[[[sender superview] superview] superview];
     OrderItem *selectedItem = [currentOrder getOrderItem:cell.uniqueId];
-    
-//    cell.quantity.text = [NSString stringWithFormat:@"%d", value];
     selectedItem.quantity = value;
-    [currentOrder setOrderItemQuantity:selectedItem withQuantity:value];
+    [currentOrder setOrderItem:selectedItem];
+    
+    cell.itemQuantityAndCost.text = [NSString stringWithFormat:@"%d x $%d = $%.02f", selectedItem.quantity, selectedItem.menuItem.costInCents / 100, [selectedItem calculateCost]];
     [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
     orderArray = [currentOrder convertToOrderItemArray];
     [self updateOrderCost];

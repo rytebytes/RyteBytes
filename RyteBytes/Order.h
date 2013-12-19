@@ -29,7 +29,8 @@
 -(NSMutableArray<OrderItem>*)convertToOrderItemArray;
 
 -(OrderItem*)getOrderItem:(NSString*)itemId;
--(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity;
+-(BOOL)setMenuItem:(MenuItem*)menuItem withQuantity:(int)quantity;
+-(void)setOrderItem:(OrderItem*)item;
 
 -(void)clearEntireOrder;
 

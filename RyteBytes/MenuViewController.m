@@ -48,17 +48,12 @@ NSMutableDictionary *order;
         [menu refreshFromServer];
     }
     
-    NSLog(@"The current order is : %@",((TabBarController*)(self.tabBarController)).currentOrder);
-    
-    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     
     [refresh addTarget:self action:@selector(refreshMenu) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+
     order = [NSMutableDictionary dictionary];
 }
 
@@ -156,9 +151,7 @@ NSMutableDictionary *order;
 
 - (void)refreshFromServerCompleteWithSuccess:(BOOL)success
 {
-    if(success)
-        [self.tableView reloadData];
-    
+    [self.tableView reloadData]; //either reload with data from server or from local copy
     [self stopRefresh];
 }
 

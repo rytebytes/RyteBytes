@@ -94,7 +94,7 @@
 -(int)getSpecificItemCount:(NSString*)itemId
 {
     if(nil == [orderItemDictionary valueForKey:itemId])
-        return -1;
+        return 0;
     
     return ((OrderItem*)[orderItemDictionary valueForKey:itemId]).quantity;
 }
@@ -104,25 +104,29 @@
     [orderItemDictionary removeAllObjects];
 }
 
--(BOOL)setOrderItemQuantity:(OrderItem*)item withQuantity:(int)quantity
+-(void)setOrderItem:(OrderItem*)item
 {
-    @synchronized(orderItemDictionary)
+    [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
+}
+
+-(BOOL)setMenuItem:(MenuItem*)menuItem withQuantity:(int)quantity
+{
+
+    if(orderItemDictionary.count > 100 || (orderItemDictionary.count + quantity) > 100)
     {
-        if(orderItemDictionary.count > 100 || (orderItemDictionary.count + item.quantity) > 100)
-        {
-            NSLog(@"Order limit exceeded.");
-            return NO;
-        }
-        else
-        {
-            item.quantity = quantity;
-            [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
-            
-            NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.objectId]);
-            NSLog(@"Current order : %@", menu);
-            
-            return YES;
-        }
+        NSLog(@"Order limit exceeded.");
+        return NO;
+    }
+    else
+    {
+        //key : objectId
+        //value : orderItem (so we can access all info on the order summary screen
+        OrderItem *item = [[OrderItem alloc] initWithMenuItem:menuItem withQuantity:quantity];
+        [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
+        
+        NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.objectId]);
+        
+        return YES;
     }
 }
 

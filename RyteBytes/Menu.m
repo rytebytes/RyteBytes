@@ -15,14 +15,23 @@
 @synthesize menu;
 @synthesize delegate;
 
+NSString *menuPath;
+
 -(id)init
 {
     if(!(self = [super init]))
         return nil;
     
-    NSLog(@"Current order being initialized.");
-    menu = (NSMutableArray<MenuItem>*)[[NSMutableArray alloc] initWithCapacity:100];
+    menuPath = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"plist"];
+    NSLog(@"Current menu being initialized.");
     
+    //when the menu object is created, attempt to load the menu stored to plist
+    //if the object is nil (menu isn't available local, then create new, empty menu
+    [self loadFromFile];
+    if([menu count] == 0)
+    {
+        menu = (NSMutableArray<MenuItem>*)[[NSMutableArray alloc] initWithCapacity:100];
+    }
     return self;
 }
 
@@ -34,13 +43,13 @@
               success:^(NSURLSessionDataTask *task , id responseObject) {
                   NSError *error = nil;
                   menu = (NSMutableArray<MenuItem>*)[[MenuResult alloc] initWithDictionary:responseObject error:&error].result;
+                  [self writeToFile];
                   [delegate refreshFromServerCompleteWithSuccess:TRUE];
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                  
-
               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                  [self loadFromFile]; //if we can't reach the network/server, load local copy
                   [delegate refreshFromServerCompleteWithSuccess:FALSE];
                   [[[UIAlertView alloc] initWithTitle:@"Error connecting."
                                               message:@"There was an error connecting to our servers - please try again."
@@ -54,44 +63,40 @@
 
 -(void)writeToFile
 {
-//    NSString *menuPath = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"plist"];
-//    
-//    NSString *menu = [[Order current] serializeToString];
-//    NSData *menuData = [NSPropertyListSerialization dataWithPropertyList:[[Order current] serializeToString] format:NSPropertyListXMLFormat_v1_0 options:0 error:&error];
-//    if(!menuData)
-//        NSLog(@"Unable to generate plist from Airplane: %@", error);
-//    BOOL success = [menuData writeToFile:menuPath atomically:YES];
-//    if(!success)
-//        NSLog(@"Unable to write plist data to disk: %@", error);
-//    
-//    NSData *plistData = [NSData dataWithContentsOfFile:menuPath options: 0 error: &error];
-//    if(!plistData)
-//    {
-//        NSLog(@"Unable to read plist data from disk: %@", error);
-//        return;
-//    }
-//    id plist = [NSPropertyListSerialization propertyListWithData: plistData options:0 format: NULL error: &error];
-//    if(!plist)
-//    {
-//        NSLog(@"Unable to decode plist from data: %@", error);
-//        return;
-//    }
-//    
-//    menuItems = nil;
-//    menuItems = [Order current] in
+    NSError *error;
     
-    //              NSLog(@"file Stored at %@",menuPath);
-    //
-    //              menuItems = nil;
-    //
-    //              menuItems = [NSArray arrayWithContentsOfFile:menuPath];
-    //              NSLog(@"%@",menuItems);
+    NSString *menuJson = [self toJSONString];
+    NSData *menuData = [NSPropertyListSerialization dataWithPropertyList:menuJson format:NSPropertyListXMLFormat_v1_0 options:0 error:&error];
+    if(!menuData)
+        NSLog(@"Unable to generate plist from menu: %@", error);
+    
+    BOOL success = [menuData writeToFile:menuPath atomically:YES];
+    if(!success)
+        NSLog(@"Unable to write plist data to disk: %@", error);
+    
 }
 
 -(void)loadFromFile
 {
+    NSError *error;
+    NSData *plistData = [NSData dataWithContentsOfFile:menuPath options: 0 error: &error];
+    if(!plistData)
+    {
+        NSLog(@"Unable to read plist data from disk: %@", error);
+        return;
+    }
+    id plist = [NSPropertyListSerialization propertyListWithData:plistData options:0 format: NULL error: &error];
+    if(!plist)
+    {
+        NSLog(@"Unable to decode plist from data: %@", error);
+        return;
+    }
     
+    @try {
+        menu = (NSMutableArray<MenuItem>*)[[Menu alloc] initWithString:plist error:&error].menu;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Failed to deserialize menu, usually b/c the plist is empty: %@",exception.description);
+    }
 }
-
-
 @end

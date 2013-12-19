@@ -15,7 +15,7 @@
 @interface Menu : JSONModel
 
 @property (strong,nonatomic) NSMutableArray<MenuItem> *menu;
-@property (nonatomic,weak) id <MenuRefresh> delegate;
+@property (nonatomic,weak) id<MenuRefresh,Ignore> delegate;
 
 -(void)refreshFromServer;
 -(void)writeToFile;

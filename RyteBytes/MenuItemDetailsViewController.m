@@ -25,7 +25,7 @@
 @synthesize sodium;
 @synthesize mealName;
 
-OrderItem *orderItem;
+//OrderItem *orderItem;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +35,7 @@ OrderItem *orderItem;
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
     self.navigationItem.hidesBackButton = NO;
     //Check to see if the user has already added this item to their order
@@ -43,20 +43,19 @@ OrderItem *orderItem;
     
     self.quantityOrdered.text = [NSString stringWithFormat:@"%d", currentAmountForSelectedItem];
     quantityStepper.value = currentAmountForSelectedItem;
-    orderItem = [[Order current] getOrderItem:menuItemSelected.objectId];
-
+    
     quantityStepper.minimumValue = 0;
     foodImage.image = [UIImage imageNamed:menuItemSelected.picture];
     description.text = menuItemSelected.longDescription;
-//    mealName.text = menuItemSelected.name;
-//    [mealName setFont:[UIFont fontWithName:@"Times New Roman" size:24.0f]];
+    //    mealName.text = menuItemSelected.name;
+    //    [mealName setFont:[UIFont fontWithName:@"Times New Roman" size:24.0f]];
     mealName.textAlignment = NSTextAlignmentCenter;
     mealName.textColor = [UIColor blackColor];
     
-//    calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.calories];
-//    sodium.text = [NSString stringWithFormat:@"%@", menuItemSelected.nutritionInfo.sodium];
-//    protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.protein];
-//    carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfo.carbs];
+    calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.calories];
+    sodium.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.sodium];
+    protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.protein];
+    carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.carbs];
     
     [super viewDidLoad];
 }
@@ -96,8 +95,7 @@ OrderItem *orderItem;
     
     NSLog(@"Setting item : %@ to quantity of : %d", menuItemSelected.name, value);
     
-    [[Order current] setOrderItemQuantity:orderItem withQuantity:value];
-//    [currentOrder setMenuItemQuantity:menuItemSelected withQuantity:value];
+    [[Order current] setMenuItem:menuItemSelected withQuantity:value];
     [self.delegate setBadgeValue:[[Order current] getTotalItemCount]];
 }
 
