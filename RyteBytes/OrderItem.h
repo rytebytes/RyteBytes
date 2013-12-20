@@ -14,7 +14,7 @@
 
 @interface OrderItem : JSONModel
 
-@property (nonatomic,strong) MenuItem* menuItem;
+@property (nonatomic,strong) MenuItem<Ignore>* menuItem;
 @property int quantity;
 
 -(id)initWithMenuItem:(MenuItem*)item;

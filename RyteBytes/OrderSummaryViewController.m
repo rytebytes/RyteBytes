@@ -109,6 +109,7 @@ int orderTotalCost = 0;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         order.userId = [[PFUser currentUser] objectId];
         order.locationId = [[[PFUser currentUser] valueForKey:@"locationId"] objectId];
+        order.totalInCents = [order calculateTotalOrderCostInCents];
         
         NSDictionary *o = [order toDictionary];
         NSLog(@"Order : %@",o);

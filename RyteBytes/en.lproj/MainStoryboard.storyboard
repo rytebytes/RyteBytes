@@ -516,7 +516,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YRT-cJ-MN5"/>
+                    <navigationItem key="navigationItem" id="YRT-cJ-MN5">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="PlH-yq-iga">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelSignUpLogin:" destination="AdC-RW-uBV" id="IPX-n1-HMM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOd-8Q-xl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

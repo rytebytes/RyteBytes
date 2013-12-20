@@ -21,4 +21,6 @@
 -(void)writeToFile;
 -(void)loadFromFile;
 
+-(MenuItem*)retrieveMenuItemWithId:(NSString*)objectId;
+
 @end

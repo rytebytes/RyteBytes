@@ -18,7 +18,7 @@
 @property (strong,nonatomic) NSString *userId;
 @property (strong,nonatomic) NSString *locationId;
 @property (strong,nonatomic) NSMutableDictionary<OrderItem,Optional> *orderItemDictionary;
-@property (strong,nonatomic) NSNumber *totalInCents;
+@property (nonatomic) int totalInCents;
 @property (strong,nonatomic) Menu<Ignore> *menu;
 
 + (Order*)current;
@@ -35,6 +35,7 @@
 -(void)clearEntireOrder;
 
 -(double)calculateTotalOrderCost;
+-(int)calculateTotalOrderCostInCents;
 -(double)calculateDoRyteDonation;
 
 -(NSString*)serializeToString;

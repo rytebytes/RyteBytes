@@ -11,7 +11,7 @@
 #import "TabBarController.h"
 
 @implementation CreateOrLoginViewController
-
+@synthesize backBtn;
 //executed every time the screen appears
 - (void) viewDidAppear:(BOOL)animated
 {

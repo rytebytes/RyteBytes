@@ -12,4 +12,6 @@
 
 @interface CreateOrLoginViewController : UIViewController
 
+@property (nonatomic,strong) IBOutlet UIBarButtonItem *backBtn;
+
 @end

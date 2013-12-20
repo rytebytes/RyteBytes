@@ -35,6 +35,15 @@ NSString *menuPath;
     return self;
 }
 
+-(MenuItem*)retrieveMenuItemWithId:(NSString*)objectId
+{
+    for(MenuItem* item in menu){
+        if([item.objectId isEqualToString:objectId])
+            return item;
+    }
+    return nil;
+}
+
 -(void)refreshFromServer
 {
     ParseClient *parseClient = [ParseClient current];
