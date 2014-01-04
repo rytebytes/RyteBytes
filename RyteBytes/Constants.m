@@ -18,7 +18,7 @@ const int TAG_UI_LOGIN_EMAIL = 1004;
 const int TAG_UI_LOGIN_PASSWORD = 1005;
 
 
-NSString * const STRIPE_ID = @"StripeId";
+NSString * const STRIPE_ID = @"stripeId";
 NSString * const USER_LOCATION = @"locationId";
 
 NSString * const ORDER_USER_ID = @"userId";

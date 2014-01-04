@@ -133,10 +133,6 @@ NSMutableDictionary *order;
             OrderSummaryViewController *orderController = segue.destinationViewController;
             [orderController setDelegate:self];
         }
-        else{
-            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-            [tab showLogin];
-        }
     }
 }
 

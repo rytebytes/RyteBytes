@@ -87,7 +87,7 @@
 		01307ADD18445BDD006F72FD /* DoRyteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01307ADC18445BDD006F72FD /* DoRyteViewController.m */; };
 		0131E5E41837C32C00556178 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5E31837C32C00556178 /* Images.xcassets */; };
 		0131E5EC1837C91400556178 /* 120x120 white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5EB1837C91400556178 /* 120x120 white.png */; };
-		0131E5F01837CBD100556178 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5EF1837CBD100556178 /* LaunchImage.png */; };
+		0131E5F01837CBD100556178 /* food_vert.png in Resources */ = {isa = PBXBuildFile; fileRef = 0131E5EF1837CBD100556178 /* food_vert.png */; };
 		0131E5F3183815F400556178 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131E5F2183815F400556178 /* Location.m */; };
 		0131E5F718381CF900556178 /* LocationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131E5F618381CF900556178 /* LocationResult.m */; };
 		0131E5FA183D87BA00556178 /* MenuResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0131E5F9183D87BA00556178 /* MenuResult.m */; };
@@ -95,6 +95,7 @@
 		01350D3A18243E3600670D23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01350D3918243E3600670D23 /* Default@2x.png */; };
 		013DE02F17CC1BC2004EFFF6 /* StripeCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE02E17CC1BC2004EFFF6 /* StripeCard.m */; };
 		013DE03317CC3CF7004EFFF6 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DE03217CC3CF7004EFFF6 /* ParseClient.m */; };
+		0157B7A7186606210003E187 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0157B7A6186606210003E187 /* LaunchImage.png */; };
 		015BD300173EDA70008AB447 /* OrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */; };
 		015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD302173EDF8E008AB447 /* OrderSummaryCell.m */; };
 		0165C5C91795D3AE00DA9C15 /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */; };
@@ -263,7 +264,7 @@
 		01307ADC18445BDD006F72FD /* DoRyteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoRyteViewController.m; sourceTree = "<group>"; };
 		0131E5E31837C32C00556178 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0131E5EB1837C91400556178 /* 120x120 white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120x120 white.png"; sourceTree = "<group>"; };
-		0131E5EF1837CBD100556178 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		0131E5EF1837CBD100556178 /* food_vert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food_vert.png; sourceTree = "<group>"; };
 		0131E5F1183815F400556178 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		0131E5F2183815F400556178 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		0131E5F518381CF900556178 /* LocationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationResult.h; sourceTree = "<group>"; };
@@ -276,6 +277,7 @@
 		013DE02E17CC1BC2004EFFF6 /* StripeCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCard.m; sourceTree = "<group>"; };
 		013DE03117CC3CF7004EFFF6 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
 		013DE03217CC3CF7004EFFF6 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
+		0157B7A6186606210003E187 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		015BD2FE173EDA70008AB447 /* OrderSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSummaryViewController.h; sourceTree = "<group>"; };
 		015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSummaryViewController.m; sourceTree = "<group>"; };
 		015BD301173EDF8E008AB447 /* OrderSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSummaryCell.h; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0157B7A6186606210003E187 /* LaunchImage.png */,
 				01171099185FC0A0009173EC /* food_elgin.png */,
 				01171097185FBFF5009173EC /* lakeview_pantry.jpg */,
 				0105BC2E184D66A1003483EB /* pasta_turkey.png */,
@@ -721,7 +724,7 @@
 				0105BC38184D66A1003483EB /* pork.png */,
 				0172D12618425D61009B1806 /* 10.jpg */,
 				0172D11E18411CF9009B1806 /* EatRyte 50x50.png */,
-				0131E5EF1837CBD100556178 /* LaunchImage.png */,
+				0131E5EF1837CBD100556178 /* food_vert.png */,
 				0131E5EB1837C91400556178 /* 120x120 white.png */,
 				01350D3918243E3600670D23 /* Default@2x.png */,
 				01350D3518243CCF00670D23 /* Default-568h@2x.png */,
@@ -943,7 +946,7 @@
 				0105BC3C184D66A1003483EB /* pasta_tu.png in Resources */,
 				017BD2221858CEA3000634F4 /* menu.plist in Resources */,
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
-				0131E5F01837CBD100556178 /* LaunchImage.png in Resources */,
+				0131E5F01837CBD100556178 /* food_vert.png in Resources */,
 				0105BC39184D66A1003483EB /* pasta_turkey.png in Resources */,
 				01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */,
 				01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */,
@@ -957,6 +960,7 @@
 				0102527417B46B6F00BF1F3C /* amex@2x.png in Resources */,
 				0102527517B46B6F00BF1F3C /* cvc-amex.png in Resources */,
 				0105BC3D184D66A1003483EB /* carrots_turnips.png in Resources */,
+				0157B7A7186606210003E187 /* LaunchImage.png in Resources */,
 				0105BC3A184D66A1003483EB /* pasta_italian.png in Resources */,
 				0105BC40184D66A1003483EB /* chicken.png in Resources */,
 				0102527617B46B6F00BF1F3C /* cvc-amex@2x.png in Resources */,

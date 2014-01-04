@@ -12,6 +12,8 @@
 
 @implementation CreateOrLoginViewController
 @synthesize backBtn;
+@synthesize signIn;
+@synthesize createAccount;
 //executed every time the screen appears
 - (void) viewDidAppear:(BOOL)animated
 {

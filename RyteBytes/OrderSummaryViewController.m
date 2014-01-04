@@ -107,6 +107,9 @@ int orderTotalCost = 0;
     {
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        
+        //after first time logging in and leaving app for a few days, these fields
+        //are null & locationid always seems to be null
         order.userId = [[PFUser currentUser] objectId];
         order.locationId = [[[PFUser currentUser] valueForKey:@"locationId"] objectId];
         order.totalInCents = [order calculateTotalOrderCostInCents];

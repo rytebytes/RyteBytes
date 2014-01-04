@@ -235,7 +235,8 @@ int tagTextFieldToResign;
         if(succeeded)
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
-            [self performSegueWithIdentifier:createAccountSucceedSegue sender:self];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+//            [self performSegueWithIdentifier:createAccountSucceedSegue sender:self];
         }
         else
         {
