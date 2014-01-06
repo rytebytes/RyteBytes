@@ -32,7 +32,7 @@ NSMutableArray *components;
 
     [Stripe setDefaultPublishableKey:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr"];
     
-    UIColor *rbGold = [[UIColor alloc] initWithRed:(251/255.0) green:(191/255.0) blue:(49/255.0) alpha:1];
+    UIColor *rbGold = [[UIColor alloc] initWithRed:(251/255.0) green:(191/255.0) blue:(49/255.0) alpha:1 ];
     
     [[UINavigationBar appearance] setBarTintColor:rbGold];
     

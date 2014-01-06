@@ -23,4 +23,8 @@
 @property (nonatomic,strong) NSString* state;
 @property (nonatomic) int zipcode;
 
+-(void)writeToFile;
+-(id)initFromFile;
+
+
 @end

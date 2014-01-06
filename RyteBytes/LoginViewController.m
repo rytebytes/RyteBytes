@@ -10,6 +10,10 @@
 #import "LoginViewController.h"
 #import "TabBarController.h"
 #import "CreateOrLoginViewController.h"
+#import "SVProgressHUD.h"
+#import "Location.h"
+#import "ParseClient.h"
+#import "LocationResult.h"
 
 @implementation LoginViewController
 
@@ -119,13 +123,28 @@ int tagTextFieldToResign;
     
     if (username && password && username.length != 0 && password.length != 0)
     {
-        //call to Parse to login
-        //if successful,  
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
         [PFUser logInWithUsernameInBackground:username password:password
             block:^(PFUser *user, NSError *error) {
                 if(user){
+                    ParseClient *parseClient = [ParseClient current];
+                    NSString *locationId = [[[PFUser currentUser] valueForKey:USER_LOCATION] objectId];
+                    [parseClient POST:GetLocation parameters:[[NSDictionary alloc] initWithObjectsAndKeys:locationId,@"objectId",nil]
+                              success:^(NSURLSessionDataTask *operation, id responseObject) {
+                                  NSLog(@"Response object is : %@", responseObject);
+                                  NSError *error = nil;
+                                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                  LocationResult *result = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
+                                  Location *locationInfo = result.result[0];
+                                  [locationInfo writeToFile];
+                              } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                                  NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
+                              }
+                     ];
+                    [SVProgressHUD dismiss];
                     [self.navigationController popToRootViewControllerAnimated:NO];
                 } else {
+                    [SVProgressHUD dismiss];
                     [[[UIAlertView alloc] initWithTitle:@"Login failed."
                                                 message:@"Login information incorrect, please try again."
                                                delegate:nil

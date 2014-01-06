@@ -188,21 +188,6 @@ int tagTextFieldToResign;
     }
 }
 
-//STPCompletionBlock completionHandler = ^(STPToken *token, NSError *error)
-//{
-//    if (error) {
-//        NSLog(@"Error trying to create token %@", [error localizedDescription]);
-//        //TODO: what should happen here? Error displayed to user.
-//        cardToken = NULL;
-//    } else {
-//        NSLog(@"Successfully created token with ID: %@", token.tokenId);
-//        cardToken = token;
-//        [networkActivityIndicator stopAnimating];
-//        [self createCustomer];
-//    }
-//};
-//[Stripe createTokenWithCard:creditCard completion:completionHandler];
-
 /*
  This method is called in the success block of the create token call to Stripe.  Once we have successfully created a token from
  the user's credit card, we can proceed with the rest of the account creation.
@@ -236,7 +221,7 @@ int tagTextFieldToResign;
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
             [self.navigationController popToRootViewControllerAnimated:NO];
-//            [self performSegueWithIdentifier:createAccountSucceedSegue sender:self];
+            [selectedLocation writeToFile];
         }
         else
         {
@@ -294,7 +279,6 @@ int tagTextFieldToResign;
 
 - (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)scanViewController {
     // The full card number is available as info.cardNumber, but don't log that!
-        
     NSLog(@"Received card info. Number: %@, expiry: %02i/%i, cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv);
 
     creditCard = [[STPCard alloc] init];
@@ -302,13 +286,6 @@ int tagTextFieldToResign;
     creditCard.expMonth = info.expiryMonth;
     creditCard.expYear = info.expiryYear;
     creditCard.cvc = info.cvv;
-    
-    //validate number
-//    newCard = [[NSMutableDictionary alloc] init];
-//    [newCard setObject:creditCard.number forKey:@"number"];
-//    [newCard setObject:[NSNumber numberWithInt:creditCard.expMonth] forKey:@"exp_month"];
-//    [newCard setObject:[NSNumber numberWithInt:creditCard.expYear] forKey:@"exp_year"];
-//    [newCard setObject:creditCard.cvc forKey:@"cvc"];
   
     [scanViewController dismissViewControllerAnimated:YES completion:nil];
 }

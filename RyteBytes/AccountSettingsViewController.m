@@ -19,8 +19,10 @@
 
 @implementation AccountSettingsViewController
 
-@synthesize accountSettings;
 @synthesize resetPassword;
+@synthesize logout;
+@synthesize changeLocation;
+@synthesize changeCC;
 
 StripeCustomer *stripeCustomerInfo = nil;
 
@@ -38,11 +40,11 @@ StripeCustomer *stripeCustomerInfo = nil;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    AccountEditCell *cc = (AccountEditCell*)[self.accountSettings cellForRowAtIndexPath:[[NSIndexPath alloc] initWithIndex:0]];
-    cc.label = @"Edit Credit Card";
-    
-    AccountEditCell *pickup = (AccountEditCell*)[self.accountSettings cellForRowAtIndexPath:[[NSIndexPath alloc] initWithIndex:1]];
-    pickup.label = @"Change Pickup Location";
+//    AccountEditCell *cc = (AccountEditCell*)[self.accountSettings cellForRowAtIndexPath:[[NSIndexPath alloc] initWithIndex:0]];
+//    cc.label = @"Edit Credit Card";
+//    
+//    AccountEditCell *pickup = (AccountEditCell*)[self.accountSettings cellForRowAtIndexPath:[[NSIndexPath alloc] initWithIndex:1]];
+//    pickup.label = @"Change Pickup Location";
     
     NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
     
@@ -61,6 +63,7 @@ StripeCustomer *stripeCustomerInfo = nil;
     
     
 }
+
 - (IBAction)logout:(id)sender
 {
     [PFUser logOut];
@@ -71,11 +74,50 @@ StripeCustomer *stripeCustomerInfo = nil;
     
     UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success." message:@"You are now logged out." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [success show];
+    logout.hidden = TRUE;
+}
+
+- (IBAction)resetPassword:(id)sender
+{
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        [PFUser requestPasswordResetForEmail:[currentUser valueForKey:@"email"]];
+    }
+    else
+    {
+        TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+        [tab showLogin];
+    }
 }
 
 //update credit card info in this method
 - (void)viewWillAppear:(BOOL)animated
 {
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        logout.hidden = FALSE;
+    }
+    else
+    {
+        logout.hidden = TRUE;
+    }
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        return YES;
+    }
+    else
+    {
+        TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+        [tab showLogin];
+        return NO;
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

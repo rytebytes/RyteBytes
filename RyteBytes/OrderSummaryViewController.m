@@ -17,16 +17,21 @@
 #import <Parse/Parse.h>
 #import "SVProgressHUD.h"
 #import "TabBarController.h"
+#import "Location.h"
 
 @implementation OrderSummaryViewController
 
 @synthesize orderSummary;
 @synthesize orderTotal;
 @synthesize doRyteTotal;
+@synthesize location;
 
 Order *currentOrder;
 NSMutableArray *orderArray;
 int orderTotalCost = 0;
+OrderItem *selectedItem;
+Location *pickupLocation;
+PFUser *currentUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +47,13 @@ int orderTotalCost = 0;
 	// Do any additional setup after loading the view.
     currentOrder = [Order current];
     orderArray = [currentOrder convertToOrderItemArray];
+    
+    currentUser = [PFUser currentUser];
+    
+    pickupLocation = [[Location alloc] initFromFile];
+    
+    location.text = pickupLocation.name;
+    
     [orderSummary reloadData];
     [self updateOrderCost];
 }
@@ -76,7 +88,7 @@ int orderTotalCost = 0;
     int value = [sender value];
     
     OrderSummaryCell *cell = (OrderSummaryCell*)[[[sender superview] superview] superview];
-    OrderItem *selectedItem = [currentOrder getOrderItem:cell.uniqueId];
+    selectedItem = [currentOrder getOrderItem:cell.uniqueId];
     selectedItem.quantity = value;
     [currentOrder setOrderItem:selectedItem];
     
@@ -84,6 +96,23 @@ int orderTotalCost = 0;
     [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
     orderArray = [currentOrder convertToOrderItemArray];
     [self updateOrderCost];
+    
+    if(0 == value)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Remove Item?"
+                                    message:@"The quantity for this item is 0 - would you like to remove it from the cart?"
+                                   delegate:self
+                          cancelButtonTitle:@"Yes" //index = 0
+                          otherButtonTitles:@"No", nil] show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (0 == buttonIndex) { //remove from cart
+        [currentOrder removeOrderItem:selectedItem];
+        [orderSummary reloadData];
+    }
 }
 
 - (void)updateOrderCost {

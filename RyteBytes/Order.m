@@ -130,16 +130,14 @@
     }
 }
 
+-(void)removeOrderItem:(OrderItem *)item
+{
+    [orderItemDictionary removeObjectForKey:item.menuItem.objectId];
+}
+
 -(int)calculateTotalOrderCostInCents
 {
-    int totalCost = 0;
-    for (id key in orderItemDictionary) {
-        OrderItem* orderItem = [orderItemDictionary objectForKey:key];
-        MenuItem* menuItem = [menu retrieveMenuItemWithId:orderItem.menuItem.objectId];
-        if(nil != menuItem)
-            totalCost += menuItem.costInCents;
-    }
-    return totalCost;
+    return [self calculateTotalOrderCost] * 100;
 }
 
 -(double)calculateTotalOrderCost

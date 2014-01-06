@@ -71,7 +71,7 @@
 		01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01171097185FBFF5009173EC /* lakeview_pantry.jpg */; };
 		0117109A185FC0A0009173EC /* food_elgin.png in Resources */ = {isa = PBXBuildFile; fileRef = 01171099185FC0A0009173EC /* food_elgin.png */; };
 		0117109D185FC0E1009173EC /* Charity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0117109C185FC0E1009173EC /* Charity.m */; };
-		0117109F185FC2C1009173EC /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0117109E185FC2C1009173EC /* user.plist */; };
+		0117109F185FC2C1009173EC /* location.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0117109E185FC2C1009173EC /* location.plist */; };
 		01191773172310370085CA7B /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191772172310370085CA7B /* MenuCell.m */; };
 		01191776172326F80085CA7B /* MenuItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191775172326F80085CA7B /* MenuItemDetailsViewController.m */; };
 		01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01193D4A1719EA5F007782B9 /* NutritionInformation.m */; };
@@ -241,7 +241,7 @@
 		01171099185FC0A0009173EC /* food_elgin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food_elgin.png; sourceTree = "<group>"; };
 		0117109B185FC0E1009173EC /* Charity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Charity.h; sourceTree = "<group>"; };
 		0117109C185FC0E1009173EC /* Charity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Charity.m; sourceTree = "<group>"; };
-		0117109E185FC2C1009173EC /* user.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user.plist; sourceTree = "<group>"; };
+		0117109E185FC2C1009173EC /* location.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = location.plist; sourceTree = "<group>"; };
 		01191771172310370085CA7B /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		01191772172310370085CA7B /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		01191774172326F80085CA7B /* MenuItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemDetailsViewController.h; sourceTree = "<group>"; };
@@ -659,7 +659,7 @@
 				0176638E16C05809003BBD47 /* main.m */,
 				0176639016C05809003BBD47 /* RyteBytes-Prefix.pch */,
 				017BD2211858CEA3000634F4 /* menu.plist */,
-				0117109E185FC2C1009173EC /* user.plist */,
+				0117109E185FC2C1009173EC /* location.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -989,7 +989,7 @@
 				01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */,
 				0102528517B46B6F00BF1F3C /* gradient@2x.png in Resources */,
 				0102528617B46B6F00BF1F3C /* textfield.png in Resources */,
-				0117109F185FC2C1009173EC /* user.plist in Resources */,
+				0117109F185FC2C1009173EC /* location.plist in Resources */,
 				0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */,
 				0105BC3F184D66A1003483EB /* carrots_beets.png in Resources */,
 				0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */,

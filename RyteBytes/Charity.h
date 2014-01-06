@@ -17,4 +17,5 @@
 @property (nonatomic) int zipcode;
 @property (nonatomic) int totalDonationsInCents;
 @property (nonatomic,strong) NSString* picture;
+@property (nonatomic,strong) NSString* description;
 @end

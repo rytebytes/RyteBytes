@@ -7,12 +7,17 @@
 //
 
 #import "DoRyteViewController.h"
-
-@interface DoRyteViewController ()
-
-@end
+#import "Location.h"
+#import <Parse/Parse.h>
 
 @implementation DoRyteViewController
+
+@synthesize charityContributionTotal;
+@synthesize charityLogo;
+@synthesize charityName;
+@synthesize noUserMessage;
+@synthesize charityContributionTotalLabel;
+@synthesize charityDescription;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,10 +28,33 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    PFUser *current = [PFUser currentUser];
+    
+    if(!current) {
+        noUserMessage.hidden = FALSE;
+        charityContributionTotal.hidden = TRUE;
+        charityLogo.hidden = TRUE;
+        charityName.hidden = TRUE;
+        charityContributionTotalLabel.hidden = TRUE;
+        charityDescription.hidden = TRUE;
+    }
+    else {
+        
+        noUserMessage.hidden = TRUE;
+        charityContributionTotal.hidden = FALSE;
+        charityLogo.hidden = FALSE;
+        charityName.hidden = FALSE;
+        charityContributionTotalLabel.hidden = FALSE;
+        charityDescription.hidden = FALSE;
+        
+        Location *currentLocation = [[Location alloc] initFromFile];
+        charityName.text = currentLocation.charityId.name;
+        charityLogo.image = [UIImage imageNamed:currentLocation.charityId.picture];
+        charityContributionTotal.text = [NSString stringWithFormat:@"$25.00"];
+        charityDescription.text = currentLocation.charityId.description;
+    }
 }
 
 - (void)didReceiveMemoryWarning

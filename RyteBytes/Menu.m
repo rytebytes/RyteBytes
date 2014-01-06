@@ -15,14 +15,11 @@
 @synthesize menu;
 @synthesize delegate;
 
-NSString *menuPath;
-
 -(id)init
 {
     if(!(self = [super init]))
         return nil;
-    
-    menuPath = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"plist"];
+
     NSLog(@"Current menu being initialized.");
     
     //when the menu object is created, attempt to load the menu stored to plist
@@ -72,6 +69,16 @@ NSString *menuPath;
 
 -(void)writeToFile
 {
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"menu.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:destPath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+    }
     NSError *error;
     
     NSString *menuJson = [self toJSONString];
@@ -79,7 +86,7 @@ NSString *menuPath;
     if(!menuData)
         NSLog(@"Unable to generate plist from menu: %@", error);
     
-    BOOL success = [menuData writeToFile:menuPath atomically:YES];
+    BOOL success = [menuData writeToFile:destPath atomically:YES];
     if(!success)
         NSLog(@"Unable to write plist data to disk: %@", error);
     
@@ -87,8 +94,11 @@ NSString *menuPath;
 
 -(void)loadFromFile
 {
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"location.plist"];
+    
     NSError *error;
-    NSData *plistData = [NSData dataWithContentsOfFile:menuPath options: 0 error: &error];
+    NSData *plistData = [NSData dataWithContentsOfFile:destPath options: 0 error: &error];
     if(!plistData)
     {
         NSLog(@"Unable to read plist data from disk: %@", error);

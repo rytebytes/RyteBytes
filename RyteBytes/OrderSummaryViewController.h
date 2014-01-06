@@ -10,11 +10,12 @@
 #import "MenuItemDetailsViewController.h"
 #import "MenuViewController.h"
 
-@interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic,strong) IBOutlet UITableView *orderSummary;
 @property (nonatomic,strong) IBOutlet UILabel *orderTotal;
 @property (nonatomic,strong) IBOutlet UILabel *doRyteTotal;
+@property (nonatomic,strong) IBOutlet UILabel *location;
 @property (nonatomic,weak) id <MenuItemAdded> delegate;
 
 - (IBAction)valueChanged:(UIStepper *)sender;

@@ -18,6 +18,7 @@ NSString * const CreateUser = @"createuser";
 NSString * const RetrieveMenu = @"retrievemenu";
 NSString * const PlaceOrder = @"order";
 NSString * const Locations = @"location";
+NSString * const GetLocation = @"getlocation";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {

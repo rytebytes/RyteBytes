@@ -12,7 +12,9 @@
 
 @interface AccountSettingsViewController : UIViewController
 
-@property (nonatomic,strong) IBOutlet UITableView *accountSettings;
 @property (nonatomic,strong) IBOutlet UIButton *resetPassword;
+@property (nonatomic,strong) IBOutlet UIButton *changeLocation;
+@property (nonatomic,strong) IBOutlet UIButton *logout;
+@property (nonatomic,strong) IBOutlet UIButton *changeCC;
 
 @end
