@@ -35,35 +35,6 @@ StripeCustomer *stripeCustomerInfo = nil;
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-//    AccountEditCell *cc = (AccountEditCell*)[self.accountSettings cellForRowAtIndexPath:[[NSIndexPath alloc] initWithIndex:0]];
-//    cc.label = @"Edit Credit Card";
-//    
-//    AccountEditCell *pickup = (AccountEditCell*)[self.accountSettings cellForRowAtIndexPath:[[NSIndexPath alloc] initWithIndex:1]];
-//    pickup.label = @"Change Pickup Location";
-    
-    NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
-    
-    //make call to stripe to get the user's current CC info
-    [[StripeClient current] GET:url
-                      parameters:[[NSDictionary alloc] init]
-                         success:^(NSURLSessionDataTask *operation, id responseObject) {
-                             NSError *error = nil;
-                             stripeCustomerInfo = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
-                         }
-                         failure:^(NSURLSessionDataTask *operation, NSError *error) {
-                             NSError *modelConversionError;
-                             StripeError *stripeError = [[StripeErrorResponse alloc] initWithString:error.userInfo[JSONResponseSerializerWithDataKey] error:&modelConversionError].error;
-                             NSLog(@"Error returned retrieving stripe info. Code:%@ . Message : %@", stripeError.code, stripeError.message);
-                         }];
-    
-    
-}
-
 - (IBAction)logout:(id)sender
 {
     [PFUser logOut];
@@ -98,6 +69,21 @@ StripeCustomer *stripeCustomerInfo = nil;
     if (currentUser)
     {
         logout.hidden = FALSE;
+        NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
+        
+        //make call to stripe to get the user's current CC info
+        [[StripeClient current] GET:url
+             parameters:[[NSDictionary alloc] init]
+                success:^(NSURLSessionDataTask *operation, id responseObject) {
+                    NSError *error = nil;
+                    stripeCustomerInfo = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
+                }
+                failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                    NSError *modelConversionError;
+                    StripeError *stripeError = [[StripeErrorResponse alloc] initWithString:error.userInfo[JSONResponseSerializerWithDataKey] error:&modelConversionError].error;
+                    NSLog(@"Error returned retrieving stripe info. Code:%@ . Message : %@", stripeError.code, stripeError.message);
+                }
+         ];
     }
     else
     {

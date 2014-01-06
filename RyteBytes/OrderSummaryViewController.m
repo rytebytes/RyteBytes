@@ -23,7 +23,6 @@
 
 @synthesize orderSummary;
 @synthesize orderTotal;
-@synthesize doRyteTotal;
 @synthesize location;
 
 Order *currentOrder;
@@ -48,14 +47,15 @@ PFUser *currentUser;
     currentOrder = [Order current];
     orderArray = [currentOrder convertToOrderItemArray];
     
-    currentUser = [PFUser currentUser];
-    
-    pickupLocation = [[Location alloc] initFromFile];
-    
-    location.text = pickupLocation.name;
-    
     [orderSummary reloadData];
     [self updateOrderCost];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    currentUser = [PFUser currentUser];
+    pickupLocation = [[Location alloc] initFromFile];
+    location.text = pickupLocation.name;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,7 +117,6 @@ PFUser *currentUser;
 
 - (void)updateOrderCost {
     orderTotal.text = [NSString stringWithFormat:@"$%.02f", [currentOrder calculateTotalOrderCost]];
-    doRyteTotal.text = [NSString stringWithFormat:@"$%.02f", [currentOrder calculateDoRyteDonation]];
 }
 
 - (IBAction)placeOrder:(id)sender

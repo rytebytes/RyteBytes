@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChangePickupLocationViewController : UIViewController
+@interface ChangePickupLocationViewController : UIViewController <UIPickerViewDelegate,UIPickerViewDataSource>
+
+@property (nonatomic,strong) IBOutlet UIPickerView *locationPicker;
+@property (nonatomic,strong) IBOutlet UIButton *saveLocation;
 
 @end
