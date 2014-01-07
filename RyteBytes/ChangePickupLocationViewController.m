@@ -12,6 +12,7 @@
 #import <Parse/Parse.h>
 #import "Constants.h"
 #import "SVProgressHUD.h"
+#import "Order.h"
 
 @implementation ChangePickupLocationViewController
 
@@ -64,6 +65,8 @@ PFUser *user;
                   
                  [SVProgressHUD dismiss];
               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                  [SVProgressHUD dismiss];
+                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                   NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
               }
      ];
@@ -71,6 +74,8 @@ PFUser *user;
 }
 
 - (IBAction)updateLocation:(id)sender {
+    [[Order current] clearEntireOrder];
+    [[Menu current] clearMenu];
     user[USER_LOCATION] = [PFObject objectWithoutDataWithClassName:@"Location" objectId:newLocation.objectId];
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

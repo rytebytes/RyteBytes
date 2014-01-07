@@ -19,7 +19,6 @@
 @synthesize userId;
 @synthesize locationId;
 @synthesize orderItemDictionary;
-@synthesize menu;
 
 -(id)init
 {

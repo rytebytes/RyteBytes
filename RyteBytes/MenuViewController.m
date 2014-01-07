@@ -37,16 +37,16 @@ NSMutableDictionary *order;
     return self;
 }
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
-    menu = [[Menu alloc] init];
+    menu = [Menu current];
     menu.delegate = self;
     
-    if([menu.menu count] == 0)
-    {
-        [menu refreshFromServer];
-    }
+//    if([menu.menu count] == 0)
+//    {
+//        [menu refreshFromServerWithOverlay:false];
+//    }
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
@@ -57,9 +57,17 @@ NSMutableDictionary *order;
     order = [NSMutableDictionary dictionary];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if([menu.menu count] == 0)
+    {
+        [menu refreshFromServerWithOverlay:false];
+    }
+}
+
 -(void)refreshMenu
 {
-    [menu refreshFromServer];
+    [menu refreshFromServerWithOverlay:false];
 }
 
 -(void)stopRefresh
@@ -149,18 +157,6 @@ NSMutableDictionary *order;
 {
     [self.tableView reloadData]; //either reload with data from server or from local copy
     [self stopRefresh];
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-//     ConfirmOrderController *orderController = [[ConfirmOrderController alloc]];
-     // ...
-     // Pass the selected object to the new view controller.
-//     [self.navigationController pushViewController:detailViewController animated:YES];
-    
 }
 
 @end

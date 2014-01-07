@@ -9,11 +9,27 @@
 #import "Menu.h"
 #import "ParseClient.h"
 #import "MenuResult.h"
+#import <Parse/Parse.h>
+#import "LocationItem.h"
+#import "LocationItemResult.h"
+#import "SVProgressHUD.h"
 
 @implementation Menu
 
 @synthesize menu;
 @synthesize delegate;
+
+NSMutableArray<LocationItem> *locationMenu;
+
++(Menu*)current
+{
+    static Menu *currentMenu;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        currentMenu = [[self alloc] init];
+    });
+    return currentMenu;
+}
 
 -(id)init
 {
@@ -41,10 +57,79 @@
     return nil;
 }
 
--(void)refreshFromServer
+-(void)clearMenu
 {
-    ParseClient *parseClient = [ParseClient current];
+    [self.menu removeAllObjects];
+    [locationMenu removeAllObjects];
+}
+
+/*
+ This method will do something slightly different depending on whether the user is logged in.
+    - If the user IS logged in, it will retrieve the menu with quantities for that item
+    - If the user is NOT logged in, it will only retireve the standard menu, sans quantities
+ */
+-(void)refreshFromServerWithOverlay:(BOOL)showOverlay
+{
+    if (![PFUser currentUser]) {
+        [self retrieveMenuWithoutQuantities:showOverlay];
+    }
+    else{
+        [self retrieveMenuWithQuantities:showOverlay];
+    }
+}
+
+-(void)retrieveMenuWithQuantities:(BOOL)showOverlay
+{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    ParseClient *parseClient = [ParseClient current];
+    if(showOverlay){
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+    }
+    
+    [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] initWithObjectsAndKeys:[[[PFUser currentUser] valueForKey:USER_LOCATION] objectId],USER_LOCATION, nil]
+              success:^(NSURLSessionDataTask *task , id responseObject) {
+                  NSError *error = nil;
+                  locationMenu = (NSMutableArray<LocationItem>*)[[LocationItemResult alloc] initWithDictionary:responseObject error:&error].result;
+                  [self extractMenuItemFromLocationItems:locationMenu];
+                  [self writeToFile];
+                  [delegate refreshFromServerCompleteWithSuccess:TRUE];
+                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                  if(showOverlay){
+                      [SVProgressHUD dismiss];
+                  }
+              } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                  NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
+                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                  if(showOverlay){
+                      [SVProgressHUD dismiss];
+                  }
+                  [self loadFromFile]; //if we can't reach the network/server, load local copy
+                  [delegate refreshFromServerCompleteWithSuccess:FALSE];
+                  [[[UIAlertView alloc] initWithTitle:@"Error connecting."
+                                              message:@"There was an error connecting to our servers - please try again."
+                                             delegate:nil
+                                    cancelButtonTitle:@"Okay"
+                                    otherButtonTitles:nil] show];
+                  
+              }
+     ];
+}
+
+-(void)extractMenuItemFromLocationItems:(NSMutableArray<LocationItem>*)locationItems
+{
+    for (int counter = 0; counter < locationItems.count; counter++) {
+        menu[counter] = ((LocationItem*)locationItems[counter]).menuItemId;
+    }
+}
+
+-(void)retrieveMenuWithoutQuantities:(BOOL)showOverlay
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    ParseClient *parseClient = [ParseClient current];
+    if(showOverlay){
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+    }
+    
     [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] init]
               success:^(NSURLSessionDataTask *task , id responseObject) {
                   NSError *error = nil;
@@ -52,9 +137,15 @@
                   [self writeToFile];
                   [delegate refreshFromServerCompleteWithSuccess:TRUE];
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                  if(showOverlay){
+                      [SVProgressHUD dismiss];
+                  }
               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                  if(showOverlay){
+                      [SVProgressHUD dismiss];
+                  }
                   [self loadFromFile]; //if we can't reach the network/server, load local copy
                   [delegate refreshFromServerCompleteWithSuccess:FALSE];
                   [[[UIAlertView alloc] initWithTitle:@"Error connecting."

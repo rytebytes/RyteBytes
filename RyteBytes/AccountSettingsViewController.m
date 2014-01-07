@@ -24,8 +24,6 @@
 @synthesize changeLocation;
 @synthesize changeCC;
 
-StripeCustomer *stripeCustomerInfo = nil;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,21 +67,6 @@ StripeCustomer *stripeCustomerInfo = nil;
     if (currentUser)
     {
         logout.hidden = FALSE;
-        NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
-        
-        //make call to stripe to get the user's current CC info
-        [[StripeClient current] GET:url
-             parameters:[[NSDictionary alloc] init]
-                success:^(NSURLSessionDataTask *operation, id responseObject) {
-                    NSError *error = nil;
-                    stripeCustomerInfo = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
-                }
-                failure:^(NSURLSessionDataTask *operation, NSError *error) {
-                    NSError *modelConversionError;
-                    StripeError *stripeError = [[StripeErrorResponse alloc] initWithString:error.userInfo[JSONResponseSerializerWithDataKey] error:&modelConversionError].error;
-                    NSLog(@"Error returned retrieving stripe info. Code:%@ . Message : %@", stripeError.code, stripeError.message);
-                }
-         ];
     }
     else
     {
@@ -103,19 +86,6 @@ StripeCustomer *stripeCustomerInfo = nil;
         TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
         [tab showLogin];
         return NO;
-    }
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"ChangeCC"] && nil != stripeCustomerInfo)
-    {
-        ChangeCreditCardViewController *destination = (ChangeCreditCardViewController*)segue.destinationViewController;
-        destination.stripeInfo = stripeCustomerInfo;
-    }
-    else if ([segue.identifier isEqualToString:@"ChangePickupLocation"])
-    {
-        
     }
 }
 

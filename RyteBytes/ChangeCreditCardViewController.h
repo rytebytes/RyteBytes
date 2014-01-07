@@ -12,7 +12,6 @@
 
 @interface ChangeCreditCardViewController : UIViewController<CardIOPaymentViewControllerDelegate,UITextFieldDelegate>
 
-@property (nonatomic,strong) StripeCustomer *stripeInfo;
 @property (nonatomic,strong) IBOutlet UITextField *cvv;
 @property (nonatomic,strong) IBOutlet UITextField *lastFour;
 @property (nonatomic,strong) IBOutlet UITextField *exp;

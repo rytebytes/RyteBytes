@@ -371,7 +371,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Heating" id="qZc-9z-WBV"/>
+                    <tabBarItem key="tabBarItem" title="Heating" image="fire.png" id="qZc-9z-WBV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzc-eL-YWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -455,7 +455,7 @@
         <scene sceneID="ZMU-h2-jQH">
             <objects>
                 <navigationController definesPresentationContext="YES" id="UB5-9v-gAe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Account" id="Tjx-Ym-7V1"/>
+                    <tabBarItem key="tabBarItem" title="My Account" image="cog.png" id="Tjx-Ym-7V1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3xe-Fl-t5a">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -818,7 +818,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Do Ryte" id="It2-9R-uIl"/>
+                    <tabBarItem key="tabBarItem" title="Do Ryte" image="coin.png" id="It2-9R-uIl"/>
                     <connections>
                         <outlet property="charityContributionTotal" destination="B2l-mO-bq3" id="oyv-l5-MCu"/>
                         <outlet property="charityContributionTotalLabel" destination="26M-iG-2bc" id="Cel-qX-w2M"/>
@@ -1071,7 +1071,7 @@
         <scene sceneID="O4e-60-5uT">
             <objects>
                 <navigationController id="qzs-qr-hkk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Eat Ryte" image="EatRyte 50x50.png" id="eZL-2o-HTy"/>
+                    <tabBarItem key="tabBarItem" title="Eat Ryte" image="food.png" id="eZL-2o-HTy"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7ab-uQ-V4H"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jm1-Uf-Rz0">
@@ -1108,9 +1108,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EatRyte 50x50.png" width="50" height="50"/>
-        <image name="Logo.png" width="3056" height="530"/>
-        <image name="food_vert.png" width="640" height="1136"/>
+        <image name="Logo.png" width="1528" height="265"/>
+        <image name="cog.png" width="30" height="30"/>
+        <image name="coin.png" width="30" height="30"/>
+        <image name="fire.png" width="30" height="30"/>
+        <image name="food.png" width="30" height="30"/>
+        <image name="food_vert.png" width="320" height="568"/>
     </resources>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
