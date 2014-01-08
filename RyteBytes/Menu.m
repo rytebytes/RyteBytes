@@ -57,6 +57,15 @@ NSMutableArray<LocationItem> *locationMenu;
     return nil;
 }
 
+-(BOOL)isQuantityAvailableWithMenuItemId:(NSString*)objectId withQuantity:(int)quantityOrdered
+{
+    for(LocationItem* item in locationMenu){
+        if([item.menuItemId.objectId isEqualToString:objectId])
+            return (item.quantity >= quantityOrdered);
+    }
+    return false;
+}
+
 -(void)clearMenu
 {
     [self.menu removeAllObjects];

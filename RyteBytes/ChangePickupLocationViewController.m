@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "SVProgressHUD.h"
 #import "Order.h"
+#import "TabBarController.h"
 
 @implementation ChangePickupLocationViewController
 
@@ -74,12 +75,17 @@ PFUser *user;
 }
 
 - (IBAction)updateLocation:(id)sender {
-    [[Order current] clearEntireOrder];
-    [[Menu current] clearMenu];
     user[USER_LOCATION] = [PFObject objectWithoutDataWithClassName:@"Location" objectId:newLocation.objectId];
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
+            [SVProgressHUD dismiss];
             [newLocation writeToFile];
+            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+            UINavigationController *menu = [tab viewControllers][1];
+            menu.tabBarItem.badgeValue = nil;
+            [[Order current] clearEntireOrder];
+            [[Menu current] clearMenu];
             [self.navigationController popToRootViewControllerAnimated:FALSE];
             [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Location updated!" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }

@@ -34,6 +34,5 @@
 @property (nonatomic,strong) Order* currentOrder;
 
 - (IBAction)valueChanged:(UIStepper *)sender;
-- (IBAction)back:(id)sender;
 
 @end

@@ -86,30 +86,35 @@ PFUser *currentUser;
 //TODO : Have this code reviewed
 - (IBAction)valueChanged:(UIStepper *)sender {
     int value = [sender value];
-    
     OrderSummaryCell *cell = (OrderSummaryCell*)[[[sender superview] superview] superview];
     selectedItem = [currentOrder getOrderItem:cell.uniqueId];
-    selectedItem.quantity = value;
-    [currentOrder setOrderItem:selectedItem];
     
-    cell.itemQuantityAndCost.text = [NSString stringWithFormat:@"%d x $%d = $%.02f", selectedItem.quantity, selectedItem.menuItem.costInCents / 100, [selectedItem calculateCost]];
-    [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
-    orderArray = [currentOrder convertToOrderItemArray];
-    [self updateOrderCost];
-    
-    if(0 == value)
-    {
-        [[[UIAlertView alloc] initWithTitle:@"Remove Item?"
-                                    message:@"The quantity for this item is 0 - would you like to remove it from the cart?"
+    if(![currentOrder setMenuItem:selectedItem.menuItem withQuantity:value]){
+        sender.value--;
+        [[[UIAlertView alloc] initWithTitle:@"No more left"
+                                    message:[NSString stringWithFormat:@"There are no more %@ left to purchase at this location.",selectedItem.menuItem.name]
                                    delegate:self
-                          cancelButtonTitle:@"Yes" //index = 0
-                          otherButtonTitles:@"No", nil] show];
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"Okay", nil] show];
+        
+    } else {
+        if(0 == value) {
+            [[[UIAlertView alloc] initWithTitle:@"Remove item?"
+                                        message:@"The quantity for this item is 0 - would you like to remove it from the cart?"
+                                       delegate:self
+                              cancelButtonTitle:@"Yes" //index = 0
+                              otherButtonTitles:@"No", nil] show];
+        }
+        cell.itemQuantityAndCost.text = [NSString stringWithFormat:@"%d x $%d = $%.02f", value, selectedItem.menuItem.costInCents / 100, [selectedItem calculateCost]];
+        [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
+        orderArray = [currentOrder convertToOrderItemArray];
+        [self updateOrderCost];
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (0 == buttonIndex) { //remove from cart
+    if (0 == buttonIndex && [alertView.title isEqualToString:@"Remove item?"]) { //remove from cart
         [currentOrder removeOrderItem:selectedItem];
         [orderSummary reloadData];
     }
@@ -150,7 +155,7 @@ PFUser *currentUser;
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                     [order clearEntireOrder];
                     [[[UIAlertView alloc] initWithTitle:@"Success!"
-                                                message:@"Enjoy your dinner."
+                                                message:@"Enjoy your dinner - a receipt will be emailed to you shortly!"
                                                delegate:nil
                                       cancelButtonTitle:@"Okay"
                                       otherButtonTitles:nil] show];

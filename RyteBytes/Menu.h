@@ -25,5 +25,6 @@
 -(void)clearMenu;
 
 -(MenuItem*)retrieveMenuItemWithId:(NSString*)objectId;
+-(BOOL)isQuantityAvailableWithMenuItemId:(NSString*)objectId withQuantity:(int)quantityOrdered;
 
 @end

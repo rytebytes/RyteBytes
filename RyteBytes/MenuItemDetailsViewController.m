@@ -47,8 +47,6 @@
     quantityStepper.minimumValue = 0;
     foodImage.image = [UIImage imageNamed:menuItemSelected.picture];
     description.text = menuItemSelected.longDescription;
-    //    mealName.text = menuItemSelected.name;
-    //    [mealName setFont:[UIFont fontWithName:@"Times New Roman" size:24.0f]];
     mealName.textAlignment = NSTextAlignmentCenter;
     mealName.textColor = [UIColor blackColor];
     
@@ -58,11 +56,6 @@
     carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.carbs];
     
     [super viewDidLoad];
-}
-
-- (IBAction)back:(id)sender
-{
-//	[self.detailsDelegate menu:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,12 +98,19 @@
 - (IBAction)valueChanged:(UIStepper *)sender {
     int value = [sender value];
     
-    self.quantityOrdered.text = [NSString stringWithFormat:@"%d", value];
-    
-    NSLog(@"Setting item : %@ to quantity of : %d", menuItemSelected.name, value);
-    
-    [[Order current] setMenuItem:menuItemSelected withQuantity:value];
-    [self.delegate setBadgeValue:[[Order current] getTotalItemCount]];
+    if(![[Order current] setMenuItem:menuItemSelected withQuantity:value]){
+        sender.value--;
+        [[[UIAlertView alloc] initWithTitle:@"No more left"
+                                    message:[NSString stringWithFormat:@"There are no more %@ left to purchase at this location.",menuItemSelected.name]
+                                   delegate:self
+                          cancelButtonTitle:nil
+                          otherButtonTitles:@"Okay", nil] show];
+    }
+    else{
+        self.quantityOrdered.text = [NSString stringWithFormat:@"%d", value];
+        NSLog(@"Setting item : %@ to quantity of : %d", menuItemSelected.name, value);
+        [self.delegate setBadgeValue:[[Order current] getTotalItemCount]];
+    }
 }
 
 @end

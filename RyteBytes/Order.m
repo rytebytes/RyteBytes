@@ -103,21 +103,24 @@
     [orderItemDictionary removeAllObjects];
 }
 
--(void)setOrderItem:(OrderItem*)item
+-(BOOL)setOrderItem:(OrderItem*)item
 {
-    [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
+    if([[Menu current] isQuantityAvailableWithMenuItemId:item.menuItem.objectId withQuantity:item.quantity]){
+        [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL)setMenuItem:(MenuItem*)menuItem withQuantity:(int)quantity
 {
-
     if(orderItemDictionary.count > 100 || (orderItemDictionary.count + quantity) > 100)
     {
         NSLog(@"Order limit exceeded.");
         return NO;
     }
-    else
-    {
+    
+    if([[Menu current] isQuantityAvailableWithMenuItemId:menuItem.objectId withQuantity:quantity]){
         //key : objectId
         //value : orderItem (so we can access all info on the order summary screen
         OrderItem *item = [[OrderItem alloc] initWithMenuItem:menuItem withQuantity:quantity];
@@ -127,6 +130,7 @@
         
         return YES;
     }
+    return NO;
 }
 
 -(void)removeOrderItem:(OrderItem *)item

@@ -43,11 +43,6 @@ NSMutableDictionary *order;
     menu = [Menu current];
     menu.delegate = self;
     
-//    if([menu.menu count] == 0)
-//    {
-//        [menu refreshFromServerWithOverlay:false];
-//    }
-    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     
@@ -61,7 +56,7 @@ NSMutableDictionary *order;
 {
     if([menu.menu count] == 0)
     {
-        [menu refreshFromServerWithOverlay:false];
+        [menu refreshFromServerWithOverlay:true];
     }
 }
 

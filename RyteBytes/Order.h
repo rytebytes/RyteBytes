@@ -30,7 +30,7 @@
 
 -(OrderItem*)getOrderItem:(NSString*)itemId;
 -(BOOL)setMenuItem:(MenuItem*)menuItem withQuantity:(int)quantity;
--(void)setOrderItem:(OrderItem*)item;
+-(BOOL)setOrderItem:(OrderItem*)item;
 -(void)removeOrderItem:(OrderItem*)item;
 
 -(void)clearEntireOrder;
