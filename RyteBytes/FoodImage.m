@@ -7,31 +7,27 @@
 //
 
 #import "FoodImage.h"
+#import "CloudinaryClient.h"
 
 @implementation FoodImage
 
-- (id)initWithFrame:(CGRect)frame
++(UIImage*)loadWithImageName:(NSString*)imageName
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    NSString *bundleImgPath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:bundleImgPath]) { //was included with app when installed
+        NSError *error;
+        NSData *plistData = [NSData dataWithContentsOfFile:bundleImgPath options: 0 error: &error];
+        if(!plistData)
+        {
+            NSLog(@"Unable to read plist data from disk: %@", error);
+            return nil;
+        }
+        return [UIImage imageWithData:plistData];
+    } else { //image not found locall, retrieve from server & write to disk
+        return nil;
     }
-    return self;
 }
-
-- (id) initWithImage:(UIImage *)image
-{
-    self = [super initWithImage:image];
-    return self;
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

@@ -79,33 +79,37 @@ NSMutableArray<LocationItem> *locationMenu;
  */
 -(void)refreshFromServerWithOverlay:(BOOL)showOverlay
 {
-    if (![PFUser currentUser]) {
-        [self retrieveMenuWithoutQuantities:showOverlay];
-    }
-    else{
-        [self retrieveMenuWithQuantities:showOverlay];
-    }
+    [self retrieveMenu:showOverlay];
 }
 
--(void)retrieveMenuWithQuantities:(BOOL)showOverlay
+-(void)retrieveMenu:(BOOL)showOverlay
 {
+    NSMutableDictionary *request = [[NSMutableDictionary alloc] init];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     ParseClient *parseClient = [ParseClient current];
     if(showOverlay){
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     }
     
-    [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] initWithObjectsAndKeys:[[[PFUser currentUser] valueForKey:USER_LOCATION] objectId],USER_LOCATION, nil]
+    PFUser *current = [PFUser currentUser];
+    
+    if(current){
+        [request setValue:[[current valueForKey:USER_LOCATION] objectId] forKey:USER_LOCATION];
+    }
+    
+    [parseClient POST:RetrieveMenu parameters:request
               success:^(NSURLSessionDataTask *task , id responseObject) {
                   NSError *error = nil;
-                  locationMenu = (NSMutableArray<LocationItem>*)[[LocationItemResult alloc] initWithDictionary:responseObject error:&error].result;
-                  [self extractMenuItemFromLocationItems:locationMenu];
+                  if (current) {
+                      locationMenu = (NSMutableArray<LocationItem>*)[[LocationItemResult alloc] initWithDictionary:responseObject error:&error].result;
+                      [self extractMenuItemFromLocationItems:locationMenu];
+                  } else {
+                      menu = (NSMutableArray<MenuItem>*)[[MenuResult alloc] initWithDictionary:responseObject error:&error].result;
+                  }
+//                  [self loadFoodPictures];
                   [self writeToFile];
                   [delegate refreshFromServerCompleteWithSuccess:TRUE];
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                  if(showOverlay){
-                      [SVProgressHUD dismiss];
-                  }
               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -123,6 +127,14 @@ NSMutableArray<LocationItem> *locationMenu;
               }
      ];
 }
+
+//-(void)loadFoodPictures
+//{
+//    for (MenuItem *item in menu) {
+//        FoodImage *img = item.foodImage;
+//        [img load];
+//    }
+//}
 
 -(void)extractMenuItemFromLocationItems:(NSMutableArray<LocationItem>*)locationItems
 {
@@ -131,45 +143,9 @@ NSMutableArray<LocationItem> *locationMenu;
     }
 }
 
--(void)retrieveMenuWithoutQuantities:(BOOL)showOverlay
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    ParseClient *parseClient = [ParseClient current];
-    if(showOverlay){
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-    }
-    
-    [parseClient POST:RetrieveMenu parameters:[[NSDictionary alloc] init]
-              success:^(NSURLSessionDataTask *task , id responseObject) {
-                  NSError *error = nil;
-                  menu = (NSMutableArray<MenuItem>*)[[MenuResult alloc] initWithDictionary:responseObject error:&error].result;
-                  [self writeToFile];
-                  [delegate refreshFromServerCompleteWithSuccess:TRUE];
-                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                  if(showOverlay){
-                      [SVProgressHUD dismiss];
-                  }
-              } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-                  NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
-                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                  if(showOverlay){
-                      [SVProgressHUD dismiss];
-                  }
-                  [self loadFromFile]; //if we can't reach the network/server, load local copy
-                  [delegate refreshFromServerCompleteWithSuccess:FALSE];
-                  [[[UIAlertView alloc] initWithTitle:@"Error connecting."
-                                              message:@"There was an error connecting to our servers - please try again."
-                                             delegate:nil
-                                    cancelButtonTitle:@"Okay"
-                                    otherButtonTitles:nil] show];
-                  
-              }
-     ];
-}
-
 -(void)writeToFile
 {
-    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"menu.plist"];
     
     // If the file doesn't exist in the Documents Folder, copy it.
@@ -194,7 +170,7 @@ NSMutableArray<LocationItem> *locationMenu;
 
 -(void)loadFromFile
 {
-    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"location.plist"];
     
     NSError *error;

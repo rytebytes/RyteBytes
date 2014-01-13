@@ -18,6 +18,8 @@
 #import "SVProgressHUD.h"
 #import "TabBarController.h"
 #import "Location.h"
+#import "CloudinaryClient.h"
+#import "SDWebImageManager.h"
 
 @implementation OrderSummaryViewController
 
@@ -70,20 +72,23 @@ PFUser *currentUser;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
     OrderSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderSummaryCell" forIndexPath:indexPath];
     
     OrderItem *item = [orderArray objectAtIndex:indexPath.row];
     cell.itemName.text = [item.menuItem.name uppercaseString];
     cell.stepper.value = item.quantity;
     cell.uniqueId = item.menuItem.objectId;
-   
-    cell.itemQuantityAndCost.text = [NSString stringWithFormat:@"%d x $%d = $%.02f", item.quantity, item.menuItem.costInCents / 100, [item calculateCost]];
+//    cell.image.image = [[manager imageCache] imageFromDiskCacheForKey:@"pasta_od9dqk.jpg"];
     cell.image.image = [UIImage imageNamed:item.menuItem.picture];
-
+    [cell.image setClipsToBounds:YES];
+    cell.itemQuantityAndCost.text =
+        [NSString stringWithFormat:@"%d x $%d = $%.02f", item.quantity, item.menuItem.costInCents / 100, [item calculateCost]];
+  
     return cell;
 }
 
-//TODO : Have this code reviewed
 - (IBAction)valueChanged:(UIStepper *)sender {
     int value = [sender value];
     OrderSummaryCell *cell = (OrderSummaryCell*)[[[sender superview] superview] superview];

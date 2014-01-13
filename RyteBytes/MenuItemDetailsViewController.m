@@ -6,6 +6,7 @@
 //
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "MenuItemDetailsViewController.h"
 #import "OrderItem.h"
 #import "OrderSummaryViewController.h"
@@ -14,9 +15,8 @@
 @implementation MenuItemDetailsViewController
 
 @synthesize menuItemSelected;
-@synthesize foodImage;
+@synthesize foodImageView;
 @synthesize delegate;
-@synthesize detailsDelegate;
 @synthesize quantityStepper;
 @synthesize description;
 @synthesize protein;
@@ -45,7 +45,15 @@
     quantityStepper.value = currentAmountForSelectedItem;
     
     quantityStepper.minimumValue = 0;
-    foodImage.image = [UIImage imageNamed:menuItemSelected.picture];
+    UIImage *image = [UIImage imageNamed:menuItemSelected.picture];
+    foodImageView.image = image;
+//    if (nil == image) {
+//        [foodImageView setImageWithURL:
+//         [NSURL URLWithString:[NSString stringWithFormat:@"http://res.cloudinary.com/rytebytes/image/upload/%@",menuItemSelected.picture]]];
+//    } else {
+//        foodImageView.image = image;
+//    }
+    
     description.text = menuItemSelected.longDescription;
     mealName.textAlignment = NSTextAlignmentCenter;
     mealName.textColor = [UIColor blackColor];

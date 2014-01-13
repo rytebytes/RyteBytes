@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuCellNameLabel.h"
 
 @interface MenuCell : UITableViewCell
 
-@property (nonatomic,strong) IBOutlet UILabel *name;
-@property (nonatomic,strong) IBOutlet UIImageView *image;
+@property (nonatomic,strong) IBOutlet MenuCellNameLabel *name;
+@property (nonatomic,strong) IBOutlet UIImageView *imageView;
 
 @end

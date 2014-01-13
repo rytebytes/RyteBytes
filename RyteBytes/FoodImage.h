@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FoodImage : UIImageView
+@interface FoodImage : NSObject
 
-- (id) initWithImage:(UIImage *)image;
++(UIImage*)loadWithImageName:(NSString*)imageName;
 
 @end

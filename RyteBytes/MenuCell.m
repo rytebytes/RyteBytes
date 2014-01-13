@@ -7,11 +7,12 @@
 //
 
 #import "MenuCell.h"
+#include <Quartzcore/Quartzcore.h>
 
 @implementation MenuCell
 
 @synthesize name;
-@synthesize image;
+@synthesize imageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -19,6 +20,7 @@
     if (self) {
         // Initialization code
     }
+    
     return self;
 }
 

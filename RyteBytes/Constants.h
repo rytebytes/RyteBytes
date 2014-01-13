@@ -17,6 +17,7 @@ extern const int TAG_UI_CREATEACCOUNT_CONFIRM_PASSWORD;
 extern const int TAG_UI_LOGIN_EMAIL;
 extern const int TAG_UI_LOGIN_PASSWORD;
 
+extern NSString * const CLOUDINARY_IMAGE_URL;
 
 typedef enum itemtypes
 {

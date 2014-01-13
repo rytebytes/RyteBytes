@@ -45,15 +45,6 @@
 		0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0102523E17B46B6F00BF1F3C /* textfield@2x.png */; };
 		0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 0102526217B46B6F00BF1F3C /* PaymentKit.podspec */; };
 		0102529A17B46B6F00BF1F3C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0102526317B46B6F00BF1F3C /* README.md */; };
-		0105BC39184D66A1003483EB /* pasta_turkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC2E184D66A1003483EB /* pasta_turkey@2x.png */; };
-		0105BC3A184D66A1003483EB /* pasta_italian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC2F184D66A1003483EB /* pasta_italian@2x.png */; };
-		0105BC3D184D66A1003483EB /* carrots_turnips@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC32184D66A1003483EB /* carrots_turnips@2x.png */; };
-		0105BC3E184D66A1003483EB /* rice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC33184D66A1003483EB /* rice@2x.png */; };
-		0105BC3F184D66A1003483EB /* carrots_beets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC34184D66A1003483EB /* carrots_beets@2x.png */; };
-		0105BC40184D66A1003483EB /* chicken@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC35184D66A1003483EB /* chicken@2x.png */; };
-		0105BC41184D66A1003483EB /* cauliflower@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC36184D66A1003483EB /* cauliflower@2x.png */; };
-		0105BC42184D66A1003483EB /* potatoes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC37184D66A1003483EB /* potatoes@2x.png */; };
-		0105BC43184D66A1003483EB /* pork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0105BC38184D66A1003483EB /* pork@2x.png */; };
 		0109FC66177600C1008E5A66 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC65177600C1008E5A66 /* Parse.framework */; };
 		0109FC6817760102008E5A66 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC6717760102008E5A66 /* AudioToolbox.framework */; };
 		0109FC6A17760109008E5A66 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC6917760109008E5A66 /* CFNetwork.framework */; };
@@ -71,6 +62,18 @@
 		010BD75E187CAF94009896AC /* cog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 010BD75B187CAF94009896AC /* cog@2x.png */; };
 		010BD75F187CAF94009896AC /* coin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 010BD75C187CAF94009896AC /* coin@2x.png */; };
 		010BD760187CAF94009896AC /* food@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 010BD75D187CAF94009896AC /* food@2x.png */; };
+		010BD764187DBF3C009896AC /* CloudinaryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD763187DBF3C009896AC /* CloudinaryClient.m */; };
+		010BD76C187F4CA9009896AC /* MenuCellNameLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD76B187F4CA9009896AC /* MenuCellNameLabel.m */; };
+		010BD76E1880A1E7009896AC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010BD76D1880A1E7009896AC /* ImageIO.framework */; };
+		010BD7711880B1CE009896AC /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7701880B1CE009896AC /* FBMissingSymbols.m */; };
+		010BD7A218834849009896AC /* ios-beets-carrots@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79A18834849009896AC /* ios-beets-carrots@2x.jpg */; };
+		010BD7A318834849009896AC /* ios-beets-turnips@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79B18834849009896AC /* ios-beets-turnips@2x.jpg */; };
+		010BD7A418834849009896AC /* ios-cauli@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79C18834849009896AC /* ios-cauli@2x.jpg */; };
+		010BD7A518834849009896AC /* ios-chicken@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79D18834849009896AC /* ios-chicken@2x.jpg */; };
+		010BD7A618834849009896AC /* ios-pasta@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79E18834849009896AC /* ios-pasta@2x.jpg */; };
+		010BD7A718834849009896AC /* ios-pilaf@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79F18834849009896AC /* ios-pilaf@2x.jpg */; };
+		010BD7A818834849009896AC /* ios-pork@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD7A018834849009896AC /* ios-pork@2x.jpg */; };
+		010BD7A918834849009896AC /* ios-red-potatoes@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD7A118834849009896AC /* ios-red-potatoes@2x.jpg */; };
 		0115FD3517E3745300F75708 /* StripeCardsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115FD3417E3745300F75708 /* StripeCardsResponse.m */; };
 		01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01171097185FBFF5009173EC /* lakeview_pantry.jpg */; };
 		0117109A185FC0A0009173EC /* food_elgin.png in Resources */ = {isa = PBXBuildFile; fileRef = 01171099185FC0A0009173EC /* food_elgin.png */; };
@@ -103,8 +106,6 @@
 		015BD300173EDA70008AB447 /* OrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD2FF173EDA70008AB447 /* OrderSummaryViewController.m */; };
 		015BD303173EDF8E008AB447 /* OrderSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015BD302173EDF8E008AB447 /* OrderSummaryCell.m */; };
 		0165C5C91795D3AE00DA9C15 /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */; };
-		016B0CA6178F7CA100F80748 /* Do Ryte GoldiApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */; };
-		0172D12718425D61009B1806 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0172D12618425D61009B1806 /* 10.jpg */; };
 		0173747317DFEAE90090849A /* OrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0173747217DFEAE90090849A /* OrderItem.m */; };
 		0176638316C05809003BBD47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638216C05809003BBD47 /* UIKit.framework */; };
 		0176638516C05809003BBD47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176638416C05809003BBD47 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -136,9 +137,6 @@
 		01AAA7981845AF71002D7719 /* Pointer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA7971845AF71002D7719 /* Pointer.m */; };
 		01AFAFCD1819C39900B2151A /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFCB1819C39900B2151A /* Logo@2x.png */; };
 		01AFAFD1181B1D8800B2151A /* ThreeRowOrderingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */; };
-		01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */; };
-		01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */; };
-		01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */; };
 		01C33BA91852ADA000263122 /* BeginLoginNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C33BA81852ADA000263122 /* BeginLoginNavViewController.m */; };
 		01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83C317B6AEBE001A19C5 /* StripeCustomer.m */; };
 		01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CD83CA17B6B443001A19C5 /* StripeClient.m */; };
@@ -215,15 +213,6 @@
 		0102523E17B46B6F00BF1F3C /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		0102526217B46B6F00BF1F3C /* PaymentKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PaymentKit.podspec; sourceTree = "<group>"; };
 		0102526317B46B6F00BF1F3C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		0105BC2E184D66A1003483EB /* pasta_turkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pasta_turkey@2x.png"; sourceTree = "<group>"; };
-		0105BC2F184D66A1003483EB /* pasta_italian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pasta_italian@2x.png"; sourceTree = "<group>"; };
-		0105BC32184D66A1003483EB /* carrots_turnips@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carrots_turnips@2x.png"; sourceTree = "<group>"; };
-		0105BC33184D66A1003483EB /* rice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rice@2x.png"; sourceTree = "<group>"; };
-		0105BC34184D66A1003483EB /* carrots_beets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carrots_beets@2x.png"; sourceTree = "<group>"; };
-		0105BC35184D66A1003483EB /* chicken@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chicken@2x.png"; sourceTree = "<group>"; };
-		0105BC36184D66A1003483EB /* cauliflower@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cauliflower@2x.png"; sourceTree = "<group>"; };
-		0105BC37184D66A1003483EB /* potatoes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "potatoes@2x.png"; sourceTree = "<group>"; };
-		0105BC38184D66A1003483EB /* pork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pork@2x.png"; sourceTree = "<group>"; };
 		0109FC65177600C1008E5A66 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0109FC6717760102008E5A66 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0109FC6917760109008E5A66 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -244,6 +233,21 @@
 		010BD75B187CAF94009896AC /* cog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cog@2x.png"; sourceTree = "<group>"; };
 		010BD75C187CAF94009896AC /* coin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin@2x.png"; sourceTree = "<group>"; };
 		010BD75D187CAF94009896AC /* food@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food@2x.png"; sourceTree = "<group>"; };
+		010BD762187DBF3C009896AC /* CloudinaryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudinaryClient.h; sourceTree = "<group>"; };
+		010BD763187DBF3C009896AC /* CloudinaryClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudinaryClient.m; sourceTree = "<group>"; };
+		010BD76A187F4CA9009896AC /* MenuCellNameLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCellNameLabel.h; sourceTree = "<group>"; };
+		010BD76B187F4CA9009896AC /* MenuCellNameLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCellNameLabel.m; sourceTree = "<group>"; };
+		010BD76D1880A1E7009896AC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		010BD76F1880B1CE009896AC /* FBMissingSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMissingSymbols.h; sourceTree = "<group>"; };
+		010BD7701880B1CE009896AC /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMissingSymbols.m; sourceTree = "<group>"; };
+		010BD79A18834849009896AC /* ios-beets-carrots@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-beets-carrots@2x.jpg"; sourceTree = "<group>"; };
+		010BD79B18834849009896AC /* ios-beets-turnips@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-beets-turnips@2x.jpg"; sourceTree = "<group>"; };
+		010BD79C18834849009896AC /* ios-cauli@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-cauli@2x.jpg"; sourceTree = "<group>"; };
+		010BD79D18834849009896AC /* ios-chicken@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-chicken@2x.jpg"; sourceTree = "<group>"; };
+		010BD79E18834849009896AC /* ios-pasta@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-pasta@2x.jpg"; sourceTree = "<group>"; };
+		010BD79F18834849009896AC /* ios-pilaf@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-pilaf@2x.jpg"; sourceTree = "<group>"; };
+		010BD7A018834849009896AC /* ios-pork@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-pork@2x.jpg"; sourceTree = "<group>"; };
+		010BD7A118834849009896AC /* ios-red-potatoes@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-red-potatoes@2x.jpg"; sourceTree = "<group>"; };
 		0115FD3317E3745300F75708 /* StripeCardsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCardsResponse.h; sourceTree = "<group>"; };
 		0115FD3417E3745300F75708 /* StripeCardsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCardsResponse.m; sourceTree = "<group>"; };
 		01171097185FBFF5009173EC /* lakeview_pantry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lakeview_pantry.jpg; sourceTree = "<group>"; };
@@ -292,8 +296,6 @@
 		015BD301173EDF8E008AB447 /* OrderSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSummaryCell.h; sourceTree = "<group>"; };
 		015BD302173EDF8E008AB447 /* OrderSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSummaryCell.m; sourceTree = "<group>"; };
 		0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenmoTouch.framework; sourceTree = "<group>"; };
-		016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Do Ryte GoldiApp.png"; sourceTree = "<group>"; };
-		0172D12618425D61009B1806 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		0173747117DFEAE90090849A /* OrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItem.h; sourceTree = "<group>"; };
 		0173747217DFEAE90090849A /* OrderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItem.m; sourceTree = "<group>"; };
 		0176637E16C05809003BBD47 /* RyteBytes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RyteBytes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,9 +347,6 @@
 		01AFAFCB1819C39900B2151A /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = "<group>"; };
 		01AFAFCF181B1D8800B2151A /* ThreeRowOrderingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeRowOrderingViewController.h; sourceTree = "<group>"; };
 		01AFAFD0181B1D8800B2151A /* ThreeRowOrderingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeRowOrderingViewController.m; sourceTree = "<group>"; };
-		01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57 pixel App Icon.png"; sourceTree = "<group>"; };
-		01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "114 pixels App Icon.png"; sourceTree = "<group>"; };
-		01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = high_res_app_icon.jpeg; sourceTree = "<group>"; };
 		01C33BA71852ADA000263122 /* BeginLoginNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeginLoginNavViewController.h; sourceTree = "<group>"; };
 		01C33BA81852ADA000263122 /* BeginLoginNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginLoginNavViewController.m; sourceTree = "<group>"; };
 		01CD83C217B6AEBE001A19C5 /* StripeCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCustomer.h; sourceTree = "<group>"; };
@@ -373,6 +372,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010BD76E1880A1E7009896AC /* ImageIO.framework in Frameworks */,
 				0109FC7417760133008E5A66 /* Security.framework in Frameworks */,
 				0109FC721776012B008E5A66 /* QuartzCore.framework in Frameworks */,
 				0177533D17826DDD00296315 /* OpenGLES.framework in Frameworks */,
@@ -516,6 +516,15 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		010BD761187DBF1A009896AC /* Cloudinary */ = {
+			isa = PBXGroup;
+			children = (
+				010BD762187DBF3C009896AC /* CloudinaryClient.h */,
+				010BD763187DBF3C009896AC /* CloudinaryClient.m */,
+			);
+			name = Cloudinary;
+			sourceTree = "<group>";
+		};
 		011CEDEF170603BC00AE586E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,6 +623,7 @@
 		0176638116C05809003BBD47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				010BD76D1880A1E7009896AC /* ImageIO.framework */,
 				0102520617B46B6F00BF1F3C /* Stripe */,
 				0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */,
 				0177533C17826DDD00296315 /* OpenGLES.framework */,
@@ -718,6 +728,14 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				010BD79A18834849009896AC /* ios-beets-carrots@2x.jpg */,
+				010BD79B18834849009896AC /* ios-beets-turnips@2x.jpg */,
+				010BD79C18834849009896AC /* ios-cauli@2x.jpg */,
+				010BD79D18834849009896AC /* ios-chicken@2x.jpg */,
+				010BD79E18834849009896AC /* ios-pasta@2x.jpg */,
+				010BD79F18834849009896AC /* ios-pilaf@2x.jpg */,
+				010BD7A018834849009896AC /* ios-pork@2x.jpg */,
+				010BD7A118834849009896AC /* ios-red-potatoes@2x.jpg */,
 				010BD75B187CAF94009896AC /* cog@2x.png */,
 				010BD75C187CAF94009896AC /* coin@2x.png */,
 				010BD75D187CAF94009896AC /* food@2x.png */,
@@ -725,25 +743,11 @@
 				0157B7A6186606210003E187 /* LaunchImage.png */,
 				01171099185FC0A0009173EC /* food_elgin.png */,
 				01171097185FBFF5009173EC /* lakeview_pantry.jpg */,
-				0105BC2E184D66A1003483EB /* pasta_turkey@2x.png */,
-				0105BC2F184D66A1003483EB /* pasta_italian@2x.png */,
-				0105BC32184D66A1003483EB /* carrots_turnips@2x.png */,
-				0105BC33184D66A1003483EB /* rice@2x.png */,
-				0105BC34184D66A1003483EB /* carrots_beets@2x.png */,
-				0105BC35184D66A1003483EB /* chicken@2x.png */,
-				0105BC36184D66A1003483EB /* cauliflower@2x.png */,
-				0105BC37184D66A1003483EB /* potatoes@2x.png */,
-				0105BC38184D66A1003483EB /* pork@2x.png */,
-				0172D12618425D61009B1806 /* 10.jpg */,
 				0131E5EF1837CBD100556178 /* food_vert@2x.png */,
 				0131E5EB1837C91400556178 /* 120x120 white.png */,
 				01350D3918243E3600670D23 /* Default@2x.png */,
 				01350D3518243CCF00670D23 /* Default-568h@2x.png */,
-				01AFAFD6181B27A600B2151A /* high_res_app_icon.jpeg */,
-				01AFAFD2181B26AA00B2151A /* 57 pixel App Icon.png */,
-				01AFAFD3181B26AA00B2151A /* 114 pixels App Icon.png */,
 				01AFAFCB1819C39900B2151A /* Logo@2x.png */,
-				016B0CA5178F7CA100F80748 /* Do Ryte GoldiApp.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -769,6 +773,8 @@
 				0131E5F418381CEC00556178 /* ResultObjects */,
 				01193D491719EA5F007782B9 /* NutritionInformation.h */,
 				01193D4A1719EA5F007782B9 /* NutritionInformation.m */,
+				01CF7F9B172C777D0072D714 /* FoodImage.h */,
+				01CF7F9C172C777D0072D714 /* FoodImage.m */,
 				0192CC1916C05FE50024815F /* Customer.m */,
 				011CEDF31706260800AE586E /* Dish.h */,
 				011CEDF41706260800AE586E /* Dish.m */,
@@ -805,10 +811,10 @@
 			children = (
 				01191771172310370085CA7B /* MenuCell.h */,
 				01191772172310370085CA7B /* MenuCell.m */,
-				01CF7F9B172C777D0072D714 /* FoodImage.h */,
-				01CF7F9C172C777D0072D714 /* FoodImage.m */,
 				015BD301173EDF8E008AB447 /* OrderSummaryCell.h */,
 				015BD302173EDF8E008AB447 /* OrderSummaryCell.m */,
+				010BD76A187F4CA9009896AC /* MenuCellNameLabel.h */,
+				010BD76B187F4CA9009896AC /* MenuCellNameLabel.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -849,6 +855,8 @@
 			children = (
 				01AAA7951845AF64002D7719 /* Parse */,
 				013DE02C17CC1B51004EFFF6 /* Stripe */,
+				010BD76F1880B1CE009896AC /* FBMissingSymbols.h */,
+				010BD7701880B1CE009896AC /* FBMissingSymbols.m */,
 			);
 			name = "Third Party";
 			sourceTree = "<group>";
@@ -856,6 +864,7 @@
 		01CD83C717B6B3D8001A19C5 /* Web Services */ = {
 			isa = PBXGroup;
 			children = (
+				010BD761187DBF1A009896AC /* Cloudinary */,
 				013DE03017CC3CE8004EFFF6 /* Parse */,
 				01CD83C817B6B425001A19C5 /* Stripe */,
 				01CE5DBD1840019F006EB46D /* JSONResponseSerializerWithData.h */,
@@ -954,39 +963,33 @@
 			files = (
 				01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */,
 				010BD75F187CAF94009896AC /* coin@2x.png in Resources */,
+				010BD7A818834849009896AC /* ios-pork@2x.jpg in Resources */,
+				010BD7A318834849009896AC /* ios-beets-turnips@2x.jpg in Resources */,
 				0176638D16C05809003BBD47 /* InfoPlist.strings in Resources */,
 				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
 				017BD2221858CEA3000634F4 /* menu.plist in Resources */,
+				010BD7A518834849009896AC /* ios-chicken@2x.jpg in Resources */,
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
 				0131E5F01837CBD100556178 /* food_vert@2x.png in Resources */,
-				0105BC39184D66A1003483EB /* pasta_turkey@2x.png in Resources */,
 				01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */,
-				01AFAFD5181B26AA00B2151A /* 114 pixels App Icon.png in Resources */,
-				0105BC42184D66A1003483EB /* potatoes@2x.png in Resources */,
 				0117109A185FC0A0009173EC /* food_elgin.png in Resources */,
-				016B0CA6178F7CA100F80748 /* Do Ryte GoldiApp.png in Resources */,
 				0102526917B46B6F00BF1F3C /* .gitignore in Resources */,
 				0102526A17B46B6F00BF1F3C /* LICENSE in Resources */,
+				010BD7A618834849009896AC /* ios-pasta@2x.jpg in Resources */,
 				0102527317B46B6F00BF1F3C /* amex.png in Resources */,
-				0172D12718425D61009B1806 /* 10.jpg in Resources */,
 				010BD760187CAF94009896AC /* food@2x.png in Resources */,
 				0102527417B46B6F00BF1F3C /* amex@2x.png in Resources */,
 				0102527517B46B6F00BF1F3C /* cvc-amex.png in Resources */,
-				0105BC3D184D66A1003483EB /* carrots_turnips@2x.png in Resources */,
 				0157B7A7186606210003E187 /* LaunchImage.png in Resources */,
-				0105BC3A184D66A1003483EB /* pasta_italian@2x.png in Resources */,
-				0105BC40184D66A1003483EB /* chicken@2x.png in Resources */,
 				0102527617B46B6F00BF1F3C /* cvc-amex@2x.png in Resources */,
 				0131E5EC1837C91400556178 /* 120x120 white.png in Resources */,
 				0102527717B46B6F00BF1F3C /* cvc.png in Resources */,
-				0105BC3E184D66A1003483EB /* rice@2x.png in Resources */,
 				0102527817B46B6F00BF1F3C /* cvc@2x.png in Resources */,
-				0105BC43184D66A1003483EB /* pork@2x.png in Resources */,
 				01AFAFCD1819C39900B2151A /* Logo@2x.png in Resources */,
-				0105BC41184D66A1003483EB /* cauliflower@2x.png in Resources */,
 				0102527917B46B6F00BF1F3C /* diners.png in Resources */,
 				0102527A17B46B6F00BF1F3C /* diners@2x.png in Resources */,
 				0102527B17B46B6F00BF1F3C /* discover.png in Resources */,
+				010BD7A418834849009896AC /* ios-cauli@2x.jpg in Resources */,
 				0102527C17B46B6F00BF1F3C /* discover@2x.png in Resources */,
 				0102527D17B46B6F00BF1F3C /* jcb.png in Resources */,
 				0102527E17B46B6F00BF1F3C /* jcb@2x.png in Resources */,
@@ -995,17 +998,17 @@
 				0102528117B46B6F00BF1F3C /* placeholder.png in Resources */,
 				010BD75E187CAF94009896AC /* cog@2x.png in Resources */,
 				0102528217B46B6F00BF1F3C /* placeholder@2x.png in Resources */,
+				010BD7A218834849009896AC /* ios-beets-carrots@2x.jpg in Resources */,
 				0102528317B46B6F00BF1F3C /* visa.png in Resources */,
 				0131E5E41837C32C00556178 /* Images.xcassets in Resources */,
-				01AFAFD4181B26AA00B2151A /* 57 pixel App Icon.png in Resources */,
 				0102528417B46B6F00BF1F3C /* visa@2x.png in Resources */,
-				01AFAFD7181B27A600B2151A /* high_res_app_icon.jpeg in Resources */,
+				010BD7A918834849009896AC /* ios-red-potatoes@2x.jpg in Resources */,
 				0102528517B46B6F00BF1F3C /* gradient@2x.png in Resources */,
 				0102528617B46B6F00BF1F3C /* textfield.png in Resources */,
 				010BD75A187CAE48009896AC /* fire@2x.png in Resources */,
 				0117109F185FC2C1009173EC /* location.plist in Resources */,
 				0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */,
-				0105BC3F184D66A1003483EB /* carrots_beets@2x.png in Resources */,
+				010BD7A718834849009896AC /* ios-pilaf@2x.jpg in Resources */,
 				0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */,
 				0102529A17B46B6F00BF1F3C /* README.md in Resources */,
 			);
@@ -1079,6 +1082,7 @@
 				0176639916C05809003BBD47 /* EatRyteViewController.m in Sources */,
 				017663A016C05809003BBD47 /* TabBarController.m in Sources */,
 				0192CC1A16C05FE50024815F /* Customer.m in Sources */,
+				010BD7711880B1CE009896AC /* FBMissingSymbols.m in Sources */,
 				011CEDF21706042300AE586E /* MenuViewController.m in Sources */,
 				01307ADD18445BDD006F72FD /* DoRyteViewController.m in Sources */,
 				01CE5DC2184003ED006EB46D /* StripeError.m in Sources */,
@@ -1106,6 +1110,7 @@
 				0102526417B46B6F00BF1F3C /* STPCard.m in Sources */,
 				0102526517B46B6F00BF1F3C /* STPToken.m in Sources */,
 				0102526617B46B6F00BF1F3C /* STPView.m in Sources */,
+				010BD76C187F4CA9009896AC /* MenuCellNameLabel.m in Sources */,
 				01AAA7981845AF71002D7719 /* Pointer.m in Sources */,
 				010BD74D187B62A9009896AC /* LocationItemResult.m in Sources */,
 				0102526717B46B6F00BF1F3C /* Stripe.m in Sources */,
@@ -1120,6 +1125,7 @@
 				0102527017B46B6F00BF1F3C /* PKTextField.m in Sources */,
 				0102527117B46B6F00BF1F3C /* PKUSAddressZip.m in Sources */,
 				0102527217B46B6F00BF1F3C /* PKView.m in Sources */,
+				010BD764187DBF3C009896AC /* CloudinaryClient.m in Sources */,
 				01AAA79118457257002D7719 /* ChangeCreditCardViewController.m in Sources */,
 				01CD83C417B6AEBE001A19C5 /* StripeCustomer.m in Sources */,
 				01CD83CB17B6B443001A19C5 /* StripeClient.m in Sources */,
@@ -1213,7 +1219,7 @@
 					"\"${PODS_ROOT}/Headers/AFNetworking\"/**",
 					"\"${PODS_ROOT}/Headers/JSONModel\"/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				TEST_AFTER_BUILD = NO;
 			};
@@ -1243,7 +1249,7 @@
 					"\"${PODS_ROOT}/Headers/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/JSONModel\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TEST_AFTER_BUILD = NO;
@@ -1266,15 +1272,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
 				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-v",
 					"-lc++",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1299,13 +1307,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
 				INFOPLIST_FILE = "RyteBytes/RyteBytes-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				"OTHER_LDFLAGS[arch=*]" = "-lc++";
+				OTHER_LDFLAGS = "-all_load";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-lc++",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_AFTER_BUILD = NO;

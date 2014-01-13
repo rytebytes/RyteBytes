@@ -19,18 +19,23 @@ PODS:
     - AFNetworking/NSURLConnection
   - JSONModel (0.10.0)
   - SBJson (3.2)
+  - SDWebImage (3.5.2):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.5.2)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - JSONModel
   - SBJson
+  - SDWebImage
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   JSONModel: cecca3c3a9ee1a248b56f7139e2d64b85ce536ec
   SBJson: abc2bf2baef456d5dae213f9826fe2b6fdf19861
+  SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
 
 COCOAPODS: 0.28.0

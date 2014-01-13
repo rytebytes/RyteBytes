@@ -12,14 +12,10 @@
 
 @class MenuItemDetailsViewController;
 
-@protocol MenuDetailsCancel <NSObject>
-- (void)mealDetailsViewControllerDidCancel:(MenuItemDetailsViewController *)controller;
-@end
-
 @interface MenuItemDetailsViewController : UIViewController
 
 @property (nonatomic,strong) MenuItem* menuItemSelected;
-@property (nonatomic,strong) IBOutlet UIImageView *foodImage;
+@property (nonatomic,strong) IBOutlet UIImageView *foodImageView;
 @property (nonatomic,strong) IBOutlet UILabel *quantityOrdered;
 @property (nonatomic,strong) IBOutlet UILabel *description;
 @property (nonatomic,strong) IBOutlet UILabel *mealName;
@@ -29,7 +25,6 @@
 @property (nonatomic,strong) IBOutlet UILabel *protein;
 @property (nonatomic,strong) IBOutlet UIStepper *quantityStepper;
 @property (nonatomic,weak) id <MenuItemAdded> delegate;
-@property (nonatomic,weak) id <MenuDetailsCancel> detailsDelegate;
 @property (nonatomic,strong) NSString *currentAmountOrdered;
 @property (nonatomic,strong) Order* currentOrder;
 

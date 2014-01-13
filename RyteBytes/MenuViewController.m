@@ -6,6 +6,7 @@
 //
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "MenuViewController.h"
 #import "Dish.h"
 #import "MenuCell.h"
@@ -15,6 +16,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "MenuResult.h"
 #import "CreateOrLoginViewController.h"
+#import "Constants.h"
 
 /** This class presents the user the current menu.  It will retrieve the current list of MenuItems (db objects & domain objects)
  via a REST call.  We will persist all items we have offered via our menu, but we will not persist snapshots of our menu.
@@ -28,6 +30,7 @@
 @synthesize menu;
 
 NSMutableDictionary *order;
+bool foo;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -56,7 +59,7 @@ NSMutableDictionary *order;
 {
     if([menu.menu count] == 0)
     {
-        [menu refreshFromServerWithOverlay:true];
+        [menu refreshFromServerWithOverlay:FALSE];
     }
 }
 
@@ -89,11 +92,19 @@ NSMutableDictionary *order;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
+//    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
+    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
+   
+    MenuItem *menuItem = [menu.menu objectAtIndex:indexPath.row];
+    cell.name.text = menuItem.name;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:[menuItem.picture stringByDeletingPathExtension] ofType:@"jpg"];
     
-    MenuItem *meal = [menu.menu objectAtIndex:indexPath.row];
-    cell.image.image = [UIImage imageNamed:meal.picture];
+    if(nil != filePath){ //image found with app bundle, load into SD image cache for rest of app lifetime
+        UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+        [[SDImageCache sharedImageCache] storeImage:image forKey:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,menuItem.picture]];
+    }
     
+    [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,menuItem.picture]]];
     return cell;
 }
 

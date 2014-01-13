@@ -100,7 +100,6 @@ StripeCard *customerCard;
     [[StripeClient current] POST:url
                       parameters:stripeCustomer
                          success:^(NSURLSessionDataTask *operation, id responseObject) {
-                             NSError *error = nil;
                              [SVProgressHUD dismiss];
                              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                              UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Successfully updated credit card information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
