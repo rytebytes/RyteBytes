@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MenuItemDetailsViewController.h"
 #import "MenuViewController.h"
+#import "LoginViewController.h"
+#import "Menu.h"
 
-@interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UIAlertViewDelegate>
+
+@interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UIAlertViewDelegate,UserLoggedIn,MenuRefresh>
 
 @property (nonatomic,strong) IBOutlet UITableView *orderSummary;
 @property (nonatomic,strong) IBOutlet UILabel *orderTotal;

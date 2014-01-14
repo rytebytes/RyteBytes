@@ -66,14 +66,9 @@
 		010BD76C187F4CA9009896AC /* MenuCellNameLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD76B187F4CA9009896AC /* MenuCellNameLabel.m */; };
 		010BD76E1880A1E7009896AC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010BD76D1880A1E7009896AC /* ImageIO.framework */; };
 		010BD7711880B1CE009896AC /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7701880B1CE009896AC /* FBMissingSymbols.m */; };
-		010BD7A218834849009896AC /* ios-beets-carrots@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79A18834849009896AC /* ios-beets-carrots@2x.jpg */; };
-		010BD7A318834849009896AC /* ios-beets-turnips@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79B18834849009896AC /* ios-beets-turnips@2x.jpg */; };
-		010BD7A418834849009896AC /* ios-cauli@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79C18834849009896AC /* ios-cauli@2x.jpg */; };
-		010BD7A518834849009896AC /* ios-chicken@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79D18834849009896AC /* ios-chicken@2x.jpg */; };
-		010BD7A618834849009896AC /* ios-pasta@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79E18834849009896AC /* ios-pasta@2x.jpg */; };
-		010BD7A718834849009896AC /* ios-pilaf@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD79F18834849009896AC /* ios-pilaf@2x.jpg */; };
-		010BD7A818834849009896AC /* ios-pork@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD7A018834849009896AC /* ios-pork@2x.jpg */; };
-		010BD7A918834849009896AC /* ios-red-potatoes@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010BD7A118834849009896AC /* ios-red-potatoes@2x.jpg */; };
+		010BD7AC1884E557009896AC /* ParseError.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7AB1884E557009896AC /* ParseError.m */; };
+		010BD7AF1884E721009896AC /* ParseErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7AE1884E721009896AC /* ParseErrorMessage.m */; };
+		010BD7B11885CD7E009896AC /* Storyboard35.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010BD7B01885CD7E009896AC /* Storyboard35.storyboard */; };
 		0115FD3517E3745300F75708 /* StripeCardsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115FD3417E3745300F75708 /* StripeCardsResponse.m */; };
 		01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01171097185FBFF5009173EC /* lakeview_pantry.jpg */; };
 		0117109A185FC0A0009173EC /* food_elgin.png in Resources */ = {isa = PBXBuildFile; fileRef = 01171099185FC0A0009173EC /* food_elgin.png */; };
@@ -240,14 +235,11 @@
 		010BD76D1880A1E7009896AC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		010BD76F1880B1CE009896AC /* FBMissingSymbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMissingSymbols.h; sourceTree = "<group>"; };
 		010BD7701880B1CE009896AC /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMissingSymbols.m; sourceTree = "<group>"; };
-		010BD79A18834849009896AC /* ios-beets-carrots@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-beets-carrots@2x.jpg"; sourceTree = "<group>"; };
-		010BD79B18834849009896AC /* ios-beets-turnips@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-beets-turnips@2x.jpg"; sourceTree = "<group>"; };
-		010BD79C18834849009896AC /* ios-cauli@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-cauli@2x.jpg"; sourceTree = "<group>"; };
-		010BD79D18834849009896AC /* ios-chicken@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-chicken@2x.jpg"; sourceTree = "<group>"; };
-		010BD79E18834849009896AC /* ios-pasta@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-pasta@2x.jpg"; sourceTree = "<group>"; };
-		010BD79F18834849009896AC /* ios-pilaf@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-pilaf@2x.jpg"; sourceTree = "<group>"; };
-		010BD7A018834849009896AC /* ios-pork@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-pork@2x.jpg"; sourceTree = "<group>"; };
-		010BD7A118834849009896AC /* ios-red-potatoes@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ios-red-potatoes@2x.jpg"; sourceTree = "<group>"; };
+		010BD7AA1884E557009896AC /* ParseError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseError.h; sourceTree = "<group>"; };
+		010BD7AB1884E557009896AC /* ParseError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseError.m; sourceTree = "<group>"; };
+		010BD7AD1884E721009896AC /* ParseErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseErrorMessage.h; sourceTree = "<group>"; };
+		010BD7AE1884E721009896AC /* ParseErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseErrorMessage.m; sourceTree = "<group>"; };
+		010BD7B01885CD7E009896AC /* Storyboard35.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard35.storyboard; sourceTree = "<group>"; };
 		0115FD3317E3745300F75708 /* StripeCardsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCardsResponse.h; sourceTree = "<group>"; };
 		0115FD3417E3745300F75708 /* StripeCardsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCardsResponse.m; sourceTree = "<group>"; };
 		01171097185FBFF5009173EC /* lakeview_pantry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lakeview_pantry.jpg; sourceTree = "<group>"; };
@@ -588,6 +580,10 @@
 			children = (
 				013DE03117CC3CF7004EFFF6 /* ParseClient.h */,
 				013DE03217CC3CF7004EFFF6 /* ParseClient.m */,
+				010BD7AA1884E557009896AC /* ParseError.h */,
+				010BD7AB1884E557009896AC /* ParseError.m */,
+				010BD7AD1884E721009896AC /* ParseErrorMessage.h */,
+				010BD7AE1884E721009896AC /* ParseErrorMessage.m */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -667,6 +663,7 @@
 				01222550179AFA830026922A /* Constants.h */,
 				01222551179AFA840026922A /* Constants.m */,
 				0131E5E31837C32C00556178 /* Images.xcassets */,
+				010BD7B01885CD7E009896AC /* Storyboard35.storyboard */,
 			);
 			path = RyteBytes;
 			sourceTree = "<group>";
@@ -728,14 +725,6 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				010BD79A18834849009896AC /* ios-beets-carrots@2x.jpg */,
-				010BD79B18834849009896AC /* ios-beets-turnips@2x.jpg */,
-				010BD79C18834849009896AC /* ios-cauli@2x.jpg */,
-				010BD79D18834849009896AC /* ios-chicken@2x.jpg */,
-				010BD79E18834849009896AC /* ios-pasta@2x.jpg */,
-				010BD79F18834849009896AC /* ios-pilaf@2x.jpg */,
-				010BD7A018834849009896AC /* ios-pork@2x.jpg */,
-				010BD7A118834849009896AC /* ios-red-potatoes@2x.jpg */,
 				010BD75B187CAF94009896AC /* cog@2x.png */,
 				010BD75C187CAF94009896AC /* coin@2x.png */,
 				010BD75D187CAF94009896AC /* food@2x.png */,
@@ -963,19 +952,15 @@
 			files = (
 				01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */,
 				010BD75F187CAF94009896AC /* coin@2x.png in Resources */,
-				010BD7A818834849009896AC /* ios-pork@2x.jpg in Resources */,
-				010BD7A318834849009896AC /* ios-beets-turnips@2x.jpg in Resources */,
 				0176638D16C05809003BBD47 /* InfoPlist.strings in Resources */,
 				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
 				017BD2221858CEA3000634F4 /* menu.plist in Resources */,
-				010BD7A518834849009896AC /* ios-chicken@2x.jpg in Resources */,
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
 				0131E5F01837CBD100556178 /* food_vert@2x.png in Resources */,
 				01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */,
 				0117109A185FC0A0009173EC /* food_elgin.png in Resources */,
 				0102526917B46B6F00BF1F3C /* .gitignore in Resources */,
 				0102526A17B46B6F00BF1F3C /* LICENSE in Resources */,
-				010BD7A618834849009896AC /* ios-pasta@2x.jpg in Resources */,
 				0102527317B46B6F00BF1F3C /* amex.png in Resources */,
 				010BD760187CAF94009896AC /* food@2x.png in Resources */,
 				0102527417B46B6F00BF1F3C /* amex@2x.png in Resources */,
@@ -989,26 +974,23 @@
 				0102527917B46B6F00BF1F3C /* diners.png in Resources */,
 				0102527A17B46B6F00BF1F3C /* diners@2x.png in Resources */,
 				0102527B17B46B6F00BF1F3C /* discover.png in Resources */,
-				010BD7A418834849009896AC /* ios-cauli@2x.jpg in Resources */,
 				0102527C17B46B6F00BF1F3C /* discover@2x.png in Resources */,
 				0102527D17B46B6F00BF1F3C /* jcb.png in Resources */,
 				0102527E17B46B6F00BF1F3C /* jcb@2x.png in Resources */,
+				010BD7B11885CD7E009896AC /* Storyboard35.storyboard in Resources */,
 				0102527F17B46B6F00BF1F3C /* mastercard.png in Resources */,
 				0102528017B46B6F00BF1F3C /* mastercard@2x.png in Resources */,
 				0102528117B46B6F00BF1F3C /* placeholder.png in Resources */,
 				010BD75E187CAF94009896AC /* cog@2x.png in Resources */,
 				0102528217B46B6F00BF1F3C /* placeholder@2x.png in Resources */,
-				010BD7A218834849009896AC /* ios-beets-carrots@2x.jpg in Resources */,
 				0102528317B46B6F00BF1F3C /* visa.png in Resources */,
 				0131E5E41837C32C00556178 /* Images.xcassets in Resources */,
 				0102528417B46B6F00BF1F3C /* visa@2x.png in Resources */,
-				010BD7A918834849009896AC /* ios-red-potatoes@2x.jpg in Resources */,
 				0102528517B46B6F00BF1F3C /* gradient@2x.png in Resources */,
 				0102528617B46B6F00BF1F3C /* textfield.png in Resources */,
 				010BD75A187CAE48009896AC /* fire@2x.png in Resources */,
 				0117109F185FC2C1009173EC /* location.plist in Resources */,
 				0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */,
-				010BD7A718834849009896AC /* ios-pilaf@2x.jpg in Resources */,
 				0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */,
 				0102529A17B46B6F00BF1F3C /* README.md in Resources */,
 			);
@@ -1083,11 +1065,13 @@
 				017663A016C05809003BBD47 /* TabBarController.m in Sources */,
 				0192CC1A16C05FE50024815F /* Customer.m in Sources */,
 				010BD7711880B1CE009896AC /* FBMissingSymbols.m in Sources */,
+				010BD7AC1884E557009896AC /* ParseError.m in Sources */,
 				011CEDF21706042300AE586E /* MenuViewController.m in Sources */,
 				01307ADD18445BDD006F72FD /* DoRyteViewController.m in Sources */,
 				01CE5DC2184003ED006EB46D /* StripeError.m in Sources */,
 				01C33BA91852ADA000263122 /* BeginLoginNavViewController.m in Sources */,
 				011CEDF51706260800AE586E /* Dish.m in Sources */,
+				010BD7AF1884E721009896AC /* ParseErrorMessage.m in Sources */,
 				01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */,
 				01CE5DC5184005E2006EB46D /* StripeErrorResponse.m in Sources */,
 				01191773172310370085CA7B /* MenuCell.m in Sources */,

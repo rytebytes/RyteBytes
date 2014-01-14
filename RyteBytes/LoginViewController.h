@@ -8,6 +8,10 @@
 
 #import <Parse/Parse.h>
 
+@protocol UserLoggedIn <NSObject>
+- (void)checkForOutOfStockItems;
+@end
+
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic,strong) IBOutlet UIView *loginView;

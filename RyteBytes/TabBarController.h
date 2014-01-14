@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "Order.h"
+#import "LoginViewController.h"
 
 @interface TabBarController : UITabBarController <UITabBarControllerDelegate>
 
@@ -20,9 +21,10 @@ typedef enum tabs
     ACCOUNT_TAB = 3
 } ScreenTabs ;
 
-- (void)showLogin;
+- (void)showLoginWithDelegate:(id)logInDelegate;
 
 @property (nonatomic,strong) PFUser *User;
 @property (nonatomic,strong) Order *currentOrder;
+@property (nonatomic,weak) id <UserLoggedIn> logInDelegate;
 
 @end

@@ -38,10 +38,11 @@
     NSLog(@"finished viewDidLoad in TabBarController");
 }
 
-- (void)showLogin
+- (void)showLoginWithDelegate:(id)logInDelegate
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     BeginLoginNavViewController *loginNav = (BeginLoginNavViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
+    loginNav.logInDelegate = logInDelegate;
     [self presentViewController:loginNav animated:true completion:Nil];
 }
 

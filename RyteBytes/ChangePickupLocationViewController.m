@@ -76,7 +76,7 @@ PFUser *user;
 
 - (IBAction)updateLocation:(id)sender {
     user[USER_LOCATION] = [PFObject objectWithoutDataWithClassName:@"Location" objectId:newLocation.objectId];
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:@"Updating location." maskType:SVProgressHUDMaskTypeGradient];
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             [newLocation writeToFile];
@@ -85,10 +85,10 @@ PFUser *user;
             menu.tabBarItem.badgeValue = nil;
             [[Order current] clearEntireOrder];
             [[Menu current] clearMenu];
-            [[Menu current] refreshFromServerWithOverlay:FALSE];
-            [SVProgressHUD dismiss];
+            [[Menu current] refreshFromServerWithOverlay:TRUE];
+//            [SVProgressHUD dismiss];
             [self.navigationController popToRootViewControllerAnimated:FALSE];
-            [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Location updated!" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//            [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Location updated!" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }];
 }

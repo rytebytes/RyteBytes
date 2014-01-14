@@ -72,34 +72,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"Checkout"])
-    {
-        PFUser *currentUser = [PFUser currentUser];
-        if (currentUser)
-        {
-            return YES;
-        }
-        else{
-            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-            [tab showLogin];
-            return NO;
-        }
-    }
-    return YES;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Checkout"])
     {
-        PFUser *currentUser = [PFUser currentUser];
-        if (currentUser)
-        {
-            OrderSummaryViewController *orderController = segue.destinationViewController;
-            [orderController setDelegate:self.delegate];
-        }
+        OrderSummaryViewController *orderController = segue.destinationViewController;
+        [orderController setDelegate:self.delegate];
     }
 }
 

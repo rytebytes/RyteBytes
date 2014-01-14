@@ -59,6 +59,9 @@ NSMutableArray<LocationItem> *locationMenu;
 
 -(BOOL)isQuantityAvailableWithMenuItemId:(NSString*)objectId withQuantity:(int)quantityOrdered
 {
+    if(locationMenu == nil || locationMenu.count == 0) //user isn't logged in, so always allow them to add
+        return true;
+    
     for(LocationItem* item in locationMenu){
         if([item.menuItemId.objectId isEqualToString:objectId])
             return (item.quantity >= quantityOrdered);
@@ -88,7 +91,7 @@ NSMutableArray<LocationItem> *locationMenu;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     ParseClient *parseClient = [ParseClient current];
     if(showOverlay){
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+        [SVProgressHUD showWithStatus:@"Updating menu." maskType:SVProgressHUDMaskTypeGradient];
     }
     
     PFUser *current = [PFUser currentUser];
@@ -108,6 +111,9 @@ NSMutableArray<LocationItem> *locationMenu;
                   }
 //                  [self loadFoodPictures];
                   [self writeToFile];
+                  if(showOverlay){
+                      [SVProgressHUD dismiss];
+                  }
                   [delegate refreshFromServerCompleteWithSuccess:TRUE];
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
               } failure:^(NSURLSessionDataTask *operation, NSError *error) {

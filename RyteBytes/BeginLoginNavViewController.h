@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
 
 @interface BeginLoginNavViewController : UINavigationController
+
+@property (nonatomic,weak) id <UserLoggedIn> logInDelegate;
 
 @end

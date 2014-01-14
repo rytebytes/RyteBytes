@@ -14,6 +14,7 @@
 #import "Location.h"
 #import "ParseClient.h"
 #import "LocationResult.h"
+#import "BeginLoginNavViewController.h"
 
 @implementation LoginViewController
 
@@ -123,12 +124,14 @@ int tagTextFieldToResign;
     
     if (username && password && username.length != 0 && password.length != 0)
     {
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+        [SVProgressHUD showWithStatus:@"Updating location & menu" maskType:SVProgressHUDMaskTypeGradient];
         [PFUser logInWithUsernameInBackground:username password:password
             block:^(PFUser *user, NSError *error) {
                 if(user){
                     ParseClient *parseClient = [ParseClient current];
                     NSString *locationId = [[[PFUser currentUser] valueForKey:USER_LOCATION] objectId];
+                    [[Menu current] refreshFromServerWithOverlay:false];
+                    
                     [parseClient POST:GetLocation parameters:[[NSDictionary alloc] initWithObjectsAndKeys:locationId,@"objectId",nil]
                               success:^(NSURLSessionDataTask *operation, id responseObject) {
                                   NSLog(@"Response object is : %@", responseObject);
@@ -137,6 +140,13 @@ int tagTextFieldToResign;
                                   LocationResult *result = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
                                   Location *locationInfo = result.result[0];
                                   [locationInfo writeToFile];
+                                  
+
+//                                  BeginLoginNavViewController *root = (BeginLoginNavViewController *)self.navigationController;
+//                                  if(nil != root.logInDelegate)
+//                                      [root.logInDelegate checkForOutOfStockItems];
+
+                                  
                               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                                   NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
                               }

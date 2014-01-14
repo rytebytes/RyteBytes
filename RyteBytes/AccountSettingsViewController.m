@@ -37,6 +37,8 @@
 {
     [PFUser logOut];
     [[Order current] clearEntireOrder];
+    [[Menu current] clearMenu];
+    [[Menu current] refreshFromServerWithOverlay:false];
     TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
     UINavigationController *menu = [tab viewControllers][1];
     menu.tabBarItem.badgeValue = nil;
@@ -56,7 +58,7 @@
     else
     {
         TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-        [tab showLogin];
+        [tab showLoginWithDelegate:nil];
     }
 }
 
@@ -84,7 +86,7 @@
     else
     {
         TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-        [tab showLogin];
+        [tab showLoginWithDelegate:nil];
         return NO;
     }
 }

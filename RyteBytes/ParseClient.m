@@ -8,6 +8,7 @@
 
 #import "ParseClient.h"
 #import "AFNetworking.h"
+#import "JSONResponseSerializerWithData.h"
 
 @implementation ParseClient
 
@@ -34,7 +35,7 @@ NSString * const GetLocation = @"getlocation";
     }
     
     AFJSONRequestSerializer *jsonRequest = [[AFJSONRequestSerializer alloc] init];
-    AFJSONResponseSerializer *jsonResponse = [[AFJSONResponseSerializer alloc]init];
+    JSONResponseSerializerWithData *jsonResponse = [[JSONResponseSerializerWithData alloc]init];
     
     self.requestSerializer = jsonRequest;
     self.responseSerializer = jsonResponse;

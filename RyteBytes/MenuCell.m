@@ -20,14 +20,14 @@
     if (self) {
         // Initialization code
     }
-    
+    name.layer.shadowColor = [UIColor orangeColor].CGColor;
     return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    name.backgroundColor = [UIColor whiteColor];
     // Configure the view for the selected state
 }
 

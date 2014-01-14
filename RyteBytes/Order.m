@@ -133,6 +133,21 @@
     return NO;
 }
 
+-(NSString*)checkForOutOfStockItems
+{
+    Menu *menu = [Menu current];
+    NSString* unavailableItems;
+    for (id key in orderItemDictionary) {
+        OrderItem* item = [orderItemDictionary objectForKey:key];
+        if(![menu isQuantityAvailableWithMenuItemId:item.menuItem.objectId withQuantity:item.quantity]){
+            [orderItemDictionary removeObjectForKey:key];
+            unavailableItems = [NSString stringWithFormat:@"%@,%@",unavailableItems,item.menuItem.name];
+        }
+    }
+    
+    return unavailableItems;
+}
+
 -(void)removeOrderItem:(OrderItem *)item
 {
     [orderItemDictionary removeObjectForKey:item.menuItem.objectId];

@@ -220,8 +220,9 @@ int tagTextFieldToResign;
         if(succeeded)
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
-            [self.navigationController popToRootViewControllerAnimated:NO];
             [selectedLocation writeToFile];
+            //check order to see if any items are out of stock
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
         else
         {

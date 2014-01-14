@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RyteBytes/LoginViewController.h"
-            timestampString = "404345469.833991"
+            timestampString = "411402773.954663"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "@interface LoginViewController"
             landmarkType = "2">
          </BreakpointContent>

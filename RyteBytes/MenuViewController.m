@@ -17,6 +17,7 @@
 #import "MenuResult.h"
 #import "CreateOrLoginViewController.h"
 #import "Constants.h"
+#import <QuartzCore/QuartzCore.h>
 
 /** This class presents the user the current menu.  It will retrieve the current list of MenuItems (db objects & domain objects)
  via a REST call.  We will persist all items we have offered via our menu, but we will not persist snapshots of our menu.
@@ -97,6 +98,17 @@ bool foo;
    
     MenuItem *menuItem = [menu.menu objectAtIndex:indexPath.row];
     cell.name.text = menuItem.name;
+    
+    //SET THE WIDTH CONSTRAINTS FOR LABEL.
+//    CGFloat constrainedWidth = 240.0f;//YOU CAN PUT YOUR DESIRED ONE,THE MAXIMUM WIDTH OF YOUR LABEL.
+//    //CALCULATE THE SPACE FOR THE TEXT SPECIFIED.
+//    UIFont *font = [UIFont fontWithName:@"Futura Medium" size:15.0f];
+////    CGSize sizeOfText=[menuItem.name sizeWithFont:font constrainedToSize:CGSizeMake(constrainedWidth, CGFLOAT_MAX)];
+//    CGSize sizeOfText = [menuItem.name sizeWithAttributes:@{NSFontAttributeName:font}];
+//    cell.name.bounds = CGRectMake(20,20,constrainedWidth,sizeOfText.height);
+//    cell.name.adjustsFontSizeToFitWidth = YES;
+//    cell.name.numberOfLines=0;//JUST TO SUPPORT MULTILINING.
+
     NSString *filePath = [[NSBundle mainBundle] pathForResource:[menuItem.picture stringByDeletingPathExtension] ofType:@"jpg"];
     
     if(nil != filePath){ //image found with app bundle, load into SD image cache for rest of app lifetime
@@ -107,25 +119,6 @@ bool foo;
     [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,menuItem.picture]]];
     return cell;
 }
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"CheckoutFromMenu"])
-    {
-        PFUser *currentUser = [PFUser currentUser];
-        if (currentUser)
-        {
-            return YES;
-        }
-        else{
-            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-            [tab showLogin];
-            return NO;
-        }
-    }
-    return YES;
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"MealSelect"])
@@ -140,13 +133,9 @@ bool foo;
 	}
     else if ([segue.identifier isEqualToString:@"CheckoutFromMenu"])
     {
-        //check if the user is logged in, if not, ask them to login or create an account
-        PFUser *currentUser = [PFUser currentUser];
-        if (currentUser)
-        {
-            OrderSummaryViewController *orderController = segue.destinationViewController;
-            [orderController setDelegate:self];
-        }
+
+        OrderSummaryViewController *orderController = segue.destinationViewController;
+        [orderController setDelegate:self];
     }
 }
 

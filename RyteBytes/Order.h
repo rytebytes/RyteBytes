@@ -32,6 +32,7 @@
 -(BOOL)setMenuItem:(MenuItem*)menuItem withQuantity:(int)quantity;
 -(BOOL)setOrderItem:(OrderItem*)item;
 -(void)removeOrderItem:(OrderItem*)item;
+-(NSString*)checkForOutOfStockItems;
 
 -(void)clearEntireOrder;
 
