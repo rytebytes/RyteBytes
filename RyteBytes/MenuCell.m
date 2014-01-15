@@ -13,21 +13,23 @@
 
 @synthesize name;
 @synthesize imageView;
+@synthesize soldOut;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    soldOut.hidden = YES;
     if (self) {
         // Initialization code
     }
-    name.layer.shadowColor = [UIColor orangeColor].CGColor;
     return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    name.backgroundColor = [UIColor whiteColor];
+    NSLog(@"in selected");
+
+//
     // Configure the view for the selected state
 }
 

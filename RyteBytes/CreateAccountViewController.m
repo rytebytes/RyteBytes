@@ -215,19 +215,20 @@ int tagTextFieldToResign;
 
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
-        [SVProgressHUD dismiss];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         if(succeeded)
         {
             NSLog(@"Created new user with email : %@, password : %@, objectid : %@",user.email, user.password, user.objectId);
             [selectedLocation writeToFile];
             //check order to see if any items are out of stock
+            [[Menu current] refreshFromServerWithOverlay:TRUE];
             [self.navigationController popToRootViewControllerAnimated:NO];
         }
         else
         {
             UIAlertView *accountFailed = [[UIAlertView alloc] initWithTitle:@"Error creating account." message:error.localizedDescription delegate:NULL cancelButtonTitle:@"OK" otherButtonTitles:@"", nil];
             [accountFailed show];
+            [SVProgressHUD dismiss];
         }
     }];
 }

@@ -45,7 +45,8 @@ bool foo;
 {
     [super viewDidLoad];
     menu = [Menu current];
-    menu.delegate = self;
+    [menu refreshFromServerWithOverlay:FALSE];
+
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
@@ -58,10 +59,7 @@ bool foo;
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if([menu.menu count] == 0)
-    {
-        [menu refreshFromServerWithOverlay:FALSE];
-    }
+    menu.delegate = self;
 }
 
 -(void)refreshMenu
@@ -96,18 +94,32 @@ bool foo;
 //    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
    
+//    UILabel *foodName = (UILabel*)[cell viewWithTag:31];
+//    
+//    foodName.textColor = [UIColor blackColor];
+//    foodName.layer.shadowColor = [UIColor whiteColor].CGColor;
+//    foodName.layer.shadowRadius = 4; // or whatever looks best, not sure
+//    foodName.layer.masksToBounds = NO;
+    
     MenuItem *menuItem = [menu.menu objectAtIndex:indexPath.row];
+    if (![[Menu current] isQuantityAvailableWithMenuItemId:menuItem.objectId withQuantity:1]) {
+        cell.soldOut.hidden = NO;
+        [cell setUserInteractionEnabled:NO];
+    } else {
+        cell.soldOut.hidden = YES;
+        [cell setUserInteractionEnabled:YES];
+    }
     cell.name.text = menuItem.name;
+    [cell.name sizeToFit];
     
     //SET THE WIDTH CONSTRAINTS FOR LABEL.
-//    CGFloat constrainedWidth = 240.0f;//YOU CAN PUT YOUR DESIRED ONE,THE MAXIMUM WIDTH OF YOUR LABEL.
+//    CGFloat constrainedWidth = 640.0f;//YOU CAN PUT YOUR DESIRED ONE,THE MAXIMUM WIDTH OF YOUR LABEL.
 //    //CALCULATE THE SPACE FOR THE TEXT SPECIFIED.
 //    UIFont *font = [UIFont fontWithName:@"Futura Medium" size:15.0f];
-////    CGSize sizeOfText=[menuItem.name sizeWithFont:font constrainedToSize:CGSizeMake(constrainedWidth, CGFLOAT_MAX)];
 //    CGSize sizeOfText = [menuItem.name sizeWithAttributes:@{NSFontAttributeName:font}];
 //    cell.name.bounds = CGRectMake(20,20,constrainedWidth,sizeOfText.height);
 //    cell.name.adjustsFontSizeToFitWidth = YES;
-//    cell.name.numberOfLines=0;//JUST TO SUPPORT MULTILINING.
+//    cell.name.numberOfLines=1;//JUST TO SUPPORT MULTILINING.
 
     NSString *filePath = [[NSBundle mainBundle] pathForResource:[menuItem.picture stringByDeletingPathExtension] ofType:@"jpg"];
     

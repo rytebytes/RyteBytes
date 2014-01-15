@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Menu.h"
+#import "MenuCell.h"
 
 @protocol MenuItemAdded <NSObject>
 - (void)setBadgeValue:(int)count;
@@ -20,5 +21,6 @@
 @property (nonatomic,copy) NSString *kiosk;
 //strong - keep on heap until nothing points to it
 @property (nonatomic,strong) Menu *menu;
+@property (nonatomic,strong) IBOutlet MenuCell *menuCell;
 
 @end

@@ -21,6 +21,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vt0-Bf-o6N">
+                                            <rect key="frame" x="0.0" y="0.0" width="321" height="130"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKe-5T-FQu">
                                             <rect key="frame" x="0.0" y="130" width="332" height="139"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -33,17 +37,12 @@
                                             <color key="shadowColor" white="1" alpha="0.75" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
-                                        <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="rBp-nu-M4Y">
-                                            <rect key="frame" x="113" y="95" width="94" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        </stepper>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pC0-rU-7wu">
-                                            <rect key="frame" x="0.0" y="0.0" width="332" height="139"/>
+                                            <rect key="frame" x="0.0" y="153" width="332" height="139"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J06-4S-mW0">
-                                            <rect key="frame" x="7" y="9" width="280" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="J06-4S-mW0">
+                                            <rect key="frame" x="0.0" y="0.0" width="166" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <attributedString key="attributedText">
@@ -58,14 +57,22 @@
                                             <nil key="highlightedColor"/>
                                             <size key="shadowOffset" width="-1" height="0.0"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.64999999999999969" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sold Out!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljA-Rd-Dch">
+                                            <rect key="frame" x="0.0" y="0.0" width="316" height="130"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <outlet property="imageView" destination="pC0-rU-7wu" id="hhE-9l-4gc"/>
+                                    <outlet property="imageView" destination="vt0-Bf-o6N" id="8Cv-gq-L7Q"/>
                                     <outlet property="name" destination="J06-4S-mW0" id="Qie-CM-ZpQ"/>
+                                    <outlet property="soldOut" destination="ljA-Rd-Dch" id="c2W-ov-GJL"/>
                                     <segue destination="s3v-5M-xjQ" kind="push" identifier="MealSelect" id="eYS-Sb-2of"/>
                                 </connections>
                             </tableViewCell>
@@ -366,22 +373,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="22" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="307" translatesAutoresizingMaskIntoConstraints="NO" id="Mjn-UB-mlO">
-                                <rect key="frame" x="7" y="70" width="307" height="428"/>
+                                <rect key="frame" x="7" y="51" width="307" height="459"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">1.) PUT THE BAGS IN A POT  (NO MORE THAN 2 PASTA MEALS  OR 6 INDIVIDUAL COMPONENTS)
+                                <mutableString key="text">Remember - keep your items frozen until you cook them!  They should not be left out or in the fridge before cooking.  Always go from freezer to pot when heating.
 
-2.) FILL WITH HOT WATER UNTIL  BAGS ARE COVERED
+Heating your RyteBytes meal is as simple as heating water! 
 
-3.) PUT THE POT ON YOUR BIGGEST BURNER, TURN ON HIGH AND  COVER WITH THE LID.
+1.) Place the bags in a pot (no more than 2 pasta meals or 6 individual components).
 
-4.) HEAT FOR THE FOLLOWING TIME, BASED ON THE NUMBER OF BAGS:
+2.) Fill with hot water until bags are covered.
 
-1 - 3 BAGS : 20 MINUTES
+3.) Put the pot on your biggest burner, turn on high and cover with the lid.
 
-4 - 6 BAGS : 25 MINUTES
+4.) Bring the water to a boil and allow to boil for the following time:
 
-</string>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+1 - 3 bags : 5 minutes
+
+4 - 6 bags : 15 minutes</mutableString>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1138,6 +1147,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="x4Z-JS-ZPW"/>
+        <segue reference="zMP-DP-Ye7"/>
     </inferredMetricsTieBreakers>
 </document>

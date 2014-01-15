@@ -7,12 +7,12 @@
 //
 
 #import "JSONModel.h"
-#import "ParseErrorMessage.h"
 
 @interface ParseError : JSONModel
 
 @property (nonatomic,strong) NSString<Optional> *code;
 @property (nonatomic,strong) NSString<Optional> *error;
-//@property (nonatomic,strong) ParseErrorMessage<Optional> *error;
+
+-(NSString*)extractMessage;
 
 @end

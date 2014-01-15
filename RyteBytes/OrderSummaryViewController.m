@@ -204,7 +204,7 @@ PFUser *currentUser;
                         ParseError *parseError = [[ParseError alloc] initWithString:info error:&modelConversionError];
                         [SVProgressHUD dismiss];
                         [[[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:parseError.error
+                                                    message:[parseError extractMessage]
                                                    delegate:nil
                                           cancelButtonTitle:@"Okay"
                                           otherButtonTitles:nil] show];

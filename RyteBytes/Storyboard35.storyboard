@@ -365,22 +365,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="22" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="307" translatesAutoresizingMaskIntoConstraints="NO" id="3cA-bZ-a1C">
-                                <rect key="frame" x="7" y="70" width="307" height="428"/>
+                                <rect key="frame" x="7" y="50" width="307" height="393"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">1.) PUT THE BAGS IN A POT  (NO MORE THAN 2 PASTA MEALS  OR 6 INDIVIDUAL COMPONENTS)
+                                <mutableString key="text">Remember - keep your items frozen until you cook them!  They should not be left out or in the fridge before cooking.  Always go from freezer to pot when heating.
 
-2.) FILL WITH HOT WATER UNTIL  BAGS ARE COVERED
+Heating your RyteBytes meal is as simple as heating water! 
 
-3.) PUT THE POT ON YOUR BIGGEST BURNER, TURN ON HIGH AND  COVER WITH THE LID.
+1.) Place the bags in a pot (no more than 2 pasta meals or 6 individual components).
 
-4.) HEAT FOR THE FOLLOWING TIME, BASED ON THE NUMBER OF BAGS:
+2.) Fill with hot water until bags are covered.
 
-1 - 3 BAGS : 20 MINUTES
+3.) Put the pot on your biggest burner, turn on high and cover with the lid.
 
-4 - 6 BAGS : 25 MINUTES
+4.) Bring the water to a boil and allow to boil for the following time:
 
-</string>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+1 - 3 bags : 5 minutes
+
+4 - 6 bags : 15 minutes</mutableString>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

@@ -87,6 +87,7 @@ NSMutableArray<LocationItem> *locationMenu;
 
 -(void)retrieveMenu:(BOOL)showOverlay
 {
+    [self clearMenu];
     NSMutableDictionary *request = [[NSMutableDictionary alloc] init];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     ParseClient *parseClient = [ParseClient current];
@@ -109,7 +110,6 @@ NSMutableArray<LocationItem> *locationMenu;
                   } else {
                       menu = (NSMutableArray<MenuItem>*)[[MenuResult alloc] initWithDictionary:responseObject error:&error].result;
                   }
-//                  [self loadFoodPictures];
                   [self writeToFile];
                   if(showOverlay){
                       [SVProgressHUD dismiss];
@@ -151,7 +151,7 @@ NSMutableArray<LocationItem> *locationMenu;
 
 -(void)writeToFile
 {
-    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     destPath = [destPath stringByAppendingPathComponent:@"menu.plist"];
     
     // If the file doesn't exist in the Documents Folder, copy it.
@@ -172,12 +172,13 @@ NSMutableArray<LocationItem> *locationMenu;
     if(!success)
         NSLog(@"Unable to write plist data to disk: %@", error);
     
+    NSLog(@"Successfully wrote menu to disk to %@", destPath);
 }
 
 -(void)loadFromFile
 {
-    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    destPath = [destPath stringByAppendingPathComponent:@"location.plist"];
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"menu.plist"];
     
     NSError *error;
     NSData *plistData = [NSData dataWithContentsOfFile:destPath options: 0 error: &error];

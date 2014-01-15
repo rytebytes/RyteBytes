@@ -67,7 +67,6 @@
 		010BD76E1880A1E7009896AC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010BD76D1880A1E7009896AC /* ImageIO.framework */; };
 		010BD7711880B1CE009896AC /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7701880B1CE009896AC /* FBMissingSymbols.m */; };
 		010BD7AC1884E557009896AC /* ParseError.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7AB1884E557009896AC /* ParseError.m */; };
-		010BD7AF1884E721009896AC /* ParseErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7AE1884E721009896AC /* ParseErrorMessage.m */; };
 		010BD7B11885CD7E009896AC /* Storyboard35.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010BD7B01885CD7E009896AC /* Storyboard35.storyboard */; };
 		0115FD3517E3745300F75708 /* StripeCardsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115FD3417E3745300F75708 /* StripeCardsResponse.m */; };
 		01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01171097185FBFF5009173EC /* lakeview_pantry.jpg */; };
@@ -237,8 +236,6 @@
 		010BD7701880B1CE009896AC /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMissingSymbols.m; sourceTree = "<group>"; };
 		010BD7AA1884E557009896AC /* ParseError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseError.h; sourceTree = "<group>"; };
 		010BD7AB1884E557009896AC /* ParseError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseError.m; sourceTree = "<group>"; };
-		010BD7AD1884E721009896AC /* ParseErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseErrorMessage.h; sourceTree = "<group>"; };
-		010BD7AE1884E721009896AC /* ParseErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseErrorMessage.m; sourceTree = "<group>"; };
 		010BD7B01885CD7E009896AC /* Storyboard35.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard35.storyboard; sourceTree = "<group>"; };
 		0115FD3317E3745300F75708 /* StripeCardsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCardsResponse.h; sourceTree = "<group>"; };
 		0115FD3417E3745300F75708 /* StripeCardsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCardsResponse.m; sourceTree = "<group>"; };
@@ -582,8 +579,6 @@
 				013DE03217CC3CF7004EFFF6 /* ParseClient.m */,
 				010BD7AA1884E557009896AC /* ParseError.h */,
 				010BD7AB1884E557009896AC /* ParseError.m */,
-				010BD7AD1884E721009896AC /* ParseErrorMessage.h */,
-				010BD7AE1884E721009896AC /* ParseErrorMessage.m */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -1071,7 +1066,6 @@
 				01CE5DC2184003ED006EB46D /* StripeError.m in Sources */,
 				01C33BA91852ADA000263122 /* BeginLoginNavViewController.m in Sources */,
 				011CEDF51706260800AE586E /* Dish.m in Sources */,
-				010BD7AF1884E721009896AC /* ParseErrorMessage.m in Sources */,
 				01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */,
 				01CE5DC5184005E2006EB46D /* StripeErrorResponse.m in Sources */,
 				01191773172310370085CA7B /* MenuCell.m in Sources */,

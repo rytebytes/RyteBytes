@@ -46,13 +46,12 @@
     
     quantityStepper.minimumValue = 0;
     UIImage *image = [UIImage imageNamed:menuItemSelected.picture];
-    foodImageView.image = image;
-//    if (nil == image) {
-//        [foodImageView setImageWithURL:
-//         [NSURL URLWithString:[NSString stringWithFormat:@"http://res.cloudinary.com/rytebytes/image/upload/%@",menuItemSelected.picture]]];
-//    } else {
-//        foodImageView.image = image;
-//    }
+//    foodImageView.image = image;
+    if (nil == image) {
+        [foodImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,menuItemSelected.picture]]];
+    } else {
+        foodImageView.image = image;
+    }
     
     description.text = menuItemSelected.longDescription;
     mealName.textAlignment = NSTextAlignmentCenter;

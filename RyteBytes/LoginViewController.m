@@ -140,13 +140,6 @@ int tagTextFieldToResign;
                                   LocationResult *result = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
                                   Location *locationInfo = result.result[0];
                                   [locationInfo writeToFile];
-                                  
-
-//                                  BeginLoginNavViewController *root = (BeginLoginNavViewController *)self.navigationController;
-//                                  if(nil != root.logInDelegate)
-//                                      [root.logInDelegate checkForOutOfStockItems];
-
-                                  
                               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                                   NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
                               }

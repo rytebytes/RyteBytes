@@ -12,6 +12,7 @@
 @interface MenuCell : UITableViewCell
 
 @property (nonatomic,strong) IBOutlet UILabel *name;
+@property (nonatomic,strong) IBOutlet UILabel *soldOut;
 @property (nonatomic,strong) IBOutlet UIImageView *imageView;
 
 @end
