@@ -201,6 +201,7 @@ NSNumberFormatter *formatter;
             [[ParseClient current] POST:PlaceOrder parameters:[order toDictionary]
                     success:^(NSURLSessionDataTask *operation, id responseObject) {
                         NSLog(@"placed order succesfully, message : %@", responseObject);
+                        [[Menu current] refreshFromServerWithOverlay:FALSE];
                         [SVProgressHUD dismiss];
                         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                         [order clearEntireOrder];
@@ -220,7 +221,7 @@ NSNumberFormatter *formatter;
                         NSLog(@"placed order failing, message : %@", [error localizedDescription]);
                         NSString *info = error.userInfo[JSONResponseSerializerWithDataKey];
                         ParseError *parseError = [[ParseError alloc] initWithString:info error:&modelConversionError];
-                        [SVProgressHUD dismiss];
+                        [self checkForOutOfStockItems];
                         [[[UIAlertView alloc] initWithTitle:@"Error"
                                                     message:[parseError extractMessage]
                                                    delegate:nil
