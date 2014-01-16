@@ -25,6 +25,7 @@ NSString * const ORDER_USER_ID = @"userId";
 NSString * const ORDER_LOCATION_ID = @"locationId";
 NSString * const ORDER_COUPON_ID = @"couponId";
 NSString * const ORDER_ITEMS = @"orderItems";
-NSString * const CLOUDINARY_IMAGE_URL = @"http://res.cloudinary.com/rytebytes/image/upload/w_640,h_262/%@";
+NSString * const CLOUDINARY_IMAGE_FOOD_URL = @"http://res.cloudinary.com/rytebytes/image/upload/w_640,h_262/%@";
+NSString * const CLOUDINARY_IMAGE_URL = @"http://res.cloudinary.com/rytebytes/image/upload/%@";
 
 @end

@@ -23,6 +23,7 @@
 @property (nonatomic,strong) IBOutlet UILabel *carbs;
 @property (nonatomic,strong) IBOutlet UILabel *sodium;
 @property (nonatomic,strong) IBOutlet UILabel *protein;
+@property (nonatomic,strong) IBOutlet UILabel *price;
 @property (nonatomic,strong) IBOutlet UIStepper *quantityStepper;
 @property (nonatomic,weak) id <MenuItemAdded> delegate;
 @property (nonatomic,strong) NSString *currentAmountOrdered;

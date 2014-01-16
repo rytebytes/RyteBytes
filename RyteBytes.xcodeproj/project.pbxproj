@@ -69,13 +69,14 @@
 		010BD7AC1884E557009896AC /* ParseError.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD7AB1884E557009896AC /* ParseError.m */; };
 		010BD7B11885CD7E009896AC /* Storyboard35.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 010BD7B01885CD7E009896AC /* Storyboard35.storyboard */; };
 		0115FD3517E3745300F75708 /* StripeCardsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115FD3417E3745300F75708 /* StripeCardsResponse.m */; };
-		01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01171097185FBFF5009173EC /* lakeview_pantry.jpg */; };
-		0117109A185FC0A0009173EC /* food_elgin.png in Resources */ = {isa = PBXBuildFile; fileRef = 01171099185FC0A0009173EC /* food_elgin.png */; };
 		0117109D185FC0E1009173EC /* Charity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0117109C185FC0E1009173EC /* Charity.m */; };
 		0117109F185FC2C1009173EC /* location.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0117109E185FC2C1009173EC /* location.plist */; };
 		01191773172310370085CA7B /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191772172310370085CA7B /* MenuCell.m */; };
 		01191776172326F80085CA7B /* MenuItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01191775172326F80085CA7B /* MenuItemDetailsViewController.m */; };
 		01193D4B1719EA5F007782B9 /* NutritionInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01193D4A1719EA5F007782B9 /* NutritionInformation.m */; };
+		011C2D421886E0AA008D3B46 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011C2D411886E0AA008D3B46 /* Crashlytics.framework */; };
+		011C2D451886F5CE008D3B46 /* food_elgin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D431886F5CE008D3B46 /* food_elgin.jpg */; };
+		011C2D461886F5CE008D3B46 /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D441886F5CE008D3B46 /* lakeview_pantry.jpg */; };
 		011CEDF21706042300AE586E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF11706042300AE586E /* MenuViewController.m */; };
 		011CEDF51706260800AE586E /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF41706260800AE586E /* Dish.m */; };
 		0122254E179AEE2B0026922A /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122254D179AEE2B0026922A /* MenuItem.m */; };
@@ -239,8 +240,6 @@
 		010BD7B01885CD7E009896AC /* Storyboard35.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard35.storyboard; sourceTree = "<group>"; };
 		0115FD3317E3745300F75708 /* StripeCardsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCardsResponse.h; sourceTree = "<group>"; };
 		0115FD3417E3745300F75708 /* StripeCardsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCardsResponse.m; sourceTree = "<group>"; };
-		01171097185FBFF5009173EC /* lakeview_pantry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lakeview_pantry.jpg; sourceTree = "<group>"; };
-		01171099185FC0A0009173EC /* food_elgin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food_elgin.png; sourceTree = "<group>"; };
 		0117109B185FC0E1009173EC /* Charity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Charity.h; sourceTree = "<group>"; };
 		0117109C185FC0E1009173EC /* Charity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Charity.m; sourceTree = "<group>"; };
 		0117109E185FC2C1009173EC /* location.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = location.plist; sourceTree = "<group>"; };
@@ -250,6 +249,9 @@
 		01191775172326F80085CA7B /* MenuItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemDetailsViewController.m; sourceTree = "<group>"; };
 		01193D491719EA5F007782B9 /* NutritionInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NutritionInformation.h; sourceTree = "<group>"; };
 		01193D4A1719EA5F007782B9 /* NutritionInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NutritionInformation.m; sourceTree = "<group>"; };
+		011C2D411886E0AA008D3B46 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		011C2D431886F5CE008D3B46 /* food_elgin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food_elgin.jpg; sourceTree = "<group>"; };
+		011C2D441886F5CE008D3B46 /* lakeview_pantry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lakeview_pantry.jpg; sourceTree = "<group>"; };
 		011CEDF01706042300AE586E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		011CEDF11706042300AE586E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		011CEDF31706260800AE586E /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				0177533717826DB300296315 /* AVFoundation.framework in Frameworks */,
 				0109FC7817760140008E5A66 /* SystemConfiguration.framework in Frameworks */,
 				0109FC761776013A008E5A66 /* StoreKit.framework in Frameworks */,
+				011C2D421886E0AA008D3B46 /* Crashlytics.framework in Frameworks */,
 				0109FC6E1776011C008E5A66 /* libz.1.1.3.dylib in Frameworks */,
 				0109FC6C17760115008E5A66 /* CoreLocation.framework in Frameworks */,
 				0176638716C05809003BBD47 /* CoreGraphics.framework in Frameworks */,
@@ -614,6 +617,7 @@
 		0176638116C05809003BBD47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				011C2D411886E0AA008D3B46 /* Crashlytics.framework */,
 				010BD76D1880A1E7009896AC /* ImageIO.framework */,
 				0102520617B46B6F00BF1F3C /* Stripe */,
 				0165C5C81795D3AE00DA9C15 /* VenmoTouch.framework */,
@@ -720,13 +724,13 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				011C2D431886F5CE008D3B46 /* food_elgin.jpg */,
+				011C2D441886F5CE008D3B46 /* lakeview_pantry.jpg */,
 				010BD75B187CAF94009896AC /* cog@2x.png */,
 				010BD75C187CAF94009896AC /* coin@2x.png */,
 				010BD75D187CAF94009896AC /* food@2x.png */,
 				010BD759187CAE48009896AC /* fire@2x.png */,
 				0157B7A6186606210003E187 /* LaunchImage.png */,
-				01171099185FC0A0009173EC /* food_elgin.png */,
-				01171097185FBFF5009173EC /* lakeview_pantry.jpg */,
 				0131E5EF1837CBD100556178 /* food_vert@2x.png */,
 				0131E5EB1837C91400556178 /* 120x120 white.png */,
 				01350D3918243E3600670D23 /* Default@2x.png */,
@@ -880,6 +884,7 @@
 				0176637B16C05809003BBD47 /* Frameworks */,
 				0176637C16C05809003BBD47 /* Resources */,
 				A98E72E697604E9B98A0E401 /* Copy Pods Resources */,
+				011C2D401886E066008D3B46 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -945,7 +950,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01171098185FBFF5009173EC /* lakeview_pantry.jpg in Resources */,
 				010BD75F187CAF94009896AC /* coin@2x.png in Resources */,
 				0176638D16C05809003BBD47 /* InfoPlist.strings in Resources */,
 				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
@@ -953,7 +957,7 @@
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
 				0131E5F01837CBD100556178 /* food_vert@2x.png in Resources */,
 				01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */,
-				0117109A185FC0A0009173EC /* food_elgin.png in Resources */,
+				011C2D451886F5CE008D3B46 /* food_elgin.jpg in Resources */,
 				0102526917B46B6F00BF1F3C /* .gitignore in Resources */,
 				0102526A17B46B6F00BF1F3C /* LICENSE in Resources */,
 				0102527317B46B6F00BF1F3C /* amex.png in Resources */,
@@ -985,6 +989,7 @@
 				0102528617B46B6F00BF1F3C /* textfield.png in Resources */,
 				010BD75A187CAE48009896AC /* fire@2x.png in Resources */,
 				0117109F185FC2C1009173EC /* location.plist in Resources */,
+				011C2D461886F5CE008D3B46 /* lakeview_pantry.jpg in Resources */,
 				0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */,
 				0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */,
 				0102529A17B46B6F00BF1F3C /* README.md in Resources */,
@@ -1002,6 +1007,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		011C2D401886E066008D3B46 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run e371efa75ceb0c8fcee2be8d7becc8fa12b8cb9f";
+		};
 		017663A816C05809003BBD47 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1244,8 +1262,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"$(SRCROOT)",
+					/Users/Nick/Documents/RyteBytes/Software/iPhone/RyteBytes,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
@@ -1255,6 +1273,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
 				);
+				New_Setting = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = (
@@ -1264,6 +1283,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				STRIPE_KEY = "";
 				TEST_AFTER_BUILD = NO;
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s armv6";
 				WRAPPER_EXTENSION = app;
@@ -1279,8 +1299,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"$(SRCROOT)",
+					"\\\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\\\"",
+					/Users/Nick/Documents/RyteBytes/Software/iPhone/RyteBytes,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RyteBytes/RyteBytes-Prefix.pch";
@@ -1290,6 +1311,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/CardIO\"",
 				);
+				New_Setting = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				"OTHER_LDFLAGS[arch=*]" = (
@@ -1298,6 +1320,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				STRIPE_KEY = "";
 				TEST_AFTER_BUILD = NO;
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s armv6";
 				WRAPPER_EXTENSION = app;

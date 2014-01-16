@@ -144,7 +144,11 @@ int tagTextFieldToResign;
                                   NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
                               }
                      ];
-                    [SVProgressHUD dismiss];
+                    
+                    BeginLoginNavViewController *begin = (BeginLoginNavViewController*)self.navigationController;
+                    if(begin.dismissHud)
+                        [SVProgressHUD dismiss];
+                    
                     [self.navigationController popToRootViewControllerAnimated:NO];
                 } else {
                     [SVProgressHUD dismiss];

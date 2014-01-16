@@ -35,9 +35,9 @@
     return self;
 }
 
--(double)calculateCost
+-(float)calculateCost
 {
-    return (menuItem.costInCents / 100) * quantity;
+    return (menuItem.costInCents / 100.0) * quantity;
 }
 
 @end

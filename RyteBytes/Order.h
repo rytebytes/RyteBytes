@@ -12,6 +12,10 @@
 #import "OrderItem.h"
 #import "Menu.h"
 
+@protocol OrderUpdatedWithNewMenu <NSObject>
+-(void)orderUpdatedWithNewMenu;
+@end
+
 
 @interface Order : JSONModel
 
@@ -20,6 +24,7 @@
 @property (strong,nonatomic) NSMutableDictionary<OrderItem,Optional> *orderItemDictionary;
 @property (nonatomic) int totalInCents;
 @property (strong,nonatomic) Menu<Ignore> *menu;
+@property (nonatomic,weak) id<OrderUpdatedWithNewMenu,Ignore> delegate;
 
 + (Order*)current;
 
@@ -36,7 +41,7 @@
 
 -(void)clearEntireOrder;
 
--(double)calculateTotalOrderCost;
+-(float)calculateTotalOrderCost;
 -(int)calculateTotalOrderCostInCents;
 -(double)calculateDoRyteDonation;
 

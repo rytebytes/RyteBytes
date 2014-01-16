@@ -7,6 +7,7 @@
 //
 
 #import "Menu.h"
+#import "Order.h"
 #import "ParseClient.h"
 #import "MenuResult.h"
 #import <Parse/Parse.h>
@@ -114,7 +115,13 @@ NSMutableArray<LocationItem> *locationMenu;
                   if(showOverlay){
                       [SVProgressHUD dismiss];
                   }
-                  [delegate refreshFromServerCompleteWithSuccess:TRUE];
+                  
+                  if(self.delegate != nil)
+                      [delegate refreshFromServerCompleteWithSuccess:TRUE];
+                  
+                  if([Order current].delegate != nil)
+                      [[Order current].delegate orderUpdatedWithNewMenu];
+                  
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   NSLog(@"Error returned retrieving menu %@", [error localizedDescription]);
@@ -132,6 +139,15 @@ NSMutableArray<LocationItem> *locationMenu;
                   
               }
      ];
+}
+
+-(NSString*)getLocationId
+{
+    if(locationMenu == nil || locationMenu.count == 0) //user isn't logged in, so always allow them to add
+        return @"";
+    
+    LocationItem *item = locationMenu[0];
+    return item.locationId.objectId;
 }
 
 //-(void)loadFoodPictures

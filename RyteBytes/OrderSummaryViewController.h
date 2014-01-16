@@ -13,7 +13,7 @@
 #import "Menu.h"
 
 
-@interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UIAlertViewDelegate,UserLoggedIn,MenuRefresh>
+@interface OrderSummaryViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UIAlertViewDelegate,UserLoggedIn,OrderUpdatedWithNewMenu>
 
 @property (nonatomic,strong) IBOutlet UITableView *orderSummary;
 @property (nonatomic,strong) IBOutlet UILabel *orderTotal;

@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "Stripe.h"
+#import <Crashlytics/Crashlytics.h>
 
 
 @implementation RBAppDelegate
@@ -30,15 +31,33 @@ NSMutableArray *components;
     [Parse setApplicationId:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"
                   clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
 
+#ifdef DEBUG
     [Stripe setDefaultPublishableKey:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr"];
+#else
+    [Stripe setDefaultPublishableKey:@"pk_live_RjYLDJ0wr0c1ob09hUZtpnCv"];
+#endif
     
     UIColor *rbGold = [[UIColor alloc] initWithRed:(251/255.0) green:(191/255.0) blue:(49/255.0) alpha:1 ];
     
     [[UINavigationBar appearance] setBarTintColor:rbGold];
     
+    UIStoryboard *storyboard = nil;
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        NSLog(@"retina 4");
+        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    } else {
+        NSLog(@"retina 3.5");
+        storyboard = [UIStoryboard storyboardWithName:@"Storyboard35" bundle:nil];
+    }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+    [self.window makeKeyAndVisible];
+    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-//    [[UIActivityIndicatorView appearance] setTintColor:[UIColor yellowColor]];
-//
+    
+    [Crashlytics startWithAPIKey:@"e371efa75ceb0c8fcee2be8d7becc8fa12b8cb9f"];
 //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     return YES;

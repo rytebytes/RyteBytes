@@ -11,13 +11,11 @@
 @implementation OrderSummaryCell
 
 @synthesize itemName;
-//@synthesize totalCost;
-//@synthesize unitCost;
-//@synthesize quantity;
 @synthesize stepper;
 @synthesize uniqueId;
 @synthesize image;
-@synthesize itemQuantityAndCost;
+@synthesize quantityAndUnitCost;
+@synthesize totalItemCost;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

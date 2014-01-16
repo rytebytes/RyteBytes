@@ -38,11 +38,18 @@
     NSLog(@"finished viewDidLoad in TabBarController");
 }
 
-- (void)showLoginWithDelegate:(id)logInDelegate
+- (void)showLoginDismissHUDOnSuccess:(BOOL)dismiss
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIStoryboard *storyboard = nil;
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        NSLog(@"retina 4");
+        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    } else {
+        NSLog(@"retina 3.5");
+        storyboard = [UIStoryboard storyboardWithName:@"Storyboard35" bundle:nil];
+    }
     BeginLoginNavViewController *loginNav = (BeginLoginNavViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
-    loginNav.logInDelegate = logInDelegate;
+    loginNav.dismissHud = dismiss;
     [self presentViewController:loginNav animated:true completion:Nil];
 }
 

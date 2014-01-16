@@ -22,6 +22,7 @@
 #import "SDWebImageManager.h"
 #import "ParseError.h"
 #import "JSONResponseSerializerWithData.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation OrderSummaryViewController
 
@@ -35,6 +36,7 @@ int orderTotalCost = 0;
 OrderItem *selectedItem;
 Location *pickupLocation;
 PFUser *currentUser;
+NSNumberFormatter *formatter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +52,9 @@ PFUser *currentUser;
 	// Do any additional setup after loading the view.
     currentOrder = [Order current];
     orderArray = [currentOrder convertToOrderItemArray];
-    
+    formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [Order current].delegate = self;
     [orderSummary reloadData];
     [self updateOrderCost];
 }
@@ -80,11 +84,16 @@ PFUser *currentUser;
     cell.itemName.text = [item.menuItem.name uppercaseString];
     cell.stepper.value = item.quantity;
     cell.uniqueId = item.menuItem.objectId;
-    cell.image.image = [UIImage imageNamed:item.menuItem.picture];
+    [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,item.menuItem.picture]]];
     [cell.image setClipsToBounds:YES];
-    cell.itemQuantityAndCost.text =
-        [NSString stringWithFormat:@"%d x $%d = $%.02f", item.quantity, item.menuItem.costInCents / 100, [item calculateCost]];
-  
+    
+    
+    NSNumber *totalItemCost = [NSNumber numberWithFloat:[item calculateCost]];
+    NSNumber *itemUnitCost = [NSNumber numberWithFloat:item.menuItem.costInCents / 100.0];
+    
+    cell.quantityAndUnitCost.text = [NSString stringWithFormat:@"%d x %@ = ", item.quantity, [formatter stringFromNumber:itemUnitCost]];
+    cell.totalItemCost.text = [formatter stringFromNumber:totalItemCost];
+    
     return cell;
 }
 
@@ -109,7 +118,14 @@ PFUser *currentUser;
                               cancelButtonTitle:@"Yes" //index = 0
                               otherButtonTitles:@"No", nil] show];
         }
-        cell.itemQuantityAndCost.text = [NSString stringWithFormat:@"%d x $%d = $%.02f", value, selectedItem.menuItem.costInCents / 100, [selectedItem calculateCost]];
+        
+        selectedItem = [[Order current] getOrderItem:selectedItem.menuItem.objectId];
+        
+        NSNumber *totalItemCost = [NSNumber numberWithFloat:[selectedItem calculateCost]];
+        NSNumber *itemUnitCost = [NSNumber numberWithFloat:selectedItem.menuItem.costInCents / 100.0];
+        int quantity = selectedItem.quantity;
+        cell.quantityAndUnitCost.text = [NSString stringWithFormat:@"%d x %@ = ", quantity, [formatter stringFromNumber:itemUnitCost]];
+        cell.totalItemCost.text = [formatter stringFromNumber:totalItemCost];
         [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
         orderArray = [currentOrder convertToOrderItemArray];
         [self updateOrderCost];
@@ -125,12 +141,14 @@ PFUser *currentUser;
 }
 
 - (void)updateOrderCost {
-    orderTotal.text = [NSString stringWithFormat:@"$%.02f", [currentOrder calculateTotalOrderCost]];
+    NSNumber *totalOrderCost = [NSNumber numberWithFloat:[currentOrder calculateTotalOrderCost]];
+    orderTotal.text = [formatter stringFromNumber:totalOrderCost];
 }
 
 -(void)checkForOutOfStockItems{
     NSString *list = [[Order current] checkForOutOfStockItems];
     if([list length] > 0){
+        [SVProgressHUD dismiss];
         [[[UIAlertView alloc] initWithTitle:@"Items out of stock!"
                                     message:list
                                    delegate:nil
@@ -138,13 +156,14 @@ PFUser *currentUser;
                           otherButtonTitles:nil] show];
         [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
         [orderSummary reloadData];
+        [self updateOrderCost];
     }
 }
 
--(void)refreshFromServerCompleteWithSuccess:(BOOL)success {
-    if(success){
-        [self checkForOutOfStockItems];
-    }
+-(void)orderUpdatedWithNewMenu {
+    [SVProgressHUD showWithStatus:@"Checking order against your location's menu!" maskType:SVProgressHUDMaskTypeGradient];
+    [self checkForOutOfStockItems];
+    [SVProgressHUD dismiss];
 }
 
 - (IBAction)placeOrder:(id)sender
@@ -153,8 +172,7 @@ PFUser *currentUser;
     if (!currentUser)
     {
         TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-        [Menu current].delegate = self;
-        [tab showLoginWithDelegate:nil];
+        [tab showLoginDismissHUDOnSuccess:FALSE];
     }
     else{
 
@@ -170,7 +188,7 @@ PFUser *currentUser;
         }
         else
         {
-            [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+            [SVProgressHUD showWithStatus:@"Placing Order" maskType:SVProgressHUDMaskTypeGradient];
             [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
             
             order.userId = [[PFUser currentUser] objectId];

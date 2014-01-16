@@ -18,7 +18,7 @@ extern const int TAG_UI_LOGIN_EMAIL;
 extern const int TAG_UI_LOGIN_PASSWORD;
 
 extern NSString * const CLOUDINARY_IMAGE_URL;
-extern NSString * const CLOUDINARY_IMAGE_W_H_URL;
+extern NSString * const CLOUDINARY_IMAGE_FOOD_URL;
 
 typedef enum itemtypes
 {

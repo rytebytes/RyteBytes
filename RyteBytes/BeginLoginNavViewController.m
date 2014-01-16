@@ -9,11 +9,9 @@
 #import "BeginLoginNavViewController.h"
 #import <Parse/Parse.h>
 
-@interface BeginLoginNavViewController ()
-
-@end
-
 @implementation BeginLoginNavViewController
+
+@synthesize dismissHud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

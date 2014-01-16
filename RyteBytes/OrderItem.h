@@ -20,6 +20,6 @@
 -(id)initWithMenuItem:(MenuItem*)item;
 -(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)q;
 
--(double)calculateCost;
+-(float)calculateCost;
 
 @end

@@ -24,6 +24,7 @@
 @synthesize carbs;
 @synthesize sodium;
 @synthesize mealName;
+@synthesize price;
 
 //OrderItem *orderItem;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,17 +46,15 @@
     quantityStepper.value = currentAmountForSelectedItem;
     
     quantityStepper.minimumValue = 0;
-    UIImage *image = [UIImage imageNamed:menuItemSelected.picture];
-//    foodImageView.image = image;
-    if (nil == image) {
-        [foodImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,menuItemSelected.picture]]];
-    } else {
-        foodImageView.image = image;
-    }
+   [foodImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,menuItemSelected.picture]]];
     
     description.text = menuItemSelected.longDescription;
     mealName.textAlignment = NSTextAlignmentCenter;
     mealName.textColor = [UIColor blackColor];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    NSNumber *cost = [NSNumber numberWithFloat:menuItemSelected.costInCents / 100.0];
+    price.text = [formatter stringFromNumber:cost];
     
     calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.calories];
     sodium.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.sodium];

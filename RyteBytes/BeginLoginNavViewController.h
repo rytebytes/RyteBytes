@@ -11,6 +11,6 @@
 
 @interface BeginLoginNavViewController : UINavigationController
 
-@property (nonatomic,weak) id <UserLoggedIn> logInDelegate;
+@property (nonatomic) BOOL dismissHud;
 
 @end

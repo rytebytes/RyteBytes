@@ -136,13 +136,22 @@
 -(NSString*)checkForOutOfStockItems
 {
     Menu *menu = [Menu current];
-    NSString* unavailableItems;
+    NSMutableArray *keysToRemove = [[NSMutableArray alloc] initWithCapacity:orderItemDictionary.count];
+    NSString* unavailableItems = @"";
     for (id key in orderItemDictionary) {
         OrderItem* item = [orderItemDictionary objectForKey:key];
         if(![menu isQuantityAvailableWithMenuItemId:item.menuItem.objectId withQuantity:item.quantity]){
-            [orderItemDictionary removeObjectForKey:key];
-            unavailableItems = [NSString stringWithFormat:@"%@,%@",unavailableItems,item.menuItem.name];
+            [keysToRemove addObject:item.menuItem.objectId];
+            if ([unavailableItems isEqualToString:@""]) {
+                unavailableItems = item.menuItem.name;
+            } else {
+                unavailableItems = [NSString stringWithFormat:@"%@,%@",unavailableItems,item.menuItem.name];
+            }
         }
+    }
+    
+    for (id key in keysToRemove) {
+        [orderItemDictionary removeObjectForKey:key];
     }
     
     return unavailableItems;
@@ -158,9 +167,9 @@
     return [self calculateTotalOrderCost] * 100;
 }
 
--(double)calculateTotalOrderCost
+-(float)calculateTotalOrderCost
 {
-    int totalCost = 0;
+    float totalCost = 0;
     for (id key in orderItemDictionary) {
         OrderItem* item = [orderItemDictionary objectForKey:key];
         totalCost += [item calculateCost];

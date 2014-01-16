@@ -11,7 +11,8 @@
 @interface OrderSummaryCell : UITableViewCell
 
 @property (nonatomic,strong) IBOutlet UILabel *itemName;
-@property (nonatomic,strong) IBOutlet UILabel *itemQuantityAndCost;
+@property (nonatomic,strong) IBOutlet UILabel *quantityAndUnitCost;
+@property (nonatomic,strong) IBOutlet UILabel *totalItemCost;
 @property (nonatomic,strong) IBOutlet UIImageView *image;
 @property (nonatomic) NSString *uniqueId;
 

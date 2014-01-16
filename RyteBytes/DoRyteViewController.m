@@ -9,6 +9,8 @@
 #import "DoRyteViewController.h"
 #import "Location.h"
 #import <Parse/Parse.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "Constants.h"
 
 @implementation DoRyteViewController
 
@@ -51,7 +53,14 @@
         
         Location *currentLocation = [[Location alloc] initFromFile];
         charityName.text = currentLocation.charityId.name;
-        charityLogo.image = [UIImage imageNamed:currentLocation.charityId.picture];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[currentLocation.charityId.picture stringByDeletingPathExtension] ofType:@"jpg"];
+        
+        if(nil != filePath){ //image found with app bundle, load into SD image cache for rest of app lifetime
+            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+            [[SDImageCache sharedImageCache] storeImage:image forKey:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,currentLocation.charityId.picture]];
+        }
+        
+        [charityLogo setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,currentLocation.charityId.picture]]];
         charityContributionTotal.text = [NSString stringWithFormat:@"$25.00"];
         charityDescription.text = currentLocation.charityId.description;
     }

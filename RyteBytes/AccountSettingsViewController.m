@@ -58,7 +58,7 @@
     else
     {
         TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-        [tab showLoginWithDelegate:nil];
+        [tab showLoginDismissHUDOnSuccess:TRUE];
     }
 }
 
@@ -86,7 +86,7 @@
     else
     {
         TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-        [tab showLoginWithDelegate:nil];
+        [tab showLoginDismissHUDOnSuccess:TRUE];
         return NO;
     }
 }

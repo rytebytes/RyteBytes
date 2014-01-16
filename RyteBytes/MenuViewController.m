@@ -32,6 +32,7 @@
 
 NSMutableDictionary *order;
 bool foo;
+NSString *location = @"";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -60,6 +61,15 @@ bool foo;
 -(void)viewWillAppear:(BOOL)animated
 {
     menu.delegate = self;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSString *newLocation = [[Menu current] getLocationId];
+    if(![location isEqualToString:newLocation]){
+        location = newLocation;
+        [self.tableView reloadData];
+    }
 }
 
 -(void)refreshMenu
@@ -91,44 +101,38 @@ bool foo;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
-   
-//    UILabel *foodName = (UILabel*)[cell viewWithTag:31];
-//    
-//    foodName.textColor = [UIColor blackColor];
-//    foodName.layer.shadowColor = [UIColor whiteColor].CGColor;
-//    foodName.layer.shadowRadius = 4; // or whatever looks best, not sure
-//    foodName.layer.masksToBounds = NO;
     
-    MenuItem *menuItem = [menu.menu objectAtIndex:indexPath.row];
-    if (![[Menu current] isQuantityAvailableWithMenuItemId:menuItem.objectId withQuantity:1]) {
-        cell.soldOut.hidden = NO;
-        [cell setUserInteractionEnabled:NO];
-    } else {
-        cell.soldOut.hidden = YES;
-        [cell setUserInteractionEnabled:YES];
+    @try {
+        MenuItem *menuItem = [menu.menu objectAtIndex:indexPath.row];
+        if (![[Menu current] isQuantityAvailableWithMenuItemId:menuItem.objectId withQuantity:1]) {
+            cell.soldOut.hidden = NO;
+            [cell setUserInteractionEnabled:NO];
+        } else {
+            cell.soldOut.hidden = YES;
+            [cell setUserInteractionEnabled:YES];
+        }
+        cell.name.text = menuItem.name;
+        
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[menuItem.picture stringByDeletingPathExtension] ofType:@"jpg"];
+        
+        if(nil != filePath){ //image found with app bundle, load into SD image cache for rest of app lifetime
+            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+            [[SDImageCache sharedImageCache] storeImage:image forKey:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,menuItem.picture]];
+        }
+        
+        [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,menuItem.picture]]];
     }
-    cell.name.text = menuItem.name;
-    [cell.name sizeToFit];
+    @catch (NSException *exception) {
+        [[[UIAlertView alloc] initWithTitle:@"Invalid selection."
+                                    message:@"There was an error finding an item for this location. Please return to the menu screen and refresh the menu by pulling down - thanks!"
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay"
+                          otherButtonTitles:nil] show];
+    }
     
-    //SET THE WIDTH CONSTRAINTS FOR LABEL.
-//    CGFloat constrainedWidth = 640.0f;//YOU CAN PUT YOUR DESIRED ONE,THE MAXIMUM WIDTH OF YOUR LABEL.
-//    //CALCULATE THE SPACE FOR THE TEXT SPECIFIED.
-//    UIFont *font = [UIFont fontWithName:@"Futura Medium" size:15.0f];
-//    CGSize sizeOfText = [menuItem.name sizeWithAttributes:@{NSFontAttributeName:font}];
-//    cell.name.bounds = CGRectMake(20,20,constrainedWidth,sizeOfText.height);
-//    cell.name.adjustsFontSizeToFitWidth = YES;
-//    cell.name.numberOfLines=1;//JUST TO SUPPORT MULTILINING.
+    
 
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:[menuItem.picture stringByDeletingPathExtension] ofType:@"jpg"];
-    
-    if(nil != filePath){ //image found with app bundle, load into SD image cache for rest of app lifetime
-        UIImage *image = [UIImage imageWithContentsOfFile:filePath];
-        [[SDImageCache sharedImageCache] storeImage:image forKey:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,menuItem.picture]];
-    }
-    
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_URL,menuItem.picture]]];
     return cell;
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

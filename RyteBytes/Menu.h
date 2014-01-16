@@ -26,5 +26,6 @@
 
 -(MenuItem*)retrieveMenuItemWithId:(NSString*)objectId;
 -(BOOL)isQuantityAvailableWithMenuItemId:(NSString*)objectId withQuantity:(int)quantityOrdered;
+-(NSString*)getLocationId;
 
 @end

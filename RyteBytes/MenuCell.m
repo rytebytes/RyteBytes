@@ -27,9 +27,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    NSLog(@"in selected");
-
-//
+    name.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.75];
     // Configure the view for the selected state
 }
 
