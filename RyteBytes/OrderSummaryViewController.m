@@ -64,6 +64,7 @@ NSNumberFormatter *formatter;
     currentUser = [PFUser currentUser];
     pickupLocation = [[Location alloc] initFromFile];
     location.text = pickupLocation.name;
+    [self checkForOutOfStockItems];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -150,14 +151,15 @@ NSNumberFormatter *formatter;
     if([list length] > 0){
         [SVProgressHUD dismiss];
         [[[UIAlertView alloc] initWithTitle:@"Items out of stock!"
-                                    message:list
+                                    message:[list stringByAppendingString:@" have been removed from your order. Return to the menu screen to see what's available."]
                                    delegate:nil
                           cancelButtonTitle:@"Okay"
                           otherButtonTitles:nil] show];
-        [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
-        [orderSummary reloadData];
-        [self updateOrderCost];
     }
+    orderArray = [[Order current] convertToOrderItemArray];
+    [self.delegate setBadgeValue:[currentOrder getTotalItemCount]];
+    [orderSummary reloadData];
+    [self updateOrderCost];
 }
 
 -(void)orderUpdatedWithNewMenu {
@@ -172,6 +174,8 @@ NSNumberFormatter *formatter;
     if (!currentUser)
     {
         TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+        //false because when the menu refreshes it will call order's delegate which is this class
+        //this class will show a HUD and check the order against the current menu
         [tab showLoginDismissHUDOnSuccess:FALSE];
     }
     else{
@@ -218,16 +222,18 @@ NSNumberFormatter *formatter;
                     }
                     failure:^(NSURLSessionDataTask *operation, NSError *error) {
                         NSError *modelConversionError;
+                        [SVProgressHUD dismiss];
                         NSLog(@"placed order failing, message : %@", [error localizedDescription]);
                         NSString *info = error.userInfo[JSONResponseSerializerWithDataKey];
                         ParseError *parseError = [[ParseError alloc] initWithString:info error:&modelConversionError];
-                        [self checkForOutOfStockItems];
                         [[[UIAlertView alloc] initWithTitle:@"Error"
                                                     message:[parseError extractMessage]
                                                    delegate:nil
                                           cancelButtonTitle:@"Okay"
                                           otherButtonTitles:nil] show];
                         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                        [[Menu current] refreshFromServerWithOverlay:TRUE];
+//                        [self checkForOutOfStockItems];
                     }
              ];
         }

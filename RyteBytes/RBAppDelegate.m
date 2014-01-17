@@ -32,8 +32,10 @@ NSMutableArray *components;
                   clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
 
 #ifdef DEBUG
+    NSLog(@"use test key");
     [Stripe setDefaultPublishableKey:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr"];
 #else
+    NSLog(@"use live key");
     [Stripe setDefaultPublishableKey:@"pk_live_RjYLDJ0wr0c1ob09hUZtpnCv"];
 #endif
     

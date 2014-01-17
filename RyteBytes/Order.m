@@ -145,7 +145,7 @@
             if ([unavailableItems isEqualToString:@""]) {
                 unavailableItems = item.menuItem.name;
             } else {
-                unavailableItems = [NSString stringWithFormat:@"%@,%@",unavailableItems,item.menuItem.name];
+                unavailableItems = [NSString stringWithFormat:@"%@, %@",unavailableItems,item.menuItem.name];
             }
         }
     }

@@ -45,7 +45,7 @@ PFUser *user;
     user = [PFUser currentUser];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:@"Updating locations." maskType:SVProgressHUDMaskTypeGradient];
     
     ParseClient *parseClient = [ParseClient current];
     [parseClient POST:Locations parameters:[[NSDictionary alloc] init]
@@ -82,13 +82,11 @@ PFUser *user;
             [newLocation writeToFile];
             TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
             UINavigationController *menu = [tab viewControllers][1];
-            menu.tabBarItem.badgeValue = nil;
-            [[Order current] clearEntireOrder];
+//            menu.tabBarItem.badgeValue = nil;
+//            [[Order current] clearEntireOrder];
             [[Menu current] clearMenu];
             [[Menu current] refreshFromServerWithOverlay:TRUE];
-//            [SVProgressHUD dismiss];
             [self.navigationController popToRootViewControllerAnimated:FALSE];
-//            [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Location updated!" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }];
 }

@@ -18,6 +18,7 @@
 #import "CreateOrLoginViewController.h"
 #import "Constants.h"
 #import <QuartzCore/QuartzCore.h>
+#import <Crashlytics/Crashlytics.h>
 
 /** This class presents the user the current menu.  It will retrieve the current list of MenuItems (db objects & domain objects)
  via a REST call.  We will persist all items we have offered via our menu, but we will not persist snapshots of our menu.
@@ -124,11 +125,12 @@ NSString *location = @"";
         [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,menuItem.picture]]];
     }
     @catch (NSException *exception) {
-        [[[UIAlertView alloc] initWithTitle:@"Invalid selection."
-                                    message:@"There was an error finding an item for this location. Please return to the menu screen and refresh the menu by pulling down - thanks!"
-                                   delegate:nil
-                          cancelButtonTitle:@"Okay"
-                          otherButtonTitles:nil] show];
+        NSLog(@"Exception %@",exception.description);
+//        [[[UIAlertView alloc] initWithTitle:@"Invalid selection."
+//                                    message:@"There was an error finding an item for this location. Please return to the menu screen and refresh the menu by pulling down - thanks!"
+//                                   delegate:nil
+//                          cancelButtonTitle:@"Okay"
+//                          otherButtonTitles:nil] show];
     }
     
     

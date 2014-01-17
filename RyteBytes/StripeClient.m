@@ -34,8 +34,14 @@ NSString * const ExistingCustomerFormat = @"customers/%@";
 
     self.requestSerializer = requestSerializer;
     self.responseSerializer = jsonResponse;
-    
+#ifdef DEBUG
+    NSLog(@"use test key");
     [self.requestSerializer setAuthorizationHeaderFieldWithUsername:@"sk_test_0eORjVUmVNJxwTHqMLLCogZr" password:@""];
+#else
+    NSLog(@"use live key");
+    [self.requestSerializer setAuthorizationHeaderFieldWithUsername:@"pk_live_RjYLDJ0wr0c1ob09hUZtpnCv" password:@""];
+#endif
+    
     
     return self;
 }
