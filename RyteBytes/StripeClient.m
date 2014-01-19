@@ -16,6 +16,7 @@ static NSString * const StripeVer = @"v1";
 
 NSString * const Customers = @"customers";
 NSString * const ExistingCustomerFormat = @"customers/%@";
+NSString * const Token = @"tokens";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {

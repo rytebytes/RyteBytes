@@ -10,6 +10,7 @@
 #import "CardIO.h"
 #import "StripeCustomer.h"
 #import "JSONResponseSerializerWithData.h"
+#import "StripeToken.h"
 
 @interface CreateAccountViewController : UIViewController <
     CardIOPaymentViewControllerDelegate,
@@ -30,6 +31,6 @@
 @property (nonatomic,strong) IBOutlet UIButton *back;
 
 //-(void)registerStripeCustomer;
--(void)createCustomer:(StripeCustomer*)stripeCustomerObject;
+-(void)createCustomer:(StripeToken*)stripeToken;
 
 @end

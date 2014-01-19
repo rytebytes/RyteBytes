@@ -77,6 +77,7 @@
 		011C2D421886E0AA008D3B46 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011C2D411886E0AA008D3B46 /* Crashlytics.framework */; };
 		011C2D451886F5CE008D3B46 /* food_elgin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D431886F5CE008D3B46 /* food_elgin.jpg */; };
 		011C2D461886F5CE008D3B46 /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D441886F5CE008D3B46 /* lakeview_pantry.jpg */; };
+		011C2D49188B1DE7008D3B46 /* StripeToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 011C2D48188B1DE7008D3B46 /* StripeToken.m */; };
 		011CEDF21706042300AE586E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF11706042300AE586E /* MenuViewController.m */; };
 		011CEDF51706260800AE586E /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF41706260800AE586E /* Dish.m */; };
 		0122254E179AEE2B0026922A /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122254D179AEE2B0026922A /* MenuItem.m */; };
@@ -252,6 +253,8 @@
 		011C2D411886E0AA008D3B46 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		011C2D431886F5CE008D3B46 /* food_elgin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food_elgin.jpg; sourceTree = "<group>"; };
 		011C2D441886F5CE008D3B46 /* lakeview_pantry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lakeview_pantry.jpg; sourceTree = "<group>"; };
+		011C2D47188B1DE7008D3B46 /* StripeToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeToken.h; sourceTree = "<group>"; };
+		011C2D48188B1DE7008D3B46 /* StripeToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeToken.m; sourceTree = "<group>"; };
 		011CEDF01706042300AE586E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		011CEDF11706042300AE586E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		011CEDF31706260800AE586E /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
@@ -571,6 +574,8 @@
 				013DE02E17CC1BC2004EFFF6 /* StripeCard.m */,
 				0115FD3317E3745300F75708 /* StripeCardsResponse.h */,
 				0115FD3417E3745300F75708 /* StripeCardsResponse.m */,
+				011C2D47188B1DE7008D3B46 /* StripeToken.h */,
+				011C2D48188B1DE7008D3B46 /* StripeToken.m */,
 			);
 			name = Stripe;
 			sourceTree = "<group>";
@@ -1107,6 +1112,7 @@
 				0102526517B46B6F00BF1F3C /* STPToken.m in Sources */,
 				0102526617B46B6F00BF1F3C /* STPView.m in Sources */,
 				010BD76C187F4CA9009896AC /* MenuCellNameLabel.m in Sources */,
+				011C2D49188B1DE7008D3B46 /* StripeToken.m in Sources */,
 				01AAA7981845AF71002D7719 /* Pointer.m in Sources */,
 				010BD74D187B62A9009896AC /* LocationItemResult.m in Sources */,
 				0102526717B46B6F00BF1F3C /* Stripe.m in Sources */,

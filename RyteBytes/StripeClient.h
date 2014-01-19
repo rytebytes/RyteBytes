@@ -14,6 +14,7 @@
 
 extern NSString * const Customers;
 extern NSString * const ExistingCustomerFormat;
+extern NSString * const Token;
 
 + (StripeClient*)current;
 

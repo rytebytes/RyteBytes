@@ -46,6 +46,8 @@ NSString *locationPath;
     BOOL success = [locationData writeToFile:destPath options:NSDataWritingAtomic error:&error];
     if(!success)
         NSLog(@"Unable to write plist data to disk: %@", error);
+    else
+        NSLog(@"Wrote location to disk : %@", self.name);
     
 }
 

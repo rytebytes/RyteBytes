@@ -22,6 +22,7 @@
 #import "StripeErrorResponse.h"
 #import "SVProgressHUD.h"
 
+
 @implementation CreateAccountViewController
 
 @synthesize createAccountView;
@@ -156,20 +157,21 @@ int tagTextFieldToResign;
         [card setValue:creditCard.cvc forKey:@"cvc"];
         
         NSMutableDictionary *stripeCustomer = [[NSMutableDictionary alloc] init];
-        [stripeCustomer setValue:email.text forKey:@"email"];
+//        [stripeCustomer setValue:email.text forKey:@"email"];
         [stripeCustomer setObject:card forKey:@"card"];
+//        [stripeCustomer setValue:@"true" forKey:@"livemode"];
         
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
        
-        [[StripeClient current] POST:Customers
+        [[StripeClient current] POST:Token
                                 parameters:stripeCustomer
                                 success:^(NSURLSessionDataTask *operation, id responseObject) {
                                     NSError *error = nil;
-                                    StripeCustomer *customer = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
-
-                                    NSLog(@"Successfully created stripe customer object with email %@",customer.email);
-                                    [self createCustomer:customer];
+//                                    StripeCustomer *customer = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
+                                    StripeToken *token = [[StripeToken alloc] initWithDictionary:responseObject error:&error];
+                                    NSLog(@"Successfully created stripe token: %@",responseObject);
+                                    [self createCustomer:token];
                                 }
                                 failure:^(NSURLSessionDataTask *operation, NSError *error) {
                                     NSError *modelConversionError;
@@ -199,12 +201,12 @@ int tagTextFieldToResign;
  - if successful:
     - segue to starting screen
  */
-- (void)createCustomer:(StripeCustomer*)stripeCustomerObject
+- (void)createCustomer:(StripeToken*)stripeToken
 {
     user.email = email.text;
     user.username = email.text;
     user.password = confirmPassword.text;
-    [user setValue:stripeCustomerObject.id forKey:STRIPE_ID];
+    [user setValue:stripeToken.id forKey:STRIPE_ID];
     //case where user didn't touch location picker
     if(nil == selectedLocation)
     {

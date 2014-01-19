@@ -81,7 +81,7 @@ PFUser *user;
         if (succeeded) {
             [newLocation writeToFile];
             TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
-            UINavigationController *menu = [tab viewControllers][1];
+//            UINavigationController *menu = [tab viewControllers][1];
 //            menu.tabBarItem.badgeValue = nil;
 //            [[Order current] clearEntireOrder];
             [[Menu current] clearMenu];
