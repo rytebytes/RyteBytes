@@ -17,5 +17,7 @@ extern NSString * const RetrieveMenu;
 extern NSString * const PlaceOrder;
 extern NSString * const Locations;
 extern NSString * const GetLocation;
+extern NSString * const UserInfo;
+extern NSString * const UpdateUser;
 
 @end

@@ -80,7 +80,7 @@ PFUser *user;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             [newLocation writeToFile];
-            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+//            TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
 //            UINavigationController *menu = [tab viewControllers][1];
 //            menu.tabBarItem.badgeValue = nil;
 //            [[Order current] clearEntireOrder];

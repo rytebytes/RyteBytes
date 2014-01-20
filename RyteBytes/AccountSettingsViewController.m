@@ -69,6 +69,9 @@
     if (currentUser)
     {
         logout.hidden = FALSE;
+        [currentUser refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            NSLog(@"Refreshing user from Parse completed.");
+        }];
     }
     else
     {

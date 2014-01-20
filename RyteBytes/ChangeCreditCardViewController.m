@@ -8,7 +8,7 @@
 
 #import "ChangeCreditCardViewController.h"
 #import "StripeCard.h"
-#import "StripeClient.h"
+#import "ParseClient.h"
 #import "StripeCustomer.h"
 #import "StripeErrorResponse.h"
 #import "StripeError.h"
@@ -16,12 +16,17 @@
 #import "Parse/Parse.h"
 #import "Constants.h"
 #import "SVProgressHUD.h"
+#import "StripeCustomerResponse.h"
+#import "StripeClient.h"
+#import "StripeToken.h"
+#import "ParseError.h"
 
 @implementation ChangeCreditCardViewController
 
 @synthesize lastFour;
 @synthesize exp;
 @synthesize cvv;
+@synthesize save;
 
 STPCard *creditCard;
 NSMutableDictionary *newCard;
@@ -45,19 +50,22 @@ StripeCard *customerCard;
 {
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = NO;
+    self.save.hidden = YES;
     
-    NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
-    NSLog(@"Url for stripe info retrieval : %@",url);
+//    NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
+//    NSLog(@"Url for stripe info retrieval : %@",url);
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[[PFUser currentUser] valueForKey:@"objectId"],@"userId", nil];
+
     
     //make call to stripe to get the user's current CC info
-    [[StripeClient current] GET:url
-                     parameters:[[NSDictionary alloc] init]
+    [[ParseClient current] POST:UserInfo
+                     parameters:params
                         success:^(NSURLSessionDataTask *operation, id responseObject) {
                             NSError *error = nil;
-                            stripeCustomerInfo = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
+                            StripeCustomerResponse *response = [[StripeCustomerResponse alloc] initWithDictionary:responseObject error:&error];
+                            stripeCustomerInfo = response.result;
                             customerCard = stripeCustomerInfo.cards.data[0];
                             lastFour.text = customerCard.last4;
                             exp.text = [NSString stringWithFormat:@"%d/%d", customerCard.exp_month, customerCard.exp_year];
@@ -89,7 +97,7 @@ StripeCard *customerCard;
     [card setValue:[NSString stringWithFormat:@"%d", creditCard.expYear] forKey:@"exp_year"];
     [card setValue:creditCard.cvc forKey:@"cvc"];
     
-    NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
+//    NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
     
     NSMutableDictionary *stripeCustomer = [[NSMutableDictionary alloc] init];
     [stripeCustomer setObject:card forKey:@"card"];
@@ -97,13 +105,14 @@ StripeCard *customerCard;
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    [[StripeClient current] POST:url
+    [[StripeClient current] POST:Token
                       parameters:stripeCustomer
                          success:^(NSURLSessionDataTask *operation, id responseObject) {
-                             [SVProgressHUD dismiss];
-                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                             UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Successfully updated credit card information" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                             [success show];
+                             NSError *error = nil;
+                             //                                    StripeCustomer *customer = [[StripeCustomer alloc] initWithDictionary:responseObject error:&error];
+                             StripeToken *token = [[StripeToken alloc] initWithDictionary:responseObject error:&error];
+                             NSLog(@"Successfully created stripe token: %@",responseObject);
+                             [self updateCustomerWithToken:token];
                          }
                          failure:^(NSURLSessionDataTask *operation, NSError *error) {
                              NSError *modelConversionError;
@@ -114,6 +123,33 @@ StripeCard *customerCard;
                              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                              [cardFailed show];
                          }];
+    
+}
+
+-(void)updateCustomerWithToken:(StripeToken*)token
+{
+    NSString *userId = [[PFUser currentUser] valueForKey:@"objectId"];
+    NSString *stripeId = [[PFUser currentUser] valueForKey:@"stripeId"];
+    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:userId,@"userId",stripeId,@"stripeId",token.id,@"token", nil];
+    
+    [[ParseClient current] POST:UpdateUser parameters:params
+                        success:^(NSURLSessionDataTask *operation, id responseObject) {
+                            [SVProgressHUD dismiss];
+                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                            UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Successfully updated credit card information" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            [success show];
+                            [self.navigationController popToRootViewControllerAnimated:FALSE];
+                        }
+                        failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                            NSError *modelConversionError;
+                            StripeError *stripeError = [[StripeError alloc] initWithString:error.userInfo[JSONResponseSerializerWithDataKey] error:&modelConversionError];
+                            NSLog(@"Error returned from updating stripe data in parse. Message : %@", stripeError.message);
+                            UIAlertView *cardFailed = [[UIAlertView alloc] initWithTitle:@"Invalid credit card info." message:stripeError.message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            [SVProgressHUD dismiss];
+                            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                            [cardFailed show];
+                        }];
 }
 
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)scanViewController {
@@ -144,6 +180,7 @@ StripeCard *customerCard;
     cvv.text = creditCard.cvc;
     
     [paymentViewController dismissViewControllerAnimated:YES completion:nil];
+    self.save.hidden = NO;
 }
 
 - (IBAction)scanCard:(id)sender

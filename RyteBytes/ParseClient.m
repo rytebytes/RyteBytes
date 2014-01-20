@@ -20,6 +20,8 @@ NSString * const RetrieveMenu = @"retrievemenu";
 NSString * const PlaceOrder = @"order";
 NSString * const Locations = @"location";
 NSString * const GetLocation = @"getlocation";
+NSString * const UserInfo = @"userinfo";
+NSString * const UpdateUser = @"updateuser";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {

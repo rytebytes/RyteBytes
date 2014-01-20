@@ -1066,6 +1066,7 @@ Heating your RyteBytes meal is as simple as heating water!
                         <outlet property="cvv" destination="kp6-Sy-gJU" id="rn1-BZ-zOW"/>
                         <outlet property="exp" destination="MZJ-jg-yHs" id="EDe-US-cX2"/>
                         <outlet property="lastFour" destination="wb3-VB-Zkv" id="BqD-cy-Rh1"/>
+                        <outlet property="save" destination="5XT-fC-24m" id="8Nb-QV-k2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxY-hc-Ieb" userLabel="First Responder" sceneMemberID="firstResponder"/>
