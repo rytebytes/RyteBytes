@@ -106,6 +106,12 @@ int tagTextFieldToResign;
         }
         else{
             [PFUser requestPasswordResetForEmail:username];
+            NSLog(@"reset password for %@", [[PFUser currentUser] valueForKey:@"email"]);
+            [[[UIAlertView alloc] initWithTitle:@"Email sent."
+                                        message:@"An email has been sent with a link to reset your password."
+                                       delegate:nil
+                              cancelButtonTitle:@"Okay"
+                              otherButtonTitles:nil] show];
         }
         
     } else {

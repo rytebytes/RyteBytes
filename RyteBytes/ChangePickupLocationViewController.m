@@ -37,6 +37,13 @@ PFUser *user;
 {
     self.navigationItem.hidesBackButton = NO;
     [super viewDidLoad];
+    //setting this to null explicitly, before doing this, ran into an odd bug wherein the app crashed if you did the following:
+    //1. fresh install
+    //2. add items to cart & try place order
+    //3. sign up for new account
+    //4. place order
+    //5. attempt to change locations
+    pickupLocations = nil;
 	// Do any additional setup after loading the view.
 }
 

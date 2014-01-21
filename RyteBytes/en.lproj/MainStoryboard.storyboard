@@ -907,6 +907,9 @@ Heating your RyteBytes meal is as simple as heating water!
                                     <color key="titleColor" red="1" green="0.93584250280000003" blue="0.13832438059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetPassword:" destination="acx-qW-DWS" eventType="touchUpInside" id="lWH-aM-TjS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2e-4e-No1">
                                 <rect key="frame" x="65" y="196" width="190" height="34"/>

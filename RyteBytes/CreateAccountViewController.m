@@ -225,6 +225,9 @@ int tagTextFieldToResign;
             //check order to see if any items are out of stock
             [[Menu current] refreshFromServerWithOverlay:TRUE];
             [self.navigationController popToRootViewControllerAnimated:NO];
+            [[PFUser currentUser] refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                NSLog(@"Refreshing user from Parse completed.");
+            }];
         }
         else
         {

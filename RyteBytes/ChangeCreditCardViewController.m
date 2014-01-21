@@ -143,9 +143,9 @@ StripeCard *customerCard;
                         }
                         failure:^(NSURLSessionDataTask *operation, NSError *error) {
                             NSError *modelConversionError;
-                            StripeError *stripeError = [[StripeError alloc] initWithString:error.userInfo[JSONResponseSerializerWithDataKey] error:&modelConversionError];
-                            NSLog(@"Error returned from updating stripe data in parse. Message : %@", stripeError.message);
-                            UIAlertView *cardFailed = [[UIAlertView alloc] initWithTitle:@"Invalid credit card info." message:stripeError.message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            ParseError *parseError = [[ParseError alloc] initWithString:error.userInfo[JSONResponseSerializerWithDataKey] error:&modelConversionError];
+                            NSLog(@"Error returned from updating stripe data in parse. Message : %@", parseError.error);
+                            UIAlertView *cardFailed = [[UIAlertView alloc] initWithTitle:@"Invalid credit card info." message:parseError.error delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                             [SVProgressHUD dismiss];
                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                             [cardFailed show];
