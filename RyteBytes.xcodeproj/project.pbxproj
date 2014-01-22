@@ -53,7 +53,6 @@
 		0109FC7017760124008E5A66 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC6F17760124008E5A66 /* MobileCoreServices.framework */; };
 		0109FC721776012B008E5A66 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC711776012B008E5A66 /* QuartzCore.framework */; };
 		0109FC7417760133008E5A66 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC7317760133008E5A66 /* Security.framework */; };
-		0109FC761776013A008E5A66 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC751776013A008E5A66 /* StoreKit.framework */; };
 		0109FC7817760140008E5A66 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC7717760140008E5A66 /* SystemConfiguration.framework */; };
 		0109FC7B1776053E008E5A66 /* CreateOrLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0109FC7A1776053E008E5A66 /* CreateOrLoginViewController.m */; };
 		010BD74D187B62A9009896AC /* LocationItemResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 010BD74C187B62A9009896AC /* LocationItemResult.m */; };
@@ -79,6 +78,10 @@
 		011C2D461886F5CE008D3B46 /* lakeview_pantry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D441886F5CE008D3B46 /* lakeview_pantry.jpg */; };
 		011C2D49188B1DE7008D3B46 /* StripeToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 011C2D48188B1DE7008D3B46 /* StripeToken.m */; };
 		011C2D4C188D7ECE008D3B46 /* StripeCustomerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 011C2D4B188D7ECE008D3B46 /* StripeCustomerResponse.m */; };
+		011C2D4F188F091B008D3B46 /* logo_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D4D188F091B008D3B46 /* logo_settings@2x.png */; };
+		011C2D50188F091B008D3B46 /* logo_spotlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D4E188F091B008D3B46 /* logo_spotlight@2x.png */; };
+		011C2D52188F1CCC008D3B46 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011C2D51188F1CCC008D3B46 /* StoreKit.framework */; };
+		011C2D54188F4AE2008D3B46 /* LaunchImage_960.png in Resources */ = {isa = PBXBuildFile; fileRef = 011C2D53188F4AE2008D3B46 /* LaunchImage_960.png */; };
 		011CEDF21706042300AE586E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF11706042300AE586E /* MenuViewController.m */; };
 		011CEDF51706260800AE586E /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 011CEDF41706260800AE586E /* Dish.m */; };
 		0122254E179AEE2B0026922A /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122254D179AEE2B0026922A /* MenuItem.m */; };
@@ -218,7 +221,6 @@
 		0109FC6F17760124008E5A66 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0109FC711776012B008E5A66 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0109FC7317760133008E5A66 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		0109FC751776013A008E5A66 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0109FC7717760140008E5A66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0109FC791776053E008E5A66 /* CreateOrLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateOrLoginViewController.h; sourceTree = "<group>"; };
 		0109FC7A1776053E008E5A66 /* CreateOrLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateOrLoginViewController.m; sourceTree = "<group>"; };
@@ -258,6 +260,10 @@
 		011C2D48188B1DE7008D3B46 /* StripeToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeToken.m; sourceTree = "<group>"; };
 		011C2D4A188D7ECE008D3B46 /* StripeCustomerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeCustomerResponse.h; sourceTree = "<group>"; };
 		011C2D4B188D7ECE008D3B46 /* StripeCustomerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeCustomerResponse.m; sourceTree = "<group>"; };
+		011C2D4D188F091B008D3B46 /* logo_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_settings@2x.png"; sourceTree = "<group>"; };
+		011C2D4E188F091B008D3B46 /* logo_spotlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_spotlight@2x.png"; sourceTree = "<group>"; };
+		011C2D51188F1CCC008D3B46 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		011C2D53188F4AE2008D3B46 /* LaunchImage_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage_960.png; sourceTree = "<group>"; };
 		011CEDF01706042300AE586E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		011CEDF11706042300AE586E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		011CEDF31706260800AE586E /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
@@ -369,6 +375,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011C2D52188F1CCC008D3B46 /* StoreKit.framework in Frameworks */,
 				010BD76E1880A1E7009896AC /* ImageIO.framework in Frameworks */,
 				0109FC7417760133008E5A66 /* Security.framework in Frameworks */,
 				0109FC721776012B008E5A66 /* QuartzCore.framework in Frameworks */,
@@ -378,7 +385,6 @@
 				0177533917826DC200296315 /* CoreMedia.framework in Frameworks */,
 				0177533717826DB300296315 /* AVFoundation.framework in Frameworks */,
 				0109FC7817760140008E5A66 /* SystemConfiguration.framework in Frameworks */,
-				0109FC761776013A008E5A66 /* StoreKit.framework in Frameworks */,
 				011C2D421886E0AA008D3B46 /* Crashlytics.framework in Frameworks */,
 				0109FC6E1776011C008E5A66 /* libz.1.1.3.dylib in Frameworks */,
 				0109FC6C17760115008E5A66 /* CoreLocation.framework in Frameworks */,
@@ -627,6 +633,7 @@
 		0176638116C05809003BBD47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				011C2D51188F1CCC008D3B46 /* StoreKit.framework */,
 				011C2D411886E0AA008D3B46 /* Crashlytics.framework */,
 				010BD76D1880A1E7009896AC /* ImageIO.framework */,
 				0102520617B46B6F00BF1F3C /* Stripe */,
@@ -637,7 +644,6 @@
 				0177533617826DB300296315 /* AVFoundation.framework */,
 				0177532D17826D1800296315 /* CardIO */,
 				0109FC7717760140008E5A66 /* SystemConfiguration.framework */,
-				0109FC751776013A008E5A66 /* StoreKit.framework */,
 				0109FC7317760133008E5A66 /* Security.framework */,
 				0109FC711776012B008E5A66 /* QuartzCore.framework */,
 				0109FC6F17760124008E5A66 /* MobileCoreServices.framework */,
@@ -734,6 +740,9 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				011C2D53188F4AE2008D3B46 /* LaunchImage_960.png */,
+				011C2D4D188F091B008D3B46 /* logo_settings@2x.png */,
+				011C2D4E188F091B008D3B46 /* logo_spotlight@2x.png */,
 				011C2D431886F5CE008D3B46 /* food_elgin.jpg */,
 				011C2D441886F5CE008D3B46 /* lakeview_pantry.jpg */,
 				010BD75B187CAF94009896AC /* cog@2x.png */,
@@ -934,6 +943,11 @@
 				TargetAttributes = {
 					0176637D16C05809003BBD47 = {
 						DevelopmentTeam = 3626SQ7M5J;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -963,6 +977,7 @@
 				010BD75F187CAF94009896AC /* coin@2x.png in Resources */,
 				0176638D16C05809003BBD47 /* InfoPlist.strings in Resources */,
 				0176639616C05809003BBD47 /* MainStoryboard.storyboard in Resources */,
+				011C2D50188F091B008D3B46 /* logo_spotlight@2x.png in Resources */,
 				017BD2221858CEA3000634F4 /* menu.plist in Resources */,
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
 				0131E5F01837CBD100556178 /* food_vert@2x.png in Resources */,
@@ -978,6 +993,7 @@
 				0102527617B46B6F00BF1F3C /* cvc-amex@2x.png in Resources */,
 				0131E5EC1837C91400556178 /* 120x120 white.png in Resources */,
 				0102527717B46B6F00BF1F3C /* cvc.png in Resources */,
+				011C2D4F188F091B008D3B46 /* logo_settings@2x.png in Resources */,
 				0102527817B46B6F00BF1F3C /* cvc@2x.png in Resources */,
 				01AFAFCD1819C39900B2151A /* Logo@2x.png in Resources */,
 				0102527917B46B6F00BF1F3C /* diners.png in Resources */,
@@ -986,6 +1002,7 @@
 				0102527C17B46B6F00BF1F3C /* discover@2x.png in Resources */,
 				0102527D17B46B6F00BF1F3C /* jcb.png in Resources */,
 				0102527E17B46B6F00BF1F3C /* jcb@2x.png in Resources */,
+				011C2D54188F4AE2008D3B46 /* LaunchImage_960.png in Resources */,
 				010BD7B11885CD7E009896AC /* Storyboard35.storyboard in Resources */,
 				0102527F17B46B6F00BF1F3C /* mastercard.png in Resources */,
 				0102528017B46B6F00BF1F3C /* mastercard@2x.png in Resources */,
@@ -1324,7 +1341,7 @@
 					"\"$(SRCROOT)/CardIO\"",
 				);
 				New_Setting = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lc++",

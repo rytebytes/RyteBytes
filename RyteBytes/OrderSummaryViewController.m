@@ -178,66 +178,85 @@ NSNumberFormatter *formatter;
         //this class will show a HUD and check the order against the current menu
         [tab showLoginDismissHUDOnSuccess:FALSE];
     }
-    else{
-
-        Order *order = [Order current];
-        
-        if([order getTotalItemCount] < 1)
-        {
-            [[[UIAlertView alloc] initWithTitle:@"Nothing in cart."
-                                        message:@"Please add one or more items to your cart."
-                                       delegate:nil
-                              cancelButtonTitle:@"Okay"
-                              otherButtonTitles:nil] show];
-        }
-        else
-        {
-            [SVProgressHUD showWithStatus:@"Placing Order" maskType:SVProgressHUDMaskTypeGradient];
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-            
-            order.userId = [[PFUser currentUser] objectId];
-            order.locationId = [[[PFUser currentUser] valueForKey:@"locationId"] objectId];
-            order.totalInCents = [order calculateTotalOrderCostInCents];
-            
-            NSDictionary *o = [order toDictionary];
-            NSLog(@"Order : %@",o);
-            
-            [[ParseClient current] POST:PlaceOrder parameters:[order toDictionary]
-                    success:^(NSURLSessionDataTask *operation, id responseObject) {
-                        NSLog(@"placed order succesfully, message : %@", responseObject);
-                        [[Menu current] refreshFromServerWithOverlay:FALSE];
-                        [SVProgressHUD dismiss];
-                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                        [order clearEntireOrder];
-                        [[[UIAlertView alloc] initWithTitle:@"Success!"
-                                                    message:@"Enjoy your dinner - a receipt will be emailed to you shortly!"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Okay"
-                                          otherButtonTitles:nil] show];
-                        NSArray *viewControllers = self.navigationController.viewControllers;
-                        MenuViewController *rootViewController = (MenuViewController*)[viewControllers objectAtIndex:0];
-                        [rootViewController setBadgeValue:0];
-                        
-                        [self.navigationController popToRootViewControllerAnimated:TRUE];
-                    }
-                    failure:^(NSURLSessionDataTask *operation, NSError *error) {
-                        NSError *modelConversionError;
-                        [SVProgressHUD dismiss];
-                        NSLog(@"placed order failing, message : %@", [error localizedDescription]);
-                        NSString *info = error.userInfo[JSONResponseSerializerWithDataKey];
-                        ParseError *parseError = [[ParseError alloc] initWithString:info error:&modelConversionError];
-                        [[[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:[parseError extractMessage]
-                                                   delegate:nil
-                                          cancelButtonTitle:@"Okay"
-                                          otherButtonTitles:nil] show];
-                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                        [[Menu current] refreshFromServerWithOverlay:TRUE];
-//                        [self checkForOutOfStockItems];
-                    }
-             ];
-        }
+    else if([[Order current] getTotalItemCount] < 1)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Nothing in cart."
+                                    message:@"Please add one or more items to your cart."
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay"
+                          otherButtonTitles:nil] show];
     }
+    else if([[currentUser valueForKey:STRIPE_ID] hasPrefix:@"tok"])
+    {
+        [[PFUser currentUser] refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                NSLog(@"Refreshing user from Parse completed.");
+                if(nil == error){
+                    [self sendOrderToParse];
+                } else {
+                    [[[UIAlertView alloc] initWithTitle:@"Error."
+                                                message:@"There was an error placing your order, please try again."
+                                               delegate:nil
+                                      cancelButtonTitle:@"Okay"
+                                      otherButtonTitles:nil] show];
+                }
+            }
+         ];
+    }
+    else
+    {
+        [self sendOrderToParse];
+    }
+    
+}
+
+-(void)sendOrderToParse
+{
+    Order *order = [Order current];
+    
+    [SVProgressHUD showWithStatus:@"Placing Order" maskType:SVProgressHUDMaskTypeGradient];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    order.userId = [[PFUser currentUser] objectId];
+    order.locationId = [[[PFUser currentUser] valueForKey:@"locationId"] objectId];
+    order.totalInCents = [order calculateTotalOrderCostInCents];
+    
+    NSDictionary *o = [order toDictionary];
+    NSLog(@"Order : %@",o);
+    
+    [[ParseClient current] POST:PlaceOrder parameters:[order toDictionary]
+            success:^(NSURLSessionDataTask *operation, id responseObject) {
+                NSLog(@"placed order succesfully, message : %@", responseObject);
+                [[Menu current] refreshFromServerWithOverlay:FALSE];
+                [SVProgressHUD dismiss];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                [order clearEntireOrder];
+                [[[UIAlertView alloc] initWithTitle:@"Success!"
+                                            message:@"Enjoy your dinner - a receipt will be emailed to you shortly!"
+                                           delegate:nil
+                                  cancelButtonTitle:@"Okay"
+                                  otherButtonTitles:nil] show];
+                NSArray *viewControllers = self.navigationController.viewControllers;
+                MenuViewController *rootViewController = (MenuViewController*)[viewControllers objectAtIndex:0];
+                [rootViewController setBadgeValue:0];
+                
+                [self.navigationController popToRootViewControllerAnimated:TRUE];
+            }
+            failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                NSError *modelConversionError;
+                [SVProgressHUD dismiss];
+                NSLog(@"placed order failing, message : %@", [error localizedDescription]);
+                NSString *info = error.userInfo[JSONResponseSerializerWithDataKey];
+                ParseError *parseError = [[ParseError alloc] initWithString:info error:&modelConversionError];
+                [[[UIAlertView alloc] initWithTitle:@"Error"
+                                            message:[parseError extractMessage]
+                                           delegate:nil
+                                  cancelButtonTitle:@"Okay"
+                                  otherButtonTitles:nil] show];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                [[Menu current] refreshFromServerWithOverlay:TRUE];
+//                        [self checkForOutOfStockItems];
+            }
+     ];
 }
 
 
