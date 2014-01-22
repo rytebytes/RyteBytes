@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RyteBytes/OrderSummaryViewController.m"
-            timestampString = "412019626.325872"
+            timestampString = "412054531.926756"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-placeOrder:"
             landmarkType = "5">
          </BreakpointContent>

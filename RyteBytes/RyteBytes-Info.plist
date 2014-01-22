@@ -14,10 +14,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>logo_icon</string>
 				<string>logo_settings</string>
 				<string>logo_spotlight</string>
-				<string>120x120 white</string>
-				<string>120 white</string>
 			</array>
 		</dict>
 	</dict>
