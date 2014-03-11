@@ -41,9 +41,16 @@ NSString * const UpdateUser = @"updateuser";
     
     self.requestSerializer = jsonRequest;
     self.responseSerializer = jsonResponse;
-    
+
+#ifdef DEBUG
+    NSLog(@"use parse test key");
+    [self.requestSerializer setValue:@"UDW2iXLErRqiBp7ftE8wJpmymYft3r67QvwD0pDn" forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [self.requestSerializer setValue:@"mVU56FqCVg3456DF0Q1ey6ZXQTZHdy7R3TSX7Llu" forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+#else
+    NSLog(@"use parse live key");
     [self.requestSerializer setValue:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M" forHTTPHeaderField:@"X-Parse-Application-Id"];
     [self.requestSerializer setValue:@"ZjCVp64qsDxYWw6PktZgc5PFZLdLmRuHe9oOF3q9" forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+#endif
     
     return self;
 }

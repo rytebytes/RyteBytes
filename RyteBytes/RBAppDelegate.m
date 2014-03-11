@@ -27,15 +27,22 @@ NSMutableArray *components;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //set default page for tabs to middle tab
-    
-    [Parse setApplicationId:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"
-                  clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
 
 #ifdef DEBUG
-    NSLog(@"use test key");
+    NSLog(@"use parse test key");
+    [Parse setApplicationId:@"UDW2iXLErRqiBp7ftE8wJpmymYft3r67QvwD0pDn"
+                  clientKey:@"gEZBPCkp3QWdK6XEzESaSCxMfxMBNrpIRu8YZypV"];
+#else
+    NSLog(@"use parse live key");
+    [Parse setApplicationId:@"zaZmkcjbGLCrEHagb8uJPt5TKyiFgCg9WffA6c6M"
+                  clientKey:@"DltIu9MSxC9k1ly58gpdpXMkGlPI6KkfSeTkjwYa"];
+#endif
+
+#ifdef DEBUG
+    NSLog(@"use stripe test key");
     [Stripe setDefaultPublishableKey:@"pk_test_pDS0kwh6BQ2pLv7sadAQcrPr"];
 #else
-    NSLog(@"use live key");
+    NSLog(@"use stripe live key");
     [Stripe setDefaultPublishableKey:@"pk_live_RjYLDJ0wr0c1ob09hUZtpnCv"];
 #endif
     

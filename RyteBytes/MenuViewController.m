@@ -126,12 +126,7 @@ NSString *location = @"";
     }
     @catch (NSException *exception) {
         NSLog(@"Exception %@",exception.description);
-//        [[[UIAlertView alloc] initWithTitle:@"Invalid selection."
-//                                    message:@"There was an error finding an item for this location. Please return to the menu screen and refresh the menu by pulling down - thanks!"
-//                                   delegate:nil
-//                          cancelButtonTitle:@"Okay"
-//                          otherButtonTitles:nil] show];
-    }
+	    }
     
     
 
