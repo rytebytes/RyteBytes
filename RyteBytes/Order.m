@@ -105,14 +105,14 @@
 
 -(BOOL)setOrderItem:(OrderItem*)item
 {
-    if([[Menu current] isQuantityAvailableWithMenuItemId:item.menuItem.objectId withQuantity:item.quantity]){
-        [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
+    if([[Menu current] isQuantityAvailable:item.locationItem.objectId withQuantity:item.quantity]){
+        [orderItemDictionary setValue:item forKey:item.locationItem.menuItemId.objectId];
         return YES;
     }
     return NO;
 }
 
--(BOOL)setMenuItem:(MenuItem*)menuItem withQuantity:(int)quantity
+-(BOOL)setLocationItem:(LocationItem*)locationItem withQuantity:(int)quantity;
 {
     if(orderItemDictionary.count > 100 || (orderItemDictionary.count + quantity) > 100)
     {
@@ -120,13 +120,13 @@
         return NO;
     }
     
-    if([[Menu current] isQuantityAvailableWithMenuItemId:menuItem.objectId withQuantity:quantity]){
+    if([[Menu current] isQuantityAvailable:locationItem.menuItemId.objectId withQuantity:quantity]){
         //key : objectId
         //value : orderItem (so we can access all info on the order summary screen
-        OrderItem *item = [[OrderItem alloc] initWithMenuItem:menuItem withQuantity:quantity];
-        [orderItemDictionary setValue:item forKey:item.menuItem.objectId];
+        OrderItem *item = [[OrderItem alloc] initWithLocationItem:locationItem withQuantity:quantity];
+        [orderItemDictionary setValue:item forKey:item.locationItem.menuItemId.objectId];
         
-        NSLog(@"Added item : %@ to order, now has count of : %d.", item.menuItem.name, [self getSpecificItemCount:item.menuItem.objectId]);
+        NSLog(@"Added item : %@ to order, now has count of : %d.", locationItem.menuItemId.name, [self getSpecificItemCount:item.locationItem.menuItemId.objectId]);
         
         return YES;
     }
@@ -140,12 +140,12 @@
     NSString* unavailableItems = @"";
     for (id key in orderItemDictionary) {
         OrderItem* item = [orderItemDictionary objectForKey:key];
-        if(![menu isQuantityAvailableWithMenuItemId:item.menuItem.objectId withQuantity:item.quantity]){
-            [keysToRemove addObject:item.menuItem.objectId];
+        if(![menu isQuantityAvailable:item.locationItem.menuItemId.objectId withQuantity:item.quantity]){
+            [keysToRemove addObject:item.locationItem.objectId];
             if ([unavailableItems isEqualToString:@""]) {
-                unavailableItems = item.menuItem.name;
+                unavailableItems = item.locationItem.menuItemId.name;
             } else {
-                unavailableItems = [NSString stringWithFormat:@"%@, %@",unavailableItems,item.menuItem.name];
+                unavailableItems = [NSString stringWithFormat:@"%@, %@",unavailableItems,item.locationItem.menuItemId.name];
             }
         }
     }
@@ -159,7 +159,7 @@
 
 -(void)removeOrderItem:(OrderItem *)item
 {
-    [orderItemDictionary removeObjectForKey:item.menuItem.objectId];
+    [orderItemDictionary removeObjectForKey:item.locationItem.menuItemId.objectId];
 }
 
 -(int)calculateTotalOrderCostInCents

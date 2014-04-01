@@ -10,26 +10,26 @@
 #import "Order.h"
 
 @implementation OrderItem
-@synthesize menuItem;
+@synthesize locationItem;
 @synthesize quantity;
 
--(id)initWithMenuItem:(MenuItem *)item
+-(id)initWithLocationItem:(LocationItem *)item
 {
     if(!(self = [super init]))
         return nil;
     
-    self.menuItem = item;
+    self.locationItem = item;
     self.quantity = 0;
     
     return self;
 }
 
--(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)q
+-(id)initWithLocationItem:(LocationItem*)item withQuantity:(int)q
 {
     if(!(self = [super init]))
         return nil;
     
-    self.menuItem = item;
+    self.locationItem = item;
     self.quantity = q;
     
     return self;
@@ -37,7 +37,7 @@
 
 -(float)calculateCost
 {
-    return (menuItem.costInCents / 100.0) * quantity;
+    return (locationItem.costInCents / 100.0) * quantity;
 }
 
 @end

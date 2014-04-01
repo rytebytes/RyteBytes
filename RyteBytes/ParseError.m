@@ -7,7 +7,7 @@
 //
 
 #import "ParseError.h"
-#import "MenuItem.h"
+#import "LocationItem.h"
 #import "Menu.h"
 
 @implementation ParseError
@@ -20,9 +20,9 @@
     } else {
         NSString* msg = [self.error componentsSeparatedByString:@">"][0];
         msg = [msg componentsSeparatedByString:@"<"][1];
-        MenuItem *item = [[Menu current] retrieveMenuItemWithId:msg];
+        LocationItem *item = [[Menu current] retrieveItemWithId:msg];
         NSString *idPlaceholder = [NSString stringWithFormat:@"<%@>",msg];
-        return [self.error stringByReplacingOccurrencesOfString:idPlaceholder withString:item.name];
+        return [self.error stringByReplacingOccurrencesOfString:idPlaceholder withString:item.menuItemId.name];
     }
 }
 

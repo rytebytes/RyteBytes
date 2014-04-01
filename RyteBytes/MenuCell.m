@@ -7,7 +7,6 @@
 //
 
 #import "MenuCell.h"
-#include <Quartzcore/Quartzcore.h>
 
 @implementation MenuCell
 

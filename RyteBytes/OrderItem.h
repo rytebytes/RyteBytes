@@ -7,18 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MenuItem.h"
+#import "LocationItem.h"
 
 @protocol OrderItem
 @end
 
 @interface OrderItem : JSONModel
 
-@property (nonatomic,strong) MenuItem<Ignore>* menuItem;
+@property (nonatomic,strong) LocationItem<Ignore>* locationItem;
 @property int quantity;
 
--(id)initWithMenuItem:(MenuItem*)item;
--(id)initWithMenuItem:(MenuItem*)item withQuantity:(int)q;
+-(id)initWithLocationItem:(LocationItem*)item;
+-(id)initWithLocationItem:(LocationItem*)item withQuantity:(int)q;
 
 -(float)calculateCost;
 

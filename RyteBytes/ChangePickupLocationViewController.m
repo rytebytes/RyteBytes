@@ -91,7 +91,7 @@ PFUser *user;
 //            UINavigationController *menu = [tab viewControllers][1];
 //            menu.tabBarItem.badgeValue = nil;
 //            [[Order current] clearEntireOrder];
-            [[Menu current] clearMenu];
+            [[Menu current].menu removeAllObjects];
             [[Menu current] refreshFromServerWithOverlay:TRUE];
             [self.navigationController popToRootViewControllerAnimated:FALSE];
         }
@@ -117,7 +117,7 @@ PFUser *user;
     // Dispose of any resources that can be recreated.
 }
 
-- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (long)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     if (nil != pickupLocations) {
         return pickupLocations.count;
@@ -125,7 +125,7 @@ PFUser *user;
     return 0;
 }
 
-- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (long)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
 }

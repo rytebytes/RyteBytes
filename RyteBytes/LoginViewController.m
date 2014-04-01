@@ -20,7 +20,7 @@
 
 NSString *loginSuccessSegue = @"LoginSuccess";
 
-int tagTextFieldToResign;
+long tagTextFieldToResign;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -37,7 +37,6 @@
 {
     [PFUser logOut];
     [[Order current] clearEntireOrder];
-    [[Menu current] clearMenu];
     [[Menu current] refreshFromServerWithOverlay:false];
     TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
     UINavigationController *menu = [tab viewControllers][1];

@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 JSONModel
 
-Copyright (c) 2012-2013 Marin Todorov, Underplot ltd.
+Copyright (c) 2012-2014 Marin Todorov, Underplot ltd.
 This code is distributed under the terms and conditions of the MIT license.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of 
@@ -53,7 +53,7 @@ The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/M
 
 ## SBJson
 
-Copyright (C) 2007-2013 Stig Brautaset. All rights reserved.
+Copyright (C) 2007-2014 Stig Brautaset. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

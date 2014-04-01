@@ -21,6 +21,7 @@
 
 @property (strong,nonatomic) NSString *userId;
 @property (strong,nonatomic) NSString *locationId;
+@property (strong,nonatomic) NSString *couponCode;
 @property (strong,nonatomic) NSMutableDictionary<OrderItem,Optional> *orderItemDictionary;
 @property (nonatomic) int totalInCents;
 @property (strong,nonatomic) Menu<Ignore> *menu;
@@ -34,7 +35,7 @@
 -(NSMutableArray<OrderItem>*)convertToOrderItemArray;
 
 -(OrderItem*)getOrderItem:(NSString*)itemId;
--(BOOL)setMenuItem:(MenuItem*)menuItem withQuantity:(int)quantity;
+-(BOOL)setLocationItem:(LocationItem*)locationItem withQuantity:(int)quantity;
 -(BOOL)setOrderItem:(OrderItem*)item;
 -(void)removeOrderItem:(OrderItem*)item;
 -(NSString*)checkForOutOfStockItems;

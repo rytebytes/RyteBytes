@@ -1,0 +1,15 @@
+//
+//  HeatingViewController.h
+//  RyteBytes
+//
+//  Created by Nicholas McMillan on 3/17/14.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+@interface HeatingViewController : UIViewController
+
+@property (nonatomic,strong) IBOutlet UILabel *instructions;
+
+@end

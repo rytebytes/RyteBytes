@@ -1,7 +1,7 @@
 //
 //  JSONModelArray.m
 //
-//  @version 0.10.0
+//  @version 0.12.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
@@ -69,6 +69,12 @@
     }
     
     return nil;
+}
+
+-(id)mutableCopy
+{
+    //it's already mutable
+    return self;
 }
 
 #pragma mark - description

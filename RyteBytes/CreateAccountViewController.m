@@ -43,9 +43,9 @@ STPToken *cardToken;
 LocationResult *pickupLocations;
 Location *selectedLocation;
 
-int tagTextFieldToResign;
+long tagTextFieldToResign;
 
-- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (long)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     if (nil != pickupLocations) {
         return [pickupLocations result].count;
@@ -53,7 +53,7 @@ int tagTextFieldToResign;
     return 0;
 }
 
-- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (long)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
 }
@@ -152,14 +152,12 @@ int tagTextFieldToResign;
     {
         NSMutableDictionary *card = [[NSMutableDictionary alloc] init];
         [card setValue:creditCard.number forKey:@"number"];
-        [card setValue:[NSString stringWithFormat:@"%d", creditCard.expMonth] forKey:@"exp_month"];
-        [card setValue:[NSString stringWithFormat:@"%d", creditCard.expYear] forKey:@"exp_year"];
+        [card setValue:[NSString stringWithFormat:@"%lu", (unsigned long)creditCard.expMonth] forKey:@"exp_month"];
+        [card setValue:[NSString stringWithFormat:@"%lu", (unsigned long)creditCard.expYear] forKey:@"exp_year"];
         [card setValue:creditCard.cvc forKey:@"cvc"];
         
         NSMutableDictionary *stripeCustomer = [[NSMutableDictionary alloc] init];
-//        [stripeCustomer setValue:email.text forKey:@"email"];
         [stripeCustomer setObject:card forKey:@"card"];
-//        [stripeCustomer setValue:@"true" forKey:@"livemode"];
         
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -286,8 +284,6 @@ int tagTextFieldToResign;
 
 - (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)scanViewController {
     // The full card number is available as info.cardNumber, but don't log that!
-    NSLog(@"Received card info. Number: %@, expiry: %02i/%i, cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv);
-
     creditCard = [[STPCard alloc] init];
     creditCard.number = info.cardNumber;
     creditCard.expMonth = info.expiryMonth;

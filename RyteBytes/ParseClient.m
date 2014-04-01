@@ -22,6 +22,8 @@ NSString * const Locations = @"location";
 NSString * const GetLocation = @"getlocation";
 NSString * const UserInfo = @"userinfo";
 NSString * const UpdateUser = @"updateuser";
+NSString * const Content = @"content";
+NSString * const Coupon = @"coupon";
 
 - (id)initWithBaseUrl:(NSString*)baseUrl withVersion:(NSString*)version
 {

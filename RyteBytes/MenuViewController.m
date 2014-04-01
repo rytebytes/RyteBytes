@@ -16,16 +16,12 @@
 #import "AFHTTPRequestOperation.h"
 #import "MenuResult.h"
 #import "CreateOrLoginViewController.h"
+#import "IntroViewController.h"
 #import "Constants.h"
+#import "Location.h"
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
 
-/** This class presents the user the current menu.  It will retrieve the current list of MenuItems (db objects & domain objects)
- via a REST call.  We will persist all items we have offered via our menu, but we will not persist snapshots of our menu.
- 
- When this class loads, it will make a REST call to see when the current menu went live and compare it to the local copy that it
- has.  If the cloud one is newer, it will retrieve the full list and update the menu.
- */
 @implementation MenuViewController
 
 @synthesize kiosk;
@@ -34,6 +30,8 @@
 NSMutableDictionary *order;
 bool foo;
 NSString *location = @"";
+
+Location *selectedLocation;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,12 +44,9 @@ NSString *location = @"";
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    menu = [Menu current];
-    [menu refreshFromServerWithOverlay:FALSE];
-
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to refresh menu..."];
     
     [refresh addTarget:self action:@selector(refreshMenu) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
@@ -61,14 +56,30 @@ NSString *location = @"";
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    menu.delegate = self;
+    selectedLocation = [[Location alloc] initFromFile];
+    
+    if(selectedLocation == Nil){
+        UIStoryboard *storyboard = nil;
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            NSLog(@"retina 4");
+            storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        } else {
+            NSLog(@"retina 3.5");
+            storyboard = [UIStoryboard storyboardWithName:@"Storyboard35" bundle:nil];
+        }
+        IntroViewController *intro = (IntroViewController *)[storyboard instantiateViewControllerWithIdentifier:@"Intro"];
+        [self presentViewController:intro animated:true completion:Nil];
+    } else{
+        menu = [Menu current];
+        menu.delegate = self;
+        [menu refreshFromServerWithOverlay:FALSE];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSString *newLocation = [[Menu current] getLocationId];
-    if(![location isEqualToString:newLocation]){
-        location = newLocation;
+    if(selectedLocation != nil){
+        location = selectedLocation.objectId;
         [self.tableView reloadData];
     }
 }
@@ -105,31 +116,29 @@ NSString *location = @"";
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
     
     @try {
-        MenuItem *menuItem = [menu.menu objectAtIndex:indexPath.row];
-        if (![[Menu current] isQuantityAvailableWithMenuItemId:menuItem.objectId withQuantity:1]) {
+        LocationItem *locationItem = [menu.menu objectAtIndex:indexPath.row];
+        if (![[Menu current] isQuantityAvailable:locationItem.menuItemId.objectId withQuantity:1]) {
             cell.soldOut.hidden = NO;
             [cell setUserInteractionEnabled:NO];
         } else {
             cell.soldOut.hidden = YES;
             [cell setUserInteractionEnabled:YES];
         }
-        cell.name.text = menuItem.name;
+        cell.name.text = locationItem.menuItemId.name;
         
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:[menuItem.picture stringByDeletingPathExtension] ofType:@"jpg"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[locationItem.menuItemId.picture stringByDeletingPathExtension] ofType:@"jpg"];
         
         if(nil != filePath){ //image found with app bundle, load into SD image cache for rest of app lifetime
             UIImage *image = [UIImage imageWithContentsOfFile:filePath];
-            [[SDImageCache sharedImageCache] storeImage:image forKey:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,menuItem.picture]];
+            [[SDImageCache sharedImageCache] storeImage:image forKey:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,locationItem.menuItemId.picture]];
         }
         
-        [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,menuItem.picture]]];
+        [cell.imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,locationItem.menuItemId.picture]]];
     }
     @catch (NSException *exception) {
         NSLog(@"Exception %@",exception.description);
-	    }
+    }
     
-    
-
     return cell;
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -139,9 +148,9 @@ NSString *location = @"";
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
 		MenuItemDetailsViewController *mealDetailsController = segue.destinationViewController;
         
-        MenuItem *selectedMeal = [menu.menu objectAtIndex:selectedRowIndex.row];
+        LocationItem *selectedItem = [menu.menu objectAtIndex:selectedRowIndex.row];
         
-        mealDetailsController.menuItemSelected = selectedMeal;
+        mealDetailsController.locationItemSelected = selectedItem;
         [mealDetailsController setDelegate:self];
 	}
     else if ([segue.identifier isEqualToString:@"CheckoutFromMenu"])

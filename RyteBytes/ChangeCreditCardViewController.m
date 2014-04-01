@@ -68,7 +68,7 @@ StripeCard *customerCard;
                             stripeCustomerInfo = response.result;
                             customerCard = stripeCustomerInfo.cards.data[0];
                             lastFour.text = customerCard.last4;
-                            exp.text = [NSString stringWithFormat:@"%d/%d", customerCard.exp_month, customerCard.exp_year];
+                            exp.text = [NSString stringWithFormat:@"%ld/%ld", (long)customerCard.exp_month, (long)customerCard.exp_year];
                             cvv.text = @"***";
                             [SVProgressHUD dismiss];
                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -93,8 +93,8 @@ StripeCard *customerCard;
 {
     NSMutableDictionary *card = [[NSMutableDictionary alloc] init];
     [card setValue:creditCard.number forKey:@"number"];
-    [card setValue:[NSString stringWithFormat:@"%d", creditCard.expMonth] forKey:@"exp_month"];
-    [card setValue:[NSString stringWithFormat:@"%d", creditCard.expYear] forKey:@"exp_year"];
+    [card setValue:[NSString stringWithFormat:@"%lu", (unsigned long)creditCard.expMonth] forKey:@"exp_month"];
+    [card setValue:[NSString stringWithFormat:@"%lu", (unsigned long)creditCard.expYear] forKey:@"exp_year"];
     [card setValue:creditCard.cvc forKey:@"cvc"];
     
 //    NSString *url = [[NSString alloc] initWithFormat:ExistingCustomerFormat,[[PFUser currentUser] valueForKey:STRIPE_ID]];
@@ -161,7 +161,7 @@ StripeCard *customerCard;
 
 - (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)paymentViewController
 {
-    NSLog(@"Received card info. Number: %@, expiry: %02i/%i, cvv: %@.", info.redactedCardNumber, info.expiryMonth, info.expiryYear, info.cvv);
+    NSLog(@"Received card info. Number: %@, expiry: %02lu/%lu, cvv: %@.", info.redactedCardNumber, (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear, info.cvv);
     
     creditCard = [[STPCard alloc] init];
     creditCard.number = info.cardNumber;
@@ -171,12 +171,12 @@ StripeCard *customerCard;
     
     newCard = [[NSMutableDictionary alloc] init];
     [newCard setObject:creditCard.number forKey:@"number"];
-    [newCard setObject:[NSNumber numberWithInt:creditCard.expMonth] forKey:@"exp_month"];
-    [newCard setObject:[NSNumber numberWithInt:creditCard.expYear] forKey:@"exp_year"];
+    [newCard setObject:[NSNumber numberWithUnsignedLong:creditCard.expMonth] forKey:@"exp_month"];
+    [newCard setObject:[NSNumber numberWithUnsignedLong:creditCard.expYear] forKey:@"exp_year"];
     [newCard setObject:creditCard.cvc forKey:@"cvc"];
     
     lastFour.text = creditCard.last4;
-    exp.text = [NSString stringWithFormat:@"%d/%d", creditCard.expMonth, creditCard.expYear];
+    exp.text = [NSString stringWithFormat:@"%lu/%lu", (unsigned long)creditCard.expMonth, (unsigned long)creditCard.expYear];
     cvv.text = creditCard.cvc;
     
     [paymentViewController dismissViewControllerAnimated:YES completion:nil];

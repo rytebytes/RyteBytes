@@ -19,5 +19,7 @@ extern NSString * const Locations;
 extern NSString * const GetLocation;
 extern NSString * const UserInfo;
 extern NSString * const UpdateUser;
+extern NSString * const Content;
+extern NSString * const Coupon;
 
 @end

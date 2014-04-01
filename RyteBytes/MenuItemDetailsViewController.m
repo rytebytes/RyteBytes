@@ -14,7 +14,7 @@
 
 @implementation MenuItemDetailsViewController
 
-@synthesize menuItemSelected;
+@synthesize locationItemSelected;
 @synthesize foodImageView;
 @synthesize delegate;
 @synthesize quantityStepper;
@@ -40,26 +40,26 @@
 {
     self.navigationItem.hidesBackButton = NO;
     //Check to see if the user has already added this item to their order
-    int currentAmountForSelectedItem = [[Order current] getSpecificItemCount:menuItemSelected.objectId];
+    int currentAmountForSelectedItem = [[Order current] getSpecificItemCount:locationItemSelected.objectId];
     
     self.quantityOrdered.text = [NSString stringWithFormat:@"%d", currentAmountForSelectedItem];
     quantityStepper.value = currentAmountForSelectedItem;
     
     quantityStepper.minimumValue = 0;
-   [foodImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,menuItemSelected.picture]]];
+   [foodImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,locationItemSelected.menuItemId.picture]]];
     
-    description.text = menuItemSelected.longDescription;
+    description.text = locationItemSelected.menuItemId.longDescription;
     mealName.textAlignment = NSTextAlignmentCenter;
     mealName.textColor = [UIColor blackColor];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    NSNumber *cost = [NSNumber numberWithFloat:menuItemSelected.costInCents / 100.0];
+    NSNumber *cost = [NSNumber numberWithFloat:locationItemSelected.costInCents / 100.0];
     price.text = [formatter stringFromNumber:cost];
     
-    calories.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.calories];
-    sodium.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.sodium];
-    protein.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.protein];
-    carbs.text = [NSString stringWithFormat:@"%d", menuItemSelected.nutritionInfoId.carbs];
+    calories.text = [NSString stringWithFormat:@"%ld", locationItemSelected.menuItemId.nutritionInfoId.calories];
+    sodium.text = [NSString stringWithFormat:@"%ld", locationItemSelected.menuItemId.nutritionInfoId.sodium];
+    protein.text = [NSString stringWithFormat:@"%ld", locationItemSelected.menuItemId.nutritionInfoId.protein];
+    carbs.text = [NSString stringWithFormat:@"%ld", locationItemSelected.menuItemId.nutritionInfoId.carbs];
     
     [super viewDidLoad];
 }
@@ -82,17 +82,17 @@
 - (IBAction)valueChanged:(UIStepper *)sender {
     int value = [sender value];
     
-    if(![[Order current] setMenuItem:menuItemSelected withQuantity:value]){
+    if(![[Order current] setLocationItem:locationItemSelected withQuantity:value]){
         sender.value--;
         [[[UIAlertView alloc] initWithTitle:@"No more left"
-                                    message:[NSString stringWithFormat:@"There are no more %@ left to purchase at this location.",menuItemSelected.name]
+                                    message:[NSString stringWithFormat:@"There are no more %@ left to purchase at this location.",locationItemSelected.menuItemId.name]
                                    delegate:self
                           cancelButtonTitle:nil
                           otherButtonTitles:@"Okay", nil] show];
     }
     else{
         self.quantityOrdered.text = [NSString stringWithFormat:@"%d", value];
-        NSLog(@"Setting item : %@ to quantity of : %d", menuItemSelected.name, value);
+        NSLog(@"Setting item : %@ to quantity of : %d", locationItemSelected.menuItemId.name, value);
         [self.delegate setBadgeValue:[[Order current] getTotalItemCount]];
     }
 }

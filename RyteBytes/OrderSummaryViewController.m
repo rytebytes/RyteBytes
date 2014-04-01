@@ -22,6 +22,8 @@
 #import "SDWebImageManager.h"
 #import "ParseError.h"
 #import "JSONResponseSerializerWithData.h"
+#import "CouponValidateResult.h"
+#import "CouponValidation.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation OrderSummaryViewController
@@ -29,6 +31,7 @@
 @synthesize orderSummary;
 @synthesize orderTotal;
 @synthesize location;
+@synthesize coupon;
 
 Order *currentOrder;
 NSMutableArray *orderArray;
@@ -37,6 +40,10 @@ OrderItem *selectedItem;
 Location *pickupLocation;
 PFUser *currentUser;
 NSNumberFormatter *formatter;
+CouponValidation *couponEntered;
+
+NSInteger COUPON_ALERT_TAG = 1;
+NSInteger REMOVE_ITEM_ALERT_TAG = 2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,9 +74,23 @@ NSNumberFormatter *formatter;
     [self checkForOutOfStockItems];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (IBAction)enterCoupon:(id)sender {
+    UIAlertView *couponAlert = [[UIAlertView alloc] initWithTitle:@"Coupon" message:@"Please enter the coupon code below" delegate:self cancelButtonTitle:@"Apply" otherButtonTitles:nil];
+    couponAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [couponAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+    [couponAlert setTag:COUPON_ALERT_TAG];
+    [couponAlert show];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -82,15 +103,15 @@ NSNumberFormatter *formatter;
     OrderSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderSummaryCell" forIndexPath:indexPath];
     
     OrderItem *item = [orderArray objectAtIndex:indexPath.row];
-    cell.itemName.text = [item.menuItem.name uppercaseString];
+    cell.itemName.text = [item.locationItem.menuItemId.name uppercaseString];
     cell.stepper.value = item.quantity;
-    cell.uniqueId = item.menuItem.objectId;
-    [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,item.menuItem.picture]]];
+    cell.uniqueId = item.locationItem.objectId;
+    [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,item.locationItem.menuItemId.picture]]];
     [cell.image setClipsToBounds:YES];
     
     
     NSNumber *totalItemCost = [NSNumber numberWithFloat:[item calculateCost]];
-    NSNumber *itemUnitCost = [NSNumber numberWithFloat:item.menuItem.costInCents / 100.0];
+    NSNumber *itemUnitCost = [NSNumber numberWithFloat:item.locationItem.costInCents / 100.0];
     
     cell.quantityAndUnitCost.text = [NSString stringWithFormat:@"%d x %@ = ", item.quantity, [formatter stringFromNumber:itemUnitCost]];
     cell.totalItemCost.text = [formatter stringFromNumber:totalItemCost];
@@ -103,27 +124,29 @@ NSNumberFormatter *formatter;
     OrderSummaryCell *cell = (OrderSummaryCell*)[[[sender superview] superview] superview];
     selectedItem = [currentOrder getOrderItem:cell.uniqueId];
     
-    if(![currentOrder setMenuItem:selectedItem.menuItem withQuantity:value]){
+    if(![currentOrder setLocationItem:selectedItem.locationItem withQuantity:value]){
         sender.value--;
         [[[UIAlertView alloc] initWithTitle:@"No more left"
-                                    message:[NSString stringWithFormat:@"There are no more %@ left to purchase at this location.",selectedItem.menuItem.name]
+                                    message:[NSString stringWithFormat:@"There are no more %@ left to purchase at this location.",selectedItem.locationItem.menuItemId.name]
                                    delegate:self
                           cancelButtonTitle:nil
                           otherButtonTitles:@"Okay", nil] show];
         
     } else {
         if(0 == value) {
-            [[[UIAlertView alloc] initWithTitle:@"Remove item?"
+            UIAlertView *removeItem = [[UIAlertView alloc] initWithTitle:@"Remove item?"
                                         message:@"The quantity for this item is 0 - would you like to remove it from the cart?"
                                        delegate:self
                               cancelButtonTitle:@"Yes" //index = 0
-                              otherButtonTitles:@"No", nil] show];
+                               otherButtonTitles:@"No", nil];
+            [removeItem setTag:REMOVE_ITEM_ALERT_TAG];
+            [removeItem show];
         }
         
-        selectedItem = [[Order current] getOrderItem:selectedItem.menuItem.objectId];
+        selectedItem = [[Order current] getOrderItem:selectedItem.locationItem.objectId];
         
         NSNumber *totalItemCost = [NSNumber numberWithFloat:[selectedItem calculateCost]];
-        NSNumber *itemUnitCost = [NSNumber numberWithFloat:selectedItem.menuItem.costInCents / 100.0];
+        NSNumber *itemUnitCost = [NSNumber numberWithFloat:selectedItem.locationItem.costInCents / 100.0];
         int quantity = selectedItem.quantity;
         cell.quantityAndUnitCost.text = [NSString stringWithFormat:@"%d x %@ = ", quantity, [formatter stringFromNumber:itemUnitCost]];
         cell.totalItemCost.text = [formatter stringFromNumber:totalItemCost];
@@ -135,14 +158,56 @@ NSNumberFormatter *formatter;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (0 == buttonIndex && [alertView.title isEqualToString:@"Remove item?"]) { //remove from cart
+    if (0 == buttonIndex && alertView.tag == REMOVE_ITEM_ALERT_TAG) { //remove from cart
         [currentOrder removeOrderItem:selectedItem];
         [orderSummary reloadData];
+    } else if(alertView.tag == COUPON_ALERT_TAG){
+        //send coupon code to server
+        
+        [SVProgressHUD showWithStatus:@"Validating code."];
+        
+        Order *order = [Order current];
+        order.couponCode = [alertView textFieldAtIndex:0].text;
+        order.locationId = [[[PFUser currentUser] valueForKey:@"locationId"] objectId];
+        order.userId = [[PFUser currentUser] objectId];
+        
+        NSDictionary *o = [order toDictionary];
+        
+        [[ParseClient current] POST:Coupon parameters:o
+                          success:^(NSURLSessionDataTask *operation, id responseObject) {
+                              NSError *error;
+                              couponEntered = (CouponValidation*)[[CouponValidateResult alloc] initWithDictionary:responseObject error:&error].result;
+                              [SVProgressHUD dismiss];
+                              if(couponEntered.valid){
+                                  [self updateOrderCostwithCouponAmount:couponEntered.amount];
+                              } else{
+                                  [[[UIAlertView alloc] initWithTitle:@"Coupon Invalid!"
+                                                              message:couponEntered.message
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Okay"
+                                                    otherButtonTitles:nil] show];
+                              }
+                          }
+                          failure:^(NSURLSessionDataTask *task, NSError *error) {
+                              [SVProgressHUD dismiss];
+                              NSLog(@"error checking code : %@",error.description);
+                              order.couponCode = @"";
+                          }];
     }
 }
 
 - (void)updateOrderCost {
     NSNumber *totalOrderCost = [NSNumber numberWithFloat:[currentOrder calculateTotalOrderCost]];
+    orderTotal.text = [formatter stringFromNumber:totalOrderCost];
+}
+
+- (void)updateOrderCostwithCouponAmount:(int)amount{
+    float cost = [currentOrder calculateTotalOrderCost];
+    cost -= amount;
+    if(cost < 0){
+        cost = 0.00;
+    }
+    NSNumber *totalOrderCost = [NSNumber numberWithFloat:cost];
     orderTotal.text = [formatter stringFromNumber:totalOrderCost];
 }
 
@@ -219,6 +284,12 @@ NSNumberFormatter *formatter;
     order.userId = [[PFUser currentUser] objectId];
     order.locationId = [[[PFUser currentUser] valueForKey:@"locationId"] objectId];
     order.totalInCents = [order calculateTotalOrderCostInCents];
+    
+    if(![order.couponCode isEqual:@""] && couponEntered.valid){
+        order.totalInCents -= couponEntered.amount;
+        if(order.totalInCents < 0)
+            order.totalInCents = 0;
+    }
     
     NSDictionary *o = [order toDictionary];
     NSLog(@"Order : %@",o);

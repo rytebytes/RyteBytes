@@ -19,4 +19,5 @@
 @property (nonatomic,strong) Pointer<Location> *locationId;
 @property (nonatomic,strong) MenuItem *menuItemId;
 @property (nonatomic) int quantity;
+@property (nonatomic) int costInCents;
 @end

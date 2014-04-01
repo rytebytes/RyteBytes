@@ -14,7 +14,7 @@
 
 @interface MenuItemDetailsViewController : UIViewController
 
-@property (nonatomic,strong) MenuItem* menuItemSelected;
+@property (nonatomic,strong) LocationItem* locationItemSelected;
 @property (nonatomic,strong) IBOutlet UIImageView *foodImageView;
 @property (nonatomic,strong) IBOutlet UILabel *quantityOrdered;
 @property (nonatomic,strong) IBOutlet UILabel *description;

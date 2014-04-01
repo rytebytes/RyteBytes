@@ -7,7 +7,6 @@
 //
 
 #import "MenuItem.h"
-#import "SBJson.h"
 #import "Constants.h"
 
 @implementation MenuItem
