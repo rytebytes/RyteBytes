@@ -57,6 +57,8 @@ Location *selectedLocation;
 -(void)viewWillAppear:(BOOL)animated
 {
     selectedLocation = [[Location alloc] initFromFile];
+    menu = [Menu current];
+    menu.delegate = self;
     
     if(selectedLocation == Nil){
         UIStoryboard *storyboard = nil;
@@ -69,9 +71,7 @@ Location *selectedLocation;
         }
         IntroViewController *intro = (IntroViewController *)[storyboard instantiateViewControllerWithIdentifier:@"Intro"];
         [self presentViewController:intro animated:true completion:Nil];
-    } else{
-        menu = [Menu current];
-        menu.delegate = self;
+    } else if([menu isEmpty]){
         [menu refreshFromServerWithOverlay:FALSE];
     }
 }

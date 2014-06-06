@@ -44,10 +44,27 @@
     return self;
 }
 
+-(BOOL)isEmpty
+{
+    if ([self.menu count] == 0) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 -(LocationItem*)retrieveItemWithId:(NSString*)objectId
 {
     for(LocationItem* item in menu){
         if([item.objectId isEqualToString:objectId])
+            return item;
+    }
+    return nil;
+}
+
+-(LocationItem*)retrieveLocationItemWithMenuItemId:(NSString*)menuItemId
+{
+    for(LocationItem* item in menu){
+        if([item.menuItemId.objectId isEqualToString:menuItemId])
             return item;
     }
     return nil;

@@ -141,7 +141,7 @@
     for (id key in orderItemDictionary) {
         OrderItem* item = [orderItemDictionary objectForKey:key];
         if(![menu isQuantityAvailable:item.locationItem.menuItemId.objectId withQuantity:item.quantity]){
-            [keysToRemove addObject:item.locationItem.objectId];
+            [keysToRemove addObject:item.locationItem.menuItemId.objectId];
             if ([unavailableItems isEqualToString:@""]) {
                 unavailableItems = item.locationItem.menuItemId.name;
             } else {

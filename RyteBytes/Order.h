@@ -11,6 +11,7 @@
 #import "MenuItem.h"
 #import "OrderItem.h"
 #import "Menu.h"
+#import "CouponValidation.h"
 
 @protocol OrderUpdatedWithNewMenu <NSObject>
 -(void)orderUpdatedWithNewMenu;
@@ -26,6 +27,7 @@
 @property (nonatomic) int totalInCents;
 @property (strong,nonatomic) Menu<Ignore> *menu;
 @property (nonatomic,weak) id<OrderUpdatedWithNewMenu,Ignore> delegate;
+@property (nonatomic,strong) CouponValidation<Ignore> *couponValidateResult;
 
 + (Order*)current;
 

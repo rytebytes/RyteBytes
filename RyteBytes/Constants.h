@@ -39,4 +39,8 @@ extern NSString * const ORDER_LOCATION_ID;
 extern NSString * const ORDER_ITEMS;
 extern NSString * const ORDER_COUPON_ID;
 
+//Inventory Locations
+extern NSString * const DEVELOPMENT_INVENTORY_LOCATION_ID;
+extern NSString * const PRODUCTION_INVENTORY_LOCATION_ID;
+
 @end

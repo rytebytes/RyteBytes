@@ -24,7 +24,9 @@
 -(void)writeToFile;
 -(void)loadFromFile;
 
+-(BOOL)isEmpty;
 -(LocationItem*)retrieveItemWithId:(NSString*)objectId;
+-(LocationItem*)retrieveLocationItemWithMenuItemId:(NSString*)menuItemId;
 -(BOOL)isQuantityAvailable:(NSString*)menuItemId withQuantity:(int)quantityOrdered;
 -(NSString*)getLocationId;
 

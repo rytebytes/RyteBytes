@@ -44,6 +44,7 @@ CouponValidation *couponEntered;
 
 NSInteger COUPON_ALERT_TAG = 1;
 NSInteger REMOVE_ITEM_ALERT_TAG = 2;
+NSInteger COUPON_REMOVE_TAG = 3;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,6 +57,13 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSMutableAttributedString *couponBtnString = [[NSMutableAttributedString alloc] initWithString:@"Apply Coupon"];
+    
+    [couponBtnString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [couponBtnString length])];
+    
+    [coupon setAttributedTitle:couponBtnString forState:UIControlStateNormal];
+    
 	// Do any additional setup after loading the view.
     currentOrder = [Order current];
     orderArray = [currentOrder convertToOrderItemArray];
@@ -72,13 +80,10 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
     pickupLocation = [[Location alloc] initFromFile];
     location.text = pickupLocation.name;
     [self checkForOutOfStockItems];
+    if([Order current].couponValidateResult != NULL && [Order current].couponValidateResult.valid){
+        [self updateOrderCost];
+    }
 }
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -86,11 +91,25 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
 }
 
 - (IBAction)enterCoupon:(id)sender {
-    UIAlertView *couponAlert = [[UIAlertView alloc] initWithTitle:@"Coupon" message:@"Please enter the coupon code below" delegate:self cancelButtonTitle:@"Apply" otherButtonTitles:nil];
-    couponAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [couponAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
-    [couponAlert setTag:COUPON_ALERT_TAG];
-    [couponAlert show];
+    PFUser *currentUser = [PFUser currentUser];
+    if([Order current].couponValidateResult != NULL && [Order current].couponValidateResult.valid == TRUE){
+        UIAlertView *removeCoupon = [[UIAlertView alloc] initWithTitle:@"Remove" message:@"Would you like to remove the coupon from your order?" delegate:self cancelButtonTitle:@"Remove" otherButtonTitles:@"Cancel", nil];
+        [removeCoupon setTag:COUPON_REMOVE_TAG];
+        [removeCoupon show];
+    }
+    else if (currentUser)
+    {
+        UIAlertView *couponAlert = [[UIAlertView alloc] initWithTitle:@"Coupon" message:@"Please enter the coupon code below" delegate:self cancelButtonTitle:@"Apply" otherButtonTitles:@"Cancel",nil];
+        couponAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [couponAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+        [couponAlert setTag:COUPON_ALERT_TAG];
+        [couponAlert show];
+    }
+    else
+    {
+        TabBarController *tab = (TabBarController*)self.parentViewController.parentViewController;
+        [tab showLoginDismissHUDOnSuccess:TRUE];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -105,7 +124,7 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
     OrderItem *item = [orderArray objectAtIndex:indexPath.row];
     cell.itemName.text = [item.locationItem.menuItemId.name uppercaseString];
     cell.stepper.value = item.quantity;
-    cell.uniqueId = item.locationItem.objectId;
+    cell.uniqueId = item.locationItem.menuItemId.objectId;
     [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:CLOUDINARY_IMAGE_FOOD_URL,item.locationItem.menuItemId.picture]]];
     [cell.image setClipsToBounds:YES];
     
@@ -143,7 +162,7 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
             [removeItem show];
         }
         
-        selectedItem = [[Order current] getOrderItem:selectedItem.locationItem.objectId];
+        selectedItem = [[Order current] getOrderItem:selectedItem.locationItem.menuItemId.objectId];
         
         NSNumber *totalItemCost = [NSNumber numberWithFloat:[selectedItem calculateCost]];
         NSNumber *itemUnitCost = [NSNumber numberWithFloat:selectedItem.locationItem.costInCents / 100.0];
@@ -161,7 +180,7 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
     if (0 == buttonIndex && alertView.tag == REMOVE_ITEM_ALERT_TAG) { //remove from cart
         [currentOrder removeOrderItem:selectedItem];
         [orderSummary reloadData];
-    } else if(alertView.tag == COUPON_ALERT_TAG){
+    } else if(alertView.tag == COUPON_ALERT_TAG && 0 == buttonIndex){
         //send coupon code to server
         
         [SVProgressHUD showWithStatus:@"Validating code."];
@@ -177,10 +196,12 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
                           success:^(NSURLSessionDataTask *operation, id responseObject) {
                               NSError *error;
                               couponEntered = (CouponValidation*)[[CouponValidateResult alloc] initWithDictionary:responseObject error:&error].result;
-                              [SVProgressHUD dismiss];
                               if(couponEntered.valid){
-                                  [self updateOrderCostwithCouponAmount:couponEntered.amount];
+                                  order.couponValidateResult = couponEntered;
+                                  [self updateOrderCost];
+                                  [SVProgressHUD dismiss];
                               } else{
+                                  [SVProgressHUD dismiss];
                                   [[[UIAlertView alloc] initWithTitle:@"Coupon Invalid!"
                                                               message:couponEntered.message
                                                              delegate:nil
@@ -193,22 +214,48 @@ NSInteger REMOVE_ITEM_ALERT_TAG = 2;
                               NSLog(@"error checking code : %@",error.description);
                               order.couponCode = @"";
                           }];
+    } else if(alertView.tag == COUPON_REMOVE_TAG && 0 == buttonIndex){
+        [Order current].couponValidateResult = NULL;
+        [Order current].couponCode = @"";
+        [self updateOrderCost];
     }
 }
 
-- (void)updateOrderCost {
-    NSNumber *totalOrderCost = [NSNumber numberWithFloat:[currentOrder calculateTotalOrderCost]];
-    orderTotal.text = [formatter stringFromNumber:totalOrderCost];
-}
-
-- (void)updateOrderCostwithCouponAmount:(int)amount{
-    float cost = [currentOrder calculateTotalOrderCost];
-    cost -= amount;
-    if(cost < 0){
-        cost = 0.00;
+- (void)updateOrderCost{
+    
+    if([Order current].couponValidateResult != NULL && [Order current].couponValidateResult.valid)
+    {
+        float cost = [currentOrder calculateTotalOrderCost];
+        cost -= [Order current].couponValidateResult.amount;
+        if(cost < 0){
+            cost = 0.00;
+        }
+        NSNumber *totalOrderCost = [NSNumber numberWithFloat:cost];
+        orderTotal.text = [formatter stringFromNumber:totalOrderCost];
+        
+        NSNumber *couponAmount = [NSNumber numberWithInt:(couponEntered.amount / 100)];
+        NSString *couponString = [NSString stringWithFormat:@"after %@ coupon!",[formatter stringFromNumber:couponAmount]];
+        
+        NSMutableAttributedString *couponBtnString = [[NSMutableAttributedString alloc] initWithString:couponString];
+        
+        [couponBtnString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [couponBtnString length])];
+        [couponBtnString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(0, [couponBtnString length])];
+        
+        [coupon setAttributedTitle:couponBtnString forState:UIControlStateNormal];
+        [coupon setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    } else {
+        NSMutableAttributedString *couponBtnString = [[NSMutableAttributedString alloc] initWithString:@"Apply Coupon"];
+        
+        [couponBtnString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [couponBtnString length])];
+        [couponBtnString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, [couponBtnString length])];
+        
+        [coupon setAttributedTitle:couponBtnString forState:UIControlStateNormal];
+        [coupon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        
+        NSNumber *totalOrderCost = [NSNumber numberWithFloat:[currentOrder calculateTotalOrderCost]];
+        orderTotal.text = [formatter stringFromNumber:totalOrderCost];
     }
-    NSNumber *totalOrderCost = [NSNumber numberWithFloat:cost];
-    orderTotal.text = [formatter stringFromNumber:totalOrderCost];
 }
 
 -(void)checkForOutOfStockItems{

@@ -45,6 +45,7 @@
 		0102528717B46B6F00BF1F3C /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0102523E17B46B6F00BF1F3C /* textfield@2x.png */; };
 		0102529917B46B6F00BF1F3C /* PaymentKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 0102526217B46B6F00BF1F3C /* PaymentKit.podspec */; };
 		0102529A17B46B6F00BF1F3C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0102526317B46B6F00BF1F3C /* README.md */; };
+		010412AE190D55A400E4AB97 /* brussels_peppers_vert.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 010412AD190D55A400E4AB97 /* brussels_peppers_vert.jpg */; };
 		0109FC66177600C1008E5A66 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC65177600C1008E5A66 /* Parse.framework */; };
 		0109FC6817760102008E5A66 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC6717760102008E5A66 /* AudioToolbox.framework */; };
 		0109FC6A17760109008E5A66 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0109FC6917760109008E5A66 /* CFNetwork.framework */; };
@@ -129,6 +130,7 @@
 		0177533D17826DDD00296315 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0177533C17826DDD00296315 /* OpenGLES.framework */; };
 		017BD2221858CEA3000634F4 /* menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 017BD2211858CEA3000634F4 /* menu.plist */; };
 		017BD2251859156D000634F4 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 017BD2241859156D000634F4 /* Menu.m */; };
+		0191A15E18EB755100D34357 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0191A15D18EB755100D34357 /* Utils.m */; };
 		0192CC1A16C05FE50024815F /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192CC1916C05FE50024815F /* Customer.m */; };
 		01A35DED1791BACC00DEBC46 /* OrderNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */; };
 		01AAA78C18456FC8002D7719 /* AccountSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AAA78B18456FC8002D7719 /* AccountSettingsViewController.m */; };
@@ -220,6 +222,7 @@
 		0102523E17B46B6F00BF1F3C /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		0102526217B46B6F00BF1F3C /* PaymentKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PaymentKit.podspec; sourceTree = "<group>"; };
 		0102526317B46B6F00BF1F3C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		010412AD190D55A400E4AB97 /* brussels_peppers_vert.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brussels_peppers_vert.jpg; sourceTree = "<group>"; };
 		0109FC65177600C1008E5A66 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0109FC6717760102008E5A66 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0109FC6917760109008E5A66 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -341,6 +344,8 @@
 		017BD2211858CEA3000634F4 /* menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menu.plist; sourceTree = "<group>"; };
 		017BD2231859156D000634F4 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		017BD2241859156D000634F4 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
+		0191A15C18EB755100D34357 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		0191A15D18EB755100D34357 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		0192CC1916C05FE50024815F /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
 		01A35DEB1791BACC00DEBC46 /* OrderNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNotifications.h; sourceTree = "<group>"; };
 		01A35DEC1791BACC00DEBC46 /* OrderNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNotifications.m; sourceTree = "<group>"; };
@@ -440,6 +445,8 @@
 			children = (
 				01DA183E18D10CC5004DFD2C /* PersistenceManager.h */,
 				01DA183F18D10CC5004DFD2C /* PersistenceManager.m */,
+				0191A15C18EB755100D34357 /* Utils.h */,
+				0191A15D18EB755100D34357 /* Utils.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -756,6 +763,7 @@
 		01837D4B16FDF85A00096158 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				010412AD190D55A400E4AB97 /* brussels_peppers_vert.jpg */,
 				01DA183C18D10224004DFD2C /* garlic_vert.jpg */,
 				011C2D53188F4AE2008D3B46 /* LaunchImage_960.png */,
 				011C2D4D188F091B008D3B46 /* logo_settings@2x.png */,
@@ -1030,6 +1038,7 @@
 				01350D3A18243E3600670D23 /* Default@2x.png in Resources */,
 				0131E5F01837CBD100556178 /* food_vert@2x.png in Resources */,
 				01350D3618243CCF00670D23 /* Default-568h@2x.png in Resources */,
+				010412AE190D55A400E4AB97 /* brussels_peppers_vert.jpg in Resources */,
 				011C2D451886F5CE008D3B46 /* food_elgin.jpg in Resources */,
 				0102526917B46B6F00BF1F3C /* .gitignore in Resources */,
 				0102526A17B46B6F00BF1F3C /* LICENSE in Resources */,
@@ -1178,6 +1187,7 @@
 				0122254E179AEE2B0026922A /* MenuItem.m in Sources */,
 				01DA184418D78D3D004DFD2C /* HeatingViewController.m in Sources */,
 				0131E5F718381CF900556178 /* LocationResult.m in Sources */,
+				0191A15E18EB755100D34357 /* Utils.m in Sources */,
 				01222552179AFA840026922A /* Constants.m in Sources */,
 				01222556179AFD650026922A /* Order.m in Sources */,
 				017BD2251859156D000634F4 /* Menu.m in Sources */,

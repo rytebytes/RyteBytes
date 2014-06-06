@@ -19,7 +19,7 @@
 @property (nonatomic,strong) IBOutlet UILabel *orderTotal;
 @property (nonatomic,strong) IBOutlet UILabel *location;
 @property (nonatomic,weak) id <MenuItemAdded> delegate;
-@property (nonatomic,strong) IBOutlet UIBarButtonItem *coupon;
+@property (nonatomic,strong) IBOutlet UIButton *coupon;
 
 - (IBAction)valueChanged:(UIStepper *)sender;
 @end

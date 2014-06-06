@@ -21,6 +21,8 @@
 #import "StripeError.h"
 #import "StripeErrorResponse.h"
 #import "SVProgressHUD.h"
+#import "Utils.h"
+#import "Location.h"
 
 
 @implementation CreateAccountViewController
@@ -42,18 +44,24 @@ STPCard *creditCard;
 STPToken *cardToken;
 LocationResult *pickupLocations;
 Location *selectedLocation;
+Location *locationSelectedDuringIntro;
 
 long tagTextFieldToResign;
 
-- (long)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if (nil != pickupLocations) {
-        return [pickupLocations result].count;
+    int count = 0;
+    if(nil != pickupLocations){
+        for (Location *location in pickupLocations.result) {
+            if([Utils isEmailAllowedToViewLocation:email.text withLocation:location.objectId]) {
+                count++;
+            }
+        }
     }
-    return 0;
+    return count;
 }
 
-- (long)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
 }
@@ -61,7 +69,12 @@ long tagTextFieldToResign;
 - (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if(nil != pickupLocations){
-        return [pickupLocations.result[row] name];
+        if ([Utils isEmailAllowedToViewLocation:email.text withLocation:[pickupLocations.result[row] objectId]]) {
+            if([locationSelectedDuringIntro.name isEqualToString:[pickupLocations.result[row] name]]){
+                [pickerView selectRow:row inComponent:0 animated:YES];
+            }
+            return [pickupLocations.result[row] name];
+        }
     }
     return @"";
 }
@@ -88,26 +101,40 @@ long tagTextFieldToResign;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    locationSelectedDuringIntro = [[Location alloc] initFromFile];
+    [self registerForKeyboardNotifications];
     self.navigationItem.hidesBackButton = NO;
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tapGesture];
     user = [PFUser object];
+}
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
     
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     ParseClient *parseClient = [ParseClient current];
     [parseClient POST:Locations parameters:[[NSDictionary alloc] init]
-        success:^(NSURLSessionDataTask *operation, id responseObject) {
-            NSLog(@"Response object is : %@", responseObject);
-            NSError *error = nil;
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            pickupLocations = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
-            [locationPicker reloadAllComponents];
-        } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-            NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
-        }
-    ];
+              success:^(NSURLSessionDataTask *operation, id responseObject) {
+                  NSLog(@"Response object is : %@", responseObject);
+                  NSError *error = nil;
+                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                  pickupLocations = [[LocationResult alloc] initWithDictionary:responseObject error:&error];
+                  [locationPicker reloadAllComponents];
+              } failure:^(NSURLSessionDataTask *operation, NSError *error) {
+                  NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
+              }
+     ];
 }
 
 -(void)dismissKeyboard

@@ -10,11 +10,15 @@
 #import "Location.h"
 #import "LocationResult.h"
 #import "ParseClient.h"
+#import <Parse/Parse.h>
+#import "Utils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation IntroViewController
 
 @synthesize locationPicker;
 @synthesize getStarted;
+@synthesize text;
 
 LocationResult *pickupLocations;
 Location *selectedLocation;
@@ -30,6 +34,7 @@ Location *selectedLocation;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    text.layer.cornerRadius = 8;
     ParseClient *parseClient = [ParseClient current];
     [parseClient POST:Locations parameters:[[NSDictionary alloc] init]
               success:^(NSURLSessionDataTask *operation, id responseObject) {
@@ -40,6 +45,7 @@ Location *selectedLocation;
                   [locationPicker reloadAllComponents];
               } failure:^(NSURLSessionDataTask *operation, NSError *error) {
                   NSLog(@"Error in sending request to get locations %@", [error localizedDescription]);
+                  [[[UIAlertView alloc] initWithTitle:@"Network error" message:@"RyteBytes requires a network connection, please try again when you are connected to the network." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
               }
      ];
 }
@@ -67,27 +73,37 @@ Location *selectedLocation;
     [selectedLocation writeToFile];
 
     [self dismissViewControllerAnimated:false completion:Nil];
+    //send message to menu view controller to load the menu
 }
 
-- (long)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    if (nil != pickupLocations) {
-        return [pickupLocations result].count;
+    NSString *name = @"";
+    
+    if(nil != pickupLocations){
+        if ([Utils isCurrentUserAllowedToViewLocation:[pickupLocations.result[row] objectId]]) {
+             name = [pickupLocations.result[row] name];
+        }
     }
-    return 0;
+    return [[NSAttributedString alloc] initWithString:name attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 
-- (long)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    int count = 0;
+    if(nil != pickupLocations){
+        for (Location *location in pickupLocations.result) {
+            if([Utils isCurrentUserAllowedToViewLocation:location.objectId]) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
-}
-
-- (NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    if(nil != pickupLocations){
-        return [pickupLocations.result[row] name];
-    }
-    return @"";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
